@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Samuel Appiah Kubi — Geospatial & AI Engineer</title>
+<meta name="description" content="Geospatial Software Engineer, AI/Computer Vision Developer, and Full-Stack Architect based in Accra, Ghana."/>
+
+<!-- FONTS: Bricolage Grotesque (display) + Instrument Sans (body) + DM Mono (code) -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+/* ================================================
+   VARIABLES
+   ================================================ */
+:root {
+  --orange:        #F97316;
+  --orange-dk:     #EA580C;
+  --orange-dkr:    #C2410C;
+  --orange-glow:   rgba(249,115,22,0.30);
+  --orange-subtle: rgba(249,115,22,0.08);
+  --orange-mid:    rgba(249,115,22,0.15);
+  --green:         #22C55E;
+  --t: 0.35s cubic-bezier(.4,0,.2,1);
+  --font-h: 'Bricolage Grotesque', sans-serif;
+  --font-b: 'Instrument Sans', sans-serif;
+  --font-m: 'DM Mono', monospace;
+  --r: 16px;
+  --r-sm: 10px;
+  --r-lg: 24px;
+}
+[data-theme="dark"] {
+  --bg:      #080809;
+  --bg2:     #0F0F11;
+  --bg3:     #16161A;
+  --surf:    #1A1A1E;
+  --surf2:   #222228;
+  --bdr:     rgba(255,255,255,0.07);
+  --bdr-h:   rgba(249,115,22,0.5);
+  --tx:      #F1F1F3;
+  --tx2:     #9A9AA8;
+  --tx3:     #5A5A68;
+  --shadow:  0 8px 40px rgba(0,0,0,0.6);
+  --nav-bg:  rgba(8,8,9,0.88);
+  --modal-bg:rgba(0,0,0,0.80);
+  --glass:   rgba(26,26,30,0.72);
+}
+[data-theme="light"] {
+  --bg:      #F7F7F8;
+  --bg2:     #EFEFF1;
+  --bg3:     #E5E5EA;
+  --surf:    #FFFFFF;
+  --surf2:   #F2F2F5;
+  --bdr:     rgba(0,0,0,0.07);
+  --bdr-h:   rgba(249,115,22,0.5);
+  --tx:      #16161A;
+  --tx2:     #4A4A58;
+  --tx3:     #9A9AA8;
+  --shadow:  0 8px 40px rgba(0,0,0,0.10);
+  --nav-bg:  rgba(247,247,248,0.90);
+  --modal-bg:rgba(0,0,0,0.60);
+  --glass:   rgba(255,255,255,0.75);
+}
+
+/* ================================================
+   RESET
+   ================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-b);background:var(--bg);color:var(--tx);line-height:1.7;transition:background var(--t),color var(--t);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:var(--font-b)}
+ul{list-style:none}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--orange-dk);border-radius:99px}
+
+/* ================================================
+   UTILITIES
+   ================================================ */
+.container{width:100%;max-width:1240px;margin:0 auto;padding:0 28px}
+.section-pad{padding:110px 0}
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-m);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--orange);background:var(--orange-subtle);
+  border:1px solid rgba(249,115,22,0.22);
+  padding:7px 16px;border-radius:99px;margin-bottom:18px;
+}
+.section-eyebrow i{font-size:0.85rem}
+.section-title{
+  font-family:var(--font-h);font-size:clamp(2.1rem,4.5vw,3.2rem);
+  font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:14px;
+}
+.section-sub{color:var(--tx2);font-size:1.05rem;max-width:560px;margin-bottom:56px;line-height:1.75}
+.hl{color:var(--orange)}
+
+/* FADE-UP REVEAL */
+.fu{opacity:0;transform:translateY(32px);transition:opacity .65s ease,transform .65s ease}
+.fu.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.05s}.d2{transition-delay:.12s}.d3{transition-delay:.19s}
+.d4{transition-delay:.26s}.d5{transition-delay:.33s}.d6{transition-delay:.40s}
+
+/* ================================================
+   BUTTONS
+   ================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 28px;border-radius:99px;
+  font-family:var(--font-h);font-weight:700;font-size:0.875rem;letter-spacing:0.02em;
+  transition:all .25s ease;white-space:nowrap;
+}
+.btn i{font-size:0.9rem}
+.btn-primary{
+  background:linear-gradient(135deg,var(--orange),var(--orange-dk));
+  color:#fff;box-shadow:0 0 0 0 var(--orange-glow);
+}
+.btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 36px var(--orange-glow)}
+.btn-outline{border:1.5px solid var(--bdr-h);color:var(--orange);background:transparent}
+.btn-outline:hover{background:var(--orange-subtle);transform:translateY(-3px)}
+.btn-ghost{color:var(--tx2);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--bdr-h);color:var(--orange)}
+
+/* ================================================
+   NAVIGATION
+   ================================================ */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:var(--nav-bg);
+  backdrop-filter:blur(22px) saturate(200%);
+  -webkit-backdrop-filter:blur(22px) saturate(200%);
+  border-bottom:1px solid var(--bdr);
+  transition:background var(--t),border-color var(--t);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;max-width:1240px;margin:0 auto;padding:0 28px;
+}
+.nav-logo{
+  font-family:var(--font-h);font-weight:800;font-size:1.15rem;
+  color:var(--tx);letter-spacing:-0.03em;display:flex;align-items:center;gap:3px;
+}
+.nav-logo-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 10px var(--orange);
+  display:inline-block;margin-left:2px;
+}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{
+  font-family:var(--font-b);font-size:0.85rem;font-weight:500;color:var(--tx2);
+  padding:7px 14px;border-radius:99px;transition:all .2s ease;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--orange);background:var(--orange-subtle)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-icon-btn{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surf);border:1px solid var(--bdr);
+  color:var(--tx2);font-size:1rem;transition:all .2s ease;
+}
+.nav-icon-btn:hover{border-color:var(--orange);color:var(--orange)}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  width:42px;height:42px;align-items:center;justify-content:center;
+  border-radius:var(--r-sm);border:1px solid var(--bdr);
+  background:var(--surf);transition:all .2s;
+}
+.hamburger span{display:block;width:19px;height:1.5px;background:var(--tx2);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{
+  display:none;position:fixed;top:68px;left:0;right:0;bottom:0;
+  background:var(--bg);z-index:999;padding:36px 28px;
+  flex-direction:column;gap:6px;transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{
+  font-family:var(--font-h);font-size:1.6rem;font-weight:700;
+  color:var(--tx);padding:14px 0;border-bottom:1px solid var(--bdr);transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--orange)}
+
+/* ================================================
+   HERO
+   ================================================ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;padding:100px 0 70px;
+}
+/* Satellite imagery background */
+.hero-bg-img{
+  position:absolute;inset:0;z-index:0;
+  background:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1800&q=80&fit=crop') center/cover no-repeat;
+  filter:brightness(0.18) saturate(1.2);
+}
+.hero-bg-gradient{
+  position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(249,115,22,0.12) 0%, transparent 60%),
+    linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+}
+/* Scan-line grid overlay */
+.hero-grid-lines{
+  position:absolute;inset:0;z-index:2;
+  background-image:
+    linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 90% 80% at 50% 50%, black 0%, transparent 100%);
+}
+.hero-content{position:relative;z-index:3;text-align:center;max-width:920px;margin:0 auto}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--glass);border:1px solid rgba(249,115,22,0.25);
+  backdrop-filter:blur(12px);
+  border-radius:99px;padding:8px 20px 8px 12px;
+  font-family:var(--font-m);font-size:0.78rem;letter-spacing:0.08em;
+  color:var(--tx2);margin-bottom:36px;
+  animation:fadeDown .8s ease forwards;
+}
+.badge-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(34,197,94,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.2);opacity:.7}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-name{
+  font-family:var(--font-h);
+  font-size:clamp(2.8rem,8vw,6rem);
+  font-weight:800;line-height:1.02;letter-spacing:-0.04em;
+  margin-bottom:18px;animation:fadeUp .9s .15s ease forwards;opacity:0;
+}
+/* Gradient text on name highlight */
+.hero-name .hl{
+  background:linear-gradient(135deg,var(--orange) 0%,#FBBF24 50%,var(--orange-dk) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-typed-wrap{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-h);font-size:clamp(1.05rem,2.5vw,1.5rem);
+  font-weight:600;color:var(--tx2);margin-bottom:22px;
+  animation:fadeUp .9s .3s ease forwards;opacity:0;
+}
+.hero-typed{color:var(--tx);border-right:2.5px solid var(--orange);padding-right:4px;animation:blink .7s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-bio{
+  color:var(--tx2);font-size:clamp(0.95rem,2vw,1.08rem);
+  max-width:640px;margin:0 auto 38px;line-height:1.8;
+  animation:fadeUp .9s .45s ease forwards;opacity:0;
+}
+.hero-actions{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;
+  margin-bottom:52px;animation:fadeUp .9s .6s ease forwards;opacity:0;
+}
+.hero-socials{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  animation:fadeUp .9s .75s ease forwards;opacity:0;
+}
+.social-pill{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:99px;padding:8px 16px 8px 12px;
+  color:var(--tx2);font-size:0.8rem;font-weight:500;
+  transition:all .25s ease;
+}
+.social-pill i{font-size:1rem;color:var(--orange)}
+.social-pill:hover{border-color:var(--bdr-h);color:var(--orange);transform:translateY(-3px)}
+
+/* Hero scroll indicator */
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--tx3);font-size:0.72rem;font-family:var(--font-m);letter-spacing:0.15em;text-transform:uppercase;
+  animation:fadeUp 1s 1s ease forwards;opacity:0;
+}
+.scroll-arrow{
+  width:28px;height:44px;border:1.5px solid var(--bdr);border-radius:99px;
+  display:flex;align-items:flex-start;justify-content:center;padding-top:8px;
+}
+.scroll-arrow::after{
+  content:'';width:3px;height:8px;background:var(--orange);border-radius:99px;
+  animation:scrollBob 1.8s infinite;
+}
+@keyframes scrollBob{0%,100%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:.3}}
+
+/* ================================================
+   MARQUEE / TICKER
+   ================================================ */
+.marquee-section{
+  padding:24px 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
+  overflow:hidden;
+}
+.marquee-track{display:flex;gap:0;animation:marquee 28s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-h);font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+  color:var(--tx3);padding:0 36px;white-space:nowrap;
+}
+.marquee-item i{color:var(--orange);font-size:1rem}
+.marquee-sep{color:var(--orange);font-size:1.2rem;padding:0 8px;opacity:0.5}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ================================================
+   ABOUT
+   ================================================ */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1.55fr;gap:72px;align-items:start}
+.about-photo-wrap{position:relative;display:flex;justify-content:center}
+.about-img-container{
+  position:relative;width:300px;height:370px;border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+.about-img-container img{width:100%;height:100%;object-fit:cover}
+.about-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(249,115,22,0.25) 0%, transparent 60%);
+}
+.about-img-badge{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  background:var(--glass);backdrop-filter:blur(10px);
+  border:1px solid var(--bdr-h);border-radius:99px;
+  padding:10px 20px;display:flex;align-items:center;gap:9px;
+  font-family:var(--font-h);font-size:0.82rem;font-weight:700;color:var(--tx);
+  white-space:nowrap;
+}
+.about-img-badge i{color:var(--orange)}
+.about-img-ring{
+  position:absolute;inset:-8px;border-radius:calc(var(--r-lg) + 8px);
+  background:conic-gradient(from 0deg, var(--orange) 0%, var(--orange-dk) 40%, transparent 60%, var(--orange) 100%);
+  z-index:-1;animation:spin 8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}
+.tag{
+  font-family:var(--font-m);font-size:0.73rem;padding:5px 13px;border-radius:8px;
+  background:var(--surf);border:1px solid var(--bdr);color:var(--tx2);transition:all .2s;
+}
+.tag:hover{border-color:var(--bdr-h);color:var(--orange)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
+.stat-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:18px 16px;text-align:center;transition:all .25s;
+}
+.stat-card:hover{border-color:var(--bdr-h);transform:translateY(-2px)}
+.stat-val{
+  font-family:var(--font-h);font-size:1.7rem;font-weight:800;
+  color:var(--orange);line-height:1;display:block;margin-bottom:5px;
+}
+.stat-lbl{font-family:var(--font-m);font-size:0.65rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase}
+
+/* ================================================
+   SKILLS (GRID CARDS)
+   ================================================ */
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.skill-col{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:28px 22px;transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.skill-col::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:140px;height:140px;border-radius:50%;
+  background:var(--orange-subtle);transition:all .4s;
+}
+.skill-col:hover::before{transform:scale(1.5);background:var(--orange-mid)}
+.skill-col:hover{border-color:var(--bdr-h);box-shadow:0 0 40px var(--orange-glow),0 8px 32px rgba(0,0,0,.3)}
+.skill-icon-wrap{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  font-size:1.4rem;color:var(--orange);transition:all .3s;
+}
+.skill-col:hover .skill-icon-wrap{background:var(--orange);color:#fff}
+.skill-col-title{font-family:var(--font-h);font-size:0.97rem;font-weight:700;margin-bottom:16px}
+.skill-items{display:flex;flex-wrap:wrap;gap:6px}
+.skill-item{
+  font-family:var(--font-m);font-size:0.72rem;padding:4px 10px;border-radius:6px;
+  background:var(--surf2);color:var(--tx2);border:1px solid var(--bdr);transition:all .2s;
+}
+.skill-item:hover{border-color:var(--orange);color:var(--orange)}
+
+/* ================================================
+   PROJECTS — IMAGE CARDS
+   ================================================ */
+#projects{background:var(--bg2)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.project-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r-lg);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:all .35s ease;cursor:pointer;
+}
+.project-card:hover{
+  transform:translateY(-6px) scale(1.01);
+  border-color:var(--bdr-h);box-shadow:0 20px 60px var(--orange-glow),0 8px 32px rgba(0,0,0,.3);
+}
+/* Project image area */
+.proj-img{
+  position:relative;height:200px;overflow:hidden;
+  background:var(--surf2);
+}
+.proj-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.project-card:hover .proj-img img{transform:scale(1.07)}
+.proj-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(8,8,9,0.8) 0%, rgba(8,8,9,0.1) 60%, transparent 100%);
+}
+.proj-num-badge{
+  position:absolute;top:14px;left:14px;
+  background:var(--glass);backdrop-filter:blur(8px);
+  border:1px solid rgba(249,115,22,0.3);border-radius:8px;
+  font-family:var(--font-m);font-size:0.68rem;color:var(--orange);
+  padding:4px 10px;letter-spacing:0.1em;
+}
+.proj-tech-preview{
+  position:absolute;bottom:14px;right:14px;
+  display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;
+}
+.proj-tech-pill{
+  font-family:var(--font-m);font-size:0.62rem;padding:3px 8px;border-radius:5px;
+  background:rgba(249,115,22,0.18);border:1px solid rgba(249,115,22,0.25);color:var(--orange);
+  backdrop-filter:blur(6px);
+}
+.project-body{padding:22px 22px 14px;flex:1;display:flex;flex-direction:column}
+.project-title{
+  font-family:var(--font-h);font-size:1.02rem;font-weight:700;
+  margin-bottom:10px;line-height:1.3;
+}
+.project-desc{font-size:0.84rem;color:var(--tx2);line-height:1.65;flex:1}
+.project-impact{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--font-m);font-size:0.75rem;color:var(--tx3);
+  padding:12px 0 0;border-top:1px solid var(--bdr);margin-top:14px;
+}
+.project-impact i{color:var(--orange)}
+.project-footer{
+  padding:14px 22px;border-top:1px solid var(--bdr);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.view-btn{
+  font-family:var(--font-h);font-size:0.8rem;font-weight:700;
+  color:var(--orange);display:flex;align-items:center;gap:6px;transition:gap .2s;
+}
+.view-btn:hover{gap:11px}
+.proj-count{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)}
+
+/* ================================================
+   VIDEO REEL SECTION
+   ================================================ */
+#reel{background:var(--bg);position:relative;overflow:hidden;padding:80px 0}
+.reel-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1800&q=80&fit=crop') center/cover no-repeat;
+  filter:brightness(0.1) saturate(1.3);
+}
+.reel-inner{position:relative;z-index:1}
+.reel-header{text-align:center;margin-bottom:48px}
+.reel-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
+.reel-video-wrap{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;
+  aspect-ratio:16/9;background:var(--surf);
+  box-shadow:0 24px 80px rgba(0,0,0,0.7);
+  border:1px solid var(--bdr);
+}
+.reel-video-wrap iframe{width:100%;height:100%;border:none}
+.reel-video-wrap video{width:100%;height:100%;object-fit:cover}
+.reel-play-overlay{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.45);cursor:pointer;transition:background .2s;
+}
+.reel-play-overlay:hover{background:rgba(0,0,0,0.2)}
+.play-btn{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),var(--orange-dk));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;color:#fff;
+  box-shadow:0 8px 40px var(--orange-glow);
+  transition:transform .2s;
+}
+.reel-play-overlay:hover .play-btn{transform:scale(1.1)}
+.reel-side{display:flex;flex-direction:column;gap:16px}
+.reel-stat{
+  background:var(--glass);backdrop-filter:blur(12px);
+  border:1px solid var(--bdr);border-radius:var(--r);
+  padding:24px;display:flex;align-items:center;gap:18px;transition:border-color .2s;
+}
+.reel-stat:hover{border-color:var(--bdr-h)}
+.reel-stat-icon{
+  width:52px;height:52px;flex-shrink:0;border-radius:14px;
+  background:var(--orange-subtle);display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--orange);
+}
+.reel-stat-val{font-family:var(--font-h);font-size:1.6rem;font-weight:800;color:var(--tx);line-height:1}
+.reel-stat-lbl{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
+
+/* ================================================
+   EXPERIENCE TIMELINE
+   ================================================ */
+#experience{background:var(--bg2)}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:0;bottom:0;
+  width:2px;background:linear-gradient(to bottom, var(--orange), transparent);
+}
+.timeline-item{position:relative;margin-bottom:32px}
+.timeline-dot{
+  position:absolute;left:-40px;top:6px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--orange);border:3px solid var(--bg2);
+  box-shadow:0 0 16px var(--orange-glow);
+}
+.timeline-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:24px 28px;transition:all .25s;
+}
+.timeline-card:hover{border-color:var(--bdr-h);box-shadow:0 6px 24px var(--orange-glow)}
+.timeline-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.timeline-role{font-family:var(--font-h);font-weight:700;font-size:1.02rem}
+.timeline-company{color:var(--orange);font-weight:600;font-size:0.9rem;margin-bottom:6px}
+.timeline-meta{font-family:var(--font-m);font-size:0.74rem;color:var(--tx3);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.timeline-meta span{display:flex;align-items:center;gap:5px}
+.timeline-achievements{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.timeline-achievements li{
+  font-size:0.86rem;color:var(--tx2);padding-left:18px;
+  position:relative;line-height:1.65;
+}
+.timeline-achievements li::before{content:'▸';position:absolute;left:0;color:var(--orange)}
+.badge-current{
+  font-family:var(--font-m);font-size:0.68rem;padding:4px 11px;border-radius:99px;font-weight:600;
+  background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.25);
+  white-space:nowrap;
+}
+.badge-past{
+  font-family:var(--font-m);font-size:0.68rem;padding:4px 11px;border-radius:99px;
+  background:var(--surf2);color:var(--tx3);border:1px solid var(--bdr);
+  white-space:nowrap;
+}
+
+/* ================================================
+   CERTIFICATIONS
+   ================================================ */
+#certifications{background:var(--bg)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cert-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:24px;
+  display:flex;align-items:flex-start;gap:16px;transition:all .25s;
+}
+.cert-card:hover{border-color:var(--bdr-h);transform:translateY(-3px);box-shadow:0 8px 28px var(--orange-glow)}
+.cert-icon{
+  width:50px;height:50px;border-radius:13px;flex-shrink:0;
+  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--orange);font-size:1.3rem;
+}
+.cert-name{font-family:var(--font-h);font-weight:700;font-size:0.9rem;line-height:1.4;margin-bottom:5px}
+.cert-badge{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)}
+
+/* ================================================
+   EDUCATION
+   ================================================ */
+#education{background:var(--bg2)}
+.edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
+.edu-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:32px;transition:all .25s;
+  position:relative;overflow:hidden;
+}
+.edu-card::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;background:var(--orange-subtle);
+}
+.edu-card:hover{border-color:var(--bdr-h);transform:translateY(-3px)}
+.edu-icon-wrap{
+  width:56px;height:56px;border-radius:15px;
+  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:18px;
+}
+.edu-degree{font-family:var(--font-h);font-weight:700;font-size:0.97rem;margin-bottom:8px;line-height:1.35}
+.edu-school{color:var(--orange);font-weight:600;margin-bottom:6px;font-size:0.9rem}
+.edu-period{font-family:var(--font-m);font-size:0.76rem;color:var(--tx3);display:flex;align-items:center;gap:7px}
+
+/* ================================================
+   CONTACT
+   ================================================ */
+#contact{background:var(--bg)}
+/* Hero-style contact banner */
+.contact-banner{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;margin-bottom:56px;padding:60px;
+  background:url('https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?w=1400&q=80&fit=crop') center/cover no-repeat;
+}
+.contact-banner::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(249,115,22,0.85) 0%, rgba(194,65,12,0.90) 100%);
+}
+.contact-banner-content{position:relative;z-index:1;text-align:center}
+.contact-banner h2{font-family:var(--font-h);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:12px}
+.contact-banner p{color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:520px;margin:0 auto 28px}
+.contact-banner .btn{background:#fff;color:var(--orange-dk);font-weight:700}
+.contact-banner .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:52px}
+.contact-info-items{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+.contact-item{
+  display:flex;align-items:center;gap:14px;
+  padding:16px;background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r-sm);transition:all .2s;
+}
+.contact-item:hover{border-color:var(--bdr-h)}
+.ci-icon{
+  width:42px;height:42px;border-radius:11px;flex-shrink:0;
+  background:var(--orange-subtle);display:flex;align-items:center;justify-content:center;
+  color:var(--orange);font-size:1.05rem;
+}
+.ci-label{font-family:var(--font-m);font-size:0.68rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px}
+.ci-val{font-size:0.9rem;font-weight:600}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:7px}
+.form-group label{font-family:var(--font-h);font-size:0.82rem;font-weight:700;color:var(--tx2)}
+.form-group input,.form-group textarea{
+  background:var(--surf);border:1.5px solid var(--bdr);
+  border-radius:var(--r-sm);padding:13px 16px;
+  color:var(--tx);font-family:var(--font-b);font-size:0.9rem;
+  outline:none;transition:all .2s;resize:vertical;
+}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--orange);box-shadow:0 0 0 4px var(--orange-subtle)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--tx3)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-success{
+  display:none;padding:14px 18px;border-radius:var(--r-sm);
+  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);
+  color:var(--green);font-size:0.88rem;text-align:center;font-family:var(--font-h);
+}
+.avail-badge{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:10px 20px;border-radius:99px;
+  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);
+  color:var(--green);font-family:var(--font-h);font-size:0.82rem;font-weight:700;margin-top:14px;
+}
+.avail-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px;padding-bottom:40px;
+  border-bottom:1px solid var(--bdr);
+}
+.footer-brand-name{font-family:var(--font-h);font-size:1.3rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:10px}
+.footer-brand-sub{font-size:0.85rem;color:var(--tx2);line-height:1.7;max-width:280px}
+.footer-col-title{font-family:var(--font-h);font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--tx3);margin-bottom:16px}
+.footer-links-list{display:flex;flex-direction:column;gap:10px}
+.footer-links-list a{font-size:0.88rem;color:var(--tx2);transition:color .2s}
+.footer-links-list a:hover{color:var(--orange)}
+.footer-socials-row{display:flex;gap:10px;margin-top:18px}
+.foot-soc{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surf);border:1px solid var(--bdr);color:var(--tx2);font-size:0.9rem;
+  transition:all .2s;
+}
+.foot-soc:hover{background:var(--orange);border-color:var(--orange);color:#fff;transform:translateY(-3px)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-copy{font-family:var(--font-m);font-size:0.78rem;color:var(--tx3)}
+.footer-love{font-family:var(--font-m);font-size:0.78rem;color:var(--tx3)}
+.footer-love i{color:var(--orange)}
+
+/* ================================================
+   MODAL
+   ================================================ */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:var(--modal-bg);backdrop-filter:blur(10px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.modal-overlay.open{display:flex;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-box{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r-lg);max-width:760px;width:100%;
+  max-height:88vh;overflow-y:auto;
+  animation:scaleIn .3s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.88)}to{opacity:1;transform:scale(1)}}
+.modal-img{height:240px;overflow:hidden;border-radius:var(--r-lg) var(--r-lg) 0 0}
+.modal-img img{width:100%;height:100%;object-fit:cover}
+.modal-header{
+  padding:28px 32px 18px;border-bottom:1px solid var(--bdr);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+}
+.modal-title{font-family:var(--font-h);font-size:1.35rem;font-weight:800;letter-spacing:-0.02em}
+.modal-close{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surf2);color:var(--tx2);font-size:0.9rem;transition:all .2s;
+}
+.modal-close:hover{background:var(--orange);color:#fff}
+.modal-body{padding:28px 32px 36px}
+.modal-section{margin-bottom:24px}
+.modal-section-title{
+  font-family:var(--font-m);font-size:0.72rem;font-weight:600;
+  color:var(--orange);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:11px;
+}
+.modal-text{font-size:0.91rem;color:var(--tx2);line-height:1.8}
+.modal-list{display:flex;flex-direction:column;gap:8px}
+.modal-list li{font-size:0.89rem;color:var(--tx2);padding-left:16px;position:relative;line-height:1.65}
+.modal-list li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:0.8rem}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media(max-width:1100px){
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .certs-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .reel-grid{grid-template-columns:1fr}
+  .reel-side{flex-direction:row;flex-wrap:wrap}
+  .reel-stat{flex:1;min-width:160px}
+}
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:44px}
+  .contact-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:768px){
+  .section-pad{padding:75px 0}
+  .skills-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-banner{padding:40px 24px}
+  .hero-socials{flex-wrap:wrap}
+}
+@media(max-width:480px){
+  .hero-actions{flex-direction:column}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .modal-header{padding:20px 20px 16px}
+  .modal-body{padding:20px 20px 28px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">SAK<span class="nav-logo-dot"></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <!-- <li><a href="#reel" class="nav-link">Reel</a></li> -->
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#certifications" class="nav-link">Certs</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mob-lnk">About</a>
+  <a href="#skills" class="mob-lnk">Skills</a>
+  <a href="#projects" class="mob-lnk">Projects</a>
+  <!-- <a href="#reel" class="mob-lnk">Reel</a> -->
+  <a href="#experience" class="mob-lnk">Experience</a>
+  <a href="#certifications" class="mob-lnk">Certifications</a>
+  <a href="#education" class="mob-lnk">Education</a>
+  <a href="#contact" class="mob-lnk">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-bg-gradient"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Open to freelance &amp; contract · Accra, Ghana
+      </div>
+      <h1 class="hero-name">
+         <span>Samuel </span><span class="hl">Appiah Kubi</span>
+      </h1>
+      <div class="hero-typed-wrap">
+        <i class="fa-solid fa-location-crosshairs" style="color:var(--orange);font-size:1.1rem"></i>
+        <span id="typedText" class="hero-typed"></span>
+      </div>
+      <p class="hero-bio">Building production systems at the intersection of geospatial intelligence, deep learning, and software engineering — turning satellite imagery into actionable insight.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> View Work</a>
+        <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Hire Me</a>
+        <!-- <a href="#reel" class="btn btn-ghost"><i class="fa-solid fa-play"></i> Watch Reel</a> -->
+        <a href="/files/resume.pdf" download class="btn btn-ghost"><i class="fa-solid fa-download"></i> Resume</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="social-pill" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i> LinkedIn
+        </a>
+        <a href="#" class="social-pill" aria-label="GitHub">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="#" class="social-pill" aria-label="Upwork">
+          <i class="fas fa-briefcase"></i> Upwork
+        </a>
+        <a href="mailto:appiahksamuel21@gmail.com" class="social-pill" aria-label="Email">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-arrow"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- MARQUEE TICKER -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- JS fills this -->
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Photo -->
+      <div class="about-photo-wrap fu">
+        <div style="position:relative">
+          <div class="about-img-ring"></div>
+          <div class="about-img-container">
+            <!-- Replace with actual photo: <img src="/images/profile.jpg" alt="Samuel Appiah Kubi"/> -->
+            <!-- Placeholder: satellite imagery -->
+            <img src="assets/1764350504379.jpeg" alt="Geospatial Engineering" style="filter:saturate(1.2) brightness(0.85)"/>
+            <div class="about-img-overlay"></div>
+            <div class="about-img-badge">
+              <i class="fa-solid fa-location-dot"></i> Accra, Ghana
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Text -->
+      <div>
+        <div class="section-eyebrow fu"><i class="fa-solid fa-user-astronaut"></i> About Me</div>
+        <h2 class="section-title fu d1">Engineer. Innovator.<br><span class="hl">Problem Solver.</span></h2>
+        <p style="color:var(--tx2);font-size:0.95rem;line-height:1.85;margin-bottom:12px" class="fu d2">
+          I am a <strong style="color:var(--tx)">Geospatial Software Engineer</strong> with 2+ years of enterprise experience building production systems that combine GIS, artificial intelligence, and full-stack development. I specialize in scalable solutions for environmental monitoring, precision agriculture, infrastructure assessment, and logistics.
+        </p>
+        <p style="color:var(--tx2);font-size:0.95rem;line-height:1.85" class="fu d3">
+          Currently working with Ghana Export-Import Bank, SKTLive LTD, Rainforest Alliance, AMP Logistics, and Afarinick Company Limited — delivering platforms that process terabytes of geospatial data and serve thousands of users.
+        </p>
+        <div class="about-tags fu d4">
+          <span class="tag"><i class="fa-solid fa-globe fa-sm" style="color:var(--orange)"></i> Geospatial Intelligence</span>
+          <span class="tag"><i class="fa-solid fa-satellite fa-sm" style="color:var(--orange)"></i> Remote Sensing</span>
+          <span class="tag"><i class="fa-solid fa-brain fa-sm" style="color:var(--orange)"></i> AI/ML</span>
+          <span class="tag"><i class="fa-solid fa-eye fa-sm" style="color:var(--orange)"></i> Computer Vision</span>
+          <span class="tag"><i class="fa-solid fa-code fa-sm" style="color:var(--orange)"></i> Full-Stack</span>
+          <span class="tag"><i class="fa-brands fa-aws fa-sm" style="color:var(--orange)"></i> Cloud Architecture</span>
+          <span class="tag"><i class="fa-solid fa-database fa-sm" style="color:var(--orange)"></i> Spatial Databases</span>
+          <span class="tag"><i class="fa-solid fa-microchip fa-sm" style="color:var(--orange)"></i> Deep Learning</span>
+        </div>
+        <!-- <div class="stats-grid fu d5">
+          <div class="stat-card"><span class="stat-val" data-target="2" data-suffix="+">0</span><div class="stat-lbl">Years Exp.</div></div>
+          <div class="stat-card"><span class="stat-val" data-target="12" data-suffix="+">0</span><div class="stat-lbl">Projects</div></div>
+          <div class="stat-card"><span class="stat-val" data-target="92.44" data-suffix="%" data-dec="2">0</span><div class="stat-lbl">AI Accuracy</div></div>
+          <div class="stat-card"><span class="stat-val" data-target="1000" data-suffix="+">0</span><div class="stat-lbl">Farmers</div></div>
+          <div class="stat-card"><span class="stat-val" data-target="32699">0</span><div class="stat-lbl">Tiles</div></div>
+          <div class="stat-card"><span class="stat-val" data-target="10000" data-suffix="+">0</span><div class="stat-lbl">Properties</div></div>
+          <div class="stat-card"><span class="stat-val" data-target="333.9" data-suffix=" km²" data-dec="1">0</span><div class="stat-lbl">Area Mon.</div></div>
+          <div class="stat-card"><span class="stat-val" data-target="7">0</span><div class="stat-lbl">Clients</div></div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section-pad">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="section-eyebrow fu"><i class="fa-solid fa-layer-group"></i> Skill Set</div>
+      <h2 class="section-title fu d1">Technologies I <span class="hl">Master</span></h2>
+      <p class="section-sub fu d2" style="margin:0 auto">From satellite imagery to production AI pipelines — end to end.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-col fu d1">
+        <div class="skill-icon-wrap"><i class="fa-solid fa-globe"></i></div>
+        <div class="skill-col-title">Geospatial &amp; GIS</div>
+        <div class="skill-items">
+          <span class="skill-item">PostGIS</span><span class="skill-item">GeoDjango</span><span class="skill-item">GDAL</span>
+          <span class="skill-item">QGIS</span><span class="skill-item">ArcGIS Pro</span><span class="skill-item">ERDAS IMAGINE</span>
+          <span class="skill-item">Leaflet</span><span class="skill-item">Mapbox</span><span class="skill-item">PMTiles</span>
+          <span class="skill-item">OpenLayers</span><span class="skill-item">GRASS GIS</span><span class="skill-item">SAR Processing</span>
+          <span class="skill-item">Multi-spectral</span><span class="skill-item">Orthomosaic</span>
+        </div>
+      </div>
+      <div class="skill-col fu d2">
+        <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
+        <div class="skill-col-title">Software Engineering</div>
+        <div class="skill-items">
+          <span class="skill-item">Python</span><span class="skill-item">JavaScript</span><span class="skill-item">Django</span>
+          <span class="skill-item">DRF</span><span class="skill-item">FastAPI</span><span class="skill-item">Node.js</span>
+          <span class="skill-item">React</span><span class="skill-item">Flutter</span><span class="skill-item">Tailwind</span>
+          <span class="skill-item">REST APIs</span><span class="skill-item">Celery</span><span class="skill-item">Redis</span>
+          <span class="skill-item">Docker</span><span class="skill-item">AWS</span>
+        </div>
+      </div>
+      <div class="skill-col fu d3">
+        <div class="skill-icon-wrap"><i class="fa-solid fa-brain"></i></div>
+        <div class="skill-col-title">AI &amp; Computer Vision</div>
+        <div class="skill-items">
+          <span class="skill-item">TensorFlow</span><span class="skill-item">PyTorch</span><span class="skill-item">YOLOv8</span>
+          <span class="skill-item">YOLOv5</span><span class="skill-item">OpenCV</span><span class="skill-item">Roboflow</span>
+          <span class="skill-item">CNNs</span><span class="skill-item">Object Detection</span><span class="skill-item">Real-time Inference</span>
+          <span class="skill-item">Transfer Learning</span><span class="skill-item">Model Deployment</span>
+        </div>
+      </div>
+      <div class="skill-col fu d4">
+        <div class="skill-icon-wrap"><i class="fa-solid fa-database"></i></div>
+        <div class="skill-col-title">Databases &amp; DevOps</div>
+        <div class="skill-items">
+          <span class="skill-item">PostgreSQL</span><span class="skill-item">PostGIS</span><span class="skill-item">MySQL</span>
+          <span class="skill-item">Firebase</span><span class="skill-item">SQLite</span><span class="skill-item">Docker</span>
+          <span class="skill-item">AWS EC2/S3</span><span class="skill-item">CI/CD</span><span class="skill-item">Gunicorn</span>
+          <span class="skill-item">Nginx</span><span class="skill-item">Linux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section-pad">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="section-eyebrow fu"><i class="fa-solid fa-rocket"></i> Portfolio</div>
+      <h2 class="section-title fu d1">Featured <span class="hl">Projects</span></h2>
+      <p class="section-sub fu d2" style="margin:0 auto">Production systems delivering real-world geospatial impact.</p>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- VIDEO REEL SECTION -->
+<!-- <section id="reel" class="section-pad">
+  <div class="reel-bg"></div>
+  <div class="container reel-inner">
+    <div class="reel-header">
+      <div class="section-eyebrow fu" style="justify-content:center"><i class="fa-solid fa-film"></i> Work Reel</div>
+      <h2 class="section-title fu d1" style="text-align:center">In <span class="hl">Action</span></h2>
+      <p class="section-sub fu d2" style="margin:0 auto;text-align:center">Geospatial intelligence, AI vision, and real-world deployment — watch the systems come to life.</p>
+    </div>
+    <div class="reel-grid fu d2">
+      
+      <div class="reel-video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0&modestbranding=1&color=white"
+          title="Samuel Appiah Kubi — Geospatial AI Work Reel"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          style="border:none">
+        </iframe>
+      </div>
+      <div class="reel-side">
+        <div class="reel-stat">
+          <div class="reel-stat-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+          <div>
+            <div class="reel-stat-val">333.9<span style="font-size:1rem;color:var(--tx2)"> km²</span></div>
+            <div class="reel-stat-lbl">Area monitored</div>
+          </div>
+        </div>
+        <div class="reel-stat">
+          <div class="reel-stat-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div>
+            <div class="reel-stat-val">92.44<span style="font-size:1rem;color:var(--tx2)">%</span></div>
+            <div class="reel-stat-lbl">AI Accuracy</div>
+          </div>
+        </div>
+        <div class="reel-stat">
+          <div class="reel-stat-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div>
+            <div class="reel-stat-val">32,699</div>
+            <div class="reel-stat-lbl">Tiles processed</div>
+          </div>
+        </div>
+        <div class="reel-stat">
+          <div class="reel-stat-icon"><i class="fa-solid fa-users"></i></div>
+          <div>
+            <div class="reel-stat-val">1,000<span style="font-size:1rem;color:var(--tx2)">+</span></div>
+            <div class="reel-stat-lbl">Farmers reached</div>
+          </div>
+        </div>
+        <div style="padding:16px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--bdr);border-radius:var(--r);">
+          <p style="font-family:var(--font-h);font-size:0.88rem;color:var(--tx2);line-height:1.75">
+            <i class="fa-solid fa-quote-left" style="color:var(--orange);margin-right:6px"></i>
+            Replace the YouTube link above with your actual demo video. Record a 2–3 min walkthrough of any live project dashboard and upload to YouTube for maximum client impact.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section-pad">
+  <div class="container">
+    <div class="section-eyebrow fu"><i class="fa-solid fa-briefcase"></i> Career</div>
+    <h2 class="section-title fu d1">Work <span class="hl">Experience</span></h2>
+    <p class="section-sub fu d2">Building impactful systems across Ghana and beyond.</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section-pad">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="section-eyebrow fu"><i class="fa-solid fa-certificate"></i> Credentials</div>
+      <h2 class="section-title fu d1">Certifications &amp; <span class="hl">Training</span></h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card fu d1">
+        <div class="cert-icon"><i class="fab fa-aws"></i></div>
+        <div><div class="cert-name">AWS Certified Solutions Architect – Professional</div><div class="cert-badge"><i class="fa-solid fa-building" style="color:var(--orange);font-size:0.75rem"></i> Amazon Web Services</div></div>
+      </div>
+      <div class="cert-card fu d2">
+        <div class="cert-icon"><i class="fa-solid fa-robot"></i></div>
+        <div><div class="cert-name">Machine Learning and Advanced AI Techniques</div><div class="cert-badge"><i class="fa-solid fa-graduation-cap" style="color:var(--orange);font-size:0.75rem"></i> Professional Training</div></div>
+      </div>
+      <div class="cert-card fu d3">
+        <div class="cert-icon"><i class="fa-solid fa-earth-africa"></i></div>
+        <div><div class="cert-name">Geospatial Analytics Essentials</div><div class="cert-badge"><i class="fa-solid fa-map" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div></div>
+      </div>
+      <div class="cert-card fu d4">
+        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
+        <div><div class="cert-name">Artificial Intelligence and Machine Learning</div><div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> AI/ML Certification</div></div>
+      </div>
+      <!-- <div class="cert-card fu d5">
+        <div class="cert-icon"><i class="fa-solid fa-mountain"></i></div>
+        <div><div class="cert-name">Essentials of Geology</div><div class="cert-badge"><i class="fa-solid fa-layer-group" style="color:var(--orange);font-size:0.75rem"></i> Earth Sciences</div></div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section-pad">
+  <div class="container">
+    <div class="section-eyebrow fu"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+    <h2 class="section-title fu d1">Academic <span class="hl">Background</span></h2>
+    <div class="edu-grid">
+      <div class="edu-card fu d2">
+        <div class="edu-icon-wrap"><i class="fa-solid fa-graduation-cap" style="color:var(--orange)"></i></div>
+        <div class="edu-degree">BSc. Geographic Information Science and Cartography</div>
+        <div class="edu-school"><i class="fa-solid fa-building-columns fa-sm"></i> KNUST — Kwame Nkrumah University of Science &amp; Technology</div>
+        <div class="edu-period"><i class="fa-solid fa-calendar-alt"></i> Jan 2020 – Nov 2024 &nbsp;·&nbsp; <i class="fa-solid fa-map-marker-alt"></i> Kumasi, Ghana</div>
+      </div>
+      <div class="edu-card fu d3">
+        <div class="edu-icon-wrap"><i class="fa-solid fa-school" style="color:var(--orange)"></i></div>
+        <div class="edu-degree">High School Diploma</div>
+        <div class="edu-school"><i class="fa-solid fa-building-columns fa-sm"></i> Bibiani Senior High Technical School</div>
+        <div class="edu-period"><i class="fa-solid fa-map-marker-alt"></i> Bibiani, Ghana</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-pad">
+  <div class="container">
+    <!-- Colorful banner -->
+    <div class="contact-banner fu">
+      <div class="contact-banner-content">
+        <h2>Ready to Build Something <em style="font-style:italic">Extraordinary?</em></h2>
+        <p>I turn complex geospatial challenges into elegant, production-ready solutions. Let's talk about your project.</p>
+        <a href="mailto:appiahksamuel21@gmail.com" class="btn" style="background:#fff;color:var(--orange-dk);font-weight:800">
+          <i class="fa-solid fa-paper-plane"></i> Start a Conversation
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="section-eyebrow fu"><i class="fa-solid fa-paper-plane"></i> Contact</div>
+        <h2 class="section-title fu d1">Let's Build <span class="hl">Together</span></h2>
+        <p style="color:var(--tx2);font-size:0.93rem;line-height:1.8;margin-bottom:22px" class="fu d2">
+          Open for freelance, contract, and collaboration opportunities worldwide. I work across time zones and adapt to your workflow.
+        </p>
+        <div class="contact-info-items fu d3">
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div><div class="ci-label">Email</div><div class="ci-val">appiahksamuel21@gmail.com</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div><div class="ci-label">Location</div><div class="ci-val">Accra, Greater Accra Region, Ghana</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fa-solid fa-clock"></i></div>
+            <div><div class="ci-label">Timezone</div><div class="ci-val">UTC+0 (GMT) · Flexible for clients</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div><div class="ci-label">LinkedIn</div><div class="ci-val">samuel-appiah-kubi-b52633333</div></div>
+          </div>
+        </div>
+        <div class="avail-badge fu d4">
+          <span class="dot"></span> Currently available for new projects
+        </div>
+      </div>
+      <div class="fu d2">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label><i class="fa-solid fa-user fa-sm" style="color:var(--orange)"></i> Full Name</label>
+              <input type="text" placeholder="John Doe" required/>
+            </div>
+            <div class="form-group">
+              <label><i class="fa-solid fa-envelope fa-sm" style="color:var(--orange)"></i> Email Address</label>
+              <input type="email" placeholder="john@example.com" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-tag fa-sm" style="color:var(--orange)"></i> Subject</label>
+            <input type="text" placeholder="Project Inquiry — GIS Platform" required/>
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-comment fa-sm" style="color:var(--orange)"></i> Message</label>
+            <textarea rows="6" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px 28px">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i> Message sent! I'll get back to you within 24 hours.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">SAK<span style="color:var(--orange)">.</span></div>
+        <div class="footer-brand-sub">Geospatial Software Engineer &amp; AI Developer based in Accra, Ghana. Building systems where geography meets intelligence.</div>
+        <div class="footer-socials-row">
+          <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="foot-soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="foot-soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:appiahksamuel21@gmail.com" class="foot-soc" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="#" class="foot-soc" aria-label="Upwork"><i class="fas fa-briefcase"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-links-list">
+          <a href="#about"><i class="fa-solid fa-user fa-sm" style="color:var(--orange);margin-right:6px"></i>About</a>
+          <a href="#skills"><i class="fa-solid fa-layer-group fa-sm" style="color:var(--orange);margin-right:6px"></i>Skills</a>
+          <a href="#projects"><i class="fa-solid fa-rocket fa-sm" style="color:var(--orange);margin-right:6px"></i>Projects</a>
+          <a href="#experience"><i class="fa-solid fa-briefcase fa-sm" style="color:var(--orange);margin-right:6px"></i>Experience</a>
+          <a href="#contact"><i class="fa-solid fa-envelope fa-sm" style="color:var(--orange);margin-right:6px"></i>Contact</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-title">Specializations</div>
+        <nav class="footer-links-list">
+          <a href="#skills">Geospatial Engineering</a>
+          <a href="#skills">Remote Sensing &amp; SAR</a>
+          <a href="#skills">AI / Computer Vision</a>
+          <a href="#skills">Full-Stack Development</a>
+          <a href="#skills">Cloud &amp; DevOps</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Samuel Appiah Kubi. All rights reserved.</div>
+      <div class="footer-love"><i class="fa-solid fa-heart"></i> Built with precision in Accra, Ghana</div>
+    </div>
+  </div>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-header">
+      <div>
+        <div class="section-eyebrow" id="modalNum" style="margin-bottom:8px"></div>
+        <h3 class="modal-title" id="modalTitle"></h3>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ====================================================
+     JAVASCRIPT
+     ==================================================== -->
+<script>
+/* ──────────────────────────────
+   PROJECT DATA (with Unsplash images)
+   ────────────────────────────── */
+const projects = [
+  {
+    num:"01",
+    icon:"fa-solid fa-satellite-dish",
+    img:"assets/cdp.png",
+    title:"Plastic Waste Detection from UAV Orthomosaic",
+    desc:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline.",
+    tags:["YOLOv8","GDAL","GeoTIFF","Python","GeoJSON","OpenCV","Shapely"],
+    impact:"~1,000 unique detections · 89 ha · 9mm GSD",
+    details:{
+      overview:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline. Processed 32,699 tiles using YOLOv8 with 15% overlap and a fault-tolerant checkpoint/resume system for 10-hour processing runs.",
+      highlights:[
+        "27.75 GB file — 232,144 × 42,780 px at 9mm GSD",
+        "32,699 tiles processed with 15% overlap strategy",
+        "1,400+ raw detections merged to ~1,000 unique locations via IoU algorithm",
+        "GeoJSON/CSV/JSON export with full coordinate metadata",
+        "Zero cloud dependency — fully local offline pipeline",
+        "Confidence scoring and IoU-based duplicate merging"
+      ]
+    }
+  },
+  {
+    num:"02",
+    icon:"fa-solid fa-tree",
+    img:"assets/ra.png",
+    title:"Rainforest Alliance – Sui River Cocoa-Forest Monitoring",
+    desc:"Hybrid monitoring system for 333.9 km² cocoa-forest landscape with mobile data collection and real-time GIS dashboard.",
+    tags:["Django","GIS","Leaflet","DRF","PostgreSQL","REST APIs"],
+    impact:"333.9 km² monitored · Deforestation tracking",
+    details:{
+      overview:"Full-stack hybrid monitoring system for the 333.9 km² Sui River cocoa-forest landscape. Combines mobile data collection, real-time GIS visualization, and automated stakeholder reporting.",
+      highlights:[
+        "Mobile data collection for field agents with offline capability",
+        "Real-time GIS dashboard for spatial visualization of forest/cocoa boundaries",
+        "Automated stakeholder reporting generation",
+        "Analytics tracking deforestation rates and cocoa cultivation expansion",
+        "Livelihood indicator monitoring for farming communities",
+        "Participatory feedback tools empowering local communities"
+      ]
+    }
+  },
+  {
+    num:"03",
+    icon:"fa-solid fa-truck",
+    img:"assets/amp.png",
+    title:"AMP Logistics Management System",
+    desc:"Enterprise Django logistics platform unifying fleet, inventory, warehouses, and shipments. Production live system.",
+    tags:["Django 5.2","PostgreSQL","DRF","Redis","Docker","GeoIP"],
+    impact:"6+ warehouse blocks · Real-time tracking · 15+ models",
+    details:{
+      overview:"Comprehensive enterprise logistics platform unifying fleet management, inventory control, warehouse operations, and shipment tracking. Live at amp.afarinick.com.",
+      highlights:[
+        "Transport management with vehicle fleet and driver tracking",
+        "Inventory with multi-warehouse synchronization across 6+ blocks (A–G)",
+        "Employee management with driver licensing and qualification tracking",
+        "Shipment request and dispatch workflows with customer notifications",
+        "GeoIP-based login tracking with geographic analytics",
+        "Role-based access control with permission-driven UI"
+      ]
+    }
+  },
+  {
+    num:"04",
+    icon:"fa-solid fa-city",
+    img:"assets/prcs.png",
+    title:"Municipal Property Tax Platform (PRCS)",
+    desc:"GIS-based property tax and revenue collection system for municipal assembly. 10,000+ properties mapped.",
+    tags:["Django 6.0","PostGIS","Leaflet","PMTiles","DRF","Kowri"],
+    impact:"60% reduction in manual processing · 10,000+ properties",
+    details:{
+      overview:"GIS-based property tax and revenue collection system for municipal assembly with interactive maps, automated billing, and payment integration.",
+      highlights:[
+        "Interactive property maps using PMTiles vector tile technology",
+        "10,000+ property polygons optimized for mobile performance",
+        "Automated bill generation with customizable rate structures",
+        "Kowri payment gateway integration with click analytics",
+        "Business operating permit and property rate billing modules",
+        "Role-based access: Admin, Supervisor, Collector"
+      ]
+    }
+  },
+  {
+    num:"05",
+    icon:"fa-solid fa-seedling",
+    img:"assets/afarisense.png",
+    title:"AI Cocoa Disease Detection (Afarinsene)",
+    desc:"Deep learning system detecting CSSVD from mobile phone images. Deployed to 1,000+ farmers with 92.44% accuracy.",
+    tags:["TensorFlow","YOLOv8","Django","Celery","Redis","PostgreSQL"],
+    impact:"92.44% accuracy · 1,000+ farmers · 40% faster response",
+    details:{
+      overview:"Deep learning system detecting Cocoa Swollen Shoot Virus (CSSVD) from standard mobile phone images. Production deployment serving thousands of Ghanaian cocoa farmers.",
+      highlights:[
+        "Custom CNN inference engine with 92.44% detection accuracy",
+        "Image preprocessing pipeline optimized for field conditions",
+        "Prediction with confidence scoring and severity assessment",
+        "Async task queue (Celery/Redis) for batch processing and retraining",
+        "PostgreSQL schema for detection history and farm geolocation",
+        "RESTful APIs serving predictions to frontend applications",
+        "40% reduction in disease response time for farmers"
+      ]
+    }
+  },
+  {
+    num:"06",
+    icon:"fa-solid fa-tractor",
+    img:"assets/fms.png",
+    title:"Enterprise Farm Management System (ACL)",
+    desc:"Modular Django enterprise platform unifying GIS, IoT telemetry, workforce management, and financial workflows.",
+    tags:["GeoDjango","PostGIS","Leaflet.js","DRF","Celery","Redis"],
+    impact:"15+ integrated models · Real-time IoT · QR verification",
+    details:{
+      overview:"Modular enterprise platform unifying geospatial farm records, IoT sensor data, workforce management, and automated payroll processing.",
+      highlights:[
+        "GeoDjango/PostGIS models for farm polygons (MultiPolygonField)",
+        "IoT pipeline for real-time soil moisture and temperature readings",
+        "Dynamic QR generation with cryptographically random UIDs",
+        "DRF endpoints serving geospatial data to Leaflet.js maps",
+        "Complex payroll aggregation queries with Django signal automation",
+        "15+ integrated models covering Personnel, Equipment, Sensors, Payments"
+      ]
+    }
+  },
+  {
+    num:"07",
+    icon:"fa-solid fa-leaf",
+    img:"assets/trace.png",
+    title:"EUDR Cocoa Traceability System",
+    desc:"Farm-to-export traceability platform for EU Deforestation Regulation compliance across the full cocoa supply chain.",
+    tags:["Django 5.1","PostGIS","Leaflet","DRF","Plotly Dash","AWS S3"],
+    impact:"Full EUDR compliance · Export audit trail",
+    details:{
+      overview:"Farm-to-export traceability platform ensuring compliance with EU Deforestation Regulation (EUDR), tracking cocoa through every stage of the supply chain.",
+      highlights:[
+        "Full chain: Farmers → Purchasing Clerks → Licensed Buying Companies → Ports → Exports",
+        "GIS boundary monitoring for real-time deforestation tracking",
+        "Primary and secondary evacuation tracking modules",
+        "Port arrival management with offloading quantity verification",
+        "REST API with full Swagger/OpenAPI documentation",
+        "Plotly Dash analytics dashboard · AWS S3 file storage"
+      ]
+    }
+  },
+//   {
+//     num:"08",
+//     icon:"fa-solid fa-road",
+//     img:"https://images.unsplash.com/photo-1545459720-aac8509eb02d?w=700&q=80&fit=crop",
+//     title:"Pothole Detection Mobile App (TRECK)",
+//     desc:"YOLOv8-powered mobile app for real-time pothole detection with GPS tagging and automatic road authority alerts.",
+//     tags:["YOLOv8","Flutter","Django REST","OpenCV","Firebase","PostgreSQL"],
+//     impact:"Real-time alerts · GPS-tagged reports · Reduced repair time",
+//     details:{
+//       overview:"AI-powered mobile application for real-time pothole detection using computer vision, with automatic GPS tagging and authority notification system.",
+//       highlights:[
+//         "YOLOv8 model trained on custom pothole dataset",
+//         "Real-time inference from phone camera video stream",
+//         "Flutter frontend with native camera integration",
+//         "Django REST backend for report storage and management",
+//         "GPS geolocation for automatic location capture",
+//         "OpenCV preprocessing for varying road conditions",
+//         "Automatic authority alerts with report dashboard"
+//       ]
+//     }
+//   },
+  {
+    num:"09",
+    icon:"fa-solid fa-landmark",
+    img:"assets/exim.png",
+    title:"GEXIM Digital GIS Solution",
+    desc:"Comprehensive GIS solution for Ghana Export-Import Bank tracking development projects and loan portfolios.",
+    tags:["Django DRF","PostgreSQL","GIS","Python","Mobile APIs","M&E"],
+    impact:"Offline field monitoring · Automated M&E reporting",
+    details:{
+      overview:"Comprehensive digital GIS solution for Ghana Export-Import Bank, enabling tracking of development projects, loan portfolios, and beneficiary impact assessment.",
+      highlights:[
+        "Secure RESTful API as core data transaction platform",
+        "Offline-capable mobile app for field monitoring and verification",
+        "Project performance indicators with automated data validation",
+        "Results framework module for logical framework analysis",
+        "Real-time dashboard for project milestone tracking",
+        "API-triggered M&E report generation with interactive charts",
+        "Beneficiary tracking with impact assessment and financial system integration"
+      ]
+    }
+  }
+];
+
+/* ──────────────────────────────
+   EXPERIENCE DATA
+   ────────────────────────────── */
+const experiences = [
+  {role:"Software Engineer",company:"Afarinick Company Limited",period:"Sep 2024 – Present",location:"Accra, Ghana",type:"Hybrid",badge:"current",achievements:["Design and develop scalable web applications using Django, React, Python, and AWS","Built AI-powered cocoa disease detection system with 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT integration"]},
+  {role:"Geospatial Developer",company:"Ghana Export-Import Bank",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Designed E-Digital GIS solution for GEXIM funded farms tracking development projects","Architected secure RESTful API as core platform for data transactions","Built offline-capable mobile data collection app for field monitoring","Created beneficiary tracking system with impact assessment capabilities"]},
+  {role:"Geospatial Developer",company:"SKTLive LTD",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Architected municipal tax collection platform achieving 60% reduction in manual processing","Engineered PMTiles vector tile system converting 10,000+ property polygons","Processed raw GeoTIFF aerial imagery into optimized tile pyramids (zoom 5–25)","Built spatial analysis toolkit: buffer analysis, heatmaps, distance measurement"]},
+  {role:"Geospatial Developer",company:"Rainforest Alliance",period:"Sep 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed hybrid monitoring system for 333.9 km² Sui River cocoa-forest landscape","Built real-time GIS dashboard for spatial visualization of forest and cocoa boundaries","Implemented automated stakeholder reporting system","Deployed participatory tools empowering local farming communities"]},
+  {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",period:"Aug 2025 – Present",location:"Tema, Ghana",type:"Hybrid",badge:"current",achievements:["Designed comprehensive logistics platform covering transport, warehouse, shipments","Developed real-time vehicle tracking with GPS integration for fleet management","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
+  {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",period:"Oct 2024 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed backend for Ghana's premier cocoa supply chain traceability platform","Built RESTful APIs with geospatial tracking for farm locations","Integrated with Ghana Cocoa Board systems for certification","Containerized with Docker for AWS deployment"]},
+  {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research Centre",period:"Aug 2024 – Present",location:"Kumasi, Ghana",type:"On-site",badge:"current",achievements:["Built pothole detection mobile app with YOLOv8 and Flutter","Developed AI-driven computer vision models using TensorFlow","Integrated GPS geolocation for automatic position capture and reporting"]},
+  {role:"Mine Surveyor (Intern)",company:"Asanko Gold",period:"Oct 2023 – Nov 2023",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic and hydrographic surveys for surface mining operations","Used Total Stations, GPS systems, AutoCAD, Surfer, and ArcGIS"]},
+  {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",period:"Sep 2023 – Oct 2023",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS"]}
+];
+
+/* ──────────────────────────────
+   THEME
+   ────────────────────────────── */
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('theme') || 'dark';
+html.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const next = html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('theme',next);
+  updateThemeIcon(next);
+});
+function updateThemeIcon(t){
+  document.getElementById('themeIcon').className = t==='dark'?'fa-solid fa-sun':'fa-solid fa-moon';
+}
+
+/* ──────────────────────────────
+   MOBILE MENU
+   ────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mob-lnk').forEach(l=>{
+  l.addEventListener('click',()=>{
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+/* ──────────────────────────────
+   ACTIVE NAV
+   ────────────────────────────── */
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{ if(window.scrollY>=s.offsetTop-110) cur=s.id; });
+  document.querySelectorAll('.nav-link').forEach(l=>{
+    l.classList.toggle('active',l.getAttribute('href')==='#'+cur);
+  });
+});
+
+/* ──────────────────────────────
+   TYPING ANIMATION
+   ────────────────────────────── */
+const words=["Geospatial Developer","AI Engineer","Django Expert","Computer Vision Specialist","Full-Stack Architect","Remote Sensing Analyst"];
+let wIdx=0,cIdx=0,del=false;
+const typedEl=document.getElementById('typedText');
+function type(){
+  const w=words[wIdx];
+  if(!del){typedEl.textContent=w.slice(0,++cIdx);if(cIdx===w.length){del=true;setTimeout(type,1900);return}}
+  else{typedEl.textContent=w.slice(0,--cIdx);if(cIdx===0){del=false;wIdx=(wIdx+1)%words.length}}
+  setTimeout(type,del?55:85);
+}
+type();
+
+/* ──────────────────────────────
+   SCROLL REVEAL
+   ────────────────────────────── */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+/* ──────────────────────────────
+   COUNTER ANIMATION
+   ────────────────────────────── */
+const counterObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !e.target.dataset.counted){
+      e.target.dataset.counted='1';
+      const target=parseFloat(e.target.dataset.target);
+      const suffix=e.target.dataset.suffix||'';
+      const dec=parseInt(e.target.dataset.dec||'0');
+      const dur=1800;const start=performance.now();
+      (function update(now){
+        const p=Math.min((now-start)/dur,1);
+        const ease=1-Math.pow(1-p,3);
+        e.target.textContent=(target*ease).toFixed(dec)+suffix;
+        if(p<1) requestAnimationFrame(update);
+      })(start);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
+
+/* ──────────────────────────────
+   MARQUEE
+   ────────────────────────────── */
+const marqueeItems=[
+  {icon:'fa-solid fa-globe',text:'GeoDjango'},
+  {icon:'fa-solid fa-satellite',text:'Remote Sensing'},
+  {icon:'fa-solid fa-brain',text:'Deep Learning'},
+  {icon:'fa-solid fa-eye',text:'Computer Vision'},
+  {icon:'fa-brands fa-python',text:'Python'},
+  {icon:'fa-solid fa-map',text:'PostGIS'},
+  {icon:'fa-brands fa-aws',text:'AWS Cloud'},
+  {icon:'fa-solid fa-code',text:'YOLOv8'},
+  {icon:'fa-solid fa-microchip',text:'TensorFlow'},
+  {icon:'fa-solid fa-layer-group',text:'GDAL'},
+  {icon:'fa-solid fa-database',text:'PostgreSQL'},
+  {icon:'fa-solid fa-mobile',text:'Flutter'},
+  {icon:'fa-solid fa-server',text:'Docker'},
+  {icon:'fa-solid fa-chart-line',text:'Data Analytics'},
+];
+const track=document.getElementById('marqueeTrack');
+// Duplicate for seamless loop
+[...marqueeItems,...marqueeItems].forEach((item,i)=>{
+  const el=document.createElement('div');
+  el.className='marquee-item';
+  el.innerHTML=`<i class="${item.icon}"></i>${item.text}${i<marqueeItems.length*2-1?'<span class="marquee-sep">·</span>':''}`;
+  track.appendChild(el);
+});
+
+/* ──────────────────────────────
+   RENDER PROJECTS
+   ────────────────────────────── */
+const grid=document.getElementById('projectsGrid');
+projects.forEach((p,i)=>{
+  const card=document.createElement('div');
+  card.className=`project-card fu d${(i%3)+1}`;
+  const topTags=p.tags.slice(0,3).map(t=>`<span class="proj-tech-pill">${t}</span>`).join('');
+  card.innerHTML=`
+    <div class="proj-img">
+      <img src="${p.img}" alt="${p.title}" loading="lazy"/>
+      <div class="proj-img-overlay"></div>
+      <div class="proj-num-badge">PROJECT ${p.num}</div>
+      <div class="proj-tech-preview">${topTags}</div>
+    </div>
+    <div class="project-body">
+      <div class="project-title">${p.title}</div>
+      <div class="project-desc">${p.desc}</div>
+      <div class="project-impact"><i class="${p.icon}"></i> ${p.impact}</div>
+    </div>
+    <div class="project-footer">
+      <span class="proj-count"><i class="fa-solid fa-microchip" style="color:var(--orange)"></i> ${p.tags.length} technologies</span>
+      <span class="view-btn">View Details <i class="fas fa-arrow-right"></i></span>
+    </div>
+  `;
+  card.addEventListener('click',()=>openModal(p));
+  grid.appendChild(card);
+  obs.observe(card);
+});
+
+/* ──────────────────────────────
+   MODAL
+   ────────────────────────────── */
+const overlay=document.getElementById('modalOverlay');
+const modalClose=document.getElementById('modalClose');
+function openModal(p){
+  document.getElementById('modalImg').innerHTML=`<img src="${p.img}" alt="${p.title}"/>`;
+  document.getElementById('modalNum').innerHTML=`<i class="${p.icon}"></i> PROJECT ${p.num}`;
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalBody').innerHTML=`
+    <div class="modal-section">
+      <div class="modal-section-title">Overview</div>
+      <div class="modal-text">${p.details.overview}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Technologies</div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        ${p.tags.map(t=>`<span style="font-family:var(--font-m);font-size:0.73rem;padding:4px 11px;border-radius:7px;background:var(--orange-subtle);color:var(--orange);border:1px solid rgba(249,115,22,.22)">${t}</span>`).join('')}
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Key Highlights</div>
+      <ul class="modal-list">${p.details.highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
+    </div>
+    <div class="modal-section" style="margin-bottom:0">
+      <div class="modal-section-title">Impact</div>
+      <div class="modal-text" style="color:var(--orange);font-weight:700;font-family:var(--font-h)">${p.impact}</div>
+    </div>
+  `;
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){overlay.classList.remove('open');document.body.style.overflow='';}
+modalClose.addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* ──────────────────────────────
+   RENDER TIMELINE
+   ────────────────────────────── */
+const timeline=document.getElementById('timeline');
+experiences.forEach((exp,i)=>{
+  const item=document.createElement('div');
+  item.className=`timeline-item fu d${(i%3)+1}`;
+  item.innerHTML=`
+    <div class="timeline-dot"></div>
+    <div class="timeline-card">
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-role">${exp.role}</div>
+          <div class="timeline-company"><i class="fa-solid fa-building fa-sm"></i> ${exp.company}</div>
+          <div class="timeline-meta">
+            <span><i class="fa-solid fa-calendar-alt"></i> ${exp.period}</span>
+            <span><i class="fa-solid fa-map-marker-alt"></i> ${exp.location}</span>
+            <span><i class="fa-solid fa-laptop-house"></i> ${exp.type}</span>
+          </div>
+        </div>
+        <span class="${exp.badge==='current'?'badge-current':'badge-past'}">
+          ${exp.badge==='current'?'<i class="fa-solid fa-circle fa-xs"></i> Active':'Internship'}
+        </span>
+      </div>
+      <ul class="timeline-achievements">
+        ${exp.achievements.map(a=>`<li>${a}</li>`).join('')}
+      </ul>
+    </div>
+  `;
+  timeline.appendChild(item);
+  obs.observe(item);
+});
+
+/* ──────────────────────────────
+   CONTACT FORM
+   ────────────────────────────── */
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('button[type=submit]');
+  btn.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+  btn.disabled=true;
+  setTimeout(()=>{
+    btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
+    btn.disabled=false;
+    this.reset();
+    const s=document.getElementById('formSuccess');
+    s.style.display='block';
+    setTimeout(()=>s.style.display='none',5000);
+  },1200);
+});
+</script>
+</body>
+</html>
