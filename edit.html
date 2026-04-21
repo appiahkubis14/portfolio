@@ -1334,23 +1334,30 @@ const projects = [
       ]
     }
   },
-  {
+   {
     num:"06",
     icon:"fa-solid fa-tractor",
     img:"assets/fms.png",
-    title:"Enterprise Farm Management System (ACL)",
-    desc:"Modular Django enterprise platform unifying GIS, IoT telemetry, workforce management, and financial workflows.",
-    tags:["GeoDjango","PostGIS","Leaflet.js","DRF","Celery","Redis"],
-    impact:"15+ integrated models · Real-time IoT · QR verification",
+    title:"Farm Management System (Django + PostGIS)",
+    desc:"Comprehensive agricultural operations platform covering farm mapping, personnel, activity reporting, IoT monitoring, and harvest tracking — built with Django 5.2 and PostGIS.",
+    tags:["Django 5.2","PostGIS","DRF","Django Channels","Leaflet","WebSocket","Jazzmin","django-allauth"],
+    impact:"Full agri-ops lifecycle · Real-time WebSocket · QR growth tracking",
     details:{
-      overview:"Modular enterprise platform unifying geospatial farm records, IoT sensor data, workforce management, and automated payroll processing.",
+      overview:"A production-grade Farm Management System built with Django 5.2 and Django REST Framework, backed by PostgreSQL/PostGIS for spatial farm boundary mapping. The platform unifies every layer of agricultural operations — from GIS farm polygons and IoT sensor telemetry to personnel management, contract workflows, and automated payroll — into a single real-time dashboard.",
       highlights:[
-        "GeoDjango/PostGIS models for farm polygons (MultiPolygonField)",
-        "IoT pipeline for real-time soil moisture and temperature readings",
-        "Dynamic QR generation with cryptographically random UIDs",
-        "DRF endpoints serving geospatial data to Leaflet.js maps",
-        "Complex payroll aggregation queries with Django signal automation",
-        "15+ integrated models covering Personnel, Equipment, Sensors, Payments"
+        "Farm mapping & boundaries using GeoDjango/PostGIS with interactive Leaflet maps",
+        "Personnel management for Rehab Assistants, Field Assistants, and Staff with role-based access",
+        "Activity reporting & daily monitoring with structured field data collection",
+        "QR code-based growth monitoring — unique cryptographic UIDs per plant/plot",
+        "Irrigation management with scheduling and usage tracking",
+        "Equipment management including maintenance logs and assignment workflows",
+        "Pest & disease monitoring with detection history and severity assessment",
+        "Harvest yield tracking with batch records and export reports",
+        "Payment reports with automated payroll aggregation via Django signals",
+        "Weather forecasting integration for operational planning",
+        "Contract management module with document storage",
+        "Real-time updates via Django Channels (WebSocket) for live field data",
+        "Jazzmin-powered admin UI · django-allauth authentication"
       ]
     }
   },
@@ -1422,7 +1429,8 @@ const projects = [
         "Beneficiary tracking with impact assessment and financial system integration"
       ]
     }
-  }
+  },
+ 
 ];
 
 /* ──────────────────────────────
