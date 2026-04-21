@@ -1008,7 +1008,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 </section>
 
 <!-- EXPERIENCE -->
-<!-- EXPERIENCE -->
 <section id="experience" class="section-pad">
   <div class="container">
     <div class="section-eyebrow fu"><i class="fa-solid fa-briefcase"></i> Career</div>
@@ -1026,7 +1025,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
       <h2 class="section-title fu d1">Certifications &amp; <span class="hl">Training</span></h2>
     </div>
     <div class="certs-grid">
-      <div class="cert-card fu d1" data-cert-img="assets/AWS-CSCP.jpg" data-cert-name="AWS Certified Solutions Architect – Professional">
+      <div class="cert-card fu d1" data-cert-img="assets/certs/aws.jpg" data-cert-name="AWS Certified Solutions Architect – Professional">
         <div class="cert-icon"><i class="fab fa-aws"></i></div>
         <div>
           <div class="cert-name">AWS Certified Solutions Architect – Professional</div>
@@ -1042,7 +1041,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
           <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
         </div>
       </div>
-      <div class="cert-card fu d3" data-cert-img="assets/GSA.jpg" data-cert-name="Geospatial Analytics Essentials">
+      <div class="cert-card fu d3" data-cert-img="assets/certs/gis.jpg" data-cert-name="Geospatial Analytics Essentials">
         <div class="cert-icon"><i class="fa-solid fa-earth-africa"></i></div>
         <div>
           <div class="cert-name">Geospatial Analytics Essentials</div>
@@ -1050,27 +1049,11 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
           <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
         </div>
       </div>
-      <div class="cert-card fu d4" data-cert-img="assets/AI&ML.jpg" data-cert-name="Artificial Intelligence and Machine Learning">
+      <div class="cert-card fu d4" data-cert-img="assets/certs/ai.jpg" data-cert-name="Artificial Intelligence and Machine Learning">
         <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
         <div>
           <div class="cert-name">Artificial Intelligence and Machine Learning</div>
           <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> AI/ML Certification</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
-      </div>
-      <div class="cert-card fu d4" data-cert-img="assets/RSB.jpg" data-cert-name="Remote Sensing Basics">
-        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
-        <div>
-          <div class="cert-name">Remote Sensing Basics</div>
-          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
-      </div>
-      <div class="cert-card fu d4" data-cert-img="assets/AWS-CCPE.jpg" data-cert-name="AWS Certified Cloud Practitioner Exam">
-        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
-        <div>
-          <div class="cert-name">AWS Certified Cloud Practitioner Exam</div>
-          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
           <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
         </div>
       </div>
@@ -1394,7 +1377,7 @@ const projects = [
   {
     num:"08",
     icon:"fa-solid fa-road",
-    img:"assets/frame_000025.jpg",
+    img:"https://images.unsplash.com/photo-1545459720-aac8509eb02d?w=700&q=80&fit=crop",
     title:"MMFF – Multi-Modal Sensor Fusion for Pothole Dimensioning",
     desc:"IEEE-submitted research framework achieving metric-accurate pothole depth, width, and volume estimation from a single dashboard camera + smartphone IMU — no LiDAR required.",
     tags:["ACSH-YOLOv8","BoT-SORT","Kalman Filter","IMU Fusion","Monocular Depth","Python","OpenCV","RANSAC"],
@@ -1445,28 +1428,18 @@ const projects = [
 /* ──────────────────────────────
    EXPERIENCE DATA
    ────────────────────────────── */
-// const experiences = [
-//   {role:"Software Engineer",company:"Afarinick Company Limited",period:"Sep 2024 – Present",location:"Accra, Ghana",type:"Hybrid",badge:"current",achievements:["Design and develop scalable web applications using Django, React, Python, and AWS","Built AI-powered cocoa disease detection system with 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT integration"]},
-//   {role:"Geospatial Developer",company:"Ghana Export-Import Bank",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Designed E-Digital GIS solution for GEXIM funded farms tracking development projects","Architected secure RESTful API as core platform for data transactions","Built offline-capable mobile data collection app for field monitoring","Created beneficiary tracking system with impact assessment capabilities"]},
-//   {role:"Geospatial Developer",company:"SKTLive LTD",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Architected municipal tax collection platform achieving 60% reduction in manual processing","Engineered PMTiles vector tile system converting 10,000+ property polygons","Processed raw GeoTIFF aerial imagery into optimized tile pyramids (zoom 5–25)","Built spatial analysis toolkit: buffer analysis, heatmaps, distance measurement"]},
-//   {role:"Geospatial Developer",company:"Rainforest Alliance",period:"Sep 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed hybrid monitoring system for 333.9 km² Sui River cocoa-forest landscape","Built real-time GIS dashboard for spatial visualization of forest and cocoa boundaries","Implemented automated stakeholder reporting system","Deployed participatory tools empowering local farming communities"]},
-//   {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",period:"Aug 2025 – Present",location:"Tema, Ghana",type:"Hybrid",badge:"current",achievements:["Designed comprehensive logistics platform covering transport, warehouse, shipments","Developed real-time vehicle tracking with GPS integration for fleet management","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
-//   {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",period:"Oct 2024 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed backend for Ghana's premier cocoa supply chain traceability platform","Built RESTful APIs with geospatial tracking for farm locations","Integrated with Ghana Cocoa Board systems for certification","Containerized with Docker for AWS deployment"]},
-//   {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research Centre",period:"Aug 2024 – Present",location:"Kumasi, Ghana",type:"On-site",badge:"current",achievements:["Built MMFF multi-modal fusion framework submitted to IEEE ITS","Developed ACSH-YOLOv8 pothole detector and BoT-SORT tracking pipeline","Implemented sensor fusion (monocular depth + IMU) achieving sub-cm height accuracy","Built pothole detection mobile app with Flutter and GPS geolocation"]},
-//   {role:"Mine Surveyor (Intern)",company:"Asanko Gold",period:"Oct 2023 – Nov 2023",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic and hydrographic surveys for surface mining operations","Used Total Stations, GPS systems, AutoCAD, Surfer, and ArcGIS"]},
-//   {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",period:"Sep 2023 – Oct 2023",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS"]}
-// ];
 const experiences = [
   {role:"Software Engineer",company:"Afarinick Company Limited",site:"https://afarinick.com",period:"Sep 2024 – Present",location:"Accra, Ghana",type:"Hybrid",badge:"current",achievements:["Design and develop scalable web applications using Django, React, Python, and AWS","Built AI-powered cocoa disease detection system with 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT integration"]},
-  {role:"Geospatial Developer",company:"Ghana Export-Import Bank",site:"https://eximbankghana.com/",period:"Oct 2025 – March 2026",location:"Accra, Ghana",type:"Remote",badge:"Contract Closed",achievements:["Designed E-Digital GIS solution for GEXIM funded farms tracking development projects","Architected secure RESTful API as core platform for data transactions","Built offline-capable mobile data collection app for field monitoring","Created beneficiary tracking system with impact assessment capabilities"]},
+  {role:"Geospatial Developer",company:"Ghana Export-Import Bank",site:"https://gexim.gov.gh",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Designed E-Digital GIS solution for GEXIM funded farms tracking development projects","Architected secure RESTful API as core platform for data transactions","Built offline-capable mobile data collection app for field monitoring","Created beneficiary tracking system with impact assessment capabilities"]},
   {role:"Geospatial Developer",company:"SKTLive LTD",site:"https://sktlive.com",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Architected municipal tax collection platform achieving 60% reduction in manual processing","Engineered PMTiles vector tile system converting 10,000+ property polygons","Processed raw GeoTIFF aerial imagery into optimized tile pyramids (zoom 5–25)","Built spatial analysis toolkit: buffer analysis, heatmaps, distance measurement"]},
   {role:"Geospatial Developer",company:"Rainforest Alliance",site:"https://www.rainforest-alliance.org",period:"Sep 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed hybrid monitoring system for 333.9 km² Sui River cocoa-forest landscape","Built real-time GIS dashboard for spatial visualization of forest and cocoa boundaries","Implemented automated stakeholder reporting system","Deployed participatory tools empowering local farming communities"]},
-  {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",site:"https://amplogisticsgh.com/",period:"Aug 2025 – Present",location:"Tema, Ghana",type:"Hybrid",badge:"current",achievements:["Designed comprehensive logistics platform covering transport, warehouse, shipments","Developed real-time vehicle tracking with GPS integration for fleet management","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
+  {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",site:"https://amp.afarinick.com",period:"Aug 2025 – Present",location:"Tema, Ghana",type:"Hybrid",badge:"current",achievements:["Designed comprehensive logistics platform covering transport, warehouse, shipments","Developed real-time vehicle tracking with GPS integration for fleet management","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
   {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",site:"https://www.touton.com",period:"Oct 2024 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed backend for Ghana's premier cocoa supply chain traceability platform","Built RESTful APIs with geospatial tracking for farm locations","Integrated with Ghana Cocoa Board systems for certification","Containerized with Docker for AWS deployment"]},
   {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research Centre",site:"https://www.knust.edu.gh",period:"Aug 2024 – Present",location:"Kumasi, Ghana",type:"On-site",badge:"current",achievements:["Built MMFF multi-modal fusion framework submitted to IEEE ITS","Developed ACSH-YOLOv8 pothole detector and BoT-SORT tracking pipeline","Implemented sensor fusion (monocular depth + IMU) achieving sub-cm height accuracy","Built pothole detection mobile app with Flutter and GPS geolocation"]},
   {role:"Mine Surveyor (Intern)",company:"Asanko Gold",site:"https://www.galianogold.com",period:"Oct 2023 – Nov 2023",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic and hydrographic surveys for surface mining operations","Used Total Stations, GPS systems, AutoCAD, Surfer, and ArcGIS"]},
   {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",site:"",period:"Sep 2023 – Oct 2023",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS"]}
 ];
+
 /* ──────────────────────────────
    THEME
    ────────────────────────────── */
@@ -1640,6 +1613,7 @@ function closeModal(){overlay.classList.remove('open');document.body.style.overf
 modalClose.addEventListener('click',closeModal);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
 /* ──────────────────────────────
    RENDER TIMELINE
    ────────────────────────────── */
@@ -1675,6 +1649,7 @@ experiences.forEach((exp,i)=>{
   timeline.appendChild(item);
   obs.observe(item);
 });
+
 /* ──────────────────────────────
    CERTIFICATE LIGHTBOX
    ────────────────────────────── */
