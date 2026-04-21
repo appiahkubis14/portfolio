@@ -1465,7 +1465,7 @@ const experiences = [
   {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",site:"https://www.touton.com",period:"Oct 2024 – Contract Closed",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed backend for Ghana's premier cocoa supply chain traceability platform","Built RESTful APIs with geospatial tracking for farm locations","Integrated with Ghana Cocoa Board systems for certification","Containerized with Docker for AWS deployment"]},
   {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research Centre",site:"https://www.knust.edu.gh",period:"Aug 2024 – Contract Closd",location:"Kumasi, Ghana",type:"On-site",badge:"current",achievements:["Built MMFF multi-modal fusion framework submitted to IEEE ITS","Developed ACSH-YOLOv8 pothole detector and BoT-SORT tracking pipeline","Implemented sensor fusion (monocular depth + IMU) achieving sub-cm height accuracy","Built pothole detection mobile app with Flutter and GPS geolocation"]},
   {role:"Mine Surveyor (Intern)",company:"Asanko Gold",site:"https://www.galianogold.com",period:"Oct 2023 – Nov 2023",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic and hydrographic surveys for surface mining operations","Used Total Stations, GPS systems, AutoCAD, Surfer, and ArcGIS"]},
-  {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",site:"",period:"Sep 2023 – Oct 2023",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS"]}
+  {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",site:"https://joshobconstructiongh.com",period:"Sep 2023 – Oct 2023",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS"]}
 ];
 /* ──────────────────────────────
    THEME
@@ -1655,7 +1655,7 @@ experiences.forEach((exp,i)=>{
           <div class="timeline-role">${exp.role}</div>
           <div class="timeline-company">
             <i class="fa-solid fa-building fa-sm"></i> ${exp.company}
-            ${exp.site ? `<a href="${exp.site}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="display:inline-flex;align-items:center;gap:4px;margin-left:10px;font-family:var(--font-m);font-size:0.68rem;color:var(--tx3);border:1px solid var(--bdr);border-radius:6px;padding:2px 8px;transition:all .2s;text-decoration:none" onmouseover="this.style.color='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.color='var(--tx3)';this.style.borderColor='var(--bdr)'"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem"></i> Visit site</a>` : ''}
+            
           </div>
           <div class="timeline-meta">
             <span><i class="fa-solid fa-calendar-alt"></i> ${exp.period}</span>
@@ -1664,7 +1664,8 @@ experiences.forEach((exp,i)=>{
           </div>
         </div>
         <span class="${exp.badge==='current'?'badge-current':'badge-past'}">
-          ${exp.badge==='current'?'<i class="fa-solid fa-circle fa-xs"></i> Active':'Internship'}
+          ${exp.badge==='current'?'<i class="fa-solid fa-circle fa-xs"></i> Contract':'Contract Closed'}
+          ${exp.site ? `<a href="${exp.site}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="display:inline-flex;align-items:center;gap:4px;margin-left:10px;font-family:var(--font-m);font-size:0.68rem;color:var(--tx3);border:1px solid var(--bdr);border-radius:6px;padding:2px 8px;transition:all .2s;text-decoration:none" onmouseover="this.style.color='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.color='var(--tx3)';this.style.borderColor='var(--bdr)'"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem"></i> Visit site</a>` : ''}
         </span>
       </div>
       <ul class="timeline-achievements">
