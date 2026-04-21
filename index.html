@@ -6,12 +6,9 @@
 <title>Samuel Appiah Kubi — Geospatial & AI Engineer</title>
 <meta name="description" content="Geospatial Software Engineer, AI/Computer Vision Developer, and Full-Stack Architect based in Accra, Ghana."/>
 
-<!-- FONTS: Bricolage Grotesque (display) + Instrument Sans (body) + DM Mono (code) -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-
-<!-- Font Awesome 6 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
@@ -189,42 +186,67 @@ ul{list-style:none}
 .mobile-menu a:hover{color:var(--orange)}
 
 /* ================================================
-   HERO
+   HERO — ALWAYS DARK (space bg) — theme-safe text
    ================================================ */
 #hero{
   min-height:100vh;display:flex;align-items:center;
   position:relative;overflow:hidden;padding:100px 0 70px;
 }
-/* Satellite imagery background */
+
+/* Space photograph background */
 .hero-bg-img{
   position:absolute;inset:0;z-index:0;
-  background:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1800&q=80&fit=crop') center/cover no-repeat;
-  filter:brightness(0.18) saturate(1.2);
+  background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800&q=85&fit=crop') center/cover no-repeat;
+  filter:brightness(0.28) saturate(1.4);
+  transition:filter .4s ease;
+}
+/* Extra deep overlay so hero is always legible in both themes */
+.hero-bg-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:rgba(4,4,8,0.55);
 }
 .hero-bg-gradient{
-  position:absolute;inset:0;z-index:1;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(249,115,22,0.12) 0%, transparent 60%),
-    linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
-}
-/* Scan-line grid overlay */
-.hero-grid-lines{
   position:absolute;inset:0;z-index:2;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(249,115,22,0.13) 0%, transparent 65%),
+    linear-gradient(to bottom, transparent 40%, rgba(4,4,8,0.85) 100%);
+}
+/* Star-grid scan-line overlay */
+.hero-grid-lines{
+  position:absolute;inset:0;z-index:3;
   background-image:
-    linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(249,115,22,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249,115,22,0.05) 1px, transparent 1px);
   background-size:80px 80px;
   mask-image:radial-gradient(ellipse 90% 80% at 50% 50%, black 0%, transparent 100%);
 }
-.hero-content{position:relative;z-index:3;text-align:center;max-width:920px;margin:0 auto}
 
+/* Floating star-dust particles via pseudo-element */
+.hero-stars{
+  position:absolute;inset:0;z-index:2;
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72% 12%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 42% 68%, rgba(255,200,100,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 55%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 31% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 35%, rgba(200,180,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5% 60%, rgba(255,255,255,0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 93% 20%, rgba(255,220,150,0.45) 0%, transparent 100%);
+  pointer-events:none;
+}
+
+.hero-content{position:relative;z-index:4;text-align:center;max-width:920px;margin:0 auto}
+
+/* ── Hero text: ALWAYS white/light regardless of theme ── */
 .hero-badge{
   display:inline-flex;align-items:center;gap:10px;
-  background:var(--glass);border:1px solid rgba(249,115,22,0.25);
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.14);
   backdrop-filter:blur(12px);
   border-radius:99px;padding:8px 20px 8px 12px;
   font-family:var(--font-m);font-size:0.78rem;letter-spacing:0.08em;
-  color:var(--tx2);margin-bottom:36px;
+  color:rgba(255,255,255,0.70);margin-bottom:36px;
   animation:fadeDown .8s ease forwards;
 }
 .badge-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(34,197,94,.6);animation:pulse 2s infinite}
@@ -236,9 +258,9 @@ ul{list-style:none}
   font-family:var(--font-h);
   font-size:clamp(2.8rem,8vw,6rem);
   font-weight:800;line-height:1.02;letter-spacing:-0.04em;
+  color:#ffffff;
   margin-bottom:18px;animation:fadeUp .9s .15s ease forwards;opacity:0;
 }
-/* Gradient text on name highlight */
 .hero-name .hl{
   background:linear-gradient(135deg,var(--orange) 0%,#FBBF24 50%,var(--orange-dk) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
@@ -246,13 +268,13 @@ ul{list-style:none}
 .hero-typed-wrap{
   display:flex;align-items:center;justify-content:center;gap:10px;
   font-family:var(--font-h);font-size:clamp(1.05rem,2.5vw,1.5rem);
-  font-weight:600;color:var(--tx2);margin-bottom:22px;
+  font-weight:600;color:rgba(255,255,255,0.70);margin-bottom:22px;
   animation:fadeUp .9s .3s ease forwards;opacity:0;
 }
-.hero-typed{color:var(--tx);border-right:2.5px solid var(--orange);padding-right:4px;animation:blink .7s infinite}
+.hero-typed{color:#ffffff;border-right:2.5px solid var(--orange);padding-right:4px;animation:blink .7s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero-bio{
-  color:var(--tx2);font-size:clamp(0.95rem,2vw,1.08rem);
+  color:rgba(255,255,255,0.72);font-size:clamp(0.95rem,2vw,1.08rem);
   max-width:640px;margin:0 auto 38px;line-height:1.8;
   animation:fadeUp .9s .45s ease forwards;opacity:0;
 }
@@ -260,29 +282,40 @@ ul{list-style:none}
   display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;
   margin-bottom:52px;animation:fadeUp .9s .6s ease forwards;opacity:0;
 }
+/* Ghost button in hero always needs white border since bg is always dark */
+#hero .btn-ghost{
+  color:rgba(255,255,255,0.75);
+  border-color:rgba(255,255,255,0.22);
+}
+#hero .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+#hero .btn-outline{
+  border-color:rgba(249,115,22,0.65);
+  color:var(--orange);
+}
 .hero-socials{
   display:flex;align-items:center;justify-content:center;gap:10px;
   animation:fadeUp .9s .75s ease forwards;opacity:0;
 }
 .social-pill{
   display:flex;align-items:center;gap:8px;
-  background:var(--surf);border:1px solid var(--bdr);
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.14);
   border-radius:99px;padding:8px 16px 8px 12px;
-  color:var(--tx2);font-size:0.8rem;font-weight:500;
+  color:rgba(255,255,255,0.72);font-size:0.8rem;font-weight:500;
   transition:all .25s ease;
 }
 .social-pill i{font-size:1rem;color:var(--orange)}
-.social-pill:hover{border-color:var(--bdr-h);color:var(--orange);transform:translateY(-3px)}
+.social-pill:hover{border-color:var(--bdr-h);color:var(--orange);transform:translateY(-3px);background:rgba(249,115,22,0.1)}
 
 /* Hero scroll indicator */
 .hero-scroll{
-  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:4;
   display:flex;flex-direction:column;align-items:center;gap:8px;
-  color:var(--tx3);font-size:0.72rem;font-family:var(--font-m);letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(255,255,255,0.38);font-size:0.72rem;font-family:var(--font-m);letter-spacing:0.15em;text-transform:uppercase;
   animation:fadeUp 1s 1s ease forwards;opacity:0;
 }
 .scroll-arrow{
-  width:28px;height:44px;border:1.5px solid var(--bdr);border-radius:99px;
+  width:28px;height:44px;border:1.5px solid rgba(255,255,255,0.18);border-radius:99px;
   display:flex;align-items:flex-start;justify-content:center;padding-top:8px;
 }
 .scroll-arrow::after{
@@ -405,7 +438,6 @@ ul{list-style:none}
   transform:translateY(-6px) scale(1.01);
   border-color:var(--bdr-h);box-shadow:0 20px 60px var(--orange-glow),0 8px 32px rgba(0,0,0,.3);
 }
-/* Project image area */
 .proj-img{
   position:relative;height:200px;overflow:hidden;
   background:var(--surf2);
@@ -421,7 +453,7 @@ ul{list-style:none}
 }
 .proj-num-badge{
   position:absolute;top:14px;left:14px;
-  background:var(--glass);backdrop-filter:blur(8px);
+  background:rgba(8,8,9,0.65);backdrop-filter:blur(8px);
   border:1px solid rgba(249,115,22,0.3);border-radius:8px;
   font-family:var(--font-m);font-size:0.68rem;color:var(--orange);
   padding:4px 10px;letter-spacing:0.1em;
@@ -458,54 +490,15 @@ ul{list-style:none}
 .view-btn:hover{gap:11px}
 .proj-count{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)}
 
-/* ================================================
-   VIDEO REEL SECTION
-   ================================================ */
-#reel{background:var(--bg);position:relative;overflow:hidden;padding:80px 0}
-.reel-bg{
-  position:absolute;inset:0;z-index:0;
-  background:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1800&q=80&fit=crop') center/cover no-repeat;
-  filter:brightness(0.1) saturate(1.3);
+/* Research badge on project cards */
+.proj-research-badge{
+  position:absolute;top:14px;right:14px;
+  background:linear-gradient(135deg,rgba(249,115,22,0.85),rgba(234,88,12,0.90));
+  border-radius:6px;
+  font-family:var(--font-m);font-size:0.6rem;color:#fff;
+  padding:3px 9px;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:600;
 }
-.reel-inner{position:relative;z-index:1}
-.reel-header{text-align:center;margin-bottom:48px}
-.reel-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
-.reel-video-wrap{
-  position:relative;border-radius:var(--r-lg);overflow:hidden;
-  aspect-ratio:16/9;background:var(--surf);
-  box-shadow:0 24px 80px rgba(0,0,0,0.7);
-  border:1px solid var(--bdr);
-}
-.reel-video-wrap iframe{width:100%;height:100%;border:none}
-.reel-video-wrap video{width:100%;height:100%;object-fit:cover}
-.reel-play-overlay{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,0.45);cursor:pointer;transition:background .2s;
-}
-.reel-play-overlay:hover{background:rgba(0,0,0,0.2)}
-.play-btn{
-  width:72px;height:72px;border-radius:50%;
-  background:linear-gradient(135deg,var(--orange),var(--orange-dk));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;color:#fff;
-  box-shadow:0 8px 40px var(--orange-glow);
-  transition:transform .2s;
-}
-.reel-play-overlay:hover .play-btn{transform:scale(1.1)}
-.reel-side{display:flex;flex-direction:column;gap:16px}
-.reel-stat{
-  background:var(--glass);backdrop-filter:blur(12px);
-  border:1px solid var(--bdr);border-radius:var(--r);
-  padding:24px;display:flex;align-items:center;gap:18px;transition:border-color .2s;
-}
-.reel-stat:hover{border-color:var(--bdr-h)}
-.reel-stat-icon{
-  width:52px;height:52px;flex-shrink:0;border-radius:14px;
-  background:var(--orange-subtle);display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;color:var(--orange);
-}
-.reel-stat-val{font-family:var(--font-h);font-size:1.6rem;font-weight:800;color:var(--tx);line-height:1}
-.reel-stat-lbl{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
 
 /* ================================================
    EXPERIENCE TIMELINE
@@ -569,6 +562,48 @@ ul{list-style:none}
 }
 .cert-name{font-family:var(--font-h);font-weight:700;font-size:0.9rem;line-height:1.4;margin-bottom:5px}
 .cert-badge{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)}
+.cert-card{cursor:pointer}
+
+/* ── Certificate image lightbox ── */
+.cert-lightbox{
+  display:none;position:fixed;inset:0;z-index:3000;
+  background:rgba(0,0,0,0.88);backdrop-filter:blur(14px);
+  align-items:center;justify-content:center;padding:24px;
+  flex-direction:column;gap:16px;
+}
+.cert-lightbox.open{display:flex;animation:fadeIn .22s ease}
+.cert-lightbox-inner{
+  position:relative;max-width:860px;width:100%;
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--bdr-h);
+  box-shadow:0 32px 80px rgba(0,0,0,0.8), 0 0 60px var(--orange-glow);
+  animation:scaleIn .28s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+.cert-lightbox-inner img{
+  width:100%;display:block;max-height:78vh;object-fit:contain;
+  background:var(--surf);
+}
+.cert-lightbox-close{
+  position:absolute;top:12px;right:12px;
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.15);
+  color:#fff;font-size:0.9rem;transition:all .2s;cursor:pointer;
+}
+.cert-lightbox-close:hover{background:var(--orange);border-color:var(--orange)}
+.cert-lightbox-label{
+  font-family:var(--font-h);font-size:0.9rem;font-weight:700;
+  color:rgba(255,255,255,0.75);text-align:center;
+  background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);
+  border-radius:99px;padding:7px 20px;
+}
+/* View-proof hint badge on cert cards */
+.cert-proof-hint{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-m);font-size:0.65rem;color:var(--orange);
+  margin-top:7px;opacity:0.75;transition:opacity .2s;
+}
+.cert-card:hover .cert-proof-hint{opacity:1}
 
 /* ================================================
    EDUCATION
@@ -599,7 +634,6 @@ ul{list-style:none}
    CONTACT
    ================================================ */
 #contact{background:var(--bg)}
-/* Hero-style contact banner */
 .contact-banner{
   position:relative;border-radius:var(--r-lg);overflow:hidden;margin-bottom:56px;padding:60px;
   background:url('https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?w=1400&q=80&fit=crop') center/cover no-repeat;
@@ -722,6 +756,18 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 .modal-list li{font-size:0.89rem;color:var(--tx2);padding-left:16px;position:relative;line-height:1.65}
 .modal-list li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:0.8rem}
 
+/* Research paper stat strip in modal */
+.modal-stat-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  margin:18px 0;
+}
+.modal-stat-chip{
+  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
+  border-radius:10px;padding:12px;text-align:center;
+}
+.modal-stat-chip .val{font-family:var(--font-h);font-weight:800;font-size:1.1rem;color:var(--orange);display:block;line-height:1}
+.modal-stat-chip .lbl{font-family:var(--font-m);font-size:0.62rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;display:block}
+
 /* ================================================
    RESPONSIVE
    ================================================ */
@@ -730,14 +776,12 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
   .projects-grid{grid-template-columns:repeat(2,1fr)}
   .certs-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr}
-  .reel-grid{grid-template-columns:1fr}
-  .reel-side{flex-direction:row;flex-wrap:wrap}
-  .reel-stat{flex:1;min-width:160px}
 }
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:44px}
   .contact-grid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:repeat(4,1fr)}
+  .modal-stat-strip{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   .section-pad{padding:75px 0}
@@ -760,6 +804,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
   .stats-grid{grid-template-columns:1fr 1fr}
   .modal-header{padding:20px 20px 16px}
   .modal-body{padding:20px 20px 28px}
+  .modal-stat-strip{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -773,7 +818,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#skills" class="nav-link">Skills</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
-      <!-- <li><a href="#reel" class="nav-link">Reel</a></li> -->
       <li><a href="#experience" class="nav-link">Experience</a></li>
       <li><a href="#certifications" class="nav-link">Certs</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -794,7 +838,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
   <a href="#about" class="mob-lnk">About</a>
   <a href="#skills" class="mob-lnk">Skills</a>
   <a href="#projects" class="mob-lnk">Projects</a>
-  <!-- <a href="#reel" class="mob-lnk">Reel</a> -->
   <a href="#experience" class="mob-lnk">Experience</a>
   <a href="#certifications" class="mob-lnk">Certifications</a>
   <a href="#education" class="mob-lnk">Education</a>
@@ -803,9 +846,13 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 
 <!-- HERO -->
 <section id="hero">
+  <!-- Space background layers -->
   <div class="hero-bg-img"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-stars"></div>
   <div class="hero-bg-gradient"></div>
   <div class="hero-grid-lines"></div>
+
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">
@@ -813,7 +860,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         Open to freelance &amp; contract · Accra, Ghana
       </div>
       <h1 class="hero-name">
-         <span>Samuel </span><span class="hl">Appiah Kubi</span>
+        <span>Samuel </span><span class="hl">Appiah Kubi</span>
       </h1>
       <div class="hero-typed-wrap">
         <i class="fa-solid fa-location-crosshairs" style="color:var(--orange);font-size:1.1rem"></i>
@@ -823,7 +870,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> View Work</a>
         <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Hire Me</a>
-        <!-- <a href="#reel" class="btn btn-ghost"><i class="fa-solid fa-play"></i> Watch Reel</a> -->
         <a href="/files/resume.pdf" download class="btn btn-ghost"><i class="fa-solid fa-download"></i> Resume</a>
       </div>
       <div class="hero-socials">
@@ -850,23 +896,18 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 
 <!-- MARQUEE TICKER -->
 <div class="marquee-section">
-  <div class="marquee-track" id="marqueeTrack">
-    <!-- JS fills this -->
-  </div>
+  <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
 <!-- ABOUT -->
 <section id="about" class="section-pad">
   <div class="container">
     <div class="about-grid">
-      <!-- Photo -->
       <div class="about-photo-wrap fu">
         <div style="position:relative">
           <div class="about-img-ring"></div>
           <div class="about-img-container">
-            <!-- Replace with actual photo: <img src="/images/profile.jpg" alt="Samuel Appiah Kubi"/> -->
-            <!-- Placeholder: satellite imagery -->
-            <img src="assets/1764350504379.jpeg" alt="Geospatial Engineering" style="filter:saturate(1.2) brightness(0.85)"/>
+            <img src="assets/1764350504379.jpeg" alt="Samuel Appiah Kubi" style="filter:saturate(1.2) brightness(0.85)"/>
             <div class="about-img-overlay"></div>
             <div class="about-img-badge">
               <i class="fa-solid fa-location-dot"></i> Accra, Ghana
@@ -874,7 +915,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
           </div>
         </div>
       </div>
-      <!-- Text -->
       <div>
         <div class="section-eyebrow fu"><i class="fa-solid fa-user-astronaut"></i> About Me</div>
         <h2 class="section-title fu d1">Engineer. Innovator.<br><span class="hl">Problem Solver.</span></h2>
@@ -894,16 +934,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
           <span class="tag"><i class="fa-solid fa-database fa-sm" style="color:var(--orange)"></i> Spatial Databases</span>
           <span class="tag"><i class="fa-solid fa-microchip fa-sm" style="color:var(--orange)"></i> Deep Learning</span>
         </div>
-        <!-- <div class="stats-grid fu d5">
-          <div class="stat-card"><span class="stat-val" data-target="2" data-suffix="+">0</span><div class="stat-lbl">Years Exp.</div></div>
-          <div class="stat-card"><span class="stat-val" data-target="12" data-suffix="+">0</span><div class="stat-lbl">Projects</div></div>
-          <div class="stat-card"><span class="stat-val" data-target="92.44" data-suffix="%" data-dec="2">0</span><div class="stat-lbl">AI Accuracy</div></div>
-          <div class="stat-card"><span class="stat-val" data-target="1000" data-suffix="+">0</span><div class="stat-lbl">Farmers</div></div>
-          <div class="stat-card"><span class="stat-val" data-target="32699">0</span><div class="stat-lbl">Tiles</div></div>
-          <div class="stat-card"><span class="stat-val" data-target="10000" data-suffix="+">0</span><div class="stat-lbl">Properties</div></div>
-          <div class="stat-card"><span class="stat-val" data-target="333.9" data-suffix=" km²" data-dec="1">0</span><div class="stat-lbl">Area Mon.</div></div>
-          <div class="stat-card"><span class="stat-val" data-target="7">0</span><div class="stat-lbl">Clients</div></div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -948,6 +978,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
           <span class="skill-item">YOLOv5</span><span class="skill-item">OpenCV</span><span class="skill-item">Roboflow</span>
           <span class="skill-item">CNNs</span><span class="skill-item">Object Detection</span><span class="skill-item">Real-time Inference</span>
           <span class="skill-item">Transfer Learning</span><span class="skill-item">Model Deployment</span>
+          <span class="skill-item">BoT-SORT</span><span class="skill-item">Sensor Fusion</span><span class="skill-item">Kalman Filter</span>
         </div>
       </div>
       <div class="skill-col fu d4">
@@ -970,72 +1001,11 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
     <div style="text-align:center;margin-bottom:56px">
       <div class="section-eyebrow fu"><i class="fa-solid fa-rocket"></i> Portfolio</div>
       <h2 class="section-title fu d1">Featured <span class="hl">Projects</span></h2>
-      <p class="section-sub fu d2" style="margin:0 auto">Production systems delivering real-world geospatial impact.</p>
+      <p class="section-sub fu d2" style="margin:0 auto">Production systems &amp; peer-reviewed research delivering real-world geospatial impact.</p>
     </div>
     <div class="projects-grid" id="projectsGrid"></div>
   </div>
 </section>
-
-<!-- VIDEO REEL SECTION -->
-<!-- <section id="reel" class="section-pad">
-  <div class="reel-bg"></div>
-  <div class="container reel-inner">
-    <div class="reel-header">
-      <div class="section-eyebrow fu" style="justify-content:center"><i class="fa-solid fa-film"></i> Work Reel</div>
-      <h2 class="section-title fu d1" style="text-align:center">In <span class="hl">Action</span></h2>
-      <p class="section-sub fu d2" style="margin:0 auto;text-align:center">Geospatial intelligence, AI vision, and real-world deployment — watch the systems come to life.</p>
-    </div>
-    <div class="reel-grid fu d2">
-      
-      <div class="reel-video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0&modestbranding=1&color=white"
-          title="Samuel Appiah Kubi — Geospatial AI Work Reel"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          style="border:none">
-        </iframe>
-      </div>
-      <div class="reel-side">
-        <div class="reel-stat">
-          <div class="reel-stat-icon"><i class="fa-solid fa-satellite-dish"></i></div>
-          <div>
-            <div class="reel-stat-val">333.9<span style="font-size:1rem;color:var(--tx2)"> km²</span></div>
-            <div class="reel-stat-lbl">Area monitored</div>
-          </div>
-        </div>
-        <div class="reel-stat">
-          <div class="reel-stat-icon"><i class="fa-solid fa-microchip"></i></div>
-          <div>
-            <div class="reel-stat-val">92.44<span style="font-size:1rem;color:var(--tx2)">%</span></div>
-            <div class="reel-stat-lbl">AI Accuracy</div>
-          </div>
-        </div>
-        <div class="reel-stat">
-          <div class="reel-stat-icon"><i class="fa-solid fa-layer-group"></i></div>
-          <div>
-            <div class="reel-stat-val">32,699</div>
-            <div class="reel-stat-lbl">Tiles processed</div>
-          </div>
-        </div>
-        <div class="reel-stat">
-          <div class="reel-stat-icon"><i class="fa-solid fa-users"></i></div>
-          <div>
-            <div class="reel-stat-val">1,000<span style="font-size:1rem;color:var(--tx2)">+</span></div>
-            <div class="reel-stat-lbl">Farmers reached</div>
-          </div>
-        </div>
-        <div style="padding:16px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--bdr);border-radius:var(--r);">
-          <p style="font-family:var(--font-h);font-size:0.88rem;color:var(--tx2);line-height:1.75">
-            <i class="fa-solid fa-quote-left" style="color:var(--orange);margin-right:6px"></i>
-            Replace the YouTube link above with your actual demo video. Record a 2–3 min walkthrough of any live project dashboard and upload to YouTube for maximum client impact.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
 
 <!-- EXPERIENCE -->
 <section id="experience" class="section-pad">
@@ -1055,26 +1025,54 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
       <h2 class="section-title fu d1">Certifications &amp; <span class="hl">Training</span></h2>
     </div>
     <div class="certs-grid">
-      <div class="cert-card fu d1">
+      <div class="cert-card fu d1" data-cert-img="assets/AWS-CSCP.jpg" data-cert-name="AWS Certified Solutions Architect – Professional">
         <div class="cert-icon"><i class="fab fa-aws"></i></div>
-        <div><div class="cert-name">AWS Certified Solutions Architect – Professional</div><div class="cert-badge"><i class="fa-solid fa-building" style="color:var(--orange);font-size:0.75rem"></i> Amazon Web Services</div></div>
+        <div>
+          <div class="cert-name">AWS Certified Solutions Architect – Professional</div>
+          <div class="cert-badge"><i class="fa-solid fa-building" style="color:var(--orange);font-size:0.75rem"></i> Amazon Web Services</div>
+          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
+        </div>
       </div>
-      <div class="cert-card fu d2">
+      <div class="cert-card fu d2" data-cert-img="assets/certs/ml.jpg" data-cert-name="Machine Learning and Advanced AI Techniques">
         <div class="cert-icon"><i class="fa-solid fa-robot"></i></div>
-        <div><div class="cert-name">Machine Learning and Advanced AI Techniques</div><div class="cert-badge"><i class="fa-solid fa-graduation-cap" style="color:var(--orange);font-size:0.75rem"></i> Professional Training</div></div>
+        <div>
+          <div class="cert-name">Machine Learning and Advanced AI Techniques</div>
+          <div class="cert-badge"><i class="fa-solid fa-graduation-cap" style="color:var(--orange);font-size:0.75rem"></i> Professional Training</div>
+          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
+        </div>
       </div>
-      <div class="cert-card fu d3">
+      <div class="cert-card fu d3" data-cert-img="assets/GSA.jpg" data-cert-name="Geospatial Analytics Essentials">
         <div class="cert-icon"><i class="fa-solid fa-earth-africa"></i></div>
-        <div><div class="cert-name">Geospatial Analytics Essentials</div><div class="cert-badge"><i class="fa-solid fa-map" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div></div>
+        <div>
+          <div class="cert-name">Geospatial Analytics Essentials</div>
+          <div class="cert-badge"><i class="fa-solid fa-map" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
+          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
+        </div>
       </div>
-      <div class="cert-card fu d4">
+      <div class="cert-card fu d4" data-cert-img="assets/AI&ML.jpg" data-cert-name="Artificial Intelligence and Machine Learning">
         <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
-        <div><div class="cert-name">Artificial Intelligence and Machine Learning</div><div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> AI/ML Certification</div></div>
+        <div>
+          <div class="cert-name">Artificial Intelligence and Machine Learning</div>
+          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> AI/ML Certification</div>
+          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
+        </div>
       </div>
-      <!-- <div class="cert-card fu d5">
-        <div class="cert-icon"><i class="fa-solid fa-mountain"></i></div>
-        <div><div class="cert-name">Essentials of Geology</div><div class="cert-badge"><i class="fa-solid fa-layer-group" style="color:var(--orange);font-size:0.75rem"></i> Earth Sciences</div></div>
-      </div> -->
+      <div class="cert-card fu d4" data-cert-img="assets/RSB.jpg" data-cert-name="Remote Sensing Basics">
+        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
+        <div>
+          <div class="cert-name">Remote Sensing Basics</div>
+          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
+          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
+        </div>
+      </div>
+      <div class="cert-card fu d4" data-cert-img="assets/AWS-CCPE.jpg" data-cert-name="AWS Certified Cloud Practitioner Exam">
+        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
+        <div>
+          <div class="cert-name">AWS Certified Cloud Practitioner Exam</div>
+          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
+          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1104,7 +1102,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 <!-- CONTACT -->
 <section id="contact" class="section-pad">
   <div class="container">
-    <!-- Colorful banner -->
     <div class="contact-banner fu">
       <div class="contact-banner-content">
         <h2>Ready to Build Something <em style="font-style:italic">Extraordinary?</em></h2>
@@ -1114,7 +1111,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         </a>
       </div>
     </div>
-
     <div class="contact-grid">
       <div>
         <div class="section-eyebrow fu"><i class="fa-solid fa-paper-plane"></i> Contact</div>
@@ -1208,6 +1204,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
           <a href="#skills">AI / Computer Vision</a>
           <a href="#skills">Full-Stack Development</a>
           <a href="#skills">Cloud &amp; DevOps</a>
+          <a href="#projects">Research &amp; Publications</a>
         </nav>
       </div>
     </div>
@@ -1217,6 +1214,17 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
     </div>
   </div>
 </footer>
+
+<!-- CERTIFICATE LIGHTBOX -->
+<div class="cert-lightbox" id="certLightbox" role="dialog" aria-modal="true">
+  <div class="cert-lightbox-inner">
+    <img id="certLightboxImg" src="" alt="Certificate"/>
+    <button class="cert-lightbox-close" id="certLightboxClose" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="cert-lightbox-label" id="certLightboxLabel"></div>
+</div>
 
 <!-- PROJECT MODAL -->
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
@@ -1238,7 +1246,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
      ==================================================== -->
 <script>
 /* ──────────────────────────────
-   PROJECT DATA (with Unsplash images)
+   PROJECT DATA
    ────────────────────────────── */
 const projects = [
   {
@@ -1382,27 +1390,34 @@ const projects = [
       ]
     }
   },
-//   {
-//     num:"08",
-//     icon:"fa-solid fa-road",
-//     img:"https://images.unsplash.com/photo-1545459720-aac8509eb02d?w=700&q=80&fit=crop",
-//     title:"Pothole Detection Mobile App (TRECK)",
-//     desc:"YOLOv8-powered mobile app for real-time pothole detection with GPS tagging and automatic road authority alerts.",
-//     tags:["YOLOv8","Flutter","Django REST","OpenCV","Firebase","PostgreSQL"],
-//     impact:"Real-time alerts · GPS-tagged reports · Reduced repair time",
-//     details:{
-//       overview:"AI-powered mobile application for real-time pothole detection using computer vision, with automatic GPS tagging and authority notification system.",
-//       highlights:[
-//         "YOLOv8 model trained on custom pothole dataset",
-//         "Real-time inference from phone camera video stream",
-//         "Flutter frontend with native camera integration",
-//         "Django REST backend for report storage and management",
-//         "GPS geolocation for automatic location capture",
-//         "OpenCV preprocessing for varying road conditions",
-//         "Automatic authority alerts with report dashboard"
-//       ]
-//     }
-//   },
+  {
+    num:"08",
+    icon:"fa-solid fa-road",
+    img:"assets/frame_000025.jpg",
+    title:"MMFF – Multi-Modal Sensor Fusion for Pothole Dimensioning",
+    desc:"IEEE-submitted research framework achieving metric-accurate pothole depth, width, and volume estimation from a single dashboard camera + smartphone IMU — no LiDAR required.",
+    tags:["ACSH-YOLOv8","BoT-SORT","Kalman Filter","IMU Fusion","Monocular Depth","Python","OpenCV","RANSAC"],
+    impact:"Depth MAE 0.28 m · 30 fps real-time · 50 km road evaluation",
+    isResearch: true,
+    details:{
+      overview:"MMFF (Multi-Modal Fusion Framework) resolves five fundamental challenges of monocular pothole dimensioning — metric scale ambiguity, suspension-induced camera height variation, non-planar road geometry, irregular pothole morphology, and temporal measurement instability — in a single unified pipeline running at 30 fps using only a standard dashboard camera and smartphone IMU.",
+      stats:[
+        {val:"0.28 m",lbl:"Depth MAE"},
+        {val:"8.7%",lbl:"Relative Error"},
+        {val:"30 fps",lbl:"Inference Speed"},
+        {val:"50 km",lbl:"Road Coverage"}
+      ],
+      highlights:[
+        "GADS (Geometry-Anchored Depth Scaling): converts relative depth to absolute metric via RANSAC regression on ground-plane homography — no network retraining required",
+        "ETHHI (Event-Triggered Hybrid Height Integration): fuses IMU acceleration only during pothole events; captures 5–15 cm suspension drops with sub-centimeter accuracy, zero long-term drift, 62% error reduction",
+        "MBTP (Minimum Bounding Triangulated Pixel): Delaunay triangulation on depth-segmented contours for accurate area of highly irregular potholes — 48.9% area error reduction",
+        "CDKF (Confidence-Distance Kalman Filter): scales measurement noise to detection confidence and object range; 79% jitter reduction over raw estimates",
+        "Width error 6.2% · Length error 7.8% · Area error 9.3% · Volume error 14.2%",
+        "Evaluated on 50 manually measured ground-truth potholes across diverse urban and rural roads",
+        "Submitted to IEEE Transactions on Intelligent Transportation Systems"
+      ]
+    }
+  },
   {
     num:"09",
     icon:"fa-solid fa-landmark",
@@ -1436,7 +1451,7 @@ const experiences = [
   {role:"Geospatial Developer",company:"Rainforest Alliance",period:"Sep 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed hybrid monitoring system for 333.9 km² Sui River cocoa-forest landscape","Built real-time GIS dashboard for spatial visualization of forest and cocoa boundaries","Implemented automated stakeholder reporting system","Deployed participatory tools empowering local farming communities"]},
   {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",period:"Aug 2025 – Present",location:"Tema, Ghana",type:"Hybrid",badge:"current",achievements:["Designed comprehensive logistics platform covering transport, warehouse, shipments","Developed real-time vehicle tracking with GPS integration for fleet management","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
   {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",period:"Oct 2024 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed backend for Ghana's premier cocoa supply chain traceability platform","Built RESTful APIs with geospatial tracking for farm locations","Integrated with Ghana Cocoa Board systems for certification","Containerized with Docker for AWS deployment"]},
-  {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research Centre",period:"Aug 2024 – Present",location:"Kumasi, Ghana",type:"On-site",badge:"current",achievements:["Built pothole detection mobile app with YOLOv8 and Flutter","Developed AI-driven computer vision models using TensorFlow","Integrated GPS geolocation for automatic position capture and reporting"]},
+  {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research Centre",period:"Aug 2024 – Present",location:"Kumasi, Ghana",type:"On-site",badge:"current",achievements:["Built MMFF multi-modal fusion framework submitted to IEEE ITS","Developed ACSH-YOLOv8 pothole detector and BoT-SORT tracking pipeline","Implemented sensor fusion (monocular depth + IMU) achieving sub-cm height accuracy","Built pothole detection mobile app with Flutter and GPS geolocation"]},
   {role:"Mine Surveyor (Intern)",company:"Asanko Gold",period:"Oct 2023 – Nov 2023",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic and hydrographic surveys for surface mining operations","Used Total Stations, GPS systems, AutoCAD, Surfer, and ArcGIS"]},
   {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",period:"Sep 2023 – Oct 2023",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS"]}
 ];
@@ -1489,7 +1504,7 @@ window.addEventListener('scroll',()=>{
 /* ──────────────────────────────
    TYPING ANIMATION
    ────────────────────────────── */
-const words=["Geospatial Developer","AI Engineer","Django Expert","Computer Vision Specialist","Full-Stack Architect","Remote Sensing Analyst"];
+const words=["Geospatial Developer","AI Engineer","Django Expert","Computer Vision Specialist","Full-Stack Architect","Remote Sensing Analyst","Research Engineer"];
 let wIdx=0,cIdx=0,del=false;
 const typedEl=document.getElementById('typedText');
 function type(){
@@ -1509,28 +1524,6 @@ const obs = new IntersectionObserver(entries=>{
 document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 
 /* ──────────────────────────────
-   COUNTER ANIMATION
-   ────────────────────────────── */
-const counterObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting && !e.target.dataset.counted){
-      e.target.dataset.counted='1';
-      const target=parseFloat(e.target.dataset.target);
-      const suffix=e.target.dataset.suffix||'';
-      const dec=parseInt(e.target.dataset.dec||'0');
-      const dur=1800;const start=performance.now();
-      (function update(now){
-        const p=Math.min((now-start)/dur,1);
-        const ease=1-Math.pow(1-p,3);
-        e.target.textContent=(target*ease).toFixed(dec)+suffix;
-        if(p<1) requestAnimationFrame(update);
-      })(start);
-    }
-  });
-},{threshold:0.5});
-document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
-
-/* ──────────────────────────────
    MARQUEE
    ────────────────────────────── */
 const marqueeItems=[
@@ -1547,10 +1540,10 @@ const marqueeItems=[
   {icon:'fa-solid fa-database',text:'PostgreSQL'},
   {icon:'fa-solid fa-mobile',text:'Flutter'},
   {icon:'fa-solid fa-server',text:'Docker'},
+  {icon:'fa-solid fa-road',text:'Sensor Fusion'},
   {icon:'fa-solid fa-chart-line',text:'Data Analytics'},
 ];
 const track=document.getElementById('marqueeTrack');
-// Duplicate for seamless loop
 [...marqueeItems,...marqueeItems].forEach((item,i)=>{
   const el=document.createElement('div');
   el.className='marquee-item';
@@ -1566,11 +1559,15 @@ projects.forEach((p,i)=>{
   const card=document.createElement('div');
   card.className=`project-card fu d${(i%3)+1}`;
   const topTags=p.tags.slice(0,3).map(t=>`<span class="proj-tech-pill">${t}</span>`).join('');
+  const researchBadge = p.isResearch
+    ? `<div class="proj-research-badge"><i class="fa-solid fa-flask" style="margin-right:4px"></i>IEEE Research</div>`
+    : '';
   card.innerHTML=`
     <div class="proj-img">
       <img src="${p.img}" alt="${p.title}" loading="lazy"/>
       <div class="proj-img-overlay"></div>
       <div class="proj-num-badge">PROJECT ${p.num}</div>
+      ${researchBadge}
       <div class="proj-tech-preview">${topTags}</div>
     </div>
     <div class="project-body">
@@ -1593,14 +1590,22 @@ projects.forEach((p,i)=>{
    ────────────────────────────── */
 const overlay=document.getElementById('modalOverlay');
 const modalClose=document.getElementById('modalClose');
+
 function openModal(p){
   document.getElementById('modalImg').innerHTML=`<img src="${p.img}" alt="${p.title}"/>`;
-  document.getElementById('modalNum').innerHTML=`<i class="${p.icon}"></i> PROJECT ${p.num}`;
+  document.getElementById('modalNum').innerHTML=`<i class="${p.icon}"></i> PROJECT ${p.num}${p.isResearch?' &nbsp;<span style="font-size:0.65rem;padding:3px 9px;border-radius:5px;background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.3)">IEEE Submitted</span>':''}`;
   document.getElementById('modalTitle').textContent=p.title;
+
+  // Build stat strip for research projects
+  const statStrip = p.details.stats
+    ? `<div class="modal-stat-strip">${p.details.stats.map(s=>`<div class="modal-stat-chip"><span class="val">${s.val}</span><span class="lbl">${s.lbl}</span></div>`).join('')}</div>`
+    : '';
+
   document.getElementById('modalBody').innerHTML=`
     <div class="modal-section">
       <div class="modal-section-title">Overview</div>
       <div class="modal-text">${p.details.overview}</div>
+      ${statStrip}
     </div>
     <div class="modal-section">
       <div class="modal-section-title">Technologies</div>
@@ -1609,7 +1614,7 @@ function openModal(p){
       </div>
     </div>
     <div class="modal-section">
-      <div class="modal-section-title">Key Highlights</div>
+      <div class="modal-section-title">${p.isResearch ? 'Novel Contributions' : 'Key Highlights'}</div>
       <ul class="modal-list">${p.details.highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
     </div>
     <div class="modal-section" style="margin-bottom:0">
@@ -1657,6 +1662,31 @@ experiences.forEach((exp,i)=>{
   timeline.appendChild(item);
   obs.observe(item);
 });
+
+/* ──────────────────────────────
+   CERTIFICATE LIGHTBOX
+   ────────────────────────────── */
+const certLightbox     = document.getElementById('certLightbox');
+const certLightboxImg  = document.getElementById('certLightboxImg');
+const certLightboxLbl  = document.getElementById('certLightboxLabel');
+const certLightboxClose= document.getElementById('certLightboxClose');
+
+document.querySelectorAll('.cert-card[data-cert-img]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    certLightboxImg.src = card.dataset.certImg;
+    certLightboxLbl.textContent = card.dataset.certName;
+    certLightbox.classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+});
+function closeCertLightbox(){
+  certLightbox.classList.remove('open');
+  certLightboxImg.src='';
+  document.body.style.overflow='';
+}
+certLightboxClose.addEventListener('click', closeCertLightbox);
+certLightbox.addEventListener('click', e=>{ if(e.target===certLightbox) closeCertLightbox(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeCertLightbox(); });
 
 /* ──────────────────────────────
    CONTACT FORM

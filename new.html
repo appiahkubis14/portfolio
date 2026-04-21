@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Samuel Appiah Kubi — Geospatial & AI Engineer</title>
+<meta name="description" content="Geospatial Software Engineer, AI/Computer Vision Developer, and Full-Stack Architect based in Accra, Ghana."/>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+/* ================================================
+   VARIABLES
+   ================================================ */
+:root{
+  --or:#F97316;--or2:#EA580C;--or3:#C2410C;
+  --or-glow:rgba(249,115,22,.22);--or-sub:rgba(249,115,22,.09);
+  --t:.38s cubic-bezier(.4,0,.2,1);
+  --r:16px;--rs:10px;--rp:999px;
+}
+[data-theme="dark"]{
+  --bg:#080809;--bg2:#0F0F11;--bg3:#161618;
+  --sf:#1A1A1D;--sf2:#222226;
+  --bd:rgba(255,255,255,.07);--bdh:rgba(249,115,22,.5);
+  --tx:#F5F5F6;--tx2:#9B9BA8;--tx3:#5C5C6B;
+  --sh:0 8px 40px rgba(0,0,0,.6);
+  --nb:rgba(8,8,9,.85);--mb:rgba(0,0,0,.75);
+}
+[data-theme="light"]{
+  --bg:#F8F8FA;--bg2:#F0F0F4;--bg3:#E8E8EE;
+  --sf:#FFFFFF;--sf2:#EEEEF4;
+  --bd:rgba(0,0,0,.08);--bdh:rgba(249,115,22,.55);
+  --tx:#111115;--tx2:#505060;--tx3:#9090A0;
+  --sh:0 8px 40px rgba(0,0,0,.09);
+  --nb:rgba(248,248,250,.9);--mb:rgba(240,240,244,.8);
+}
+
+/* ================================================
+   RESET
+   ================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Satoshi',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden;transition:background var(--t),color var(--t)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block;object-fit:cover}
+button{cursor:pointer;border:none;background:none;font-family:'Satoshi',sans-serif}
+ul{list-style:none}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--or2);border-radius:99px}
+
+/* ================================================
+   LAYOUT
+   ================================================ */
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 28px}
+.sp{padding:110px 0}
+
+/* ================================================
+   TYPOGRAPHY
+   ================================================ */
+.lbl{display:inline-flex;align-items:center;gap:7px;font-family:'Satoshi',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--or);background:var(--or-sub);border:1px solid rgba(249,115,22,.18);padding:5px 14px;border-radius:var(--rp);margin-bottom:18px}
+h2.sh{font-family:'Clash Display',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:14px}
+.og{color:var(--or)}
+.sub{color:var(--tx2);font-size:1.05rem;max-width:540px;line-height:1.75}
+
+/* ================================================
+   ANIMATIONS
+   ================================================ */
+.fu{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.06s}.d2{transition-delay:.14s}.d3{transition-delay:.22s}
+.d4{transition-delay:.30s}.d5{transition-delay:.38s}.d6{transition-delay:.46s}
+
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(1.2)}}
+@keyframes dotpulse{0%,100%{box-shadow:0 0 8px var(--or-glow)}50%{box-shadow:0 0 22px rgba(249,115,22,.55)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-22px) rotate(180deg)}}
+
+/* ================================================
+   BUTTONS
+   ================================================ */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:var(--rp);font-family:'Clash Display',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:.01em;transition:all .28s ease;white-space:nowrap}
+.btn-p{background:linear-gradient(135deg,var(--or),var(--or2));color:#fff}
+.btn-p:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 8px 34px var(--or-glow)}
+.btn-o{border:1.5px solid var(--bdh);color:var(--or);background:transparent}
+.btn-o:hover{background:var(--or-sub);transform:translateY(-2px)}
+.btn-g{border:1.5px solid var(--bd);color:var(--tx2)}
+.btn-g:hover{border-color:var(--bdh);color:var(--or)}
+
+/* ================================================
+   NAVBAR
+   ================================================ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nb);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid var(--bd);transition:background var(--t)}
+.ni{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1240px;margin:0 auto;padding:0 28px}
+.logo{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1.15rem;color:var(--tx);letter-spacing:-.02em}
+.logo span{color:var(--or)}
+.nlinks{display:flex;align-items:center;gap:4px}
+.nlinks a{font-size:.82rem;font-weight:500;color:var(--tx2);padding:7px 14px;border-radius:var(--rp);transition:all .2s}
+.nlinks a:hover,.nlinks a.act{color:var(--or);background:var(--or-sub)}
+.nr{display:flex;align-items:center;gap:10px}
+.tt{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sf);border:1px solid var(--bd);color:var(--tx2);font-size:1rem;transition:all .2s}
+.tt:hover{border-color:var(--or);color:var(--or);transform:rotate(25deg)}
+.hb{display:none;flex-direction:column;gap:5px;width:42px;height:42px;align-items:center;justify-content:center;border-radius:var(--rs);border:1px solid var(--bd);background:var(--sf)}
+.hb span{display:block;width:18px;height:1.5px;background:var(--tx2);transition:all .3s}
+.hb.op span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hb.op span:nth-child(2){opacity:0}
+.hb.op span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mm{display:none;position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--bg);z-index:999;padding:36px 28px;flex-direction:column;gap:6px;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1)}
+.mm.op{transform:translateX(0)}
+.mm a{font-family:'Clash Display',sans-serif;font-size:1.5rem;font-weight:600;color:var(--tx);padding:14px 0;border-bottom:1px solid var(--bd);transition:color .2s;display:flex;align-items:center;gap:12px}
+.mm a i{color:var(--or);font-size:1rem;width:20px}
+.mm a:hover{color:var(--or)}
+
+/* ================================================
+   HERO
+   ================================================ */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:110px 0 70px}
+.hg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:70px 70px;mask-image:radial-gradient(ellipse 90% 75% at 50% 50%,black 25%,transparent 100%)}
+.hgl{position:absolute;top:5%;left:50%;transform:translateX(-50%);width:700px;height:700px;z-index:0;background:radial-gradient(ellipse,rgba(249,115,22,.13) 0%,transparent 68%);pointer-events:none}
+.hshape{position:absolute;z-index:0;border-radius:50%;background:linear-gradient(135deg,rgba(249,115,22,.12),transparent);filter:blur(2px);animation:float 8s ease-in-out infinite}
+.s1{width:140px;height:140px;top:15%;right:10%;animation-delay:0s}
+.s2{width:80px;height:80px;bottom:20%;left:6%;animation-delay:3s}
+.s3{width:60px;height:60px;top:40%;right:25%;animation-delay:5s}
+.hcon{position:relative;z-index:1;text-align:center;max-width:900px;margin:0 auto}
+.hbadge{display:inline-flex;align-items:center;gap:9px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rp);padding:7px 18px 7px 12px;font-size:.8rem;color:var(--tx2);margin-bottom:36px;animation:fadeDown .9s ease forwards}
+.hdot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 10px rgba(34,197,94,.6);animation:pulse 2s infinite}
+.hname{font-family:'Clash Display',sans-serif;font-size:clamp(2.8rem,8vw,5.8rem);font-weight:700;line-height:1.02;letter-spacing:-.04em;margin-bottom:22px;animation:fadeUp 1s .15s ease forwards;opacity:0}
+.htyped{display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Clash Display',sans-serif;font-size:clamp(1rem,2.8vw,1.5rem);font-weight:600;color:var(--tx2);margin-bottom:26px;animation:fadeUp 1s .32s ease forwards;opacity:0}
+.cursor{color:var(--or);border-right:2.5px solid var(--or);padding-right:3px;animation:blink .75s infinite}
+.hbio{color:var(--tx2);font-size:clamp(.95rem,2vw,1.1rem);max-width:640px;margin:0 auto 40px;line-height:1.8;animation:fadeUp 1s .48s ease forwards;opacity:0}
+.hbtns{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:54px;animation:fadeUp 1s .64s ease forwards;opacity:0}
+.hsoc{display:flex;align-items:center;justify-content:center;gap:12px;animation:fadeUp 1s .8s ease forwards;opacity:0}
+.sl{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sf);border:1px solid var(--bd);color:var(--tx2);font-size:1rem;transition:all .28s}
+.sl:hover{background:var(--or-sub);border-color:var(--bdh);color:var(--or);transform:translateY(-4px) scale(1.08)}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--tx3);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;animation:fadeUp 1.2s 1.2s ease forwards;opacity:0;z-index:1}
+.scroll-hint i{animation:bounce 2s infinite}
+
+/* ================================================
+   ABOUT
+   ================================================ */
+#about{background:var(--bg2)}
+.ag{display:grid;grid-template-columns:1fr 1.6fr;gap:72px;align-items:start}
+.aph{position:relative;display:flex;flex-direction:column;align-items:center;gap:0}
+.apo{position:relative;width:280px;height:280px}
+.apr{position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from 0deg,var(--or),var(--or2),transparent 60%,var(--or));animation:spin 7s linear infinite}
+.api{position:absolute;inset:5px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.api img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.api-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--tx3);font-size:.72rem;text-align:center;padding:24px}
+.api-ph i{font-size:3rem;color:var(--or);opacity:.35}
+.qs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px;width:280px}
+.qs{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:14px 16px;text-align:center;transition:border-color .2s}
+.qs:hover{border-color:var(--bdh)}
+.qs-v{font-family:'Clash Display',sans-serif;font-size:1.6rem;font-weight:700;color:var(--or);line-height:1}
+.qs-l{font-size:.68rem;color:var(--tx3);margin-top:3px}
+.atags{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+.tag{font-size:.76rem;font-weight:500;padding:6px 13px;border-radius:var(--rp);background:var(--sf);border:1px solid var(--bd);color:var(--tx2);transition:all .2s;cursor:default}
+.tag:hover{border-color:var(--bdh);color:var(--or);background:var(--or-sub)}
+.tag i{color:var(--or);margin-right:4px}
+.fullstats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.fsc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:18px 14px;text-align:center;transition:all .28s}
+.fsc:hover{border-color:var(--bdh);box-shadow:0 0 24px var(--or-glow);transform:translateY(-2px)}
+.fsc-v{font-family:'Clash Display',sans-serif;font-size:1.7rem;font-weight:700;color:var(--or);line-height:1}
+.fsc-l{font-size:.68rem;color:var(--tx3);margin-top:4px;line-height:1.4}
+
+/* ================================================
+   SKILLS
+   ================================================ */
+#skills{background:var(--bg)}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.sc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px 22px;transition:all .3s}
+.sc:hover{border-color:var(--bdh);box-shadow:0 0 36px var(--or-glow);transform:translateY(-3px)}
+.sc-t{font-family:'Clash Display',sans-serif;font-size:1rem;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.sc-t .ic{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--or-sub);color:var(--or);font-size:.95rem;flex-shrink:0}
+.sitems{display:flex;flex-wrap:wrap;gap:7px}
+.si{font-size:.73rem;font-weight:500;padding:5px 11px;border-radius:7px;background:var(--sf2);border:1px solid var(--bd);color:var(--tx2);transition:all .2s;display:flex;align-items:center;gap:5px}
+.si i{color:var(--or);font-size:.7rem}
+.si:hover{border-color:var(--or);color:var(--or);background:var(--or-sub)}
+
+/* ================================================
+   PROJECTS
+   ================================================ */
+#projects{background:var(--bg2)}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:all .35s ease;cursor:pointer}
+.pc:hover{transform:translateY(-6px) scale(1.015);border-color:var(--bdh);box-shadow:0 20px 60px var(--or-glow)}
+.pimg{position:relative;height:196px;overflow:hidden;background:var(--bg3)}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.pc:hover .pimg img{transform:scale(1.07)}
+.pov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.7));display:flex;align-items:flex-end;padding:14px;opacity:0;transition:opacity .35s}
+.pc:hover .pov{opacity:1}
+.pov-inner{display:flex;align-items:center;gap:7px;color:#fff;font-size:.78rem;font-weight:600;background:rgba(249,115,22,.85);padding:7px 14px;border-radius:var(--rp)}
+.pic{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:1rem;border:1px solid rgba(249,115,22,.3)}
+.pbody{padding:22px;flex:1;display:flex;flex-direction:column}
+.pnum{font-family:'Clash Display',sans-serif;font-size:.68rem;color:var(--or);font-weight:700;letter-spacing:.12em;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.pnum::after{content:'';flex:1;height:1px;background:var(--bd)}
+.ptitle{font-family:'Clash Display',sans-serif;font-size:1.02rem;font-weight:600;margin-bottom:10px;line-height:1.3}
+.pdesc{font-size:.83rem;color:var(--tx2);line-height:1.65;flex:1}
+.ptags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.ptag{font-size:.68rem;padding:3px 9px;border-radius:6px;background:var(--or-sub);color:var(--or);border:1px solid rgba(249,115,22,.18)}
+.pimp{font-size:.76rem;color:var(--tx3);padding-top:12px;border-top:1px solid var(--bd);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.pimp i{color:var(--or);margin-top:1px;flex-shrink:0}
+.pfoot{padding:13px 22px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
+.vb{font-size:.78rem;font-weight:600;color:var(--or);display:flex;align-items:center;gap:5px;transition:gap .2s}
+.vb:hover{gap:9px}
+
+/* ================================================
+   DEMOS
+   ================================================ */
+#demos{background:var(--bg)}
+.dg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.dc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:all .3s}
+.dc:hover{border-color:var(--bdh);box-shadow:0 12px 40px var(--or-glow)}
+.dthumb{position:relative;height:224px;overflow:hidden;background:var(--bg3);cursor:pointer}
+.dthumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.dc:hover .dthumb img{transform:scale(1.04)}
+.dplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.38);transition:background .3s}
+.dc:hover .dplay{background:rgba(0,0,0,.2)}
+.dpbtn{width:68px;height:68px;border-radius:50%;background:rgba(249,115,22,.9);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;box-shadow:0 0 0 12px rgba(249,115,22,.2);transition:all .3s}
+.dc:hover .dpbtn{transform:scale(1.12);box-shadow:0 0 0 18px rgba(249,115,22,.1)}
+.dinfo{padding:22px}
+.dtitle{font-family:'Clash Display',sans-serif;font-size:1rem;font-weight:600;margin-bottom:7px}
+.ddesc{font-size:.83rem;color:var(--tx2);line-height:1.6}
+.dtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+/* duration badge */
+.dur{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.65);color:#fff;font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:var(--rp);backdrop-filter:blur(4px)}
+
+/* ================================================
+   VIDEO MODAL
+   ================================================ */
+.vo{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.9);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px}
+.vo.op{display:flex;animation:fadeIn .28s ease}
+.vbox{background:#000;border-radius:var(--r);width:100%;max-width:920px;position:relative;animation:scaleIn .32s cubic-bezier(.34,1.56,.64,1);overflow:hidden}
+.vcl{position:absolute;top:14px;right:14px;z-index:10;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:background .2s}
+.vcl:hover{background:var(--or)}
+.vwrap{position:relative;padding-bottom:56.25%;height:0}
+.vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+
+/* ================================================
+   PROJECT MODAL
+   ================================================ */
+.mo{display:none;position:fixed;inset:0;z-index:2000;background:var(--mb);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:24px}
+.mo.op{display:flex;animation:fadeIn .25s ease}
+.mbox{background:var(--sf);border:1px solid var(--bd);border-radius:20px;max-width:740px;width:100%;max-height:88vh;overflow-y:auto;animation:scaleIn .32s cubic-bezier(.34,1.56,.64,1)}
+.mhdr{padding:30px 34px 22px;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.mtitle{font-family:'Clash Display',sans-serif;font-size:1.35rem;font-weight:700}
+.mcl{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--sf2);color:var(--tx2);font-size:.9rem;transition:all .2s}
+.mcl:hover{background:var(--or);color:#fff}
+.mbody{padding:28px 34px 36px}
+.ms{margin-bottom:22px}
+.ms-t{font-size:.75rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.ms-t::after{content:'';flex:1;height:1px;background:var(--bd)}
+.ms-txt{font-size:.88rem;color:var(--tx2);line-height:1.8}
+.ml li{font-size:.86rem;color:var(--tx2);padding:5px 0 5px 18px;position:relative;line-height:1.65}
+.ml li::before{content:'▸';position:absolute;left:0;color:var(--or);font-size:.8rem}
+.mimg{width:100%;height:200px;object-fit:cover;border-radius:var(--rs);margin-bottom:20px}
+
+/* ================================================
+   EXPERIENCE
+   ================================================ */
+#experience{background:var(--bg2)}
+.tl{position:relative;padding-left:38px}
+.tl::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--or),var(--or2) 60%,transparent)}
+.ti{position:relative;margin-bottom:30px}
+.tdot{position:absolute;left:-38px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--or);border:3px solid var(--bg2);box-shadow:0 0 14px var(--or-glow);animation:dotpulse 3s infinite}
+.tc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:22px 26px;transition:all .25s}
+.tc:hover{border-color:var(--bdh);box-shadow:0 4px 24px var(--or-glow)}
+.th{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:10px}
+.tr{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1.02rem}
+.tco{color:var(--or);font-weight:600;font-size:.9rem;margin-bottom:4px}
+.tm{font-size:.77rem;color:var(--tx3);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tm span{display:flex;align-items:center;gap:4px}
+.ta{margin-top:14px;display:flex;flex-direction:column;gap:5px}
+.ta li{font-size:.83rem;color:var(--tx2);padding-left:16px;position:relative;line-height:1.6}
+.ta li::before{content:'▸';position:absolute;left:0;color:var(--or)}
+.bc{font-size:.68rem;padding:3px 10px;border-radius:var(--rp);font-weight:600;background:rgba(34,197,94,.1);color:#22C55E;border:1px solid rgba(34,197,94,.2)}
+.bp{font-size:.68rem;padding:3px 10px;border-radius:var(--rp);font-weight:600;background:var(--sf2);color:var(--tx3);border:1px solid var(--bd)}
+
+/* ================================================
+   CERTS
+   ================================================ */
+#certifications{background:var(--bg)}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:22px;display:flex;align-items:flex-start;gap:14px;transition:all .25s}
+.cc:hover{border-color:var(--bdh);transform:translateY(-2px)}
+.ci{width:46px;height:46px;border-radius:11px;flex-shrink:0;background:var(--or-sub);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:1.15rem}
+.cn{font-weight:600;font-size:.88rem;line-height:1.4}
+.cb{font-size:.72rem;color:var(--tx3);margin-top:4px}
+
+/* ================================================
+   EDUCATION
+   ================================================ */
+#education{background:var(--bg2)}
+.eg{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.ec{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:30px;transition:all .25s;position:relative;overflow:hidden}
+.ec::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--or),var(--or2))}
+.ec:hover{border-color:var(--bdh)}
+.ei{font-size:2rem;margin-bottom:16px}
+.ed{font-family:'Clash Display',sans-serif;font-weight:700;font-size:.97rem;margin-bottom:7px}
+.es{color:var(--or);font-weight:600;margin-bottom:5px}
+.ep{font-size:.8rem;color:var(--tx3);display:flex;align-items:center;gap:6px}
+.ep i{color:var(--or)}
+
+/* ================================================
+   CONTACT
+   ================================================ */
+#contact{background:var(--bg)}
+.cong{display:grid;grid-template-columns:1fr 1.25fr;gap:60px}
+.cii{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+.cit{display:flex;align-items:center;gap:14px;padding:16px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);transition:all .2s}
+.cit:hover{border-color:var(--bdh)}
+.cic{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:var(--or-sub);display:flex;align-items:center;justify-content:center;color:var(--or);font-size:1rem}
+.cil{font-size:.7rem;color:var(--tx3)}
+.civ{font-size:.88rem;font-weight:500}
+.cf{display:flex;flex-direction:column;gap:16px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg label{font-size:.78rem;font-weight:600;color:var(--tx2)}
+.fg input,.fg textarea{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:13px 17px;color:var(--tx);font-family:'Satoshi',sans-serif;font-size:.9rem;outline:none;transition:all .22s;resize:vertical}
+.fg input:focus,.fg textarea:focus{border-color:var(--or);box-shadow:0 0 0 3px var(--or-glow)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--tx3)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fsuc{display:none;padding:14px 18px;border-radius:var(--rs);background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.22);color:#22C55E;font-size:.88rem;text-align:center}
+.av{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:var(--rp);background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);color:#22C55E;font-size:.82rem;font-weight:600;margin-top:14px}
+.avd{width:8px;height:8px;border-radius:50%;background:#22C55E;animation:pulse 2s infinite}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+footer{background:var(--bg2);border-top:1px solid var(--bd);padding:44px 0}
+.fi{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:22px}
+.fcp{font-size:.82rem;color:var(--tx3)}
+.fcp span{color:var(--or)}
+.fli{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.fli a{font-size:.82rem;color:var(--tx3);padding:5px 10px;border-radius:7px;transition:color .2s}
+.fli a:hover{color:var(--or)}
+.fso{display:flex;gap:8px}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media(max-width:1024px){.sg{grid-template-columns:repeat(2,1fr)}.pg{grid-template-columns:repeat(2,1fr)}.cg{grid-template-columns:repeat(2,1fr)}.ag{grid-template-columns:1fr;gap:44px}.aph{align-items:center}.fullstats{grid-template-columns:repeat(4,1fr)}.dg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.sp{padding:76px 0}.sg{grid-template-columns:1fr}.pg{grid-template-columns:1fr}.cong{grid-template-columns:1fr;gap:44px}.eg{grid-template-columns:1fr}.cg{grid-template-columns:1fr}.fr{grid-template-columns:1fr}.dg{grid-template-columns:1fr}.nlinks{display:none}.hb{display:flex}.mm{display:flex}.fi{flex-direction:column;text-align:center}.fli{justify-content:center}.fullstats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.hbtns{flex-direction:column}.qs-grid{width:100%}.mhdr{padding:20px 20px 16px}.mbody{padding:20px 20px 26px}}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <div class="ni">
+    <a href="#hero" class="logo">SAK<span>.</span></a>
+    <ul class="nlinks">
+      <li><a href="#about" class="nl">About</a></li>
+      <li><a href="#skills" class="nl">Skills</a></li>
+      <li><a href="#projects" class="nl">Projects</a></li>
+      <li><a href="#demos" class="nl"><i class="fas fa-play" style="color:var(--or);font-size:.7rem"></i> Demos</a></li>
+      <li><a href="#experience" class="nl">Experience</a></li>
+      <li><a href="#contact" class="nl">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <button class="tt" id="themeToggle" aria-label="Toggle theme"><i class="fa-solid fa-sun" id="thIcon"></i></button>
+      <button class="hb" id="hbBtn"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mm" id="mmEl">
+  <a href="#about"><i class="fas fa-user"></i>About</a>
+  <a href="#skills"><i class="fas fa-layer-group"></i>Skills</a>
+  <a href="#projects"><i class="fas fa-rocket"></i>Projects</a>
+  <a href="#demos"><i class="fas fa-play-circle"></i>Video Demos</a>
+  <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
+  <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
+  <a href="#contact"><i class="fas fa-paper-plane"></i>Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hg"></div><div class="hgl"></div>
+  <div class="hshape s1"></div><div class="hshape s2"></div><div class="hshape s3"></div>
+  <div class="wrap">
+    <div class="hcon">
+      <div class="hbadge"><span class="hdot"></span>Available for freelance &amp; contract worldwide</div>
+      <h1 class="hname">Samuel <span class="og">Appiah</span> Kubi</h1>
+      <div class="htyped"><i class="fas fa-terminal" style="color:var(--or);font-size:.85em"></i><span id="typed" class="cursor"></span></div>
+      <p class="hbio">Building production systems at the intersection of <strong style="color:var(--tx)">geospatial intelligence</strong>, <strong style="color:var(--tx)">deep learning</strong>, and <strong style="color:var(--tx)">software engineering</strong> — delivering real impact across Ghana and beyond.</p>
+      <div class="hbtns">
+        <a href="#projects" class="btn btn-p"><i class="fas fa-rocket"></i>View Work</a>
+        <a href="#demos" class="btn btn-o"><i class="fas fa-play"></i>Watch Demos</a>
+        <a href="#contact" class="btn btn-g"><i class="fas fa-envelope"></i>Contact Me</a>
+        <a href="/files/resume.pdf" download class="btn btn-g"><i class="fas fa-download"></i>Resume</a>
+      </div>
+      <div class="hsoc">
+        <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="sl" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="sl" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="sl" title="Upwork"><i class="fas fa-briefcase"></i></a>
+        <a href="mailto:appiahksamuel21@gmail.com" class="sl" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/" class="sl" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sp">
+  <div class="wrap">
+    <div class="ag">
+      <div class="aph fu">
+        <div class="apo">
+          <div class="apr"></div>
+          <div class="api">
+            <!-- Replace this div with: <img src="/images/profile.jpg" alt="Samuel Appiah Kubi"/> -->
+            <div class="api-ph"><i class="fas fa-user-tie"></i><span>Add photo to<br>/images/profile.jpg</span></div>
+          </div>
+        </div>
+        <div class="qs-grid">
+          <div class="qs"><div class="qs-v" data-target="2" data-suffix="+">2+</div><div class="qs-l">Years Exp.</div></div>
+          <div class="qs"><div class="qs-v" data-target="12" data-suffix="+">12+</div><div class="qs-l">Projects</div></div>
+          <!-- <div class="qs"><div class="qs-v" data-target="7">7</div><div class="qs-l">Clients</div></div>
+          <div class="qs"><div class="qs-v" data-target="92.44" data-suffix="%" data-dec="2">92.44%</div><div class="qs-l">AI Accuracy</div></div> -->
+        </div>
+      </div>
+      <div>
+        <div class="lbl fu"><i class="fas fa-user-astronaut"></i>About Me</div>
+        <h2 class="sh fu d1">Engineer. Innovator.<br><span class="og">Problem Solver.</span></h2>
+        <p style="color:var(--tx2);font-size:.95rem;line-height:1.85;margin-bottom:10px" class="fu d2">I am a <strong style="color:var(--tx)">Geospatial Software Engineer</strong> with 2+ years of enterprise experience building production systems that combine GIS, artificial intelligence, and full-stack development. I specialize in scalable solutions for environmental monitoring, precision agriculture, infrastructure assessment, and logistics.</p>
+        <p style="color:var(--tx2);font-size:.95rem;line-height:1.85;margin-bottom:20px" class="fu d3">Currently working with <strong style="color:var(--tx)">Ghana Export-Import Bank, SKTLive LTD, Rainforest Alliance, AMP Logistics,</strong> and <strong style="color:var(--tx)">Afarinick Company Limited</strong> — delivering platforms that process terabytes of geospatial data and serve thousands of users.</p>
+        <div class="atags fu d4">
+          <span class="tag"><i class="fas fa-globe"></i>Geospatial Intelligence</span>
+          <span class="tag"><i class="fas fa-satellite"></i>Remote Sensing</span>
+          <span class="tag"><i class="fas fa-brain"></i>AI/ML Development</span>
+          <span class="tag"><i class="fas fa-eye"></i>Computer Vision</span>
+          <span class="tag"><i class="fas fa-code"></i>Full-Stack Engineering</span>
+          <span class="tag"><i class="fab fa-aws"></i>Cloud Architecture</span>
+          <span class="tag"><i class="fas fa-database"></i>Spatial Databases</span>
+          <span class="tag"><i class="fas fa-microchip"></i>Deep Learning</span>
+          <span class="tag"><i class="fas fa-wifi"></i>IoT Integration</span>
+          <span class="tag"><i class="fas fa-layer-group"></i>Data Fusion</span>
+        </div>
+        <!-- <div class="fullstats fu d5">
+          <div class="fsc"><div class="fsc-v" data-target="32699">0</div><div class="fsc-l">Tiles Processed</div></div>
+          <div class="fsc"><div class="fsc-v" data-target="10" data-suffix="K+">0</div><div class="fsc-l">Properties Mapped</div></div>
+          <div class="fsc"><div class="fsc-v" data-target="333.9" data-suffix="km²" data-dec="1">0</div><div class="fsc-l">Area Monitored</div></div>
+          <div class="fsc"><div class="fsc-v" data-target="1" data-suffix="K+">0</div><div class="fsc-l">Farmers Reached</div></div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sp">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="lbl fu"><i class="fas fa-layer-group"></i>Expertise</div>
+      <h2 class="sh fu d1">Technologies I <span class="og">Master</span></h2>
+      <p class="sub fu d2" style="margin:0 auto">From satellite imagery processing to production-grade AI pipelines.</p>
+    </div>
+    <div class="sg">
+      <div class="sc fu d1">
+        <div class="sc-t"><span class="ic"><i class="fas fa-globe-africa"></i></span>Geospatial & GIS</div>
+        <div class="sitems">
+          <span class="si"><i class="fas fa-database"></i>PostGIS</span><span class="si"><i class="fas fa-globe"></i>GeoDjango</span>
+          <span class="si"><i class="fas fa-tools"></i>GDAL</span><span class="si"><i class="fas fa-map"></i>QGIS</span>
+          <span class="si"><i class="fas fa-map-marked-alt"></i>ArcGIS Pro</span><span class="si"><i class="fas fa-satellite-dish"></i>ERDAS</span>
+          <span class="si"><i class="fas fa-leaf"></i>Leaflet</span><span class="si"><i class="fas fa-map-marker"></i>Mapbox</span>
+          <span class="si"><i class="fas fa-th"></i>PMTiles</span><span class="si"><i class="fas fa-satellite"></i>Remote Sensing</span>
+          <span class="si"><i class="fas fa-wave-square"></i>SAR Processing</span><span class="si"><i class="fas fa-image"></i>Orthomosaic</span>
+        </div>
+      </div>
+      <div class="sc fu d2">
+        <div class="sc-t"><span class="ic"><i class="fas fa-code"></i></span>Software Engineering</div>
+        <div class="sitems">
+          <span class="si"><i class="fab fa-python"></i>Python</span><span class="si"><i class="fab fa-js"></i>JavaScript</span>
+          <span class="si"><i class="fas fa-server"></i>Django</span><span class="si"><i class="fas fa-plug"></i>DRF</span>
+          <span class="si"><i class="fas fa-bolt"></i>FastAPI</span><span class="si"><i class="fab fa-node-js"></i>Node.js</span>
+          <span class="si"><i class="fab fa-react"></i>React</span><span class="si"><i class="fas fa-mobile-alt"></i>Flutter</span>
+          <span class="si"><i class="fas fa-wind"></i>Tailwind CSS</span><span class="si"><i class="fab fa-docker"></i>Docker</span>
+          <span class="si"><i class="fab fa-aws"></i>AWS</span><span class="si"><i class="fas fa-tasks"></i>Celery/Redis</span>
+        </div>
+      </div>
+      <div class="sc fu d3">
+        <div class="sc-t"><span class="ic"><i class="fas fa-brain"></i></span>AI & Computer Vision</div>
+        <div class="sitems">
+          <span class="si"><i class="fas fa-fire"></i>TensorFlow</span><span class="si"><i class="fas fa-fire-alt"></i>PyTorch</span>
+          <span class="si"><i class="fas fa-crosshairs"></i>YOLOv8</span><span class="si"><i class="fas fa-eye"></i>OpenCV</span>
+          <span class="si"><i class="fas fa-robot"></i>Roboflow</span><span class="si"><i class="fas fa-network-wired"></i>CNNs</span>
+          <span class="si"><i class="fas fa-search"></i>Object Detection</span><span class="si"><i class="fas fa-tachometer-alt"></i>Real-time Inference</span>
+          <span class="si"><i class="fas fa-exchange-alt"></i>Transfer Learning</span><span class="si"><i class="fas fa-cloud-upload-alt"></i>Model Deploy</span>
+        </div>
+      </div>
+      <div class="sc fu d4">
+        <div class="sc-t"><span class="ic"><i class="fas fa-server"></i></span>Databases & DevOps</div>
+        <div class="sitems">
+          <span class="si"><i class="fas fa-database"></i>PostgreSQL</span><span class="si"><i class="fas fa-map-marked"></i>PostGIS</span>
+          <span class="si"><i class="fas fa-table"></i>MySQL</span><span class="si"><i class="fas fa-fire"></i>Firebase</span>
+          <span class="si"><i class="fab fa-docker"></i>Docker</span><span class="si"><i class="fab fa-aws"></i>AWS EC2/S3</span>
+          <span class="si"><i class="fas fa-sync"></i>CI/CD</span><span class="si"><i class="fas fa-shield-alt"></i>Nginx</span>
+          <span class="si"><i class="fab fa-linux"></i>Linux</span><span class="si"><i class="fas fa-code-branch"></i>Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sp">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="lbl fu"><i class="fas fa-rocket"></i>Portfolio</div>
+      <h2 class="sh fu d1">Featured <span class="og">Projects</span></h2>
+      <p class="sub fu d2" style="margin:0 auto">Production systems delivering measurable real-world impact — click any card to explore details.</p>
+    </div>
+    <div class="pg" id="pGrid"></div>
+  </div>
+</section>
+
+<!-- VIDEO DEMOS -->
+<section id="demos" class="sp">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="lbl fu"><i class="fas fa-play-circle"></i>Live Demos</div>
+      <h2 class="sh fu d1">See the Work <span class="og">In Action</span></h2>
+      <p class="sub fu d2" style="margin:0 auto">Watch how these systems perform in real-world environments.</p>
+    </div>
+    <div class="dg" id="dGrid"></div>
+    <p style="text-align:center;margin-top:28px;font-size:.83rem;color:var(--tx3)" class="fu">
+      <i class="fas fa-info-circle" style="color:var(--or)"></i>
+      &nbsp;Replace the <code style="background:var(--sf);padding:2px 8px;border-radius:5px">videoId</code> values in the <strong>demos</strong> array with your actual YouTube or Loom embed IDs.
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sp">
+  <div class="wrap">
+    <div class="lbl fu"><i class="fas fa-briefcase"></i>Career History</div>
+    <h2 class="sh fu d1">Work <span class="og">Experience</span></h2>
+    <p class="sub fu d2" style="margin-bottom:48px">Building high-impact systems across Ghana and beyond.</p>
+    <div class="tl" id="tlEl"></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="sp">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="lbl fu"><i class="fas fa-award"></i>Credentials</div>
+      <h2 class="sh fu d1">Certifications & <span class="og">Training</span></h2>
+    </div>
+    <div class="cg">
+      <div class="cc fu d1"><div class="ci"><i class="fab fa-aws"></i></div><div><div class="cn">AWS Certified Solutions Architect – Professional</div><div class="cb"><i class="fab fa-aws"></i> Amazon Web Services</div></div></div>
+      <div class="cc fu d2"><div class="ci"><i class="fas fa-robot"></i></div><div><div class="cn">Machine Learning and Advanced AI Techniques</div><div class="cb"><i class="fas fa-graduation-cap"></i> Professional Training</div></div></div>
+      <div class="cc fu d3"><div class="ci"><i class="fas fa-globe"></i></div><div><div class="cn">Geospatial Analytics Essentials</div><div class="cb"><i class="fas fa-map"></i> GIS Certification</div></div></div>
+      <div class="cc fu d4"><div class="ci"><i class="fas fa-brain"></i></div><div><div class="cn">Artificial Intelligence and Machine Learning</div><div class="cb"><i class="fas fa-microchip"></i> AI/ML Certification</div></div></div>
+      <div class="cc fu d5"><div class="ci"><i class="fas fa-mountain"></i></div><div><div class="cn">Essentials of Geology</div><div class="cb"><i class="fas fa-earth-africa"></i> Earth Sciences</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sp">
+  <div class="wrap">
+    <div class="lbl fu"><i class="fas fa-graduation-cap"></i>Education</div>
+    <h2 class="sh fu d1">Academic <span class="og">Background</span></h2>
+    <div class="eg" style="margin-top:44px">
+      <div class="ec fu d2"><div class="ei">🎓</div><div class="ed">BSc. Geographic Information Science and Cartography</div><div class="es">Kwame Nkrumah University of Science &amp; Technology</div><div class="ep"><i class="fas fa-calendar-alt"></i>Jan 2020 – Nov 2024 &nbsp;·&nbsp;<i class="fas fa-map-marker-alt"></i>Kumasi, Ghana</div></div>
+      <div class="ec fu d3"><div class="ei">🏫</div><div class="ed">High School Diploma</div><div class="es">Bibiani Senior High Technical School</div><div class="ep"><i class="fas fa-map-marker-alt"></i>Bibiani, Ghana</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sp">
+  <div class="wrap">
+    <div class="cong">
+      <div>
+        <div class="lbl fu"><i class="fas fa-paper-plane"></i>Get In Touch</div>
+        <h2 class="sh fu d1">Let's Build <span class="og">Something Great</span></h2>
+        <p style="color:var(--tx2);font-size:.93rem;line-height:1.85;margin-bottom:26px" class="fu d2">Open for freelance, contract, and collaboration opportunities worldwide. I bring deep technical expertise and a commitment to delivering production-quality results on time.</p>
+        <div class="cii fu d3">
+          <div class="cit"><div class="cic"><i class="fas fa-envelope"></i></div><div><div class="cil">Email</div><div class="civ">appiahksamuel21@gmail.com</div></div></div>
+          <div class="cit"><div class="cic"><i class="fas fa-map-marker-alt"></i></div><div><div class="cil">Location</div><div class="civ">Accra, Greater Accra Region, Ghana</div></div></div>
+          <div class="cit"><div class="cic"><i class="fas fa-clock"></i></div><div><div class="cil">Timezone</div><div class="civ">UTC+0 (GMT) · Flexible for global clients</div></div></div>
+          <div class="cit"><div class="cic"><i class="fab fa-linkedin-in"></i></div><div><div class="cil">LinkedIn</div><div class="civ">samuel-appiah-kubi-b52633333</div></div></div>
+        </div>
+        <div class="av fu d4"><span class="avd"></span>Currently available for new projects</div>
+      </div>
+      <div class="fu d2">
+        <form class="cf" id="cForm">
+          <div class="fr">
+            <div class="fg"><label>Full Name</label><input type="text" placeholder="John Doe" required/></div>
+            <div class="fg"><label>Email Address</label><input type="email" placeholder="john@example.com" required/></div>
+          </div>
+          <div class="fg"><label>Subject</label><input type="text" placeholder="Project Inquiry — GIS Platform" required/></div>
+          <div class="fg"><label>Message</label><textarea rows="6" placeholder="Tell me about your project, timeline, and goals..." required></textarea></div>
+          <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;font-size:1rem"><i class="fas fa-paper-plane"></i>Send Message</button>
+          <div class="fsuc" id="fsuc"><i class="fas fa-check-circle"></i> Sent! I'll respond within 24 hours.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fi">
+      <div class="fcp">© 2025 <span>Samuel Appiah Kubi</span>. All rights reserved. Built with <span>❤</span> in Accra.</div>
+      <nav class="fli"><a href="#hero">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+      <div class="fso">
+        <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="sl" style="width:36px;height:36px;font-size:.85rem"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="sl" style="width:36px;height:36px;font-size:.85rem"><i class="fab fa-github"></i></a>
+        <a href="mailto:appiahksamuel21@gmail.com" class="sl" style="width:36px;height:36px;font-size:.85rem"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div class="mo" id="pModal">
+  <div class="mbox">
+    <div class="mhdr"><div><div class="lbl" id="mNum" style="margin-bottom:9px"></div><h3 class="mtitle" id="mTitle"></h3></div><button class="mcl" id="mCl"><i class="fas fa-times"></i></button></div>
+    <div class="mbody" id="mBody"></div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="vo" id="vModal">
+  <div class="vbox"><button class="vcl" id="vCl"><i class="fas fa-times"></i></button><div class="vwrap"><iframe id="vFrame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div></div>
+</div>
+
+<script>
+/* =============================================
+   DATA — PROJECTS
+   ============================================= */
+const projects=[
+  {num:"01",icon:"fas fa-satellite-dish",img:"assets/cdp.png",title:"Plastic Waste Detection from UAV Orthomosaic",desc:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline using YOLOv8.",tags:["YOLOv8","GDAL","GeoTIFF","Python","OpenCV","Shapely","GeoJSON"],impact:"~1,000 unique detections · 89 hectares · 9mm GSD · 32,699 tiles",details:{overview:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline. Processed 32,699 tiles using YOLOv8 with 15% overlap. Implemented a checkpoint/resume system for fault tolerance during 10-hour processing runs.",highlights:["27.75 GB file, 232,144 × 42,780 pixels at 9mm ground sampling distance","32,699 tiles processed with 15% overlap strategy for edge accuracy","1,400+ raw detections merged to ~1,000 unique locations via IoU algorithm","GeoJSON / CSV / JSON export with full coordinate metadata","Zero cloud — fully local offline processing with checkpoint/resume","Confidence scoring and IoU-based duplicate merging algorithm"]}},
+  {num:"02",icon:"fas fa-tree",img:"assets/ra.png",title:"Rainforest Alliance – Sui River Monitoring",desc:"Hybrid monitoring system for 333.9 km² cocoa-forest landscape with mobile data collection, GIS dashboard, and automated stakeholder reporting.",tags:["Django","GIS","Leaflet","DRF","PostgreSQL","REST APIs"],impact:"333.9 km² monitored · Deforestation tracking · Community tools",details:{overview:"Full-stack hybrid monitoring system for the 333.9 km² Sui River cocoa-forest landscape. Combines offline-capable mobile data collection, real-time GIS visualization, and automated stakeholder reporting.",highlights:["Offline-capable mobile data collection modules for field agents","Real-time GIS dashboard for forest/cocoa boundary visualization","Automated stakeholder reporting with scheduled delivery","Analytics tracking deforestation rates and cocoa cultivation expansion","Livelihood indicator monitoring for 1,000+ farming community members","Participatory feedback tools reducing human error in data collection"]}},
+  {num:"03",icon:"fas fa-truck-moving",img:"assets/amp.png",title:"AMP Logistics Management System",desc:"Enterprise Django platform unifying fleet, inventory, warehouses, and shipments. Live production system at amp.afarinick.com.",tags:["Django 5.2","PostgreSQL","DRF","Redis","Docker","GeoIP"],impact:"6+ warehouse blocks · Real-time GPS tracking · 15+ integrated models",details:{overview:"Comprehensive enterprise logistics platform live at amp.afarinick.com, unifying fleet management, inventory control, warehouse operations, and shipment tracking.",highlights:["Transport management with vehicle fleet and licensed driver tracking","Inventory sync across 6+ warehouse blocks (A–G)","GeoIP-based login tracking with geographic analytics","Shipment dispatch workflows with automated customer notifications","Role-based access control with granular permission-driven UI","Full audit logging and terminal operations tracking"]}},
+  {num:"04",icon:"fas fa-city",img:"assets/prcs.png",title:"Municipal Property Tax Platform (PRCS)",desc:"GIS-based property tax and revenue collection system for municipal assembly. 10,000+ properties mapped with interactive Leaflet maps.",tags:["Django 6.0","PostGIS","Leaflet","PMTiles","DRF","Kowri"],impact:"60% reduction in manual processing · 10,000+ properties mapped",details:{overview:"GIS-based property tax and revenue collection system with interactive maps, automated billing, and Kowri payment gateway integration.",highlights:["Interactive property maps using PMTiles vector tile technology","10,000+ property polygons optimized for mobile performance","Automated bill generation with customizable rate structures","Kowri payment gateway with click analytics tracking","Role-based access: Admin, Supervisor, Collector","Real-time revenue dashboard with CSV/Excel export"]}},
+  {num:"05",icon:"fas fa-seedling",img:"assets/afarisense.png",title:"AI Cocoa Disease Detection (Afarinsene)",desc:"Deep learning system detecting Cocoa Swollen Shoot Virus (CSSVD) from mobile phone images. Production deployment to 1,000+ Ghanaian farmers.",tags:["TensorFlow","YOLOv8","Django","Celery","Redis","PostgreSQL"],impact:"92.44% accuracy · 1,000+ farmers · 40% faster disease response",details:{overview:"Production AI system detecting Cocoa Swollen Shoot Virus (CSSVD) from standard mobile phone images, deployed across Ghana to over 1,000 cocoa farmers.",highlights:["Custom CNN inference engine achieving 92.44% detection accuracy","Image preprocessing pipeline optimized for field conditions","Confidence scoring with severity level assessment","Async task queue (Celery/Redis) for batch processing and retraining","RESTful APIs serving predictions to mobile frontend apps","40% reduction in disease response time for participating farmers"]}},
+  {num:"06",icon:"fas fa-tractor",img:"assets/fms.png",title:"Enterprise Farm Management System (ACL)",desc:"Modular Django enterprise platform unifying GIS, IoT telemetry, workforce management, and automated financial workflows.",tags:["GeoDjango","PostGIS","Leaflet.js","DRF","Celery","Redis"],impact:"15+ integrated models · Real-time IoT · QR farm verification",details:{overview:"Modular enterprise platform unifying geospatial farm records, IoT sensor data, workforce management, and automated payroll processing.",highlights:["GeoDjango/PostGIS models for farm polygons (MultiPolygonField)","IoT pipeline for real-time soil moisture and temperature readings","Dynamic QR generation with cryptographically random UIDs","DRF endpoints serving geospatial data to Leaflet.js maps","Complex payroll aggregation with Django signal automation","Granular permissions for RA assistants, managers, admins"]}},
+  {num:"07",icon:"fas fa-leaf",img:"assets/trace.png",title:"EUDR Cocoa Traceability System",desc:"Farm-to-export traceability platform ensuring EU Deforestation Regulation (EUDR) compliance across Ghana's cocoa supply chain.",tags:["Django 5.1","PostGIS","Leaflet","DRF","Plotly Dash","AWS S3"],impact:"Full EUDR compliance · Export audit trail · Real-time dashboard",details:{overview:"Farm-to-export traceability platform for EU Deforestation Regulation compliance, tracking cocoa through every stage of Ghana's supply chain.",highlights:["Full chain: Farmers → Clerks → LBCs → Ports → Exports","GIS boundary monitoring for real-time deforestation tracking","Primary and secondary evacuation tracking modules","REST API with full Swagger/OpenAPI documentation","Plotly Dash analytics dashboard · AWS S3 file storage"]}},
+//   {num:"08",icon:"fas fa-road",img:"",title:"Pothole Detection Mobile App (TRECK)",desc:"YOLOv8-powered mobile app for real-time pothole detection with GPS tagging and automatic road authority alerts.",tags:["YOLOv8","Flutter","Django REST","OpenCV","Firebase","GPS"],impact:"Real-time authority alerts · GPS-tagged reports · Faster repair response",details:{overview:"AI-powered mobile application for real-time pothole detection using computer vision, with automatic GPS tagging and road authority notification.",highlights:["YOLOv8 model trained on custom pothole image dataset","Real-time inference from phone camera video stream","Flutter frontend with native camera integration","GPS geolocation for automatic location capture","OpenCV preprocessing for varying road lighting conditions","Automatic authority alerts with full reporting dashboard"]}},
+  {num:"09",icon:"fas fa-landmark",img:"assets/exim.png",title:"GEXIM Digital GIS Solution",desc:"Comprehensive GIS solution for Ghana Export-Import Bank tracking development projects, loan portfolios, and beneficiary impact assessment.",tags:["Django DRF","PostgreSQL","GIS","Python","Mobile APIs","M&E"],impact:"Offline field monitoring · Automated M&E · Financial integration",details:{overview:"Digital GIS solution for Ghana Export-Import Bank enabling tracking of development projects, loan portfolios, and beneficiary impact assessment.",highlights:["Secure RESTful API as core data transaction platform","Offline-capable mobile app for remote field monitoring","Project performance indicators with automated data validation","Results framework module for logical framework analysis","Real-time milestone dashboard with interactive GIS mapping","API-triggered M&E report generation with visualizations"]}}
+];
+
+/* =============================================
+   DATA — DEMOS
+   Replace videoId with your actual YouTube video ID
+   ============================================= */
+const demos=[
+  {title:"AI Cocoa Disease Detection — Live Demo",desc:"Watch the Afarinsene AI system detect Cocoa Swollen Shoot Virus from mobile images with 92.44% accuracy in real-time.",thumb:"https://images.unsplash.com/photo-1597916829826-02e5bb4a54e0?w=800&q=80",videoId:"dQw4w9WgXcQ",dur:"3:24",tags:["YOLOv8","TensorFlow","Django","92.44% Accuracy"]},
+  {title:"UAV Waste Detection Pipeline — Walkthrough",desc:"End-to-end walkthrough of processing 27.75 GB drone orthomosaic through the YOLOv8 pipeline detecting 1,000+ waste sites.",thumb:"https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80",videoId:"dQw4w9WgXcQ",dur:"5:12",tags:["YOLOv8","GDAL","32,699 Tiles","GeoJSON"]},
+  {title:"Municipal Property Tax GIS Platform",desc:"Interactive tour of the PRCS property tax system — PMTiles vector maps, 10,000+ properties, automated billing and revenue analytics.",thumb:"https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=800&q=80",videoId:"dQw4w9WgXcQ",dur:"4:48",tags:["PostGIS","PMTiles","Leaflet","Django 6.0"]},
+  {title:"Rainforest Alliance Forest Monitoring Dashboard",desc:"Live demo of the 333.9 km² Sui River monitoring dashboard — deforestation alerts, cocoa boundaries, community reporting.",thumb:"https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",videoId:"dQw4w9WgXcQ",dur:"6:02",tags:["GeoDjango","Leaflet","333.9 km²","Deforestation Tracking"]}
+];
+
+/* =============================================
+   DATA — EXPERIENCE
+   ============================================= */
+const exps=[
+  {role:"Software Engineer",co:"Afarinick Company Limited",period:"Sep 2024 – Present",loc:"Accra, Ghana",type:"Hybrid",b:"c",ach:["Design and develop scalable web applications using Django, React, Python, and AWS","Built AI-powered cocoa disease detection system achieving 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT integration"]},
+  {role:"Geospatial Developer",co:"Ghana Export-Import Bank (GEXIM)",period:"Oct 2025 – Present",loc:"Accra, Ghana",type:"Remote",b:"c",ach:["Designed E-Digital GIS solution tracking GEXIM-funded development projects","Architected secure RESTful API as core data transaction platform","Built offline-capable mobile data collection app for field monitoring","Created beneficiary tracking with impact assessment capabilities"]},
+  {role:"Geospatial Developer",co:"SKTLive LTD",period:"Oct 2025 – Present",loc:"Accra, Ghana",type:"Remote",b:"c",ach:["Architected municipal tax collection platform with 60% reduction in manual processing","Engineered PMTiles vector tile system converting 10,000+ property polygons","Processed raw GeoTIFF imagery into optimized tile pyramids (zoom 5–25)","Built spatial analysis toolkit: buffers, heatmaps, distance tools, geocoding"]},
+  {role:"Geospatial Developer",co:"Rainforest Alliance",period:"Sep 2025 – Present",loc:"Accra, Ghana",type:"Remote",b:"c",ach:["Developed hybrid monitoring system for 333.9 km² Sui River cocoa-forest landscape","Built real-time GIS dashboard for forest and cocoa boundary visualization","Implemented automated stakeholder reporting and analytics system","Deployed participatory tools empowering local farming communities"]},
+  {role:"Full-Stack Developer",co:"AMP Logistics GH. Limited",period:"Aug 2025 – Present",loc:"Tema, Ghana",type:"Hybrid",b:"c",ach:["Designed comprehensive logistics platform covering fleet, warehouse, and shipments","Built real-time vehicle tracking with GPS integration for fleet management","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
+  {role:"Back End Developer",co:"Touton SA (EUDR Traceability)",period:"Oct 2024 – Present",loc:"Accra, Ghana",type:"Remote",b:"c",ach:["Developed backend for Ghana's premier cocoa supply chain traceability platform","Built RESTful APIs with geospatial tracking for farm-to-export monitoring","Integrated with Ghana Cocoa Board systems for export certification"]},
+  {role:"Full-Stack Developer",co:"TRECK – Regional Transport Research Centre",period:"Aug 2024 – Present",loc:"Kumasi, Ghana",type:"On-site",b:"c",ach:["Built pothole detection mobile app with YOLOv8 and Flutter","Developed AI-driven computer vision models using TensorFlow","Integrated GPS geolocation for automatic position capture and alerting"]},
+  {role:"Mine Surveyor (Intern)",co:"Asanko Gold Mine",period:"Oct 2023 – Nov 2023",loc:"Manso-Nkwanta, Ghana",type:"On-site",b:"p",ach:["Conducted topographic and hydrographic surveys for surface mining","Used Total Stations, GPS systems, AutoCAD, Surfer, and ArcGIS"]},
+  {role:"Assistant Highway Engineer (Intern)",co:"Joshob Construction Company",period:"Sep 2023 – Oct 2023",loc:"Kumasi, Ghana",type:"On-site",b:"p",ach:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS instruments"]}
+];
+
+/* =============================================
+   THEME
+   ============================================= */
+const html=document.documentElement;
+const saved=localStorage.getItem('sak-t')||'dark';
+html.setAttribute('data-theme',saved);
+syncTh(saved);
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const n=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',n);localStorage.setItem('sak-t',n);syncTh(n);
+});
+function syncTh(t){document.getElementById('thIcon').className=t==='dark'?'fa-solid fa-sun':'fa-solid fa-moon'}
+
+/* =============================================
+   MOBILE MENU
+   ============================================= */
+const hbBtn=document.getElementById('hbBtn'),mmEl=document.getElementById('mmEl');
+hbBtn.addEventListener('click',()=>{hbBtn.classList.toggle('op');mmEl.classList.toggle('op')});
+document.querySelectorAll('.mm a').forEach(a=>a.addEventListener('click',()=>{hbBtn.classList.remove('op');mmEl.classList.remove('op')}));
+
+/* =============================================
+   ACTIVE NAV
+   ============================================= */
+const secs=document.querySelectorAll('section[id]');
+const nls=document.querySelectorAll('.nl');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id});
+  nls.forEach(l=>l.classList.toggle('act',l.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+/* =============================================
+   TYPING
+   ============================================= */
+const words=["Geospatial Developer","AI/ML Engineer","Django Expert","Computer Vision Specialist","Full-Stack Architect","Remote Sensing Analyst","GIS Platform Builder"];
+let wi=0,ci=0,del=false;
+const tel=document.getElementById('typed');
+function type(){
+  const w=words[wi];
+  tel.textContent=del?w.slice(0,ci-1):w.slice(0,ci+1);
+  del?ci--:ci++;
+  if(!del&&ci===w.length){del=true;setTimeout(type,2100);return}
+  if(del&&ci===0){del=false;wi=(wi+1)%words.length}
+  setTimeout(type,del?55:88);
+}
+type();
+
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+/* =============================================
+   COUNTERS
+   ============================================= */
+const cobs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done='1';animCnt(e.target)}});
+},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>cobs.observe(el));
+function animCnt(el){
+  const tgt=parseFloat(el.dataset.target),sfx=el.dataset.suffix||'',dec=parseInt(el.dataset.dec||'0');
+  const dur=1800,st=performance.now();
+  function upd(now){const p=Math.min((now-st)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(tgt*e).toFixed(dec)+sfx;if(p<1)requestAnimationFrame(upd)}
+  requestAnimationFrame(upd);
+}
+
+/* =============================================
+   RENDER PROJECTS
+   ============================================= */
+const pg=document.getElementById('pGrid');
+projects.forEach((p,i)=>{
+  const d=Math.min((i%3)+1,6);
+  const c=document.createElement('div');c.className=`pc fu d${d}`;
+  c.innerHTML=`
+    <div class="pimg">
+      <img src="${p.img}" alt="${p.title}" loading="lazy"/>
+      <div class="pov"><div class="pov-inner"><i class="fas fa-expand-alt"></i>Explore Details</div></div>
+      <div class="pic"><i class="${p.icon}"></i></div>
+    </div>
+    <div class="pbody">
+      <div class="pnum">PROJECT ${p.num}</div>
+      <div class="ptitle">${p.title}</div>
+      <div class="pdesc">${p.desc}</div>
+      <div class="ptags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+      <div class="pimp"><i class="fas fa-chart-line"></i>${p.impact}</div>
+    </div>
+    <div class="pfoot">
+      <span style="font-size:.73rem;color:var(--tx3)"><i class="fas fa-microchip" style="color:var(--or);margin-right:4px"></i>${p.tags.length} technologies</span>
+      <span class="vb">Details <i class="fas fa-arrow-right"></i></span>
+    </div>`;
+  c.addEventListener('click',()=>openProj(p));
+  pg.appendChild(c);obs.observe(c);
+});
+
+/* =============================================
+   RENDER DEMOS
+   ============================================= */
+const dg=document.getElementById('dGrid');
+demos.forEach((d,i)=>{
+  const dd=Math.min((i%2)+1,3);
+  const card=document.createElement('div');card.className=`dc fu d${dd}`;
+  card.innerHTML=`
+    <div class="dthumb" data-vid="${d.videoId}">
+      <img src="${d.thumb}" alt="${d.title}" loading="lazy"/>
+      <div class="dplay"><div class="dpbtn"><i class="fas fa-play"></i></div></div>
+      <div class="dur"><i class="fas fa-clock" style="margin-right:4px;color:var(--or)"></i>${d.dur}</div>
+    </div>
+    <div class="dinfo">
+      <div class="dtitle">${d.title}</div>
+      <div class="ddesc">${d.desc}</div>
+      <div class="dtags">${d.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+    </div>`;
+  card.querySelector('.dthumb').addEventListener('click',e=>openVid(e.currentTarget.dataset.vid));
+  dg.appendChild(card);obs.observe(card);
+});
+
+/* =============================================
+   VIDEO MODAL
+   ============================================= */
+const vm=document.getElementById('vModal'),vf=document.getElementById('vFrame');
+document.getElementById('vCl').addEventListener('click',closeVid);
+vm.addEventListener('click',e=>{if(e.target===vm)closeVid()});
+function openVid(id){vf.src=`https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;vm.classList.add('op');document.body.style.overflow='hidden'}
+function closeVid(){vm.classList.remove('op');vf.src='';document.body.style.overflow=''}
+
+/* =============================================
+   PROJECT MODAL
+   ============================================= */
+const pm=document.getElementById('pModal');
+document.getElementById('mCl').addEventListener('click',closeProj);
+pm.addEventListener('click',e=>{if(e.target===pm)closeProj()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeVid();closeProj()}});
+function openProj(p){
+  document.getElementById('mNum').textContent=`PROJECT ${p.num}`;
+  document.getElementById('mTitle').textContent=p.title;
+  document.getElementById('mBody').innerHTML=`
+    <img class="mimg" src="${p.img}" alt="${p.title}" loading="lazy"/>
+    <div class="ms"><div class="ms-t"><i class="fas fa-info-circle"></i>Overview</div><div class="ms-txt">${p.details.overview}</div></div>
+    <div class="ms"><div class="ms-t"><i class="fas fa-code"></i>Technologies</div><div style="display:flex;flex-wrap:wrap;gap:7px">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div></div>
+    <div class="ms"><div class="ms-t"><i class="fas fa-list-check"></i>Key Highlights</div><ul class="ml">${p.details.highlights.map(h=>`<li>${h}</li>`).join('')}</ul></div>
+    <div class="ms" style="margin-bottom:0"><div class="ms-t"><i class="fas fa-chart-line"></i>Impact</div><div class="ms-txt" style="color:var(--or);font-weight:700">${p.impact}</div></div>`;
+  pm.classList.add('op');document.body.style.overflow='hidden';
+}
+function closeProj(){pm.classList.remove('op');document.body.style.overflow=''}
+
+/* =============================================
+   RENDER TIMELINE
+   ============================================= */
+const tl=document.getElementById('tlEl');
+exps.forEach((e,i)=>{
+  const d=Math.min((i%3)+1,5);
+  const item=document.createElement('div');item.className=`ti fu d${d}`;
+  item.innerHTML=`
+    <div class="tdot"></div>
+    <div class="tc">
+      <div class="th">
+        <div>
+          <div class="tr">${e.role}</div>
+          <div class="tco"><i class="fas fa-building"></i> ${e.co}</div>
+          <div class="tm">
+            <span><i class="fas fa-calendar-alt"></i>${e.period}</span>
+            <span><i class="fas fa-map-marker-alt"></i>${e.loc}</span>
+            <span><i class="fas fa-laptop-house"></i>${e.type}</span>
+          </div>
+        </div>
+        <span class="${e.b==='c'?'bc':'bp'}">${e.b==='c'?'● Active':'Internship'}</span>
+      </div>
+      <ul class="ta">${e.ach.map(a=>`<li>${a}</li>`).join('')}</ul>
+    </div>`;
+  tl.appendChild(item);obs.observe(item);
+});
+
+/* =============================================
+   CONTACT FORM
+   ============================================= */
+document.getElementById('cForm').addEventListener('submit',function(ev){
+  ev.preventDefault();
+  const btn=this.querySelector('button[type=submit]');
+  btn.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Sending...';btn.disabled=true;
+  setTimeout(()=>{
+    btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false;
+    this.reset();
+    const ok=document.getElementById('fsuc');ok.style.display='block';
+    setTimeout(()=>ok.style.display='none',5000);
+    console.log('✅ Form submitted');
+  },1400);
+});
+</script>
+</body>
+</html>

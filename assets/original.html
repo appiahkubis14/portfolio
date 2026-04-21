@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Samuel Appiah Kubi — Geospatial & AI Engineer</title>
+<meta name="description" content="Senior Geospatial Software Engineer, AI/Computer Vision Developer, and Full-Stack Architect based in Accra, Ghana."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Onest:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+/* ══════════════════════════════════════════════
+   DESIGN SYSTEM: DARK LUXURY + GEOMETRIC BRUTALISM
+   Palette: Near-black canvas, electric amber, cold white
+   ══════════════════════════════════════════════ */
+:root {
+  --ink:        #06060A;
+  --ink2:       #0D0D14;
+  --ink3:       #13131C;
+  --plate:      #18181F;
+  --plate2:     #1E1E28;
+  --edge:       rgba(255,255,255,0.06);
+  --edge2:      rgba(255,255,255,0.12);
+  --amber:      #F5A623;
+  --amber2:     #E8922A;
+  --amber3:     #FFD060;
+  --amber-glow: rgba(245,166,35,0.20);
+  --amber-dim:  rgba(245,166,35,0.08);
+  --amber-mid:  rgba(245,166,35,0.14);
+  --snow:       #F8F8FC;
+  --snow2:      #C4C4D4;
+  --snow3:      #7A7A92;
+  --snow4:      #3C3C52;
+  --cyan:       #00E5FF;
+  --green:      #1FD27B;
+  --r:          12px;
+  --r2:         20px;
+  --r3:         32px;
+  --t:          0.3s cubic-bezier(.4,0,.2,1);
+  --font-disp:  'Syne', sans-serif;
+  --font-cab:   'Cabinet Grotesk', sans-serif;
+  --font-body:  'Onest', sans-serif;
+  --font-mono:  'DM Mono', monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--font-body);
+  background:var(--ink);color:var(--snow);
+  line-height:1.65;overflow-x:hidden;
+  cursor:none;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:none;border:none;background:none;font-family:var(--font-body)}
+ul{list-style:none}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:99px}
+
+/* ══ CUSTOM CURSOR ══ */
+#cursor{
+  position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--amber);
+  transform:translate(-50%,-50%);
+  transition:width .2s, height .2s, background .2s;
+  mix-blend-mode:difference;
+}
+#cursor-ring{
+  position:fixed;top:0;left:0;z-index:9998;pointer-events:none;
+  width:36px;height:36px;border-radius:50%;
+  border:1.5px solid rgba(245,166,35,0.5);
+  transform:translate(-50%,-50%);
+  transition:all .12s ease;
+}
+body:has(a:hover) #cursor,
+body:has(button:hover) #cursor{width:18px;height:18px}
+
+/* ══ UTILITIES ══ */
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 40px}
+.sec{padding:120px 0}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--amber);
+  margin-bottom:20px;
+}
+.eyebrow::before{
+  content:'';display:block;width:28px;height:1.5px;background:var(--amber);
+}
+
+.title-xl{
+  font-family:var(--font-disp);font-weight:800;
+  font-size:clamp(2.8rem,5.5vw,5rem);
+  line-height:1.0;letter-spacing:-0.04em;
+  color:var(--snow);
+}
+.title-lg{
+  font-family:var(--font-disp);font-weight:800;
+  font-size:clamp(2rem,3.5vw,3.4rem);
+  line-height:1.05;letter-spacing:-0.035em;
+}
+.title-md{
+  font-family:var(--font-cab);font-weight:800;font-size:1.15rem;
+  letter-spacing:-0.02em;
+}
+.amber{color:var(--amber)}
+.sub{font-size:1rem;color:var(--snow3);line-height:1.8;max-width:560px}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+/* ══ BUTTONS ══ */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-cab);font-weight:800;font-size:0.85rem;letter-spacing:0.04em;
+  padding:15px 30px;border-radius:4px;
+  transition:all .25s ease;white-space:nowrap;position:relative;overflow:hidden;
+}
+.btn-amber{
+  background:var(--amber);color:var(--ink);
+}
+.btn-amber::after{
+  content:'';position:absolute;inset:0;background:#fff;opacity:0;
+  transition:opacity .2s;
+}
+.btn-amber:hover::after{opacity:0.12}
+.btn-amber:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--amber-glow)}
+.btn-outline{
+  border:1.5px solid var(--edge2);color:var(--snow);background:transparent;
+}
+.btn-outline:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+.btn-ghost{
+  border:1.5px solid var(--edge);color:var(--snow3);
+}
+.btn-ghost:hover{border-color:var(--edge2);color:var(--snow);transform:translateY(-2px)}
+
+/* ══════════════════════════════════════════════
+   NAV
+   ══════════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0;
+  transition:all .3s ease;
+}
+#nav.scrolled{
+  background:rgba(6,6,10,0.92);
+  backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--edge);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;max-width:1280px;margin:0 auto;padding:0 40px;
+}
+.nav-logo{
+  font-family:var(--font-disp);font-weight:800;font-size:1.4rem;
+  letter-spacing:-0.05em;color:var(--snow);
+  display:flex;align-items:center;gap:2px;
+}
+.nav-logo-mark{
+  width:8px;height:8px;border-radius:50%;background:var(--amber);
+  box-shadow:0 0 12px var(--amber);display:inline-block;
+}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{
+  font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.08em;
+  color:var(--snow3);padding:8px 16px;border-radius:4px;
+  transition:all .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--amber);background:var(--amber-dim)}
+.nav-cta{
+  display:flex;align-items:center;gap:10px;
+}
+.nav-avail{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;
+  color:var(--green);
+  padding:7px 14px;background:rgba(31,210,123,0.08);
+  border:1px solid rgba(31,210,123,0.2);border-radius:99px;
+}
+.nav-avail-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--green);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hamburger{
+  display:none;width:44px;height:44px;align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;border-radius:4px;
+  border:1px solid var(--edge2);background:var(--plate);
+}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--snow2);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{
+  display:none;position:fixed;inset:0;top:72px;background:var(--ink);
+  z-index:999;padding:40px;flex-direction:column;gap:4px;
+  transform:translateY(-100%);transition:transform .35s ease;
+}
+.mob-menu.open{transform:translateY(0)}
+.mob-menu a{
+  font-family:var(--font-disp);font-size:2.4rem;font-weight:800;
+  color:var(--snow);padding:12px 0;
+  border-bottom:1px solid var(--edge);
+  transition:color .2s;letter-spacing:-0.03em;
+}
+.mob-menu a:hover{color:var(--amber)}
+
+/* ══════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════ */
+#hero{
+  min-height:100vh;position:relative;
+  display:flex;align-items:center;
+  padding:100px 0 60px;overflow:hidden;
+}
+/* Noise texture overlay */
+#hero::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:0.6;pointer-events:none;
+}
+/* Geometric grid */
+.hero-grid{
+  position:absolute;inset:0;z-index:1;
+  background-image:
+    linear-gradient(rgba(245,166,35,0.03) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(245,166,35,0.03) 1px, transparent 1px);
+  background-size:64px 64px;
+}
+/* Large ambient glow */
+.hero-glow{
+  position:absolute;top:-20%;right:-10%;z-index:1;
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;bottom:-30%;left:-15%;z-index:1;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(0,229,255,0.04) 0%, transparent 65%);
+  pointer-events:none;
+}
+/* Satellite imagery inset */
+.hero-img-block{
+  position:absolute;right:0;top:0;bottom:0;width:42%;z-index:2;
+  overflow:hidden;
+}
+.hero-img-block::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:200px;z-index:2;
+  background:linear-gradient(to right, var(--ink), transparent);
+}
+.hero-img-block img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(0.3) brightness(0.35);
+  mix-blend-mode:luminosity;
+}
+/* Data overlay on image */
+.hero-data-overlay{
+  position:absolute;top:15%;right:48px;z-index:3;
+  display:flex;flex-direction:column;gap:14px;
+}
+.hero-data-card{
+  background:rgba(6,6,10,0.75);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--edge2);border-radius:var(--r);
+  padding:16px 20px;min-width:180px;
+}
+.hero-data-label{
+  font-family:var(--font-mono);font-size:0.62rem;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--snow3);
+  margin-bottom:6px;
+}
+.hero-data-val{
+  font-family:var(--font-disp);font-weight:800;font-size:1.5rem;
+  color:var(--amber);line-height:1;
+}
+.hero-content{position:relative;z-index:3;max-width:640px}
+.hero-location{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.15em;
+  color:var(--snow3);margin-bottom:28px;
+}
+.hero-location i{color:var(--amber)}
+.hero-h1{
+  font-family:var(--font-disp);font-weight:800;
+  font-size:clamp(3.2rem,7vw,6.5rem);
+  line-height:0.95;letter-spacing:-0.05em;
+  margin-bottom:24px;
+}
+.hero-h1 .line{overflow:hidden;display:block}
+.hero-h1 .inner{display:block;animation:slideUp .9s cubic-bezier(.76,0,.24,1) forwards;opacity:0}
+.hero-h1 .line:nth-child(1) .inner{animation-delay:.1s}
+.hero-h1 .line:nth-child(2) .inner{animation-delay:.2s}
+.hero-h1 .line:nth-child(3) .inner{animation-delay:.3s}
+@keyframes slideUp{from{transform:translateY(105%);opacity:0}to{transform:translateY(0);opacity:1}}
+.hero-role-wrap{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-cab);font-size:clamp(1rem,2.2vw,1.35rem);
+  font-weight:700;color:var(--snow2);
+  margin-bottom:22px;
+  animation:fadeIn .8s .55s ease forwards;opacity:0;
+}
+.hero-cursor{
+  display:inline-block;width:2.5px;height:1.15em;
+  background:var(--amber);vertical-align:middle;
+  animation:blink .7s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-bio{
+  font-size:1rem;color:var(--snow3);line-height:1.85;margin-bottom:38px;
+  animation:fadeIn .8s .7s ease forwards;opacity:0;max-width:500px;
+}
+.hero-actions{
+  display:flex;flex-wrap:wrap;gap:12px;margin-bottom:52px;
+  animation:fadeIn .8s .85s ease forwards;opacity:0;
+}
+.hero-socials{
+  display:flex;align-items:center;gap:6px;
+  animation:fadeIn .8s 1s ease forwards;opacity:0;
+}
+.soc-btn{
+  width:42px;height:42px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--plate);border:1px solid var(--edge);
+  color:var(--snow3);font-size:0.9rem;transition:all .2s;
+}
+.soc-btn:hover{background:var(--amber);border-color:var(--amber);color:var(--ink);transform:translateY(-3px)}
+.hero-scroll-line{
+  position:absolute;bottom:0;left:40px;z-index:3;
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.2em;
+  color:var(--snow4);text-transform:uppercase;
+  animation:fadeIn 1s 1.2s ease forwards;opacity:0;
+  padding-bottom:32px;
+}
+.scroll-line{width:60px;height:1px;background:var(--snow4)}
+
+/* ══════════════════════════════════════════════
+   MARQUEE
+   ══════════════════════════════════════════════ */
+.ticker{
+  overflow:hidden;
+  border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);
+  background:var(--ink2);padding:18px 0;
+}
+.ticker-track{display:flex;animation:tick 30s linear infinite;width:max-content;gap:0}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--snow4);padding:0 40px;white-space:nowrap;
+}
+.ticker-item i{color:var(--amber);font-size:0.85rem}
+.tick-sep{color:var(--amber);opacity:0.3;font-size:1rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════════════
+   ABOUT
+   ══════════════════════════════════════════════ */
+#about{background:var(--ink2)}
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-visual{position:relative}
+.about-frame{
+  position:relative;border-radius:var(--r2);overflow:hidden;
+  aspect-ratio:4/5;
+}
+.about-frame img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75) saturate(1.1)}
+.about-frame-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(6,6,10,0.7) 0%, transparent 50%);
+}
+/* Amber corner accent */
+.about-frame::before{
+  content:'';position:absolute;top:-1px;left:-1px;right:-1px;bottom:-1px;
+  border-radius:var(--r2);
+  background:linear-gradient(135deg, var(--amber) 0%, transparent 50%, transparent 100%);
+  z-index:-1;padding:1.5px;
+}
+/* Floating stats on photo */
+.about-float{
+  position:absolute;background:rgba(6,6,10,0.88);
+  backdrop-filter:blur(16px);border:1px solid var(--edge2);
+  border-radius:var(--r);padding:18px 22px;
+}
+.about-float-1{bottom:28px;left:-32px}
+.about-float-2{top:28px;right:-32px}
+.about-float-label{
+  font-family:var(--font-mono);font-size:0.62rem;
+  letter-spacing:0.15em;color:var(--snow3);margin-bottom:6px;text-transform:uppercase;
+}
+.about-float-val{
+  font-family:var(--font-disp);font-weight:800;font-size:1.8rem;
+  color:var(--amber);line-height:1;
+}
+.about-float-sub{
+  font-family:var(--font-mono);font-size:0.65rem;color:var(--snow4);margin-top:3px;
+}
+.about-text p{
+  font-size:0.97rem;color:var(--snow3);line-height:1.9;margin-bottom:18px;
+}
+.about-text p strong{color:var(--snow);font-weight:600}
+.about-chips{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 32px}
+.chip{
+  font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.06em;
+  padding:6px 14px;border-radius:4px;
+  background:var(--plate);border:1px solid var(--edge);
+  color:var(--snow3);transition:all .2s;
+}
+.chip:hover{border-color:var(--amber);color:var(--amber)}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--edge);border-radius:var(--r);overflow:hidden;margin-top:32px}
+.about-stat{
+  background:var(--plate);padding:22px 18px;text-align:center;
+}
+.about-stat-n{
+  font-family:var(--font-disp);font-weight:800;font-size:2rem;
+  color:var(--amber);line-height:1;margin-bottom:6px;
+}
+.about-stat-l{font-family:var(--font-mono);font-size:0.62rem;color:var(--snow4);letter-spacing:0.12em;text-transform:uppercase}
+
+/* ══════════════════════════════════════════════
+   SERVICES
+   ══════════════════════════════════════════════ */
+#services{background:var(--ink)}
+.services-header{margin-bottom:72px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--edge)}
+.service-card{
+  background:var(--ink);padding:44px 36px;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--amber);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{background:var(--ink2)}
+.service-num{
+  font-family:var(--font-mono);font-size:0.68rem;color:var(--snow4);
+  letter-spacing:0.2em;margin-bottom:28px;
+}
+.service-icon{
+  width:56px;height:56px;border-radius:12px;
+  background:var(--amber-dim);border:1px solid rgba(245,166,35,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;color:var(--amber);margin-bottom:24px;
+  transition:all .3s;
+}
+.service-card:hover .service-icon{background:var(--amber);color:var(--ink)}
+.service-title{
+  font-family:var(--font-cab);font-weight:800;font-size:1.15rem;
+  margin-bottom:14px;line-height:1.3;
+}
+.service-desc{font-size:0.88rem;color:var(--snow3);line-height:1.8;margin-bottom:24px}
+.service-features{display:flex;flex-direction:column;gap:8px}
+.service-feature{
+  display:flex;align-items:center;gap:8px;
+  font-size:0.82rem;color:var(--snow4);
+}
+.service-feature::before{
+  content:'';display:block;width:5px;height:5px;
+  border-radius:50%;background:var(--amber);flex-shrink:0;
+}
+.service-arrow{
+  position:absolute;bottom:32px;right:32px;
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--edge);display:flex;align-items:center;justify-content:center;
+  color:var(--snow4);font-size:0.8rem;transition:all .3s;
+}
+.service-card:hover .service-arrow{background:var(--amber);border-color:var(--amber);color:var(--ink);transform:rotate(45deg)}
+
+/* ══════════════════════════════════════════════
+   SKILLS
+   ══════════════════════════════════════════════ */
+#skills{background:var(--ink2)}
+.skills-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.skills-left p{font-size:0.95rem;color:var(--snow3);line-height:1.85;margin-bottom:24px}
+.skill-cats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.skill-cat{
+  background:var(--plate);border:1px solid var(--edge);border-radius:var(--r);
+  padding:20px 18px;transition:border-color .2s;
+}
+.skill-cat:hover{border-color:var(--amber)}
+.skill-cat-name{
+  font-family:var(--font-cab);font-weight:800;font-size:0.88rem;
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.skill-cat-name i{color:var(--amber);font-size:0.95rem}
+.skill-pills{display:flex;flex-wrap:wrap;gap:6px}
+.sk-pill{
+  font-family:var(--font-mono);font-size:0.68rem;padding:4px 10px;
+  border-radius:3px;background:var(--ink2);
+  border:1px solid var(--edge);color:var(--snow3);
+  transition:all .2s;
+}
+.sk-pill:hover{border-color:var(--amber);color:var(--amber)}
+
+/* ══════════════════════════════════════════════
+   PROJECTS
+   ══════════════════════════════════════════════ */
+#projects{background:var(--ink)}
+.proj-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:64px;gap:40px;flex-wrap:wrap;
+}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--edge)}
+.proj-card{
+  background:var(--ink);overflow:hidden;position:relative;
+  cursor:pointer;transition:background .3s;
+}
+.proj-card:hover{background:var(--ink2)}
+.proj-img{
+  position:relative;height:220px;overflow:hidden;
+  background:var(--plate);
+}
+.proj-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .7s ease, filter .4s;
+  filter:saturate(0.5) brightness(0.6);
+}
+.proj-card:hover .proj-img img{transform:scale(1.08);filter:saturate(0.7) brightness(0.7)}
+.proj-img-bar{
+  position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--amber);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s .1s ease;
+}
+.proj-card:hover .proj-img-bar{transform:scaleX(1)}
+.proj-tag-row{
+  position:absolute;top:14px;left:14px;
+  display:flex;gap:6px;flex-wrap:wrap;
+}
+.proj-tag{
+  font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;
+  padding:3px 9px;border-radius:3px;
+  background:rgba(6,6,10,0.85);border:1px solid var(--edge2);
+  color:var(--snow3);
+  backdrop-filter:blur(8px);
+}
+.proj-num{
+  position:absolute;top:14px;right:14px;
+  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;
+  color:var(--amber);
+  background:rgba(6,6,10,0.85);backdrop-filter:blur(8px);
+  padding:4px 10px;border-radius:3px;border:1px solid rgba(245,166,35,0.2);
+}
+.proj-body{padding:28px 24px 20px}
+.proj-title{
+  font-family:var(--font-cab);font-weight:800;font-size:1rem;
+  margin-bottom:10px;line-height:1.35;
+}
+.proj-desc{font-size:0.83rem;color:var(--snow3);line-height:1.7;margin-bottom:16px}
+.proj-impact{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--font-mono);font-size:0.7rem;color:var(--amber);
+  border-top:1px solid var(--edge);padding-top:14px;margin-top:4px;
+}
+.proj-footer{
+  padding:12px 24px 24px;display:flex;justify-content:space-between;align-items:center;
+}
+.proj-view{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--font-cab);font-weight:800;font-size:0.78rem;
+  color:var(--amber);transition:gap .2s;
+}
+.proj-card:hover .proj-view{gap:12px}
+
+/* ══════════════════════════════════════════════
+   EXPERIENCE
+   ══════════════════════════════════════════════ */
+#experience{background:var(--ink2)}
+.exp-layout{display:grid;grid-template-columns:1fr 2.2fr;gap:80px;align-items:start}
+.exp-intro p{font-size:0.95rem;color:var(--snow3);line-height:1.85;margin-bottom:20px}
+.exp-cta{margin-top:32px}
+.exp-stack{display:flex;flex-direction:column;gap:1px;background:var(--edge)}
+.exp-item{
+  background:var(--ink2);padding:28px 32px;
+  border-left:3px solid transparent;
+  transition:all .25s;
+}
+.exp-item:hover,.exp-item.active{
+  background:var(--plate);border-left-color:var(--amber);
+}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:10px}
+.exp-role{font-family:var(--font-cab);font-weight:800;font-size:1rem;line-height:1.3}
+.exp-company{color:var(--amber);font-family:var(--font-cab);font-weight:700;font-size:0.88rem;margin-bottom:6px}
+.exp-meta{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.08em;color:var(--snow4);
+}
+.exp-badge{
+  font-family:var(--font-mono);font-size:0.65rem;padding:4px 12px;border-radius:3px;
+}
+.exp-badge.active{background:rgba(31,210,123,0.1);border:1px solid rgba(31,210,123,0.25);color:var(--green)}
+.exp-badge.past{background:var(--plate);border:1px solid var(--edge);color:var(--snow4)}
+.exp-achievements{margin-top:14px;display:flex;flex-direction:column;gap:6px;display:none}
+.exp-item.active .exp-achievements,.exp-item:hover .exp-achievements{display:flex}
+.exp-ach{
+  font-size:0.83rem;color:var(--snow3);padding-left:14px;position:relative;line-height:1.65;
+}
+.exp-ach::before{content:'→';position:absolute;left:0;color:var(--amber);font-size:0.75rem}
+
+/* ══════════════════════════════════════════════
+   CERTS & EDU
+   ══════════════════════════════════════════════ */
+#certs{background:var(--ink)}
+.certs-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.cert-grid{display:flex;flex-direction:column;gap:2px;background:var(--edge);border-radius:0}
+.cert-item{
+  background:var(--ink);padding:20px 24px;
+  display:flex;align-items:center;gap:16px;
+  transition:background .2s;
+}
+.cert-item:hover{background:var(--ink2)}
+.cert-ico{
+  width:46px;height:46px;border-radius:10px;flex-shrink:0;
+  background:var(--amber-dim);border:1px solid rgba(245,166,35,0.15);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--amber);font-size:1.2rem;
+}
+.cert-name{font-family:var(--font-cab);font-weight:800;font-size:0.88rem;margin-bottom:4px;line-height:1.35}
+.cert-by{font-family:var(--font-mono);font-size:0.65rem;color:var(--snow4);letter-spacing:0.08em}
+.edu-stack{display:flex;flex-direction:column;gap:16px}
+.edu-item{
+  background:var(--plate);border:1px solid var(--edge);border-radius:var(--r);
+  padding:28px;transition:border-color .25s;
+  position:relative;overflow:hidden;
+}
+.edu-item::after{
+  content:'';position:absolute;top:0;right:0;
+  width:60px;height:60px;
+  background:radial-gradient(circle at top right, var(--amber-dim), transparent);
+}
+.edu-item:hover{border-color:var(--amber)}
+.edu-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--amber-dim);border:1px solid rgba(245,166,35,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--amber);margin-bottom:16px;
+}
+.edu-degree{font-family:var(--font-cab);font-weight:800;font-size:0.97rem;margin-bottom:6px;line-height:1.35}
+.edu-school{color:var(--amber);font-size:0.85rem;font-weight:600;margin-bottom:6px}
+.edu-meta{font-family:var(--font-mono);font-size:0.68rem;color:var(--snow4);letter-spacing:0.06em}
+
+/* ══════════════════════════════════════════════
+   CONTACT
+   ══════════════════════════════════════════════ */
+#contact{background:var(--ink2)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:80px}
+.contact-big{
+  font-family:var(--font-disp);font-weight:800;
+  font-size:clamp(3rem,6vw,5.5rem);
+  line-height:0.95;letter-spacing:-0.05em;
+  color:var(--snow);margin:28px 0 36px;
+}
+.contact-big .amber{
+  display:block;
+  -webkit-text-stroke:1.5px var(--amber);
+  color:transparent;
+}
+.contact-items{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.ci{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 18px;background:var(--plate);
+  border:1px solid var(--edge);border-radius:var(--r);
+  transition:border-color .2s;
+}
+.ci:hover{border-color:var(--amber)}
+.ci-ico{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:var(--amber-dim);border:1px solid rgba(245,166,35,0.15);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--amber);font-size:0.95rem;
+}
+.ci-l{font-family:var(--font-mono);font-size:0.62rem;color:var(--snow4);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2px}
+.ci-v{font-size:0.88rem;font-weight:600}
+.avail-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:99px;
+  background:rgba(31,210,123,0.08);border:1px solid rgba(31,210,123,0.2);
+  color:var(--green);font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;
+}
+.avail-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg label{
+  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--snow3);
+}
+.fg input,.fg textarea,.fg select{
+  background:var(--plate);border:1.5px solid var(--edge);
+  border-radius:var(--r);padding:14px 16px;
+  color:var(--snow);font-family:var(--font-body);font-size:0.9rem;
+  outline:none;transition:border-color .2s;resize:vertical;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--amber);box-shadow:0 0 0 3px var(--amber-dim)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--snow4)}
+.form-success{
+  display:none;padding:14px 18px;border-radius:var(--r);
+  background:rgba(31,210,123,0.08);border:1px solid rgba(31,210,123,0.2);
+  color:var(--green);font-size:0.85rem;text-align:center;font-family:var(--font-mono);
+}
+
+/* ══════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════ */
+footer{
+  background:var(--ink);border-top:1px solid var(--edge);
+  padding:64px 0 32px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:40px;
+  margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--edge);
+}
+.footer-brand{font-family:var(--font-disp);font-weight:800;font-size:1.5rem;letter-spacing:-0.04em;margin-bottom:12px}
+.footer-brand-dot{color:var(--amber)}
+.footer-desc{font-size:0.88rem;color:var(--snow3);line-height:1.75;max-width:300px;margin-bottom:24px}
+.footer-socs{display:flex;gap:8px}
+.foot-soc{
+  width:38px;height:38px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--plate);border:1px solid var(--edge);
+  color:var(--snow3);font-size:0.85rem;transition:all .2s;
+}
+.foot-soc:hover{background:var(--amber);border-color:var(--amber);color:var(--ink);transform:translateY(-3px)}
+.footer-col-title{
+  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--snow4);margin-bottom:18px;
+}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:0.88rem;color:var(--snow3);transition:color .2s}
+.footer-links a:hover{color:var(--amber)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-family:var(--font-mono);font-size:0.72rem;color:var(--snow4)}
+.footer-love{font-family:var(--font-mono);font-size:0.72rem;color:var(--snow4)}
+.footer-love i{color:var(--amber)}
+
+/* ══════════════════════════════════════════════
+   MODAL
+   ══════════════════════════════════════════════ */
+.modal-ov{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.modal-ov.open{display:flex}
+.modal-box{
+  background:var(--ink2);border:1px solid var(--edge2);
+  border-radius:var(--r2);max-width:780px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  animation:mIn .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes mIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.modal-img{height:260px;overflow:hidden}
+.modal-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7) saturate(0.8)}
+.modal-header{
+  padding:28px 32px 20px;border-bottom:1px solid var(--edge);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+}
+.modal-close{
+  width:36px;height:36px;border-radius:4px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--plate);color:var(--snow2);transition:all .2s;
+}
+.modal-close:hover{background:var(--amber);color:var(--ink)}
+.modal-body{padding:28px 32px 36px}
+.modal-sec-title{
+  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:12px;
+}
+.modal-text{font-size:0.9rem;color:var(--snow3);line-height:1.8}
+.modal-list{display:flex;flex-direction:column;gap:8px}
+.modal-list li{font-size:0.88rem;color:var(--snow3);padding-left:16px;position:relative;line-height:1.65}
+.modal-list li::before{content:'→';position:absolute;left:0;color:var(--amber);font-size:0.8rem}
+.modal-tags{display:flex;flex-wrap:wrap;gap:7px}
+.modal-tag{
+  font-family:var(--font-mono);font-size:0.7rem;padding:4px 11px;border-radius:3px;
+  background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,166,35,0.2);
+}
+.modal-impact{
+  font-family:var(--font-cab);font-weight:800;font-size:1rem;
+  color:var(--amber);padding:14px 0;
+}
+.modal-sec{margin-bottom:22px}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .hero-img-block{width:36%}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .about-layout{gap:48px}
+}
+@media(max-width:900px){
+  .about-layout{grid-template-columns:1fr}
+  .about-float-1,.about-float-2{display:none}
+  .exp-layout{grid-template-columns:1fr}
+  .certs-layout{grid-template-columns:1fr}
+  .contact-layout{grid-template-columns:1fr}
+  .skills-layout{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-img-block{display:none}
+}
+@media(max-width:768px){
+  .container{padding:0 24px}
+  .sec{padding:80px 0}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .mob-menu{display:flex}
+  .services-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .about-stats{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .form-row2{grid-template-columns:1fr}
+  #cursor,#cursor-ring{display:none}
+  body{cursor:auto}
+  button{cursor:pointer}
+}
+@media(max-width:480px){
+  .hero-actions{flex-direction:column}
+  .hero-data-overlay{display:none}
+  .skill-cats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">SAK<span class="nav-logo-mark"></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#certs" class="nav-link">Certs</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="nav-avail"><span class="nav-avail-dot"></span>Available</div>
+      <a href="#contact" class="btn btn-amber" style="padding:10px 20px;font-size:0.8rem">Hire Me</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" class="mob-lnk">About</a>
+  <a href="#services" class="mob-lnk">Services</a>
+  <a href="#skills" class="mob-lnk">Skills</a>
+  <a href="#projects" class="mob-lnk">Projects</a>
+  <a href="#experience" class="mob-lnk">Experience</a>
+  <a href="#certs" class="mob-lnk">Certs</a>
+  <a href="#contact" class="mob-lnk">Contact</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <!-- Right image panel -->
+  <div class="hero-img-block">
+    <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80&fit=crop" alt="Satellite View"/>
+  </div>
+  <!-- Floating data cards -->
+  <div class="hero-data-overlay">
+    <div class="hero-data-card">
+      <div class="hero-data-label">AI Accuracy</div>
+      <div class="hero-data-val">92.44%</div>
+    </div>
+    <div class="hero-data-card">
+      <div class="hero-data-label">Area Monitored</div>
+      <div class="hero-data-val">333.9 <span style="font-size:1rem;color:var(--snow3)">km²</span></div>
+    </div>
+    <div class="hero-data-card">
+      <div class="hero-data-label">Tiles Processed</div>
+      <div class="hero-data-val">32,699</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-location rev"><i class="fa-solid fa-location-dot"></i>&nbsp; Accra, Ghana &nbsp;·&nbsp; UTC+0</div>
+      <h1 class="hero-h1">
+        <span class="line"><span class="inner">Samuel</span></span>
+        <span class="line"><span class="inner amber">Appiah</span></span>
+        <span class="line"><span class="inner">Kubi</span></span>
+      </h1>
+      <div class="hero-role-wrap">
+        <span id="typedText"></span><span class="hero-cursor"></span>
+      </div>
+      <p class="hero-bio">Building production-grade systems where satellite intelligence meets deep learning — turning raw geospatial data into decisions that shape the real world.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-amber"><i class="fa-solid fa-rocket"></i> View Projects</a>
+        <a href="#services" class="btn btn-outline"><i class="fa-solid fa-layer-group"></i> My Services</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="soc-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="soc-btn" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:appiahkubis14@gmail.com" class="soc-btn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="soc-btn" title="Upwork"><i class="fas fa-briefcase"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-line">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="sec">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-visual rev">
+        <div class="about-frame">
+          <img src="assets/1764350504379.jpeg" alt="Samuel Appiah Kubi"/>
+          <div class="about-frame-overlay"></div>
+        </div>
+        <div class="about-float about-float-1">
+          <div class="about-float-label">Experience</div>
+          <div class="about-float-val">2+</div>
+          <div class="about-float-sub">Years in Production</div>
+        </div>
+        <div class="about-float about-float-2">
+          <div class="about-float-label">Farmers Reached</div>
+          <div class="about-float-val">1K+</div>
+          <div class="about-float-sub">via AI Platform</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="eyebrow rev">About Me</div>
+        <h2 class="title-lg rev d1">Engineer.<br>Innovator.<br><span class="amber">Problem Solver.</span></h2>
+        <div style="height:24px"></div>
+        <p class="rev d2">I'm a <strong>Geospatial Software Engineer</strong> with 2+ years of enterprise experience building production systems that combine GIS, deep learning, and full-stack development. I specialize in scalable solutions for environmental monitoring, precision agriculture, infrastructure assessment, and logistics.</p>
+        <p class="rev d3">My systems have served Ghana Export-Import Bank, SKTLive, Rainforest Alliance, AMP Logistics, and Afarinick — processing terabytes of geospatial data and reaching thousands of users across West Africa and beyond.</p>
+        <div class="about-chips rev d4">
+          <span class="chip"><i class="fa-solid fa-globe"></i> Geospatial Intelligence</span>
+          <span class="chip"><i class="fa-solid fa-satellite"></i> Remote Sensing</span>
+          <span class="chip"><i class="fa-solid fa-brain"></i> AI / ML</span>
+          <span class="chip"><i class="fa-solid fa-eye"></i> Computer Vision</span>
+          <span class="chip"><i class="fa-solid fa-code"></i> Full-Stack</span>
+          <span class="chip"><i class="fa-brands fa-aws"></i> Cloud Architecture</span>
+          <span class="chip"><i class="fa-solid fa-database"></i> Spatial DBs</span>
+          <span class="chip"><i class="fa-solid fa-microchip"></i> Deep Learning</span>
+        </div>
+        <div class="about-stats rev d5">
+          <div class="about-stat">
+            <div class="about-stat-n" data-target="2" data-suffix="+">2+</div>
+            <div class="about-stat-l">Years Exp.</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n" data-target="9" data-suffix="+">9+</div>
+            <div class="about-stat-l">Projects</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n" data-target="7" data-suffix="">7</div>
+            <div class="about-stat-l">Clients</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services" class="sec">
+  <div class="container">
+    <div class="services-header">
+      <div class="eyebrow rev">Services</div>
+      <h2 class="title-lg rev d1">What I <span class="amber">Deliver</span></h2>
+      <p class="sub rev d2">End-to-end engineering across geospatial intelligence, AI systems, and full-stack architecture — production-ready, battle-tested.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card rev d1">
+        <div class="service-num">01 / 06</div>
+        <div class="service-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+        <div class="service-title">Geospatial System Development</div>
+        <div class="service-desc">End-to-end GIS platforms — from raw satellite imagery to interactive web dashboards. Spatial databases, vector tile pipelines, and real-time mapping.</div>
+        <div class="service-features">
+          <div class="service-feature">Custom GIS web portals (Leaflet, Mapbox, OpenLayers)</div>
+          <div class="service-feature">PostGIS / GeoDjango spatial backends</div>
+          <div class="service-feature">PMTiles vector tile pipelines</div>
+          <div class="service-feature">Remote sensing & orthomosaic processing</div>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card rev d2">
+        <div class="service-num">02 / 06</div>
+        <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+        <div class="service-title">AI & Computer Vision</div>
+        <div class="service-desc">Deep learning models for object detection, classification, and segmentation on satellite imagery, drone footage, and field photos.</div>
+        <div class="service-features">
+          <div class="service-feature">YOLOv8 / YOLOv5 model training & deployment</div>
+          <div class="service-feature">Custom CNN pipelines (TensorFlow / PyTorch)</div>
+          <div class="service-feature">UAV orthomosaic tile processing</div>
+          <div class="service-feature">Real-time inference APIs</div>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card rev d3">
+        <div class="service-num">03 / 06</div>
+        <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+        <div class="service-title">Full-Stack Engineering</div>
+        <div class="service-desc">Scalable Django and React applications — from API design to production deployment. Enterprise platforms that handle millions of records.</div>
+        <div class="service-features">
+          <div class="service-feature">Django / DRF RESTful APIs</div>
+          <div class="service-feature">React / Next.js frontends</div>
+          <div class="service-feature">Celery async task queues</div>
+          <div class="service-feature">Docker + AWS production deployment</div>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card rev d4">
+        <div class="service-num">04 / 06</div>
+        <div class="service-icon"><i class="fa-solid fa-leaf"></i></div>
+        <div class="service-title">AgriTech & Environmental Monitoring</div>
+        <div class="service-desc">Precision agriculture platforms and environmental compliance systems — cocoa traceability, deforestation monitoring, and EUDR-ready supply chains.</div>
+        <div class="service-features">
+          <div class="service-feature">Cocoa / crop disease detection systems</div>
+          <div class="service-feature">EU Deforestation Regulation compliance</div>
+          <div class="service-feature">Supply chain traceability (farm to export)</div>
+          <div class="service-feature">Satellite land cover change detection</div>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card rev d5">
+        <div class="service-num">05 / 06</div>
+        <div class="service-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="service-title">Enterprise Logistics Platforms</div>
+        <div class="service-desc">Comprehensive fleet, warehouse, and shipment management systems with real-time GPS tracking and role-based access control.</div>
+        <div class="service-features">
+          <div class="service-feature">Fleet & driver management systems</div>
+          <div class="service-feature">Multi-warehouse inventory synchronization</div>
+          <div class="service-feature">Real-time vehicle GPS tracking</div>
+          <div class="service-feature">Payment gateway integration</div>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card rev d6">
+        <div class="service-num">06 / 06</div>
+        <div class="service-icon"><i class="fa-brands fa-aws"></i></div>
+        <div class="service-title">Cloud Architecture & DevOps</div>
+        <div class="service-desc">Production-grade cloud infrastructure on AWS — scalable, secure, and CI/CD-automated. From containerization to server configuration.</div>
+        <div class="service-features">
+          <div class="service-feature">AWS EC2 / S3 / RDS architecture</div>
+          <div class="service-feature">Docker containerization & orchestration</div>
+          <div class="service-feature">Nginx + Gunicorn server configuration</div>
+          <div class="service-feature">CI/CD pipeline setup</div>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills" class="sec">
+  <div class="container">
+    <div class="skills-layout">
+      <div>
+        <div class="eyebrow rev">Skills</div>
+        <h2 class="title-lg rev d1">Tech I <span class="amber">Master</span></h2>
+        <div style="height:20px"></div>
+        <p class="rev d2">From satellite imagery processing to deploying AI models in production — I command the full stack of geospatial engineering.</p>
+        <div class="skill-cats rev d3">
+          <div class="skill-cat">
+            <div class="skill-cat-name"><i class="fa-solid fa-globe"></i> Geospatial & GIS</div>
+            <div class="skill-pills">
+              <span class="sk-pill">PostGIS</span><span class="sk-pill">GeoDjango</span><span class="sk-pill">GDAL</span>
+              <span class="sk-pill">QGIS</span><span class="sk-pill">ArcGIS</span><span class="sk-pill">Leaflet</span>
+              <span class="sk-pill">Mapbox</span><span class="sk-pill">PMTiles</span><span class="sk-pill">SAR</span>
+              <span class="sk-pill">ERDAS</span><span class="sk-pill">OpenLayers</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <div class="skill-cat-name"><i class="fa-solid fa-brain"></i> AI & Computer Vision</div>
+            <div class="skill-pills">
+              <span class="sk-pill">YOLOv8</span><span class="sk-pill">TensorFlow</span><span class="sk-pill">PyTorch</span>
+              <span class="sk-pill">OpenCV</span><span class="sk-pill">Roboflow</span><span class="sk-pill">CNNs</span>
+              <span class="sk-pill">Transfer Learning</span><span class="sk-pill">Inference APIs</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <div class="skill-cat-name"><i class="fa-solid fa-code"></i> Software Engineering</div>
+            <div class="skill-pills">
+              <span class="sk-pill">Python</span><span class="sk-pill">Django</span><span class="sk-pill">DRF</span>
+              <span class="sk-pill">FastAPI</span><span class="sk-pill">React</span><span class="sk-pill">Node.js</span>
+              <span class="sk-pill">Flutter</span><span class="sk-pill">Celery</span><span class="sk-pill">Redis</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <div class="skill-cat-name"><i class="fa-solid fa-database"></i> DevOps & Cloud</div>
+            <div class="skill-pills">
+              <span class="sk-pill">AWS EC2/S3</span><span class="sk-pill">Docker</span><span class="sk-pill">PostgreSQL</span>
+              <span class="sk-pill">Nginx</span><span class="sk-pill">Linux</span><span class="sk-pill">CI/CD</span>
+              <span class="sk-pill">Firebase</span><span class="sk-pill">Gunicorn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: visual proficiency bars -->
+      <div class="rev d2">
+        <div style="height:72px"></div>
+        <div style="display:flex;flex-direction:column;gap:20px" id="profBars"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects" class="sec">
+  <div class="container">
+    <div class="proj-header">
+      <div>
+        <div class="eyebrow rev">Portfolio</div>
+        <h2 class="title-lg rev d1">Featured <span class="amber">Projects</span></h2>
+      </div>
+      <p class="sub rev d2">Production systems delivering real-world geospatial and AI impact.</p>
+    </div>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience" class="sec">
+  <div class="container">
+    <div class="exp-layout">
+      <div>
+        <div class="eyebrow rev">Career</div>
+        <h2 class="title-lg rev d1">Work <span class="amber">Experience</span></h2>
+        <div style="height:20px"></div>
+        <p class="rev d2">Building impactful systems across Ghana and beyond. Currently engaged with 6 organizations simultaneously in remote and hybrid roles.</p>
+        <div class="exp-cta rev d3">
+          <a href="/files/resume.pdf" download class="btn btn-amber"><i class="fa-solid fa-download"></i> Download CV</a>
+        </div>
+      </div>
+      <div class="exp-stack rev d2" id="expStack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CERTS & EDU ══ -->
+<section id="certs" class="sec">
+  <div class="container">
+    <div class="eyebrow rev">Credentials</div>
+    <h2 class="title-lg rev d1">Certs & <span class="amber">Education</span></h2>
+    <div style="height:48px"></div>
+    <div class="certs-layout">
+      <div>
+        <p class="sub rev" style="margin-bottom:28px">Professional certifications across cloud, AI/ML, and geospatial analytics.</p>
+        <div class="cert-grid rev d2">
+          <div class="cert-item">
+            <div class="cert-ico"><i class="fab fa-aws"></i></div>
+            <div><div class="cert-name">AWS Certified Solutions Architect – Professional</div><div class="cert-by">Amazon Web Services</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-ico"><i class="fa-solid fa-robot"></i></div>
+            <div><div class="cert-name">Machine Learning and Advanced AI Techniques</div><div class="cert-by">Professional Training</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-ico"><i class="fa-solid fa-earth-africa"></i></div>
+            <div><div class="cert-name">Geospatial Analytics Essentials</div><div class="cert-by">GIS Certification Body</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-ico"><i class="fa-solid fa-brain"></i></div>
+            <div><div class="cert-name">Artificial Intelligence and Machine Learning</div><div class="cert-by">AI / ML Certification</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rev d3">
+        <p class="sub" style="margin-bottom:28px">Academic foundation in Geographic Information Science from Ghana's premier STEM university.</p>
+        <div class="edu-stack">
+          <div class="edu-item">
+            <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="edu-degree">BSc. Geographic Information Science & Cartography</div>
+            <div class="edu-school">KNUST — Kwame Nkrumah University of Science & Technology</div>
+            <div class="edu-meta"><i class="fa-solid fa-calendar-alt"></i> Jan 2020 – Nov 2024 &nbsp;·&nbsp; <i class="fa-solid fa-map-marker-alt"></i> Kumasi, Ghana</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
+            <div class="edu-degree">High School Diploma</div>
+            <div class="edu-school">Bibiani Senior High Technical School</div>
+            <div class="edu-meta"><i class="fa-solid fa-map-marker-alt"></i> Bibiani, Ghana</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="sec">
+  <div class="container">
+    <div class="contact-layout">
+      <div>
+        <div class="eyebrow rev">Contact</div>
+        <div class="contact-big rev d1">
+          Let's<span class="amber">Build.</span>
+        </div>
+        <p class="rev d2" style="color:var(--snow3);font-size:0.95rem;line-height:1.85;margin-bottom:28px">Open for freelance, contract, and collaboration worldwide. I work across time zones and adapt to your team's workflow.</p>
+        <div class="contact-items rev d3">
+          <div class="ci">
+            <div class="ci-ico"><i class="fa-solid fa-envelope"></i></div>
+            <div><div class="ci-l">Email</div><div class="ci-v">appiahkubis14@gmail.com</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div><div class="ci-l">Location</div><div class="ci-v">Accra, Greater Accra Region, Ghana</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico"><i class="fa-solid fa-clock"></i></div>
+            <div><div class="ci-l">Timezone</div><div class="ci-v">UTC+0 (GMT) · Flexible</div></div>
+          </div>
+          <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="ci">
+            <div class="ci-ico"><i class="fab fa-linkedin-in"></i></div>
+            <div><div class="ci-l">LinkedIn</div><div class="ci-v">samuel-appiah-kubi-b52633333</div></div>
+          </a>
+        </div>
+        <div class="avail-pill rev d4"><span class="dot"></span>Currently available for new projects</div>
+      </div>
+      <div class="rev d2">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row2">
+            <div class="fg">
+              <label>Full Name</label>
+              <input type="text" placeholder="John Doe" required/>
+            </div>
+            <div class="fg">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com" required/>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Service Needed</label>
+            <select style="background:var(--plate);border:1.5px solid var(--edge);border-radius:var(--r);padding:14px 16px;color:var(--snow);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color .2s;cursor:pointer">
+              <option value="" style="background:var(--ink)">Select a service...</option>
+              <option style="background:var(--ink)">Geospatial System Development</option>
+              <option style="background:var(--ink)">AI & Computer Vision</option>
+              <option style="background:var(--ink)">Full-Stack Engineering</option>
+              <option style="background:var(--ink)">AgriTech & Environmental Monitoring</option>
+              <option style="background:var(--ink)">Enterprise Logistics Platform</option>
+              <option style="background:var(--ink)">Cloud Architecture & DevOps</option>
+              <option style="background:var(--ink)">Other / Consultation</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Subject</label>
+            <input type="text" placeholder="Project Inquiry — GIS Platform" required/>
+          </div>
+          <div class="fg">
+            <label>Message</label>
+            <textarea rows="6" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-amber" style="width:100%;justify-content:center;font-size:0.95rem;padding:17px 28px">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i> Message sent! I'll get back to you within 24 hours.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">SAK<span class="footer-brand-dot">.</span></div>
+        <div class="footer-desc">Geospatial Software Engineer & AI Developer based in Accra, Ghana. Building systems where geography meets intelligence.</div>
+        <div class="footer-socs">
+          <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="foot-soc"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="foot-soc"><i class="fab fa-github"></i></a>
+          <a href="mailto:appiahkubis14@gmail.com" class="foot-soc"><i class="fas fa-envelope"></i></a>
+          <a href="#" class="foot-soc"><i class="fas fa-briefcase"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-title">Specializations</div>
+        <nav class="footer-links">
+          <a href="#services">Geospatial Engineering</a>
+          <a href="#services">Remote Sensing & SAR</a>
+          <a href="#services">AI / Computer Vision</a>
+          <a href="#services">Full-Stack Development</a>
+          <a href="#services">Cloud & DevOps</a>
+          <a href="#services">AgriTech Solutions</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Samuel Appiah Kubi. All rights reserved.</div>
+      <div class="footer-love"><i class="fa-solid fa-heart"></i> Built with precision in Accra, Ghana</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ MODAL ══ -->
+<div class="modal-ov" id="modalOv">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-header">
+      <div>
+        <div class="eyebrow" id="modalNum" style="margin-bottom:8px"></div>
+        <h3 class="title-md" id="modalTitle" style="font-size:1.35rem"></h3>
+      </div>
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ══ CURSOR ══ */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+function animRing(){
+  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+
+/* ══ DATA ══ */
+const projects = [
+  {num:"01",icon:"fa-solid fa-satellite-dish",img:"assets/cdp.png",imgFallback:"https://images.unsplash.com/photo-1569628189946-e28d03cfc6e3?w=700&q=80&fit=crop",title:"Plastic Waste Detection from UAV Orthomosaic",desc:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline.",tags:["YOLOv8","GDAL","GeoTIFF","Python","GeoJSON","OpenCV"],impact:"~1,000 unique detections · 89 ha · 9mm GSD",details:{overview:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline. Processed 32,699 tiles using YOLOv8 with 15% overlap and a fault-tolerant checkpoint/resume system for 10-hour processing runs.",highlights:["27.75 GB file — 232,144 × 42,780 px at 9mm GSD","32,699 tiles processed with 15% overlap strategy","1,400+ raw detections merged to ~1,000 unique locations via IoU algorithm","GeoJSON/CSV/JSON export with full coordinate metadata","Zero cloud dependency — fully local offline pipeline","Confidence scoring and IoU-based duplicate merging"]}},
+  {num:"02",icon:"fa-solid fa-tree",img:"assets/ra.png",imgFallback:"https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=700&q=80&fit=crop",title:"Rainforest Alliance – Sui River Cocoa-Forest Monitoring",desc:"Hybrid monitoring system for 333.9 km² cocoa-forest landscape with mobile data collection and real-time GIS dashboard.",tags:["Django","GIS","Leaflet","DRF","PostgreSQL","REST APIs"],impact:"333.9 km² monitored · Deforestation tracking",details:{overview:"Full-stack hybrid monitoring system for the 333.9 km² Sui River cocoa-forest landscape. Combines mobile data collection, real-time GIS visualization, and automated stakeholder reporting.",highlights:["Mobile data collection for field agents with offline capability","Real-time GIS dashboard for spatial visualization","Automated stakeholder reporting generation","Analytics tracking deforestation rates","Participatory feedback tools empowering local communities"]}},
+  {num:"03",icon:"fa-solid fa-truck",img:"assets/amp.png",imgFallback:"https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=80&fit=crop",title:"AMP Logistics Management System",desc:"Enterprise Django logistics platform unifying fleet, inventory, warehouses, and shipments. Live production system.",tags:["Django 5.2","PostgreSQL","DRF","Redis","Docker","GeoIP"],impact:"6+ warehouse blocks · Real-time tracking · 15+ models",details:{overview:"Comprehensive enterprise logistics platform unifying fleet management, inventory control, warehouse operations, and shipment tracking.",highlights:["Transport management with vehicle fleet and driver tracking","Inventory with multi-warehouse synchronization across 6+ blocks","Employee management with driver licensing tracking","Shipment request and dispatch workflows","GeoIP-based login tracking with geographic analytics","Role-based access control"]}},
+  {num:"04",icon:"fa-solid fa-city",img:"assets/prcs.png",imgFallback:"https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80&fit=crop",title:"Municipal Property Tax Platform (PRCS)",desc:"GIS-based property tax and revenue collection system for municipal assembly. 10,000+ properties mapped.",tags:["Django 6.0","PostGIS","Leaflet","PMTiles","DRF","Kowri"],impact:"60% reduction in manual processing · 10,000+ properties",details:{overview:"GIS-based property tax and revenue collection system for municipal assembly with interactive maps, automated billing, and payment integration.",highlights:["Interactive property maps using PMTiles vector tile technology","10,000+ property polygons optimized for mobile performance","Automated bill generation with customizable rate structures","Kowri payment gateway integration","Role-based access: Admin, Supervisor, Collector"]}},
+  {num:"05",icon:"fa-solid fa-seedling",img:"assets/afarisense.png",imgFallback:"https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=700&q=80&fit=crop",title:"AI Cocoa Disease Detection (Afarinsene)",desc:"Deep learning system detecting CSSVD from mobile phone images. Deployed to 1,000+ farmers with 92.44% accuracy.",tags:["TensorFlow","YOLOv8","Django","Celery","Redis","PostgreSQL"],impact:"92.44% accuracy · 1,000+ farmers · 40% faster response",details:{overview:"Deep learning system detecting Cocoa Swollen Shoot Virus (CSSVD) from standard mobile phone images serving Ghanaian cocoa farmers.",highlights:["Custom CNN with 92.44% detection accuracy","Preprocessing optimized for field conditions","Confidence scoring and severity assessment","Async Celery/Redis task queue for batch processing","40% reduction in disease response time for farmers"]}},
+  {num:"06",icon:"fa-solid fa-tractor",img:"assets/fms.png",imgFallback:"https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700&q=80&fit=crop",title:"Enterprise Farm Management System (ACL)",desc:"Modular Django enterprise platform unifying GIS, IoT telemetry, workforce management, and financial workflows.",tags:["GeoDjango","PostGIS","Leaflet.js","DRF","Celery","Redis"],impact:"15+ integrated models · Real-time IoT · QR verification",details:{overview:"Modular enterprise platform unifying geospatial farm records, IoT sensor data, workforce management, and automated payroll.",highlights:["GeoDjango/PostGIS models for farm polygons","IoT pipeline for real-time soil moisture and temperature","Dynamic QR generation with cryptographically random UIDs","Complex payroll aggregation with Django signal automation","15+ integrated models"]}},
+  {num:"07",icon:"fa-solid fa-leaf",img:"assets/trace.png",imgFallback:"https://images.unsplash.com/photo-1542601906897-c4eecdde2bd4?w=700&q=80&fit=crop",title:"EUDR Cocoa Traceability System",desc:"Farm-to-export traceability platform for EU Deforestation Regulation compliance across the full cocoa supply chain.",tags:["Django 5.1","PostGIS","Leaflet","DRF","Plotly Dash","AWS S3"],impact:"Full EUDR compliance · Export audit trail",details:{overview:"Farm-to-export traceability platform ensuring EUDR compliance, tracking cocoa through every supply chain stage.",highlights:["Full chain: Farmers → Clerks → LBCs → Ports → Exports","GIS boundary monitoring for deforestation tracking","Primary and secondary evacuation tracking modules","REST API with full Swagger/OpenAPI documentation","Plotly Dash analytics dashboard · AWS S3 storage"]}},
+  {num:"08",icon:"fa-solid fa-landmark",img:"assets/exim.png",imgFallback:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=700&q=80&fit=crop",title:"GEXIM Digital GIS Solution",desc:"Comprehensive GIS solution for Ghana Export-Import Bank tracking development projects and loan portfolios.",tags:["Django DRF","PostgreSQL","GIS","Python","Mobile APIs","M&E"],impact:"Offline field monitoring · Automated M&E reporting",details:{overview:"Comprehensive digital GIS solution for Ghana Export-Import Bank, enabling tracking of development projects and loan portfolios.",highlights:["Secure RESTful API as core data transaction platform","Offline-capable mobile app for field monitoring","Results framework for logical framework analysis","Real-time dashboard for project milestone tracking","Beneficiary tracking with impact assessment"]}},
+];
+
+const experiences = [
+  {role:"Software Engineer",company:"Afarinick Company Limited",period:"Sep 2024 – Present",location:"Accra",type:"Hybrid",badge:"active",achievements:["Design and develop scalable web applications using Django, React, and AWS","Built AI-powered cocoa disease detection system with 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT integration"]},
+  {role:"Geospatial Developer",company:"Ghana Export-Import Bank",period:"Oct 2025 – Present",location:"Accra",type:"Remote",badge:"active",achievements:["Designed E-Digital GIS solution tracking GEXIM-funded development projects","Architected secure RESTful API as core data platform","Built offline-capable mobile data collection app for field monitoring"]},
+  {role:"Geospatial Developer",company:"SKTLive LTD",period:"Oct 2025 – Present",location:"Accra",type:"Remote",badge:"active",achievements:["Architected municipal tax platform achieving 60% reduction in manual processing","Engineered PMTiles system for 10,000+ property polygons","Built spatial analysis toolkit: buffers, heatmaps, distance measurement"]},
+  {role:"Geospatial Developer",company:"Rainforest Alliance",period:"Sep 2025 – Present",location:"Accra",type:"Remote",badge:"active",achievements:["Developed monitoring system for 333.9 km² Sui River cocoa-forest landscape","Built real-time GIS dashboard for spatial visualization","Implemented automated stakeholder reporting system"]},
+  {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",period:"Aug 2025 – Present",location:"Tema",type:"Hybrid",badge:"active",achievements:["Designed comprehensive logistics platform: transport, warehouse, shipments","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
+  {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",period:"Oct 2024 – Present",location:"Accra",type:"Remote",badge:"active",achievements:["Developed backend for Ghana's cocoa supply chain traceability platform","Integrated with Ghana Cocoa Board systems for certification"]},
+  {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research",period:"Aug 2024 – Present",location:"Kumasi",type:"On-site",badge:"active",achievements:["Built pothole detection mobile app with YOLOv8 and Flutter","Integrated GPS geolocation for automatic position capture"]},
+  {role:"Mine Surveyor (Intern)",company:"Asanko Gold",period:"Oct 2023 – Nov 2023",location:"Manso-Nkwanta",type:"On-site",badge:"past",achievements:["Topographic and hydrographic surveys for surface mining","Used Total Stations, GPS, AutoCAD, Surfer, ArcGIS"]},
+];
+
+const proficiencies = [
+  {name:"Geospatial Systems (GeoDjango / PostGIS)",val:95},
+  {name:"AI & Computer Vision (YOLOv8 / TensorFlow)",val:92},
+  {name:"Full-Stack Engineering (Django / React)",val:90},
+  {name:"Remote Sensing & SAR Processing",val:87},
+  {name:"Cloud Architecture (AWS / Docker)",val:85},
+  {name:"Flutter Mobile Development",val:78},
+];
+
+/* ══ TICKER ══ */
+const tickItems=[
+  {icon:"fa-solid fa-globe",t:"GeoDjango"},{icon:"fa-solid fa-satellite",t:"Remote Sensing"},
+  {icon:"fa-solid fa-brain",t:"Deep Learning"},{icon:"fa-solid fa-eye",t:"Computer Vision"},
+  {icon:"fa-brands fa-python",t:"Python"},{icon:"fa-solid fa-map",t:"PostGIS"},
+  {icon:"fa-brands fa-aws",t:"AWS Cloud"},{icon:"fa-solid fa-code",t:"YOLOv8"},
+  {icon:"fa-solid fa-microchip",t:"TensorFlow"},{icon:"fa-solid fa-layer-group",t:"GDAL"},
+  {icon:"fa-solid fa-database",t:"PostgreSQL"},{icon:"fa-solid fa-mobile",t:"Flutter"},
+  {icon:"fa-solid fa-server",t:"Docker"},{icon:"fa-solid fa-chart-line",t:"Spatial Analytics"},
+];
+const track=document.getElementById('tickerTrack');
+[...tickItems,...tickItems].forEach((item,i)=>{
+  const el=document.createElement('div');
+  el.className='ticker-item';
+  el.innerHTML=`<i class="${item.icon}"></i>${item.t}<span class="tick-sep">·</span>`;
+  track.appendChild(el);
+});
+
+/* ══ NAV SCROLL ══ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+});
+
+/* ══ MOBILE MENU ══ */
+const hamburger=document.getElementById('hamburger');
+const mobMenu=document.getElementById('mobMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  mobMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mob-lnk').forEach(l=>l.addEventListener('click',()=>{
+  hamburger.classList.remove('open');mobMenu.classList.remove('open');
+}));
+
+/* ══ TYPED ══ */
+const words=["Geospatial Developer","AI Engineer","Django Expert","Computer Vision Specialist","Full-Stack Architect","Remote Sensing Analyst"];
+let wi=0,ci=0,del=false;
+const te=document.getElementById('typedText');
+function type(){
+  const w=words[wi];
+  if(!del){te.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,2000);return}}
+  else{te.textContent=w.slice(0,--ci);if(ci===0){del=false;wi=(wi+1)%words.length}}
+  setTimeout(type,del?55:90);
+}
+type();
+
+/* ══ REVEAL ══ */
+const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in')}),{threshold:0.1});
+document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+
+/* ══ PROFICIENCY BARS ══ */
+const barsEl=document.getElementById('profBars');
+proficiencies.forEach((p,i)=>{
+  const el=document.createElement('div');
+  el.style.cssText='opacity:0;transform:translateX(30px);transition:opacity .6s ease,transform .6s ease';
+  el.style.transitionDelay=(i*0.09)+'s';
+  el.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-family:var(--font-cab);font-weight:700;font-size:0.85rem;color:var(--snow2)">${p.name}</span>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--amber)">${p.val}%</span>
+    </div>
+    <div style="height:3px;background:var(--plate);border-radius:99px;overflow:hidden">
+      <div data-w="${p.val}" style="height:100%;width:0%;background:linear-gradient(90deg,var(--amber),var(--amber3));border-radius:99px;transition:width 1.2s cubic-bezier(.4,0,.2,1)"></div>
+    </div>
+  `;
+  barsEl.appendChild(el);
+});
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      barsEl.querySelectorAll('[style*="opacity"]').forEach(el=>{el.style.opacity='1';el.style.transform='translateX(0)'});
+      barsEl.querySelectorAll('[data-w]').forEach(bar=>{
+        setTimeout(()=>bar.style.width=bar.dataset.w+'%',300);
+      });
+    }
+  });
+},{threshold:0.3});
+barObs.observe(barsEl);
+
+/* ══ RENDER PROJECTS ══ */
+const grid=document.getElementById('projGrid');
+projects.forEach((p,i)=>{
+  const c=document.createElement('div');
+  c.className=`proj-card rev d${(i%3)+1}`;
+  const tags=p.tags.slice(0,3).map(t=>`<span class="proj-tag">${t}</span>`).join('');
+  c.innerHTML=`
+    <div class="proj-img">
+      <img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.src='${p.imgFallback}'"/>
+      <div class="proj-img-bar"></div>
+      <div class="proj-tag-row">${tags}</div>
+      <div class="proj-num">${p.num}</div>
+    </div>
+    <div class="proj-body">
+      <div class="proj-title">${p.title}</div>
+      <div class="proj-desc">${p.desc}</div>
+      <div class="proj-impact"><i class="${p.icon}" style="color:var(--amber)"></i> ${p.impact}</div>
+    </div>
+    <div class="proj-footer">
+      <span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--snow4)">${p.tags.length} technologies</span>
+      <span class="proj-view">View Details <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+  `;
+  c.addEventListener('click',()=>openModal(p));
+  grid.appendChild(c);
+  obs.observe(c);
+});
+
+/* ══ RENDER EXPERIENCE ══ */
+const expStack=document.getElementById('expStack');
+experiences.forEach((exp,i)=>{
+  const el=document.createElement('div');
+  el.className=`exp-item rev d${(i%3)+1}`;
+  if(i===0)el.classList.add('active');
+  el.innerHTML=`
+    <div class="exp-top">
+      <div>
+        <div class="exp-role">${exp.role}</div>
+        <div class="exp-company"><i class="fa-solid fa-building fa-sm"></i> ${exp.company}</div>
+        <div class="exp-meta">
+          <span><i class="fa-solid fa-calendar-alt"></i> ${exp.period}</span>
+          <span><i class="fa-solid fa-map-marker-alt"></i> ${exp.location}</span>
+          <span><i class="fa-solid fa-laptop-house"></i> ${exp.type}</span>
+        </div>
+      </div>
+      <span class="exp-badge ${exp.badge}">${exp.badge==='active'?'● Active':'Internship'}</span>
+    </div>
+    <ul class="exp-achievements">
+      ${exp.achievements.map(a=>`<li class="exp-ach">${a}</li>`).join('')}
+    </ul>
+  `;
+  el.addEventListener('click',()=>{
+    expStack.querySelectorAll('.exp-item').forEach(e=>e.classList.remove('active'));
+    el.classList.add('active');
+  });
+  expStack.appendChild(el);
+  obs.observe(el);
+});
+
+/* ══ MODAL ══ */
+const modalOv=document.getElementById('modalOv');
+const modalClose=document.getElementById('modalClose');
+function openModal(p){
+  document.getElementById('modalImg').innerHTML=`<img src="${p.img}" alt="${p.title}" onerror="this.src='${p.imgFallback}'"/>`;
+  document.getElementById('modalNum').innerHTML=`<i class="${p.icon}"></i> &nbsp;PROJECT ${p.num}`;
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalBody').innerHTML=`
+    <div class="modal-sec">
+      <div class="modal-sec-title">Overview</div>
+      <div class="modal-text">${p.details.overview}</div>
+    </div>
+    <div class="modal-sec">
+      <div class="modal-sec-title">Technologies</div>
+      <div class="modal-tags">${p.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('')}</div>
+    </div>
+    <div class="modal-sec">
+      <div class="modal-sec-title">Key Highlights</div>
+      <ul class="modal-list">${p.details.highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
+    </div>
+    <div class="modal-sec" style="margin-bottom:0">
+      <div class="modal-sec-title">Impact</div>
+      <div class="modal-impact">${p.impact}</div>
+    </div>
+  `;
+  modalOv.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){modalOv.classList.remove('open');document.body.style.overflow='';}
+modalClose.addEventListener('click',closeModal);
+modalOv.addEventListener('click',e=>{if(e.target===modalOv)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* ══ CONTACT FORM ══ */
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('button[type=submit]');
+  btn.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+  btn.disabled=true;
+  setTimeout(()=>{
+    btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
+    btn.disabled=false;
+    this.reset();
+    const s=document.getElementById('formSuccess');
+    s.style.display='block';
+    setTimeout(()=>s.style.display='none',5000);
+  },1400);
+});
+</script>
+</body>
+</html>
