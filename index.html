@@ -768,6 +768,127 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 .modal-stat-chip .val{font-family:var(--font-h);font-weight:800;font-size:1.1rem;color:var(--orange);display:block;line-height:1}
 .modal-stat-chip .lbl{font-family:var(--font-m);font-size:0.62rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;display:block}
 
+
+
+
+
+/* ================================================
+   DEMO VIDEOS
+   ================================================ */
+.demos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.demo-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r-lg);overflow:hidden;
+  display:flex;flex-direction:column;transition:all .35s ease;
+}
+.demo-card:hover{
+  transform:translateY(-6px) scale(1.01);
+  border-color:var(--bdr-h);box-shadow:0 20px 60px var(--orange-glow),0 8px 32px rgba(0,0,0,.3);
+}
+.demo-thumb{
+  position:relative;height:210px;overflow:hidden;
+  background:#0d0d12;cursor:pointer;
+}
+.demo-thumb img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(0.45) saturate(1.2);
+  transition:transform .6s ease;
+}
+.demo-card:hover .demo-thumb img{transform:scale(1.06)}
+.demo-thumb-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,12,0.85) 0%,transparent 55%);
+}
+.play-circle{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:58px;height:58px;border-radius:50%;
+  background:rgba(249,115,22,0.9);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s ease;
+}
+.play-circle i{color:#fff;font-size:1.1rem;margin-left:3px}
+.demo-card:hover .play-circle{
+  transform:translate(-50%,-50%) scale(1.12);
+  background:var(--orange);box-shadow:0 0 0 10px rgba(249,115,22,0.18);
+}
+.demo-num-badge{
+  position:absolute;top:13px;left:13px;
+  background:rgba(8,8,12,0.65);backdrop-filter:blur(6px);
+  border:1px solid rgba(249,115,22,0.28);border-radius:7px;
+  font-family:var(--font-m);font-size:0.62rem;color:var(--orange);
+  padding:3px 9px;letter-spacing:0.1em;
+}
+.demo-type-badge{
+  position:absolute;top:13px;right:13px;
+  border-radius:6px;font-family:var(--font-m);font-size:0.6rem;color:#fff;
+  padding:3px 9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;
+}
+.badge-cv{background:rgba(249,115,22,0.85)}
+.badge-geo{background:rgba(56,116,208,0.85)}
+.badge-research{background:rgba(99,62,152,0.85)}
+.demo-tech-row{
+  position:absolute;bottom:13px;right:13px;
+  display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;
+}
+.demo-tech-pill{
+  font-family:var(--font-m);font-size:0.6rem;padding:3px 8px;border-radius:5px;
+  background:rgba(249,115,22,0.18);border:1px solid rgba(249,115,22,0.25);color:var(--orange);
+  backdrop-filter:blur(6px);
+}
+.demo-body{padding:20px 20px 14px;flex:1;display:flex;flex-direction:column}
+.demo-title{font-family:var(--font-h);font-size:0.98rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.demo-desc{font-size:0.83rem;color:var(--tx2);line-height:1.65;flex:1;margin-bottom:12px}
+.demo-meta{display:flex;gap:12px;flex-wrap:wrap}
+.demo-meta-item{
+  display:flex;align-items:center;gap:5px;
+  font-family:var(--font-m);font-size:0.7rem;color:var(--tx3);
+}
+.demo-meta-item i{color:var(--orange);font-size:0.7rem}
+.demo-footer{
+  padding:13px 20px;border-top:1px solid var(--bdr);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.demo-collab{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--font-m);font-size:0.68rem;color:var(--tx3);
+}
+.demo-collab-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.demo-watch-btn{
+  font-family:var(--font-h);font-size:0.78rem;font-weight:700;
+  color:var(--orange);display:flex;align-items:center;gap:5px;transition:gap .2s;
+}
+.demo-card:hover .demo-watch-btn{gap:10px}
+/* video embed overlay */
+.demo-video-modal{
+  display:none;position:fixed;inset:0;z-index:2500;
+  background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.demo-video-modal.open{display:flex;animation:fadeIn .25s ease}
+.demo-video-wrap{
+  position:relative;width:100%;max-width:900px;
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--bdr-h);
+  box-shadow:0 32px 80px rgba(0,0,0,.8),0 0 60px var(--orange-glow);
+  aspect-ratio:16/9;
+}
+.demo-video-wrap video,.demo-video-wrap iframe{width:100%;height:100%;display:block;border:none}
+.demo-video-close{
+  position:absolute;top:-44px;right:0;
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  color:#fff;font-size:0.9rem;transition:all .2s;cursor:pointer;
+}
+.demo-video-close:hover{background:var(--orange);border-color:var(--orange)}
+@media(max-width:1100px){.demos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.demos-grid{grid-template-columns:1fr}}
+
+
+
+
+
+
 /* ================================================
    RESPONSIVE
    ================================================ */
@@ -1004,6 +1125,21 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
       <p class="section-sub fu d2" style="margin:0 auto">Production systems &amp; peer-reviewed research delivering real-world geospatial impact.</p>
     </div>
     <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+
+<!-- DEMO VIDEOS -->
+<section id="demos" class="section-pad" style="background:var(--bg)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="section-eyebrow fu">
+        <i class="fa-solid fa-play"></i> Demo Videos
+      </div>
+      <h2 class="section-title fu d1">See the Systems <span class="hl">in Action</span></h2>
+      <p class="section-sub fu d2" style="margin:0 auto">Live demonstrations of computer vision and geospatial AI pipelines running on real-world data.</p>
+    </div>
+    <div class="demos-grid" id="demosGrid"></div>
   </div>
 </section>
 
@@ -1450,6 +1586,15 @@ const projects = [
   
 ];
 
+
+
+
+
+
+
+
+
+
 /* ──────────────────────────────
    EXPERIENCE DATA
    ────────────────────────────── */
@@ -1603,6 +1748,155 @@ projects.forEach((p,i)=>{
   grid.appendChild(card);
   obs.observe(card);
 });
+
+
+
+
+/* ──────────────────────────────
+   DEMO VIDEOS DATA
+   ────────────────────────────── */
+const demos = [
+  {
+    num:"01",
+    thumb:"assets/logo-128x128.png",
+    badgeType:"cv", badgeLabel:"Computer Vision",
+    title:"Machine Traffic Count Detection",
+    desc:"Effortlessly analyze your videos — detect and count cars, buses, trucks, and more with machine vision precision. Virtual line crossing, class-wise counts, and real-time statistics.",
+    tags:["YOLOv8","BoT-SORT","Python","OpenCV"],
+    meta:[
+      {icon:"fa-solid fa-car",text:"Multi-class detection"},
+      {icon:"fa-solid fa-bolt",text:"Real-time inference"},
+      {icon:"fa-solid fa-file-export",text:"Export reports"}
+    ],
+    collab:"Deep Metrics Team · Ghana",
+    video:"assets/det_tracking_converted.mp4"   // <-- paste your YouTube/video URL here
+  },
+  {
+    num:"02",
+    thumb:"assets/logo.png",
+    badgeType:"research", badgeLabel:"IEEE Research",
+    title:"MMFF — Pothole Dimensioning Pipeline",
+    desc:"Multi-modal sensor fusion achieving metric-accurate pothole depth, width and volume from a single dashboard camera + IMU. No LiDAR — 30 fps on standard hardware.",
+    tags:["ACSH-YOLOv8","IMU Fusion","Kalman Filter"],
+    meta:[
+      {icon:"fa-solid fa-ruler",text:"Depth MAE 0.28 m"},
+      {icon:"fa-solid fa-gauge-high",text:"30 fps real-time"},
+      {icon:"fa-solid fa-road",text:"50 km evaluated"}
+    ],
+    collab:"TRECK · KNUST, Kumasi",
+    video:"assets/annotated_v1.mp4_converted.mp4"
+  },
+  {
+    num:"03",
+    thumb:"assets/plastic.jpeg",
+    badgeType:"geo", badgeLabel:"Geospatial AI",
+    title:"UAV Plastic Waste Detection Pipeline",
+    desc:"Processing 27.75 GB orthomosaics tile-by-tile — detecting coastal plastic waste with geolocation, IoU duplicate merging, and GeoJSON export across 89 ha of coastline.",
+    tags:["YOLOv8","GDAL","GeoJSON","Shapely"],
+    meta:[
+      {icon:"fa-solid fa-crosshairs",text:"~1,000 detections"},
+      {icon:"fa-solid fa-layer-group",text:"32,699 tiles"},
+      {icon:"fa-solid fa-satellite",text:"9 mm GSD"}
+    ],
+    collab:"Personal Research · Accra",
+    video:"assets/plastic.jpeg"
+  },
+  // {
+  //   num:"04",
+  //   thumb:"assets/afarisense.png",
+  //   badgeType:"cv", badgeLabel:"Computer Vision",
+  //   title:"AI Cocoa Disease Detection (Afarinsene)",
+  //   desc:"CSSVD detection from standard mobile phone images taken in the field. 92.44% accuracy — deployed to 1,000+ Ghanaian cocoa farmers, cutting disease response time by 40%.",
+  //   tags:["TensorFlow","YOLOv8","Django","Celery"],
+  //   meta:[
+  //     {icon:"fa-solid fa-percent",text:"92.44% accuracy"},
+  //     {icon:"fa-solid fa-users",text:"1,000+ farmers"},
+  //     {icon:"fa-solid fa-mobile-screen",text:"Mobile-ready"}
+  //   ],
+  //   collab:"Afarinick Company · Accra",
+  //   video:""
+  // }
+];
+
+/* Render demo cards */
+const demosGrid = document.getElementById('demosGrid');
+if(demosGrid){
+  demos.forEach((d,i)=>{
+    const card = document.createElement('div');
+    card.className = `demo-card fu d${(i%3)+1}`;
+    const badgeColors = {cv:'badge-cv',geo:'badge-geo',research:'badge-research'};
+    card.innerHTML=`
+      <div class="demo-thumb">
+        <img src="${d.thumb}" alt="${d.title}" loading="lazy"/>
+        <div class="demo-thumb-overlay"></div>
+        <div class="play-circle"><i class="fa-solid fa-play"></i></div>
+        <div class="demo-num-badge">DEMO ${d.num}</div>
+        <div class="demo-type-badge ${badgeColors[d.badgeType]}">${d.badgeLabel}</div>
+        <div class="demo-tech-row">${d.tags.slice(0,3).map(t=>`<span class="demo-tech-pill">${t}</span>`).join('')}</div>
+      </div>
+      <div class="demo-body">
+        <div class="demo-title">${d.title}</div>
+        <div class="demo-desc">${d.desc}</div>
+        <div class="demo-meta">${d.meta.map(m=>`<div class="demo-meta-item"><i class="${m.icon}"></i>${m.text}</div>`).join('')}</div>
+      </div>
+      <div class="demo-footer">
+        <div class="demo-collab"><div class="demo-collab-dot"></div>${d.collab}</div>
+        <span class="demo-watch-btn">Watch Demo <i class="fas fa-arrow-right"></i></span>
+      </div>
+    `;
+    card.querySelector('.demo-thumb').addEventListener('click',()=>openDemoVideo(d));
+    card.querySelector('.demo-watch-btn').addEventListener('click',()=>openDemoVideo(d));
+    demosGrid.appendChild(card);
+    obs.observe(card);
+  });
+}
+
+/* Demo video modal */
+const demoModal = document.createElement('div');
+demoModal.className = 'demo-video-modal';
+demoModal.innerHTML=`
+  <div class="demo-video-wrap" id="demoVideoWrap">
+    <button class="demo-video-close" id="demoVideoClose"><i class="fas fa-times"></i></button>
+  </div>
+`;
+document.body.appendChild(demoModal);
+document.getElementById('demoVideoClose').addEventListener('click', closeDemoVideo);
+demoModal.addEventListener('click', e=>{ if(e.target===demoModal) closeDemoVideo(); });
+
+function openDemoVideo(d){
+  const wrap = document.getElementById('demoVideoWrap');
+  // Remove previous media
+  wrap.querySelectorAll('video,iframe').forEach(el=>el.remove());
+  if(d.video){
+    // YouTube embed
+    if(d.video.includes('youtube') || d.video.includes('youtu.be')){
+      const id = d.video.match(/(?:v=|youtu\.be\/)([^&?/]+)/)?.[1];
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      iframe.allow = 'autoplay; fullscreen';
+      wrap.insertBefore(iframe, wrap.firstChild);
+    } else {
+      // Local/direct video file
+      const video = document.createElement('video');
+      video.src = d.video; video.controls = true; video.autoplay = true;
+      wrap.insertBefore(video, wrap.firstChild);
+    }
+  } else {
+    // Placeholder if no video yet
+    const ph = document.createElement('div');
+    ph.style.cssText='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0d0d12';
+    ph.innerHTML=`<i class="fa-solid fa-circle-play" style="font-size:3rem;color:var(--orange);opacity:0.5"></i><p style="font-family:var(--font-m);font-size:0.78rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em">DEMO VIDEO COMING SOON</p><p style="font-family:var(--font-h);font-size:0.85rem;color:rgba(255,255,255,0.55);text-align:center;max-width:300px">${d.title}</p>`;
+    wrap.insertBefore(ph, wrap.firstChild);
+  }
+  demoModal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDemoVideo(){
+  demoModal.classList.remove('open');
+  document.getElementById('demoVideoWrap').querySelectorAll('video,iframe,div:not(.demo-video-close)').forEach(el=>el.remove());
+  document.body.style.overflow='';
+}
+
 
 /* ──────────────────────────────
    MODAL
