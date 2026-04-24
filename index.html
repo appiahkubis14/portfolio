@@ -196,7 +196,7 @@ ul{list-style:none}
 /* Space photograph background */
 .hero-bg-img{
   position:absolute;inset:0;z-index:0;
-  background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800&q=85&fit=crop') center/cover no-repeat;
+  background:url('assets/bg.jpg') center/cover no-repeat;
   filter:brightness(0.28) saturate(1.4);
   transition:filter .4s ease;
 }
@@ -331,7 +331,7 @@ ul{list-style:none}
   padding:24px 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
   overflow:hidden;
 }
-.marquee-track{display:flex;gap:0;animation:marquee 28s linear infinite;width:max-content}
+.marquee-track{display:flex;gap:0;animation:marquee 55s linear infinite;width:max-content}
 .marquee-track:hover{animation-play-state:paused}
 .marquee-item{
   display:flex;align-items:center;gap:10px;
@@ -1729,6 +1729,29 @@ const marqueeItems=[
   {icon:'fa-solid fa-server',text:'Docker'},
   {icon:'fa-solid fa-road',text:'Sensor Fusion'},
   {icon:'fa-solid fa-chart-line',text:'Data Analytics'},
+  {icon:'fa-solid fa-map-marked-alt',text:'QGIS'},
+  {icon:'fa-brands fa-js',text:'JavaScript'},
+  {icon:'fa-brands fa-react',text:'React'},
+  {icon:'fa-solid fa-chart-simple',text:'Pandas'},
+  {icon:'fa-solid fa-cube',text:'PyTorch'},
+  {icon:'fa-solid fa-arrows-spin',text:'BoT-SORT'},
+  {icon:'fa-solid fa-filter',text:'OpenCV'},
+  {icon:'fa-solid fa-cloud-arrow-up',text:'FastAPI'},
+  {icon:'fa-solid fa-draw-polygon',text:'Leaflet'},
+  {icon:'fa-solid fa-map-location-dot',text:'Mapbox'},
+  {icon:'fa-solid fa-chart-line',text:'Plotly'},
+  {icon:'fa-solid fa-database',text:'Redis'},
+  {icon:'fa-brands fa-github',text:'GitHub'},
+  {icon:'fa-solid fa-arrows-spin',text:'Celery'},
+  {icon:'fa-solid fa-microchip',text:'ONNX'},
+  {icon:'fa-solid fa-camera',text:'Multi-spectral'},
+  {icon:'fa-solid fa-satellite-dish',text:'SAR Processing'},
+  {icon:'fa-solid fa-chart-gantt',text:'Django REST'},
+  {icon:'fa-brands fa-linux',text:'Linux'},
+  {icon:'fa-solid fa-cubes',text:'Nginx'},
+  {icon:'fa-brands fa-docker',text:'Kubernetes'},
+  {icon:'fa-regular fa-map',text:'OpenLayers'},
+  {icon:'fa-solid fa-chart-line',text:'IRI Roughness'}
 ];
 const track=document.getElementById('marqueeTrack');
 [...marqueeItems,...marqueeItems].forEach((item,i)=>{
