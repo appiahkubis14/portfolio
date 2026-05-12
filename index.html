@@ -5,68 +5,37 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Samuel Appiah Kubi — Geospatial & AI Engineer</title>
 <meta name="description" content="Geospatial Software Engineer, AI/Computer Vision Developer, and Full-Stack Architect based in Accra, Ghana."/>
-
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-/* ================================================
-   VARIABLES
-   ================================================ */
 :root {
-  --orange:        #F97316;
-  --orange-dk:     #EA580C;
-  --orange-dkr:    #C2410C;
-  --orange-glow:   rgba(249,115,22,0.30);
-  --orange-subtle: rgba(249,115,22,0.08);
-  --orange-mid:    rgba(249,115,22,0.15);
-  --green:         #22C55E;
-  --t: 0.35s cubic-bezier(.4,0,.2,1);
-  --font-h: 'Bricolage Grotesque', sans-serif;
-  --font-b: 'Instrument Sans', sans-serif;
-  --font-m: 'DM Mono', monospace;
-  --r: 16px;
-  --r-sm: 10px;
-  --r-lg: 24px;
+  --orange:#F97316;--orange-dk:#EA580C;--orange-dkr:#C2410C;
+  --orange-glow:rgba(249,115,22,0.30);--orange-subtle:rgba(249,115,22,0.08);
+  --orange-mid:rgba(249,115,22,0.15);--green:#22C55E;
+  --t:0.35s cubic-bezier(.4,0,.2,1);
+  --font-h:'Bricolage Grotesque',sans-serif;
+  --font-b:'Instrument Sans',sans-serif;
+  --font-m:'DM Mono',monospace;
+  --r:16px;--r-sm:10px;--r-lg:24px;
 }
-[data-theme="dark"] {
-  --bg:      #080809;
-  --bg2:     #0F0F11;
-  --bg3:     #16161A;
-  --surf:    #1A1A1E;
-  --surf2:   #222228;
-  --bdr:     rgba(255,255,255,0.07);
-  --bdr-h:   rgba(249,115,22,0.5);
-  --tx:      #F1F1F3;
-  --tx2:     #9A9AA8;
-  --tx3:     #5A5A68;
-  --shadow:  0 8px 40px rgba(0,0,0,0.6);
-  --nav-bg:  rgba(8,8,9,0.88);
-  --modal-bg:rgba(0,0,0,0.80);
-  --glass:   rgba(26,26,30,0.72);
+[data-theme="dark"]{
+  --bg:#080809;--bg2:#0F0F11;--bg3:#16161A;--surf:#1A1A1E;--surf2:#222228;
+  --bdr:rgba(255,255,255,0.07);--bdr-h:rgba(249,115,22,0.5);
+  --tx:#F1F1F3;--tx2:#9A9AA8;--tx3:#5A5A68;
+  --shadow:0 8px 40px rgba(0,0,0,0.6);--nav-bg:rgba(8,8,9,0.88);
+  --modal-bg:rgba(0,0,0,0.85);--glass:rgba(26,26,30,0.72);
 }
-[data-theme="light"] {
-  --bg:      #F7F7F8;
-  --bg2:     #EFEFF1;
-  --bg3:     #E5E5EA;
-  --surf:    #FFFFFF;
-  --surf2:   #F2F2F5;
-  --bdr:     rgba(0,0,0,0.07);
-  --bdr-h:   rgba(249,115,22,0.5);
-  --tx:      #16161A;
-  --tx2:     #4A4A58;
-  --tx3:     #9A9AA8;
-  --shadow:  0 8px 40px rgba(0,0,0,0.10);
-  --nav-bg:  rgba(247,247,248,0.90);
-  --modal-bg:rgba(0,0,0,0.60);
-  --glass:   rgba(255,255,255,0.75);
+[data-theme="light"]{
+  --bg:#F7F7F8;--bg2:#EFEFF1;--bg3:#E5E5EA;--surf:#FFFFFF;--surf2:#F2F2F5;
+  --bdr:rgba(0,0,0,0.07);--bdr-h:rgba(249,115,22,0.5);
+  --tx:#16161A;--tx2:#4A4A58;--tx3:#9A9AA8;
+  --shadow:0 8px 40px rgba(0,0,0,0.10);--nav-bg:rgba(247,247,248,0.90);
+  --modal-bg:rgba(0,0,0,0.65);--glass:rgba(255,255,255,0.75);
 }
 
-/* ================================================
-   RESET
-   ================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:var(--font-b);background:var(--bg);color:var(--tx);line-height:1.7;transition:background var(--t),color var(--t);overflow-x:hidden}
@@ -78,637 +47,331 @@ ul{list-style:none}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--orange-dk);border-radius:99px}
 
-/* ================================================
-   UTILITIES
-   ================================================ */
 .container{width:100%;max-width:1441px;margin:0 auto;padding:0 28px}
 .section-pad{padding:110px 0}
 .section-eyebrow{
   display:inline-flex;align-items:center;gap:9px;
   font-family:var(--font-m);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
   color:var(--orange);background:var(--orange-subtle);
-  border:1px solid rgba(249,115,22,0.22);
-  padding:7px 16px;border-radius:99px;margin-bottom:18px;
+  border:1px solid rgba(249,115,22,0.22);padding:7px 16px;border-radius:99px;margin-bottom:18px;
 }
-.section-eyebrow i{font-size:0.85rem}
-.section-title{
-  font-family:var(--font-h);font-size:clamp(2.1rem,4.5vw,3.2rem);
-  font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:14px;
-}
+.section-title{font-family:var(--font-h);font-size:clamp(2.1rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:14px}
 .section-sub{color:var(--tx2);font-size:1.05rem;max-width:560px;margin-bottom:56px;line-height:1.75}
 .hl{color:var(--orange)}
 
-/* FADE-UP REVEAL */
 .fu{opacity:0;transform:translateY(32px);transition:opacity .65s ease,transform .65s ease}
 .fu.in{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.05s}.d2{transition-delay:.12s}.d3{transition-delay:.19s}
 .d4{transition-delay:.26s}.d5{transition-delay:.33s}.d6{transition-delay:.40s}
 
-/* ================================================
-   BUTTONS
-   ================================================ */
-.btn{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:14px 28px;border-radius:99px;
-  font-family:var(--font-h);font-weight:700;font-size:0.875rem;letter-spacing:0.02em;
-  transition:all .25s ease;white-space:nowrap;
-}
-.btn i{font-size:0.9rem}
-.btn-primary{
-  background:linear-gradient(135deg,var(--orange),var(--orange-dk));
-  color:#fff;box-shadow:0 0 0 0 var(--orange-glow);
-}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:99px;font-family:var(--font-h);font-weight:700;font-size:0.875rem;letter-spacing:0.02em;transition:all .25s ease;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-dk));color:#fff;box-shadow:0 0 0 0 var(--orange-glow)}
 .btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 36px var(--orange-glow)}
 .btn-outline{border:1.5px solid var(--bdr-h);color:var(--orange);background:transparent}
 .btn-outline:hover{background:var(--orange-subtle);transform:translateY(-3px)}
 .btn-ghost{color:var(--tx2);border:1.5px solid var(--bdr)}
 .btn-ghost:hover{border-color:var(--bdr-h);color:var(--orange)}
 
-/* ================================================
-   NAVIGATION
-   ================================================ */
-#navbar{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:var(--nav-bg);
-  backdrop-filter:blur(22px) saturate(200%);
-  -webkit-backdrop-filter:blur(22px) saturate(200%);
-  border-bottom:1px solid var(--bdr);
-  transition:background var(--t),border-color var(--t);
-}
-.nav-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  height:68px;max-width:1441px;margin:0 auto;padding:0 28px;
-}
-.nav-logo{
-  font-family:var(--font-h);font-weight:800;font-size:1.15rem;
-  color:var(--tx);letter-spacing:-0.03em;display:flex;align-items:center;gap:3px;
-}
-.nav-logo-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--orange);box-shadow:0 0 10px var(--orange);
-  display:inline-block;margin-left:2px;
-}
+/* ── NAV ── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(22px) saturate(200%);-webkit-backdrop-filter:blur(22px) saturate(200%);border-bottom:1px solid var(--bdr);transition:background var(--t)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1441px;margin:0 auto;padding:0 28px}
+.nav-logo{font-family:var(--font-h);font-weight:800;font-size:1.15rem;color:var(--tx);letter-spacing:-0.03em;display:flex;align-items:center;gap:3px}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange);display:inline-block;margin-left:2px}
 .nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{
-  font-family:var(--font-b);font-size:0.85rem;font-weight:500;color:var(--tx2);
-  padding:7px 14px;border-radius:99px;transition:all .2s ease;
-}
+.nav-links a{font-family:var(--font-b);font-size:0.85rem;font-weight:500;color:var(--tx2);padding:7px 14px;border-radius:99px;transition:all .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--orange);background:var(--orange-subtle)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.nav-icon-btn{
-  width:42px;height:42px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--surf);border:1px solid var(--bdr);
-  color:var(--tx2);font-size:1rem;transition:all .2s ease;
-}
+.nav-icon-btn{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--surf);border:1px solid var(--bdr);color:var(--tx2);font-size:1rem;transition:all .2s}
 .nav-icon-btn:hover{border-color:var(--orange);color:var(--orange)}
-.hamburger{
-  display:none;flex-direction:column;gap:5px;
-  width:42px;height:42px;align-items:center;justify-content:center;
-  border-radius:var(--r-sm);border:1px solid var(--bdr);
-  background:var(--surf);transition:all .2s;
-}
+.hamburger{display:none;flex-direction:column;gap:5px;width:42px;height:42px;align-items:center;justify-content:center;border-radius:var(--r-sm);border:1px solid var(--bdr);background:var(--surf);transition:all .2s}
 .hamburger span{display:block;width:19px;height:1.5px;background:var(--tx2);transition:all .3s}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{
-  display:none;position:fixed;top:68px;left:0;right:0;bottom:0;
-  background:var(--bg);z-index:999;padding:36px 28px;
-  flex-direction:column;gap:6px;transform:translateX(100%);
-  transition:transform .35s cubic-bezier(.4,0,.2,1);
-}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:var(--bg);z-index:999;padding:36px 28px;flex-direction:column;gap:6px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
 .mobile-menu.open{transform:translateX(0)}
-.mobile-menu a{
-  font-family:var(--font-h);font-size:1.6rem;font-weight:700;
-  color:var(--tx);padding:14px 0;border-bottom:1px solid var(--bdr);transition:color .2s;
-}
+.mobile-menu a{font-family:var(--font-h);font-size:1.6rem;font-weight:700;color:var(--tx);padding:14px 0;border-bottom:1px solid var(--bdr);transition:color .2s}
 .mobile-menu a:hover{color:var(--orange)}
 
-/* ================================================
-   HERO — ALWAYS DARK (space bg) — theme-safe text
-   ================================================ */
-#hero{
-  min-height:100vh;display:flex;align-items:center;
-  position:relative;overflow:hidden;padding:100px 0 70px;
-}
-
-/* Space photograph background */
-.hero-bg-img{
-  position:absolute;inset:0;z-index:0;
-  background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800&q=85&fit=crop') center/cover no-repeat;
-  filter:brightness(0.28) saturate(1.4);
-  transition:filter .4s ease;
-}
-/* Extra deep overlay so hero is always legible in both themes */
-.hero-bg-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:rgba(4,4,8,0.55);
-}
-.hero-bg-gradient{
-  position:absolute;inset:0;z-index:2;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(249,115,22,0.13) 0%, transparent 65%),
-    linear-gradient(to bottom, transparent 40%, rgba(4,4,8,0.85) 100%);
-}
-/* Star-grid scan-line overlay */
-.hero-grid-lines{
-  position:absolute;inset:0;z-index:3;
-  background-image:
-    linear-gradient(rgba(249,115,22,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(249,115,22,0.05) 1px, transparent 1px);
-  background-size:80px 80px;
-  mask-image:radial-gradient(ellipse 90% 80% at 50% 50%, black 0%, transparent 100%);
-}
-
-/* Floating star-dust particles via pseudo-element */
-.hero-stars{
-  position:absolute;inset:0;z-index:2;
-  background-image:
-    radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 72% 12%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 42% 68%, rgba(255,200,100,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 88% 55%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 31% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 60% 35%, rgba(200,180,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 5% 60%, rgba(255,255,255,0.35) 0%, transparent 100%),
-    radial-gradient(1px 1px at 93% 20%, rgba(255,220,150,0.45) 0%, transparent 100%);
-  pointer-events:none;
-}
-
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 0 70px}
+.hero-bg-img{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800&q=85&fit=crop') center/cover no-repeat;filter:brightness(0.28) saturate(1.4)}
+.hero-bg-overlay{position:absolute;inset:0;z-index:1;background:rgba(4,4,8,0.55)}
+.hero-bg-gradient{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(249,115,22,0.13) 0%,transparent 65%),linear-gradient(to bottom,transparent 40%,rgba(4,4,8,0.85) 100%)}
+.hero-grid-lines{position:absolute;inset:0;z-index:3;background-image:linear-gradient(rgba(249,115,22,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(249,115,22,0.05) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 80% at 50% 50%,black 0%,transparent 100%)}
+.hero-stars{position:absolute;inset:0;z-index:2;background-image:radial-gradient(1px 1px at 15% 25%,rgba(255,255,255,0.7) 0%,transparent 100%),radial-gradient(1px 1px at 72% 12%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 42% 68%,rgba(255,200,100,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 88% 55%,rgba(255,255,255,0.6) 0%,transparent 100%),radial-gradient(1px 1px at 31% 80%,rgba(255,255,255,0.4) 0%,transparent 100%);pointer-events:none}
 .hero-content{position:relative;z-index:4;text-align:center;max-width:920px;margin:0 auto}
-
-/* ── Hero text: ALWAYS white/light regardless of theme ── */
-.hero-badge{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.14);
-  backdrop-filter:blur(12px);
-  border-radius:99px;padding:8px 20px 8px 12px;
-  font-family:var(--font-m);font-size:0.78rem;letter-spacing:0.08em;
-  color:rgba(255,255,255,0.70);margin-bottom:36px;
-  animation:fadeDown .8s ease forwards;
-}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);backdrop-filter:blur(12px);border-radius:99px;padding:8px 20px 8px 12px;font-family:var(--font-m);font-size:0.78rem;letter-spacing:0.08em;color:rgba(255,255,255,0.70);margin-bottom:36px;animation:fadeDown .8s ease forwards}
 .badge-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(34,197,94,.6);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.2);opacity:.7}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-
-.hero-name{
-  font-family:var(--font-h);
-  font-size:clamp(2.8rem,8vw,6rem);
-  font-weight:800;line-height:1.02;letter-spacing:-0.04em;
-  color:#ffffff;
-  margin-bottom:18px;animation:fadeUp .9s .15s ease forwards;opacity:0;
-}
-.hero-name .hl{
-  background:linear-gradient(135deg,var(--orange) 0%,#FBBF24 50%,var(--orange-dk) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-typed-wrap{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  font-family:var(--font-h);font-size:clamp(1.05rem,2.5vw,1.5rem);
-  font-weight:600;color:rgba(255,255,255,0.70);margin-bottom:22px;
-  animation:fadeUp .9s .3s ease forwards;opacity:0;
-}
-.hero-typed{color:#ffffff;border-right:2.5px solid var(--orange);padding-right:4px;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.hero-bio{
-  color:rgba(255,255,255,0.72);font-size:clamp(0.95rem,2vw,1.08rem);
-  max-width:640px;margin:0 auto 38px;line-height:1.8;
-  animation:fadeUp .9s .45s ease forwards;opacity:0;
-}
-.hero-actions{
-  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;
-  margin-bottom:52px;animation:fadeUp .9s .6s ease forwards;opacity:0;
-}
-/* Ghost button in hero always needs white border since bg is always dark */
-#hero .btn-ghost{
-  color:rgba(255,255,255,0.75);
-  border-color:rgba(255,255,255,0.22);
-}
+.hero-name{font-family:var(--font-h);font-size:clamp(2.8rem,8vw,6rem);font-weight:800;line-height:1.02;letter-spacing:-0.04em;color:#ffffff;margin-bottom:18px;animation:fadeUp .9s .15s ease forwards;opacity:0}
+.hero-name .hl{background:linear-gradient(135deg,var(--orange) 0%,#FBBF24 50%,var(--orange-dk) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-typed-wrap{display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-h);font-size:clamp(1.05rem,2.5vw,1.5rem);font-weight:600;color:rgba(255,255,255,0.70);margin-bottom:22px;animation:fadeUp .9s .3s ease forwards;opacity:0}
+.hero-typed{color:#ffffff;border-right:2.5px solid var(--orange);padding-right:4px}
+.hero-bio{color:rgba(255,255,255,0.72);font-size:clamp(0.95rem,2vw,1.08rem);max-width:640px;margin:0 auto 38px;line-height:1.8;animation:fadeUp .9s .45s ease forwards;opacity:0}
+.hero-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:52px;animation:fadeUp .9s .6s ease forwards;opacity:0}
+#hero .btn-ghost{color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.22)}
 #hero .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
-#hero .btn-outline{
-  border-color:rgba(249,115,22,0.65);
-  color:var(--orange);
-}
-.hero-socials{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  animation:fadeUp .9s .75s ease forwards;opacity:0;
-}
-.social-pill{
-  display:flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.14);
-  border-radius:99px;padding:8px 16px 8px 12px;
-  color:rgba(255,255,255,0.72);font-size:0.8rem;font-weight:500;
-  transition:all .25s ease;
-}
+.hero-socials{display:flex;align-items:center;justify-content:center;gap:10px;animation:fadeUp .9s .75s ease forwards;opacity:0}
+.social-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:99px;padding:8px 16px 8px 12px;color:rgba(255,255,255,0.72);font-size:0.8rem;font-weight:500;transition:all .25s}
 .social-pill i{font-size:1rem;color:var(--orange)}
 .social-pill:hover{border-color:var(--bdr-h);color:var(--orange);transform:translateY(-3px);background:rgba(249,115,22,0.1)}
-
-/* Hero scroll indicator */
-.hero-scroll{
-  position:absolute;bottom:32px;left:45%;transform:translateX(-50%);z-index:4;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  color:rgba(255,255,255,0.38);font-size:0.72rem;font-family:var(--font-m);letter-spacing:0.15em;text-transform:uppercase;
-  animation:fadeUp 1s 1s ease forwards;opacity:0;
-}
-.scroll-arrow{
-  width:28px;height:44px;border:1.5px solid rgba(255,255,255,0.18);border-radius:99px;
-  display:flex;align-items:flex-start;justify-content:center;padding-top:8px;
-}
-.scroll-arrow::after{
-  content:'';width:3px;height:8px;background:var(--orange);border-radius:99px;
-  animation:scrollBob 1.8s infinite;
-}
+.hero-scroll{position:absolute;bottom:32px;left:45%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.38);font-size:0.72rem;font-family:var(--font-m);letter-spacing:0.15em;text-transform:uppercase;animation:fadeUp 1s 1s ease forwards;opacity:0}
+.scroll-arrow{width:28px;height:44px;border:1.5px solid rgba(255,255,255,0.18);border-radius:99px;display:flex;align-items:flex-start;justify-content:center;padding-top:8px}
+.scroll-arrow::after{content:'';width:3px;height:8px;background:var(--orange);border-radius:99px;animation:scrollBob 1.8s infinite}
 @keyframes scrollBob{0%,100%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:.3}}
 
-/* ================================================
-   MARQUEE / TICKER
-   ================================================ */
-.marquee-section{
-  padding:24px 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
-  overflow:hidden;
-}
+/* ── MARQUEE ── */
+.marquee-section{padding:24px 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);overflow:hidden}
 .marquee-track{display:flex;gap:0;animation:marquee 55s linear infinite;width:max-content}
 .marquee-track:hover{animation-play-state:paused}
-.marquee-item{
-  display:flex;align-items:center;gap:10px;
-  font-family:var(--font-h);font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
-  color:var(--tx3);padding:0 36px;white-space:nowrap;
-}
+.marquee-item{display:flex;align-items:center;gap:10px;font-family:var(--font-h);font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--tx3);padding:0 36px;white-space:nowrap}
 .marquee-item i{color:var(--orange);font-size:1rem}
 .marquee-sep{color:var(--orange);font-size:1.2rem;padding:0 8px;opacity:0.5}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ================================================
-   ABOUT
-   ================================================ */
+/* ── ABOUT ── */
 #about{background:var(--bg2)}
 .about-grid{display:grid;grid-template-columns:1fr 1.55fr;gap:72px;align-items:start}
-.about-photo-wrap{position:relative;display:flex;justify-content:center}
-.about-img-container{
-  position:relative;width:300px;height:370px;border-radius:var(--r-lg);overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,0.5);
-}
+.about-img-container{position:relative;width:300px;height:370px;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .about-img-container img{width:100%;height:100%;object-fit:cover}
-.about-img-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(249,115,22,0.25) 0%, transparent 60%);
-}
-.about-img-badge{
-  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
-  background:var(--glass);backdrop-filter:blur(10px);
-  border:1px solid var(--bdr-h);border-radius:99px;
-  padding:10px 20px;display:flex;align-items:center;gap:9px;
-  font-family:var(--font-h);font-size:0.82rem;font-weight:700;color:var(--tx);
-  white-space:nowrap;
-}
+.about-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(249,115,22,0.25) 0%,transparent 60%)}
+.about-img-badge{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--bdr-h);border-radius:99px;padding:10px 20px;display:flex;align-items:center;gap:9px;font-family:var(--font-h);font-size:0.82rem;font-weight:700;color:var(--tx);white-space:nowrap}
 .about-img-badge i{color:var(--orange)}
-.about-img-ring{
-  position:absolute;inset:-8px;border-radius:calc(var(--r-lg) + 8px);
-  background:conic-gradient(from 0deg, var(--orange) 0%, var(--orange-dk) 40%, transparent 60%, var(--orange) 100%);
-  z-index:-1;animation:spin 8s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-
 .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}
-.tag{
-  font-family:var(--font-m);font-size:0.73rem;padding:5px 13px;border-radius:8px;
-  background:var(--surf);border:1px solid var(--bdr);color:var(--tx2);transition:all .2s;
-}
+.tag{font-family:var(--font-m);font-size:0.73rem;padding:5px 13px;border-radius:8px;background:var(--surf);border:1px solid var(--bdr);color:var(--tx2);transition:all .2s}
 .tag:hover{border-color:var(--bdr-h);color:var(--orange)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
-.stat-card{
-  background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r);padding:18px 16px;text-align:center;transition:all .25s;
-}
-.stat-card:hover{border-color:var(--bdr-h);transform:translateY(-2px)}
-.stat-val{
-  font-family:var(--font-h);font-size:1.7rem;font-weight:800;
-  color:var(--orange);line-height:1;display:block;margin-bottom:5px;
-}
-.stat-lbl{font-family:var(--font-m);font-size:0.65rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase}
 
-/* ================================================
-   SKILLS (GRID CARDS)
-   ================================================ */
+/* ── SKILLS ── */
 #skills{background:var(--bg)}
 .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.skill-col{
-  background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r);padding:28px 22px;transition:all .3s;
-  position:relative;overflow:hidden;
-}
-.skill-col::before{
-  content:'';position:absolute;top:-60px;right:-60px;
-  width:140px;height:140px;border-radius:50%;
-  background:var(--orange-subtle);transition:all .4s;
-}
+.skill-col{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:28px 22px;transition:all .3s;position:relative;overflow:hidden}
+.skill-col::before{content:'';position:absolute;top:-60px;right:-60px;width:140px;height:140px;border-radius:50%;background:var(--orange-subtle);transition:all .4s}
 .skill-col:hover::before{transform:scale(1.5);background:var(--orange-mid)}
 .skill-col:hover{border-color:var(--bdr-h);box-shadow:0 0 40px var(--orange-glow),0 8px 32px rgba(0,0,0,.3)}
-.skill-icon-wrap{
-  width:52px;height:52px;border-radius:14px;
-  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
-  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
-  font-size:1.4rem;color:var(--orange);transition:all .3s;
-}
+.skill-icon-wrap{width:52px;height:52px;border-radius:14px;background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.4rem;color:var(--orange);transition:all .3s}
 .skill-col:hover .skill-icon-wrap{background:var(--orange);color:#fff}
 .skill-col-title{font-family:var(--font-h);font-size:0.97rem;font-weight:700;margin-bottom:16px}
 .skill-items{display:flex;flex-wrap:wrap;gap:6px}
-.skill-item{
-  font-family:var(--font-m);font-size:0.72rem;padding:4px 10px;border-radius:6px;
-  background:var(--surf2);color:var(--tx2);border:1px solid var(--bdr);transition:all .2s;
-}
+.skill-item{font-family:var(--font-m);font-size:0.72rem;padding:4px 10px;border-radius:6px;background:var(--surf2);color:var(--tx2);border:1px solid var(--bdr);transition:all .2s}
 .skill-item:hover{border-color:var(--orange);color:var(--orange)}
 
-/* ================================================
-   PROJECTS — IMAGE CARDS
-   ================================================ */
+/* ══════════════════════════════════════════════
+   PROJECTS — Enhanced with expandable detail panel
+   ══════════════════════════════════════════════ */
 #projects{background:var(--bg2)}
+
+/* Compact featured count shown initially */
+.projects-featured-count {
+  font-family:var(--font-m);font-size:0.75rem;color:var(--tx3);
+  display:flex;align-items:center;gap:8px;margin-bottom:32px;
+}
+.projects-featured-count span{color:var(--orange);font-weight:700}
+
+/* Filter bar */
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.filter-btn{
+  font-family:var(--font-m);font-size:0.72rem;padding:6px 16px;border-radius:99px;
+  border:1px solid var(--bdr);color:var(--tx2);background:var(--surf);
+  cursor:pointer;transition:all .2s;
+}
+.filter-btn.active,.filter-btn:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-subtle)}
+
+/* Project cards grid */
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .project-card{
   background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r-lg);overflow:hidden;
-  display:flex;flex-direction:column;
-  transition:all .35s ease;cursor:pointer;
+  border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;
+  transition:all .35s ease;cursor:pointer;position:relative;
 }
-.project-card:hover{
-  transform:translateY(-6px) scale(1.01);
-  border-color:var(--bdr-h);box-shadow:0 20px 60px var(--orange-glow),0 8px 32px rgba(0,0,0,.3);
-}
-.proj-img{
-  position:relative;height:200px;overflow:hidden;
-  background:var(--surf2);
-}
-.proj-img img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform .6s ease;
-}
+.project-card:hover{transform:translateY(-6px) scale(1.01);border-color:var(--bdr-h);box-shadow:0 20px 60px var(--orange-glow),0 8px 32px rgba(0,0,0,.3)}
+.project-card.hidden{display:none}
+.proj-img{position:relative;height:200px;overflow:hidden;background:var(--surf2)}
+.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .project-card:hover .proj-img img{transform:scale(1.07)}
-.proj-img-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(8,8,9,0.8) 0%, rgba(8,8,9,0.1) 60%, transparent 100%);
-}
-.proj-num-badge{
-  position:absolute;top:14px;left:14px;
-  background:rgba(8,8,9,0.65);backdrop-filter:blur(8px);
-  border:1px solid rgba(249,115,22,0.3);border-radius:8px;
-  font-family:var(--font-m);font-size:0.68rem;color:var(--orange);
-  padding:4px 10px;letter-spacing:0.1em;
-}
-.proj-tech-preview{
-  position:absolute;bottom:14px;right:14px;
-  display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;
-}
-.proj-tech-pill{
-  font-family:var(--font-m);font-size:0.62rem;padding:3px 8px;border-radius:5px;
-  background:rgba(249,115,22,0.18);border:1px solid rgba(249,115,22,0.25);color:var(--orange);
+.proj-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,9,0.8) 0%,rgba(8,8,9,0.1) 60%,transparent 100%)}
+.proj-num-badge{position:absolute;top:14px;left:14px;background:rgba(8,8,9,0.65);backdrop-filter:blur(8px);border:1px solid rgba(249,115,22,0.3);border-radius:8px;font-family:var(--font-m);font-size:0.68rem;color:var(--orange);padding:4px 10px;letter-spacing:0.1em}
+.proj-tech-preview{position:absolute;bottom:14px;right:14px;display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.proj-tech-pill{font-family:var(--font-m);font-size:0.62rem;padding:3px 8px;border-radius:5px;background:rgba(249,115,22,0.18);border:1px solid rgba(249,115,22,0.25);color:var(--orange);backdrop-filter:blur(6px)}
+.project-body{padding:22px 22px 14px;flex:1;display:flex;flex-direction:column}
+.project-title{font-family:var(--font-h);font-size:1.02rem;font-weight:700;margin-bottom:10px;line-height:1.3}
+.project-desc{font-size:0.84rem;color:var(--tx2);line-height:1.65;flex:1}
+.project-impact{display:flex;align-items:center;gap:7px;font-family:var(--font-m);font-size:0.75rem;color:var(--tx3);padding:12px 0 0;border-top:1px solid var(--bdr);margin-top:14px}
+.project-impact i{color:var(--orange)}
+.project-footer{padding:14px 22px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+.view-btn{font-family:var(--font-h);font-size:0.8rem;font-weight:700;color:var(--orange);display:flex;align-items:center;gap:6px;transition:gap .2s}
+.view-btn:hover{gap:11px}
+/* Research / special badges — all share position, only colours differ */
+.proj-research-badge,
+.proj-ieee-badge,
+.proj-thesis-badge,
+.proj-thesis-collab-badge {
+  position:absolute;top:14px;right:14px;
+  border-radius:6px;font-family:var(--font-m);font-size:0.6rem;
+  color:#fff;padding:3px 9px;letter-spacing:0.08em;
+  text-transform:uppercase;font-weight:600;
+  display:flex;align-items:center;gap:4px;
   backdrop-filter:blur(6px);
 }
-.project-body{padding:22px 22px 14px;flex:1;display:flex;flex-direction:column}
-.project-title{
-  font-family:var(--font-h);font-size:1.02rem;font-weight:700;
-  margin-bottom:10px;line-height:1.3;
-}
-.project-desc{font-size:0.84rem;color:var(--tx2);line-height:1.65;flex:1}
-.project-impact{
-  display:flex;align-items:center;gap:7px;
-  font-family:var(--font-m);font-size:0.75rem;color:var(--tx3);
-  padding:12px 0 0;border-top:1px solid var(--bdr);margin-top:14px;
-}
-.project-impact i{color:var(--orange)}
-.project-footer{
-  padding:14px 22px;border-top:1px solid var(--bdr);
-  display:flex;justify-content:space-between;align-items:center;
-}
-.view-btn{
-  font-family:var(--font-h);font-size:0.8rem;font-weight:700;
-  color:var(--orange);display:flex;align-items:center;gap:6px;transition:gap .2s;
-}
-.view-btn:hover{gap:11px}
-.proj-count{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)}
+/* Orange-red — generic research */
+.proj-research-badge{background:linear-gradient(135deg,rgba(249,115,22,0.88),rgba(234,88,12,0.93))}
+/* Deep orange-amber — IEEE submitted */
+.proj-ieee-badge{background:linear-gradient(135deg,rgba(234,88,12,0.9),rgba(180,50,8,0.95));box-shadow:0 0 12px rgba(234,88,12,0.35)}
+/* Purple-violet — master's thesis (own work) */
+.proj-thesis-badge{background:linear-gradient(135deg,rgba(139,92,246,0.92),rgba(99,62,152,0.97));box-shadow:0 0 12px rgba(139,92,246,0.3)}
+/* Indigo-blue — thesis research collaborator */
+.proj-thesis-collab-badge{background:linear-gradient(135deg,rgba(99,102,241,0.92),rgba(67,56,202,0.97));box-shadow:0 0 12px rgba(99,102,241,0.3)}
 
-/* Research badge on project cards */
-.proj-research-badge{
-  position:absolute;top:14px;right:14px;
-  background:linear-gradient(135deg,rgba(249,115,22,0.85),rgba(234,88,12,0.90));
-  border-radius:6px;
-  font-family:var(--font-m);font-size:0.6rem;color:#fff;
-  padding:3px 9px;letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:600;
+/* Show More button */
+.show-more-wrap{text-align:center;margin-top:40px}
+.show-more-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-h);font-weight:700;font-size:0.9rem;
+  color:var(--orange);border:1.5px solid var(--bdr-h);
+  background:var(--orange-subtle);border-radius:99px;
+  padding:14px 32px;cursor:pointer;transition:all .3s;
 }
+.show-more-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange);transform:translateY(-2px);box-shadow:0 8px 24px var(--orange-glow)}
+.show-more-btn i{transition:transform .3s}
+.show-more-btn.expanded i{transform:rotate(180deg)}
 
-/* ================================================
-   EXPERIENCE TIMELINE
-   ================================================ */
+/* ══════════════════════════════════════════════
+   EXPERIENCE — Cards with expand-in-place
+   ══════════════════════════════════════════════ */
 #experience{background:var(--bg2)}
-.timeline{
-  position:relative;display:grid;
-  grid-template-columns:1fr 1fr;
-  column-gap:0;row-gap:28px;padding-left:0;
-}
-.timeline::before{
-  content:'';position:absolute;
-  left:50%;transform:translateX(-50%);
-  top:0;bottom:0;width:2px;
-  background:linear-gradient(to bottom,var(--orange) 0%,rgba(249,115,22,.06) 100%);
-  z-index:0;
-}
-.timeline-item{position:relative;z-index:1;}
-/* Left column (odd children) */
-.timeline-item:nth-child(odd){padding-right:44px}
-.timeline-item:nth-child(odd) .timeline-dot{left:auto;right:-9px;top:20px}
-/* Right column (even children) */
-.timeline-item:nth-child(even){padding-left:44px}
-.timeline-item:nth-child(even) .timeline-dot{left:-9px;top:20px}
-.timeline-dot{
-  position:absolute;
-  width:18px;height:18px;border-radius:50%;
-  background:var(--orange);border:3px solid var(--bg2);
-  box-shadow:0 0 16px var(--orange-glow);z-index:2;
-}
-.timeline-card{
+.exp-list{display:flex;flex-direction:column;gap:16px}
+.exp-card{
   background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r);padding:24px 28px;transition:all .25s;
+  border-radius:var(--r);overflow:hidden;transition:border-color .25s;
 }
-.timeline-card:hover{border-color:var(--bdr-h);box-shadow:0 6px 24px var(--orange-glow)}
-.timeline-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px}
-.timeline-role{font-family:var(--font-h);font-weight:700;font-size:1.02rem}
-.timeline-company{color:var(--orange);font-weight:600;font-size:0.9rem;margin-bottom:6px}
-.timeline-meta{font-family:var(--font-m);font-size:0.74rem;color:var(--tx3);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.timeline-meta span{display:flex;align-items:center;gap:5px}
-.timeline-achievements{margin-top:14px;display:flex;flex-direction:column;gap:6px}
-.timeline-achievements li{
-  font-size:0.86rem;color:var(--tx2);padding-left:18px;
-  position:relative;line-height:1.65;
+.exp-card:hover{border-color:rgba(249,115,22,0.25)}
+.exp-card.open{border-color:var(--bdr-h)}
+.exp-card-header{
+  display:flex;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;
+  position:relative;
 }
-.timeline-achievements li::before{content:'▸';position:absolute;left:0;color:var(--orange)}
-.badge-current{
-  font-family:var(--font-m);font-size:0.68rem;padding:4px 11px;border-radius:99px;font-weight:600;
-  background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.25);
-  white-space:nowrap;
+.exp-card-header::after{
+  content:'';position:absolute;bottom:0;left:24px;right:24px;height:1px;
+  background:var(--bdr);transition:opacity .25s;
 }
-.badge-past{
-  font-family:var(--font-m);font-size:0.68rem;padding:4px 11px;border-radius:99px;
-  background:var(--surf2);color:var(--tx3);border:1px solid var(--bdr);
-  white-space:nowrap;
+.exp-card.open .exp-card-header::after{opacity:1}
+.exp-card-header:not(.open-header)::after{opacity:0}
+.exp-dot{
+  width:12px;height:12px;border-radius:50%;flex-shrink:0;
+  background:var(--orange);box-shadow:0 0 8px var(--orange-glow);
 }
+.exp-dot.past{background:var(--tx3);box-shadow:none}
+.exp-header-main{flex:1}
+.exp-role{font-family:var(--font-h);font-weight:700;font-size:0.97rem;margin-bottom:3px}
+.exp-company{color:var(--orange);font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.exp-company a{color:var(--tx3);font-size:0.72rem;border:1px solid var(--bdr);border-radius:6px;padding:2px 8px;transition:all .2s;font-family:var(--font-m)}
+.exp-company a:hover{color:var(--orange);border-color:var(--orange)}
+.exp-meta{font-family:var(--font-m);font-size:0.72rem;color:var(--tx3);display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:5px}
+.exp-meta i{color:var(--orange);font-size:0.65rem}
+.exp-badges{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.badge-current{font-family:var(--font-m);font-size:0.67rem;padding:4px 11px;border-radius:99px;font-weight:600;background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.25);white-space:nowrap}
+.badge-past{font-family:var(--font-m);font-size:0.67rem;padding:4px 11px;border-radius:99px;background:var(--surf2);color:var(--tx3);border:1px solid var(--bdr);white-space:nowrap}
+.exp-chevron{width:32px;height:32px;border-radius:50%;background:var(--surf2);display:flex;align-items:center;justify-content:center;color:var(--tx3);font-size:0.75rem;transition:all .3s;flex-shrink:0}
+.exp-card.open .exp-chevron{background:var(--orange-subtle);color:var(--orange);transform:rotate(180deg)}
+.exp-card-body{
+  max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),padding .35s ease;
+  padding:0 24px;
+}
+.exp-card.open .exp-card-body{max-height:600px;padding:20px 24px 24px}
+.exp-achievements{display:flex;flex-direction:column;gap:8px}
+.exp-achievements li{font-size:0.87rem;color:var(--tx2);padding-left:18px;position:relative;line-height:1.7}
+.exp-achievements li::before{content:'▸';position:absolute;left:0;color:var(--orange)}
 
-/* ================================================
-   CERTIFICATIONS
-   ================================================ */
+/* Show more experience */
+.exp-show-more-wrap{text-align:center;margin-top:24px}
+
+/* ── DEMOS ── */
+.demos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.demo-card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:all .35s ease}
+.demo-card:hover{transform:translateY(-6px) scale(1.01);border-color:var(--bdr-h);box-shadow:0 20px 60px var(--orange-glow),0 8px 32px rgba(0,0,0,.3)}
+.demo-thumb{position:relative;height:210px;overflow:hidden;background:#0d0d12;cursor:pointer}
+.demo-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.45) saturate(1.2);transition:transform .6s ease}
+.demo-card:hover .demo-thumb img{transform:scale(1.06)}
+.demo-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,12,0.85) 0%,transparent 55%)}
+.play-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:rgba(249,115,22,0.9);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.play-circle i{color:#fff;font-size:1.1rem;margin-left:3px}
+.demo-card:hover .play-circle{transform:translate(-50%,-50%) scale(1.12);background:var(--orange);box-shadow:0 0 0 10px rgba(249,115,22,0.18)}
+.demo-num-badge{position:absolute;top:13px;left:13px;background:rgba(8,8,12,0.65);backdrop-filter:blur(6px);border:1px solid rgba(249,115,22,0.28);border-radius:7px;font-family:var(--font-m);font-size:0.62rem;color:var(--orange);padding:3px 9px;letter-spacing:0.1em}
+.demo-type-badge{position:absolute;top:13px;right:13px;border-radius:6px;font-family:var(--font-m);font-size:0.6rem;color:#fff;padding:3px 9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.badge-cv{background:rgba(249,115,22,0.85)}.badge-geo{background:rgba(56,116,208,0.85)}.badge-research{background:rgba(99,62,152,0.85)}
+.demo-tech-row{position:absolute;bottom:13px;right:13px;display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.demo-tech-pill{font-family:var(--font-m);font-size:0.6rem;padding:3px 8px;border-radius:5px;background:rgba(249,115,22,0.18);border:1px solid rgba(249,115,22,0.25);color:var(--orange);backdrop-filter:blur(6px)}
+.demo-body{padding:20px 20px 14px;flex:1;display:flex;flex-direction:column}
+.demo-title{font-family:var(--font-h);font-size:0.98rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.demo-desc{font-size:0.83rem;color:var(--tx2);line-height:1.65;flex:1;margin-bottom:12px}
+.demo-meta{display:flex;gap:12px;flex-wrap:wrap}
+.demo-meta-item{display:flex;align-items:center;gap:5px;font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)}
+.demo-meta-item i{color:var(--orange);font-size:0.7rem}
+.demo-footer{padding:13px 20px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+.demo-collab{display:flex;align-items:center;gap:7px;font-family:var(--font-m);font-size:0.68rem;color:var(--tx3)}
+.demo-collab-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.demo-watch-btn{font-family:var(--font-h);font-size:0.78rem;font-weight:700;color:var(--orange);display:flex;align-items:center;gap:5px;transition:gap .2s;cursor:pointer}
+.demo-card:hover .demo-watch-btn{gap:10px}
+
+/* ── CERTIFICATIONS ── */
 #certifications{background:var(--bg)}
 .certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.cert-card{
-  background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r);padding:24px;
-  display:flex;align-items:flex-start;gap:16px;transition:all .25s;
-}
+.cert-card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:24px;display:flex;align-items:flex-start;gap:16px;transition:all .25s;cursor:pointer}
 .cert-card:hover{border-color:var(--bdr-h);transform:translateY(-3px);box-shadow:0 8px 28px var(--orange-glow)}
-.cert-icon{
-  width:50px;height:50px;border-radius:13px;flex-shrink:0;
-  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--orange);font-size:1.3rem;
-}
+.cert-icon{width:50px;height:50px;border-radius:13px;flex-shrink:0;background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.3rem}
 .cert-name{font-family:var(--font-h);font-weight:700;font-size:0.9rem;line-height:1.4;margin-bottom:5px}
 .cert-badge{font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)}
-.cert-card{cursor:pointer}
-
-/* ── Certificate image lightbox ── */
-.cert-lightbox{
-  display:none;position:fixed;inset:0;z-index:3000;
-  background:rgba(0,0,0,0.88);backdrop-filter:blur(14px);
-  align-items:center;justify-content:center;padding:24px;
-  flex-direction:column;gap:16px;
-}
-.cert-lightbox.open{display:flex;animation:fadeIn .22s ease}
-.cert-lightbox-inner{
-  position:relative;max-width:860px;width:100%;
-  border-radius:var(--r-lg);overflow:hidden;
-  border:1px solid var(--bdr-h);
-  box-shadow:0 32px 80px rgba(0,0,0,0.8), 0 0 60px var(--orange-glow);
-  animation:scaleIn .28s cubic-bezier(.34,1.56,.64,1) forwards;
-}
-.cert-lightbox-inner img{
-  width:100%;display:block;max-height:78vh;object-fit:contain;
-  background:var(--surf);
-}
-.cert-lightbox-close{
-  position:absolute;top:12px;right:12px;
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.15);
-  color:#fff;font-size:0.9rem;transition:all .2s;cursor:pointer;
-}
-.cert-lightbox-close:hover{background:var(--orange);border-color:var(--orange)}
-.cert-lightbox-label{
-  font-family:var(--font-h);font-size:0.9rem;font-weight:700;
-  color:rgba(255,255,255,0.75);text-align:center;
-  background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);
-  border-radius:99px;padding:7px 20px;
-}
-/* View-proof hint badge on cert cards */
-.cert-proof-hint{
-  display:inline-flex;align-items:center;gap:5px;
-  font-family:var(--font-m);font-size:0.65rem;color:var(--orange);
-  margin-top:7px;opacity:0.75;transition:opacity .2s;
-}
+.cert-proof-hint{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-m);font-size:0.65rem;color:var(--orange);margin-top:7px;opacity:0.75;transition:opacity .2s}
 .cert-card:hover .cert-proof-hint{opacity:1}
+.cert-lightbox{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,0.88);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:16px}
+.cert-lightbox.open{display:flex;animation:fadeIn .22s ease}
+.cert-lightbox-inner{position:relative;max-width:860px;width:100%;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--bdr-h);box-shadow:0 32px 80px rgba(0,0,0,0.8),0 0 60px var(--orange-glow);animation:scaleIn .28s cubic-bezier(.34,1.56,.64,1) forwards}
+.cert-lightbox-inner img{width:100%;display:block;max-height:78vh;object-fit:contain;background:var(--surf)}
+.cert-lightbox-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:0.9rem;transition:all .2s;cursor:pointer}
+.cert-lightbox-close:hover{background:var(--orange);border-color:var(--orange)}
+.cert-lightbox-label{font-family:var(--font-h);font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.75);text-align:center;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);border-radius:99px;padding:7px 20px}
 
-/* ================================================
-   EDUCATION
-   ================================================ */
+/* ── EDUCATION ── */
 #education{background:var(--bg2)}
 .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
-.edu-card{
-  background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r);padding:32px;transition:all .25s;
-  position:relative;overflow:hidden;
-}
-.edu-card::before{
-  content:'';position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;background:var(--orange-subtle);
-}
+.edu-card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:32px;transition:all .25s;position:relative;overflow:hidden}
+.edu-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:var(--orange-subtle)}
 .edu-card:hover{border-color:var(--bdr-h);transform:translateY(-3px)}
-.edu-icon-wrap{
-  width:56px;height:56px;border-radius:15px;
-  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;margin-bottom:18px;
-}
+.edu-icon-wrap{width:56px;height:56px;border-radius:15px;background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px}
 .edu-degree{font-family:var(--font-h);font-weight:700;font-size:0.97rem;margin-bottom:8px;line-height:1.35}
 .edu-school{color:var(--orange);font-weight:600;margin-bottom:6px;font-size:0.9rem}
 .edu-period{font-family:var(--font-m);font-size:0.76rem;color:var(--tx3);display:flex;align-items:center;gap:7px}
 
-/* ================================================
-   CONTACT
-   ================================================ */
+/* ── CONTACT ── */
 #contact{background:var(--bg)}
-.contact-banner{
-  position:relative;border-radius:var(--r-lg);overflow:hidden;margin-bottom:56px;padding:60px;
-  background:url('https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?w=1400&q=80&fit=crop') center/cover no-repeat;
-}
-.contact-banner::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg, rgba(249,115,22,0.85) 0%, rgba(194,65,12,0.90) 100%);
-}
+.contact-banner{position:relative;border-radius:var(--r-lg);overflow:hidden;margin-bottom:56px;padding:60px;background:url('https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?w=1400&q=80&fit=crop') center/cover no-repeat}
+.contact-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,115,22,0.85) 0%,rgba(194,65,12,0.90) 100%)}
 .contact-banner-content{position:relative;z-index:1;text-align:center}
 .contact-banner h2{font-family:var(--font-h);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:12px}
 .contact-banner p{color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:520px;margin:0 auto 28px}
-.contact-banner .btn{background:#fff;color:var(--orange-dk);font-weight:700}
-.contact-banner .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
-
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:52px}
 .contact-info-items{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
-.contact-item{
-  display:flex;align-items:center;gap:14px;
-  padding:16px;background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r-sm);transition:all .2s;
-}
+.contact-item{display:flex;align-items:center;gap:14px;padding:16px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-sm);transition:all .2s}
 .contact-item:hover{border-color:var(--bdr-h)}
-.ci-icon{
-  width:42px;height:42px;border-radius:11px;flex-shrink:0;
-  background:var(--orange-subtle);display:flex;align-items:center;justify-content:center;
-  color:var(--orange);font-size:1.05rem;
-}
+.ci-icon{width:42px;height:42px;border-radius:11px;flex-shrink:0;background:var(--orange-subtle);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.05rem}
 .ci-label{font-family:var(--font-m);font-size:0.68rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px}
 .ci-val{font-size:0.9rem;font-weight:600}
 .contact-form{display:flex;flex-direction:column;gap:16px}
 .form-group{display:flex;flex-direction:column;gap:7px}
 .form-group label{font-family:var(--font-h);font-size:0.82rem;font-weight:700;color:var(--tx2)}
-.form-group input,.form-group textarea{
-  background:var(--surf);border:1.5px solid var(--bdr);
-  border-radius:var(--r-sm);padding:13px 16px;
-  color:var(--tx);font-family:var(--font-b);font-size:0.9rem;
-  outline:none;transition:all .2s;resize:vertical;
-}
+.form-group input,.form-group textarea{background:var(--surf);border:1.5px solid var(--bdr);border-radius:var(--r-sm);padding:13px 16px;color:var(--tx);font-family:var(--font-b);font-size:0.9rem;outline:none;transition:all .2s;resize:vertical}
 .form-group input:focus,.form-group textarea:focus{border-color:var(--orange);box-shadow:0 0 0 4px var(--orange-subtle)}
 .form-group input::placeholder,.form-group textarea::placeholder{color:var(--tx3)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-success{
-  display:none;padding:14px 18px;border-radius:var(--r-sm);
-  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);
-  color:var(--green);font-size:0.88rem;text-align:center;font-family:var(--font-h);
-}
-.avail-badge{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:10px 20px;border-radius:99px;
-  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);
-  color:var(--green);font-family:var(--font-h);font-size:0.82rem;font-weight:700;margin-top:14px;
-}
+.form-success{display:none;padding:14px 18px;border-radius:var(--r-sm);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:var(--green);font-size:0.88rem;text-align:center;font-family:var(--font-h)}
+.avail-badge{display:inline-flex;align-items:center;gap:9px;padding:10px 20px;border-radius:99px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:var(--green);font-family:var(--font-h);font-size:0.82rem;font-weight:700;margin-top:14px}
 .avail-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 
-/* ================================================
-   FOOTER
-   ================================================ */
+/* ── FOOTER ── */
 footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px}
-.footer-top{
-  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px;padding-bottom:40px;
-  border-bottom:1px solid var(--bdr);
-}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
 .footer-brand-name{font-family:var(--font-h);font-size:1.3rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:10px}
 .footer-brand-sub{font-size:0.85rem;color:var(--tx2);line-height:1.7;max-width:280px}
 .footer-col-title{font-family:var(--font-h);font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--tx3);margin-bottom:16px}
@@ -716,236 +379,139 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 .footer-links-list a{font-size:0.88rem;color:var(--tx2);transition:color .2s}
 .footer-links-list a:hover{color:var(--orange)}
 .footer-socials-row{display:flex;gap:10px;margin-top:18px}
-.foot-soc{
-  width:38px;height:38px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--surf);border:1px solid var(--bdr);color:var(--tx2);font-size:0.9rem;
-  transition:all .2s;
-}
+.foot-soc{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--surf);border:1px solid var(--bdr);color:var(--tx2);font-size:0.9rem;transition:all .2s}
 .foot-soc:hover{background:var(--orange);border-color:var(--orange);color:#fff;transform:translateY(-3px)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.footer-copy{font-family:var(--font-m);font-size:0.78rem;color:var(--tx3)}
-.footer-love{font-family:var(--font-m);font-size:0.78rem;color:var(--tx3)}
+.footer-copy,.footer-love{font-family:var(--font-m);font-size:0.78rem;color:var(--tx3)}
 .footer-love i{color:var(--orange)}
 
-/* ================================================
-   MODAL
-   ================================================ */
-.modal-overlay{
-  display:none;position:fixed;inset:0;z-index:2000;
-  background:var(--modal-bg);backdrop-filter:blur(10px);
-  align-items:center;justify-content:center;padding:24px;
-}
+/* ══════════════════════════════════════════════
+   PROJECT MODAL — Full-screen slide-in panel
+   ══════════════════════════════════════════════ */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:var(--modal-bg);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px}
 .modal-overlay.open{display:flex;animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.88)}to{opacity:1;transform:scale(1)}}
 .modal-box{
-  background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r-lg);max-width:760px;width:100%;
-  max-height:88vh;overflow-y:auto;
+  background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-lg);
+  max-width:800px;width:100%;max-height:90vh;overflow-y:auto;
   animation:scaleIn .3s cubic-bezier(.34,1.56,.64,1) forwards;
 }
-@keyframes scaleIn{from{opacity:0;transform:scale(0.88)}to{opacity:1;transform:scale(1)}}
-.modal-img{height:240px;overflow:hidden;border-radius:var(--r-lg) var(--r-lg) 0 0}
+.modal-img{height:260px;overflow:hidden;border-radius:var(--r-lg) var(--r-lg) 0 0}
 .modal-img img{width:100%;height:100%;object-fit:cover}
-.modal-header{
-  padding:28px 32px 18px;border-bottom:1px solid var(--bdr);
-  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
-}
-.modal-title{font-family:var(--font-h);font-size:1.35rem;font-weight:800;letter-spacing:-0.02em}
-.modal-close{
-  width:36px;height:36px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--surf2);color:var(--tx2);font-size:0.9rem;transition:all .2s;
-}
+.modal-header{padding:28px 32px 18px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.modal-title{font-family:var(--font-h);font-size:1.4rem;font-weight:800;letter-spacing:-0.02em}
+.modal-close{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--surf2);color:var(--tx2);font-size:0.9rem;transition:all .2s;cursor:pointer}
 .modal-close:hover{background:var(--orange);color:#fff}
 .modal-body{padding:28px 32px 36px}
 .modal-section{margin-bottom:24px}
-.modal-section-title{
-  font-family:var(--font-m);font-size:0.72rem;font-weight:600;
-  color:var(--orange);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:11px;
-}
+.modal-section-title{font-family:var(--font-m);font-size:0.72rem;font-weight:600;color:var(--orange);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:11px}
 .modal-text{font-size:0.91rem;color:var(--tx2);line-height:1.8}
 .modal-list{display:flex;flex-direction:column;gap:8px}
 .modal-list li{font-size:0.89rem;color:var(--tx2);padding-left:16px;position:relative;line-height:1.65}
 .modal-list li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:0.8rem}
-
-/* Research paper stat strip in modal */
-.modal-stat-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
-  margin:18px 0;
-}
-.modal-stat-chip{
-  background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);
-  border-radius:10px;padding:12px;text-align:center;
-}
+.modal-stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.modal-stat-chip{background:var(--orange-subtle);border:1px solid rgba(249,115,22,0.2);border-radius:10px;padding:12px;text-align:center}
 .modal-stat-chip .val{font-family:var(--font-h);font-weight:800;font-size:1.1rem;color:var(--orange);display:block;line-height:1}
 .modal-stat-chip .lbl{font-family:var(--font-m);font-size:0.62rem;color:var(--tx3);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;display:block}
 
-
-
-
-
-/* ================================================
-   DEMO VIDEOS
-   ================================================ */
-.demos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.demo-card{
-  background:var(--surf);border:1px solid var(--bdr);
-  border-radius:var(--r-lg);overflow:hidden;
-  display:flex;flex-direction:column;transition:all .35s ease;
-}
-.demo-card:hover{
-  transform:translateY(-6px) scale(1.01);
-  border-color:var(--bdr-h);box-shadow:0 20px 60px var(--orange-glow),0 8px 32px rgba(0,0,0,.3);
-}
-.demo-thumb{
-  position:relative;height:210px;overflow:hidden;
-  background:#0d0d12;cursor:pointer;
-}
-.demo-thumb img{
-  width:100%;height:100%;object-fit:cover;
-  filter:brightness(0.45) saturate(1.2);
-  transition:transform .6s ease;
-}
-.demo-card:hover .demo-thumb img{transform:scale(1.06)}
-.demo-thumb-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(8,8,12,0.85) 0%,transparent 55%);
-}
-.play-circle{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:58px;height:58px;border-radius:50%;
-  background:rgba(249,115,22,0.9);
-  display:flex;align-items:center;justify-content:center;
-  transition:all .25s ease;
-}
-.play-circle i{color:#fff;font-size:1.1rem;margin-left:3px}
-.demo-card:hover .play-circle{
-  transform:translate(-50%,-50%) scale(1.12);
-  background:var(--orange);box-shadow:0 0 0 10px rgba(249,115,22,0.18);
-}
-.demo-num-badge{
-  position:absolute;top:13px;left:13px;
-  background:rgba(8,8,12,0.65);backdrop-filter:blur(6px);
-  border:1px solid rgba(249,115,22,0.28);border-radius:7px;
-  font-family:var(--font-m);font-size:0.62rem;color:var(--orange);
-  padding:3px 9px;letter-spacing:0.1em;
-}
-.demo-type-badge{
-  position:absolute;top:13px;right:13px;
-  border-radius:6px;font-family:var(--font-m);font-size:0.6rem;color:#fff;
-  padding:3px 9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;
-}
-.badge-cv{background:rgba(249,115,22,0.85)}
-.badge-geo{background:rgba(56,116,208,0.85)}
-.badge-research{background:rgba(99,62,152,0.85)}
-.demo-tech-row{
-  position:absolute;bottom:13px;right:13px;
-  display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;
-}
-.demo-tech-pill{
-  font-family:var(--font-m);font-size:0.6rem;padding:3px 8px;border-radius:5px;
-  background:rgba(249,115,22,0.18);border:1px solid rgba(249,115,22,0.25);color:var(--orange);
-  backdrop-filter:blur(6px);
-}
-.demo-body{padding:20px 20px 14px;flex:1;display:flex;flex-direction:column}
-.demo-title{font-family:var(--font-h);font-size:0.98rem;font-weight:700;margin-bottom:8px;line-height:1.3}
-.demo-desc{font-size:0.83rem;color:var(--tx2);line-height:1.65;flex:1;margin-bottom:12px}
-.demo-meta{display:flex;gap:12px;flex-wrap:wrap}
-.demo-meta-item{
-  display:flex;align-items:center;gap:5px;
-  font-family:var(--font-m);font-size:0.7rem;color:var(--tx3);
-}
-.demo-meta-item i{color:var(--orange);font-size:0.7rem}
-.demo-footer{
-  padding:13px 20px;border-top:1px solid var(--bdr);
-  display:flex;justify-content:space-between;align-items:center;
-}
-.demo-collab{
-  display:flex;align-items:center;gap:7px;
-  font-family:var(--font-m);font-size:0.68rem;color:var(--tx3);
-}
-.demo-collab-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
-.demo-watch-btn{
-  font-family:var(--font-h);font-size:0.78rem;font-weight:700;
-  color:var(--orange);display:flex;align-items:center;gap:5px;transition:gap .2s;
-}
-.demo-card:hover .demo-watch-btn{gap:10px}
-/* video embed overlay */
-.demo-video-modal{
-  display:none;position:fixed;inset:0;z-index:2500;
-  background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);
-  align-items:center;justify-content:center;padding:24px;
-}
+/* Demo video modal */
+.demo-video-modal{display:none;position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px}
 .demo-video-modal.open{display:flex;animation:fadeIn .25s ease}
-.demo-video-wrap{
-  position:relative;width:100%;max-width:900px;
-  border-radius:var(--r-lg);overflow:hidden;
-  border:1px solid var(--bdr-h);
-  box-shadow:0 32px 80px rgba(0,0,0,.8),0 0 60px var(--orange-glow);
-  aspect-ratio:16/9;
-}
+.demo-video-wrap{position:relative;width:100%;max-width:900px;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--bdr-h);box-shadow:0 32px 80px rgba(0,0,0,.8),0 0 60px var(--orange-glow);aspect-ratio:16/9}
 .demo-video-wrap video,.demo-video-wrap iframe{width:100%;height:100%;display:block;border:none}
-.demo-video-close{
-  position:absolute;top:-44px;right:0;
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
-  color:#fff;font-size:0.9rem;transition:all .2s;cursor:pointer;
-}
+.demo-video-close{position:absolute;top:-44px;right:0;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:0.9rem;transition:all .2s;cursor:pointer}
 .demo-video-close:hover{background:var(--orange);border-color:var(--orange)}
-@media(max-width:1100px){.demos-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.demos-grid{grid-template-columns:1fr}}
 
-
-
-
-
-
-/* ================================================
-   RESPONSIVE
-   ================================================ */
+/* ── RESPONSIVE ── */
 @media(max-width:1100px){
-  .skills-grid{grid-template-columns:repeat(2,1fr)}
-  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-grid,.projects-grid{grid-template-columns:repeat(2,1fr)}
   .certs-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr}
+  .demos-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:44px}
   .contact-grid{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:repeat(4,1fr)}
   .modal-stat-strip{grid-template-columns:repeat(2,1fr)}
 }
+
+/* ════════════════════════════════
+   MOBILE — Experience cards polish
+   ════════════════════════════════ */
 @media(max-width:768px){
   .section-pad{padding:75px 0}
-  .skills-grid{grid-template-columns:1fr}
-  .projects-grid{grid-template-columns:1fr}
-  .edu-grid{grid-template-columns:1fr}
-  .certs-grid{grid-template-columns:1fr}
+  .skills-grid,.projects-grid,.edu-grid,.certs-grid,.demos-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .nav-links{display:none}
   .hamburger{display:flex}
   .mobile-menu{display:flex}
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
   .contact-banner{padding:40px 24px}
   .hero-socials{flex-wrap:wrap}
-  /* Timeline: collapse to single column on mobile */
-  .timeline{grid-template-columns:1fr;padding-left:40px}
-  .timeline::before{left:8px;transform:none}
-  .timeline-item:nth-child(odd),
-  .timeline-item:nth-child(even){padding-left:0;padding-right:0}
-  .timeline-item:nth-child(odd) .timeline-dot,
-  .timeline-item:nth-child(even) .timeline-dot{left:-40px;right:auto;top:6px}
+
+  /* ── Experience card mobile layout ── */
+  .exp-card-header{
+    gap:12px;
+    padding:16px 16px;
+    align-items:flex-start;  /* let content breathe vertically */
+  }
+  .exp-card-header::after{left:16px;right:16px}
+
+  /* Hide the status badge (Contract Closed / Past) on mobile — dot color carries the info */
+  .exp-badges .badge-past{display:none}
+
+  /* Keep only chevron + current badge (green active) */
+  .exp-badges{gap:6px;align-items:center;flex-shrink:0;margin-top:2px}
+
+  /* Shrink status dot slightly */
+  .exp-dot{width:10px;height:10px;margin-top:5px}
+
+  /* Role text smaller but still bold */
+  .exp-role{font-size:0.9rem;line-height:1.35;margin-bottom:4px}
+
+  /* Company row: stack visit-site link below on very narrow */
+  .exp-company{font-size:0.8rem;flex-wrap:wrap;gap:6px}
+  .exp-company a{font-size:0.67rem;padding:2px 7px}
+
+  /* Meta chips smaller */
+  .exp-meta{font-size:0.67rem;gap:8px;margin-top:4px}
+
+  /* Chevron circle smaller */
+  .exp-chevron{width:28px;height:28px;font-size:0.7rem;flex-shrink:0}
+
+  /* Expanded body padding */
+  .exp-card.open .exp-card-body{padding:16px 16px 20px}
+  .exp-card-body{padding:0 16px}
+
+  /* Achievement list */
+  .exp-achievements li{font-size:0.83rem;padding-left:16px;line-height:1.65}
+
+  /* Show-more button */
+  .show-more-btn{font-size:0.82rem;padding:12px 22px}
 }
+
 @media(max-width:480px){
   .hero-actions{flex-direction:column}
-  .stats-grid{grid-template-columns:1fr 1fr}
   .modal-header{padding:20px 20px 16px}
   .modal-body{padding:20px 20px 28px}
   .modal-stat-strip{grid-template-columns:repeat(2,1fr)}
+
+  /* Even tighter card on very small phones */
+  .exp-card-header{padding:14px 14px;gap:10px}
+  .exp-role{font-size:0.85rem}
+  .exp-company{font-size:0.78rem}
+  /* Also hide current badge text on tiny screens — keep only dot */
+  .exp-badges .badge-current{
+    font-size:0;        /* hide text */
+    padding:5px;        /* collapse to a dot shape */
+    border-radius:50%;
+    width:10px;height:10px;
+    background:rgba(34,197,94,.25);
+    border-color:rgba(34,197,94,.4);
+  }
+  .exp-badges .badge-current i{font-size:0.5rem}
 }
 </style>
 </head>
@@ -976,7 +542,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" class="mob-lnk">About</a>
   <a href="#skills" class="mob-lnk">Skills</a>
@@ -990,22 +555,15 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 
 <!-- HERO -->
 <section id="hero">
-  <!-- Space background layers -->
   <div class="hero-bg-img"></div>
   <div class="hero-bg-overlay"></div>
   <div class="hero-stars"></div>
   <div class="hero-bg-gradient"></div>
   <div class="hero-grid-lines"></div>
-
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Open to freelance &amp; contract · Accra, Ghana
-      </div>
-      <h1 class="hero-name">
-        <span>Samuel </span><span class="hl">Appiah Kubi</span>
-      </h1>
+      <div class="hero-badge"><span class="badge-dot"></span>Open to freelance &amp; contract · Accra, Ghana</div>
+      <h1 class="hero-name"><span>Samuel </span><span class="hl">Appiah Kubi</span></h1>
       <div class="hero-typed-wrap">
         <i class="fa-solid fa-location-crosshairs" style="color:var(--orange);font-size:1.1rem"></i>
         <span id="typedText" class="hero-typed"></span>
@@ -1017,45 +575,29 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         <a href="assets/CV.pdf" download class="btn btn-ghost"><i class="fa-solid fa-download"></i> Resume</a>
       </div>
       <div class="hero-socials">
-        <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="social-pill" aria-label="LinkedIn">
-          <i class="fab fa-linkedin-in"></i> LinkedIn
-        </a>
-        <a href="https://github.com/appiahkubis14" class="social-pill" aria-label="GitHub">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-        <a href="https://www.upwork.com/freelancers/~016f63fb8674b4c590?mp_source=share" class="social-pill" aria-label="Upwork">
-          <i class="fas fa-briefcase"></i> Upwork
-        </a>
-        <a href="mailto:appiahkubis14@gmail.com" class="social-pill" aria-label="Email">
-          <i class="fas fa-envelope"></i> Email
-        </a>
+        <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="social-pill"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        <a href="https://github.com/appiahkubis14" class="social-pill"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.upwork.com/freelancers/~016f63fb8674b4c590" class="social-pill"><i class="fas fa-briefcase"></i> Upwork</a>
+        <a href="mailto:appiahkubis14@gmail.com" class="social-pill"><i class="fas fa-envelope"></i> Email</a>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-arrow"></div>
-    Scroll to explore
-  </div>
+  <div class="hero-scroll"><div class="scroll-arrow"></div>Scroll to explore</div>
 </section>
 
-<!-- MARQUEE TICKER -->
-<div class="marquee-section">
-  <div class="marquee-track" id="marqueeTrack"></div>
-</div>
+<!-- MARQUEE -->
+<div class="marquee-section"><div class="marquee-track" id="marqueeTrack"></div></div>
 
 <!-- ABOUT -->
 <section id="about" class="section-pad">
   <div class="container">
     <div class="about-grid">
-      <div class="about-photo-wrap fu">
+      <div class="fu" style="display:flex;justify-content:center">
         <div style="position:relative">
-          <!-- <div class="about-img-ring"></div> -->
           <div class="about-img-container">
             <img src="assets/17643505043791.jpeg" alt="Samuel Appiah Kubi" style="filter:saturate(1.2) brightness(0.85)"/>
             <div class="about-img-overlay"></div>
-            <div class="about-img-badge">
-              <i class="fa-solid fa-location-dot"></i> Accra, Ghana
-            </div>
+            <div class="about-img-badge"><i class="fa-solid fa-location-dot"></i> Accra, Ghana</div>
           </div>
         </div>
       </div>
@@ -1065,9 +607,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         <p style="color:var(--tx2);font-size:0.95rem;line-height:1.85;margin-bottom:12px" class="fu d2">
           I am a <strong style="color:var(--tx)">Geospatial Software Engineer</strong> with 3+ years of enterprise experience building production systems that combine Geospatial technologies, artificial intelligence, and full-stack development. I specialize in scalable solutions for environmental monitoring, precision agriculture, infrastructure assessment, and logistics.
         </p>
-        <!-- <p style="color:var(--tx2);font-size:0.95rem;line-height:1.85" class="fu d3">
-          Worked with Ghana Export-Import Bank, SKTLive LTD, Rainforest Alliance, AMP Logistics, and Afarinick Company Limited — delivered platforms that process terabytes of geospatial data and serve thousands of users.
-        </p> -->
         <div class="about-tags fu d4">
           <span class="tag"><i class="fa-solid fa-globe fa-sm" style="color:var(--orange)"></i> Geospatial Intelligence</span>
           <span class="tag"><i class="fa-solid fa-satellite fa-sm" style="color:var(--orange)"></i> Remote Sensing</span>
@@ -1107,11 +646,11 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
         <div class="skill-col-title">Software Engineering</div>
         <div class="skill-items">
-          <span class="skill-item">Python</span><span class="skill-item">JavaScript</span><span class="skill-item">Django</span>
-          <span class="skill-item">DRF</span><span class="skill-item">FastAPI</span><span class="skill-item">Node.js</span>
-          <span class="skill-item">React</span><span class="skill-item">Flutter</span><span class="skill-item">Tailwind</span>
-          <span class="skill-item">REST APIs</span><span class="skill-item">Celery</span><span class="skill-item">Redis</span>
-          <span class="skill-item">Docker</span><span class="skill-item">AWS</span>
+          <span class="skill-item">Python</span><span class="skill-item">JavaScript</span><span class="skill-item">Java</span>
+          <span class="skill-item">Django</span><span class="skill-item">DRF</span><span class="skill-item">FastAPI</span>
+          <span class="skill-item">Node.js</span><span class="skill-item">React</span><span class="skill-item">Flutter</span>
+          <span class="skill-item">Tailwind</span><span class="skill-item">REST APIs</span><span class="skill-item">Celery</span>
+          <span class="skill-item">Redis</span><span class="skill-item">Docker</span><span class="skill-item">AWS</span>
         </div>
       </div>
       <div class="skill-col fu d3">
@@ -1120,9 +659,9 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         <div class="skill-items">
           <span class="skill-item">TensorFlow</span><span class="skill-item">PyTorch</span><span class="skill-item">YOLOv8</span>
           <span class="skill-item">YOLOv5</span><span class="skill-item">OpenCV</span><span class="skill-item">Roboflow</span>
-          <span class="skill-item">CNNs</span><span class="skill-item">Object Detection</span><span class="skill-item">Real-time Inference</span>
-          <span class="skill-item">Transfer Learning</span><span class="skill-item">Model Deployment</span>
-          <span class="skill-item">BoT-SORT</span><span class="skill-item">Sensor Fusion</span><span class="skill-item">Kalman Filter</span>
+          <span class="skill-item">U-Net</span><span class="skill-item">CNNs</span><span class="skill-item">Object Detection</span>
+          <span class="skill-item">Transfer Learning</span><span class="skill-item">BoT-SORT</span>
+          <span class="skill-item">Sensor Fusion</span><span class="skill-item">Kalman Filter</span>
         </div>
       </div>
       <div class="skill-col fu d4">
@@ -1132,7 +671,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
           <span class="skill-item">PostgreSQL</span><span class="skill-item">PostGIS</span><span class="skill-item">MySQL</span>
           <span class="skill-item">Firebase</span><span class="skill-item">SQLite</span><span class="skill-item">Docker</span>
           <span class="skill-item">AWS EC2/S3</span><span class="skill-item">CI/CD</span><span class="skill-item">Gunicorn</span>
-          <span class="skill-item">Nginx</span><span class="skill-item">Linux</span>
+          <span class="skill-item">Nginx</span><span class="skill-item">Linux</span><span class="skill-item">TensorBoard</span>
         </div>
       </div>
     </div>
@@ -1142,23 +681,35 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 <!-- PROJECTS -->
 <section id="projects" class="section-pad">
   <div class="container">
-    <div style="text-align:center;margin-bottom:56px">
+    <div style="text-align:center;margin-bottom:40px">
       <div class="section-eyebrow fu"><i class="fa-solid fa-rocket"></i> Portfolio</div>
       <h2 class="section-title fu d1">Featured <span class="hl">Projects</span></h2>
-      <p class="section-sub fu d2" style="margin:0 auto">Production systems &amp; peer-reviewed research delivering real-world geospatial impact.</p>
+      <p class="section-sub fu d2" style="margin:0 auto">Production systems, research, and open-source pipelines delivering real-world geospatial impact.</p>
+    </div>
+    <!-- Filter bar -->
+    <div class="filter-bar fu d3" id="filterBar" style="margin-bottom:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="geo">Geospatial</button>
+      <button class="filter-btn" data-filter="ai">AI / CV</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+      <button class="filter-btn" data-filter="enterprise">Enterprise</button>
+      <button class="filter-btn" data-filter="thesis">Thesis</button>
     </div>
     <div class="projects-grid" id="projectsGrid"></div>
+    <div class="show-more-wrap">
+      <button class="show-more-btn" id="showMoreProjects">
+        <i class="fa-solid fa-chevron-down"></i>
+        Show More Projects <span id="hiddenCount"></span>
+      </button>
+    </div>
   </div>
 </section>
-
 
 <!-- DEMO VIDEOS -->
 <section id="demos" class="section-pad" style="background:var(--bg)">
   <div class="container">
     <div style="text-align:center;margin-bottom:56px">
-      <div class="section-eyebrow fu">
-        <i class="fa-solid fa-play"></i> Demo Videos
-      </div>
+      <div class="section-eyebrow fu"><i class="fa-solid fa-play"></i> Demo Videos</div>
       <h2 class="section-title fu d1">See the Systems <span class="hl">in Action</span></h2>
       <p class="section-sub fu d2" style="margin:0 auto">Live demonstrations of computer vision and geospatial AI pipelines running on real-world data.</p>
     </div>
@@ -1167,13 +718,18 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
 </section>
 
 <!-- EXPERIENCE -->
-<!-- EXPERIENCE -->
 <section id="experience" class="section-pad">
   <div class="container">
     <div class="section-eyebrow fu"><i class="fa-solid fa-briefcase"></i> Career</div>
     <h2 class="section-title fu d1">Work <span class="hl">Experience</span></h2>
-    <p class="section-sub fu d2">Building impactful systems across Ghana and beyond.</p>
-    <div class="timeline" id="timeline"></div>
+    <p class="section-sub fu d2">Building impactful systems across Ghana and beyond. Click any role to expand details.</p>
+    <div class="exp-list" id="expList"></div>
+    <div class="exp-show-more-wrap">
+      <button class="show-more-btn" id="showMoreExp">
+        <i class="fa-solid fa-chevron-down"></i>
+        Show All Experience
+      </button>
+    </div>
   </div>
 </section>
 
@@ -1187,55 +743,32 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
     <div class="certs-grid">
       <div class="cert-card fu d1" data-cert-img="assets/AWS-CSCP.jpg" data-cert-name="AWS Certified Solutions Architect – Professional">
         <div class="cert-icon"><i class="fab fa-aws"></i></div>
-        <div>
-          <div class="cert-name">AWS Certified Solutions Architect – Professional</div>
-          <div class="cert-badge"><i class="fa-solid fa-building" style="color:var(--orange);font-size:0.75rem"></i> Amazon Web Services</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
+        <div><div class="cert-name">AWS Certified Solutions Architect – Professional</div><div class="cert-badge"><i class="fa-solid fa-building" style="color:var(--orange);font-size:0.75rem"></i> Amazon Web Services</div><div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div></div>
       </div>
       <div class="cert-card fu d2" data-cert-img="assets/certs/ml.jpg" data-cert-name="Machine Learning and Advanced AI Techniques">
         <div class="cert-icon"><i class="fa-solid fa-robot"></i></div>
-        <div>
-          <div class="cert-name">Machine Learning and Advanced AI Techniques</div>
-          <div class="cert-badge"><i class="fa-solid fa-graduation-cap" style="color:var(--orange);font-size:0.75rem"></i> Professional Training</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
+        <div><div class="cert-name">Machine Learning and Advanced AI Techniques</div><div class="cert-badge"><i class="fa-solid fa-graduation-cap" style="color:var(--orange);font-size:0.75rem"></i> Professional Training</div><div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div></div>
       </div>
       <div class="cert-card fu d3" data-cert-img="assets/GSA.jpg" data-cert-name="Geospatial Analytics Essentials">
         <div class="cert-icon"><i class="fa-solid fa-earth-africa"></i></div>
-        <div>
-          <div class="cert-name">Geospatial Analytics Essentials</div>
-          <div class="cert-badge"><i class="fa-solid fa-map" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
+        <div><div class="cert-name">Geospatial Analytics Essentials</div><div class="cert-badge"><i class="fa-solid fa-map" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div><div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div></div>
       </div>
       <div class="cert-card fu d4" data-cert-img="assets/AI&ML.jpg" data-cert-name="Artificial Intelligence and Machine Learning">
         <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
-        <div>
-          <div class="cert-name">Artificial Intelligence and Machine Learning</div>
-          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> AI/ML Certification</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
+        <div><div class="cert-name">Artificial Intelligence and Machine Learning</div><div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> AI/ML Certification</div><div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div></div>
       </div>
-      <div class="cert-card fu d4" data-cert-img="assets/RSB.jpg" data-cert-name="Remote Sensing Basics">
-        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
-        <div>
-          <div class="cert-name">Remote Sensing Basics</div>
-          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
+      <div class="cert-card fu d5" data-cert-img="assets/RSB.jpg" data-cert-name="Remote Sensing Basics">
+        <div class="cert-icon"><i class="fa-solid fa-satellite"></i></div>
+        <div><div class="cert-name">Remote Sensing Basics</div><div class="cert-badge"><i class="fa-solid fa-map" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div><div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div></div>
       </div>
-      <div class="cert-card fu d4" data-cert-img="assets/AWS-CCPE.jpg" data-cert-name="AWS Certified Cloud Practitioner Exam">
-        <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
-        <div>
-          <div class="cert-name">AWS Certified Cloud Practitioner Exam</div>
-          <div class="cert-badge"><i class="fa-solid fa-microchip" style="color:var(--orange);font-size:0.75rem"></i> GIS Certification</div>
-          <div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div>
-        </div>
+      <div class="cert-card fu d6" data-cert-img="assets/AWS-CCPE.jpg" data-cert-name="AWS Certified Cloud Practitioner Exam">
+        <div class="cert-icon"><i class="fa-brands fa-aws"></i></div>
+        <div><div class="cert-name">AWS Certified Cloud Practitioner Exam</div><div class="cert-badge"><i class="fa-solid fa-cloud" style="color:var(--orange);font-size:0.75rem"></i> Amazon Web Services</div><div class="cert-proof-hint"><i class="fa-solid fa-image"></i> Click to view certificate</div></div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- EDUCATION -->
 <section id="education" class="section-pad">
   <div class="container">
@@ -1246,22 +779,20 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         <div class="edu-icon-wrap"><i class="fa-solid fa-globe" style="color:var(--orange)"></i></div>
         <div class="edu-degree">Copernicus Master's in Digital Earth (Erasmus Mundus)</div>
         <div class="edu-school"><i class="fa-solid fa-building-columns fa-sm"></i> Paris Lodron University of Salzburg — Salzburg, Austria</div>
-        <div class="edu-period"><i class="fa-solid fa-calendar-alt"></i> Expected Sep 2025 – Present &nbsp;·&nbsp; <i class="fa-solid fa-map-marker-alt"></i> Salzburg, Austria</div>
-        <div style="display:inline-block; background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.3); border-radius:99px; padding:2px 10px; font-family:var(--font-m); font-size:0.6rem; color:var(--orange); margin-top:8px;">
-          <i class="fa-solid fa-star"></i> Erasmus Mundus Joint Master
-        </div>
+        <div class="edu-period"><i class="fa-solid fa-calendar-alt"></i> Sep 2025 – Present · <i class="fa-solid fa-map-marker-alt"></i> Salzburg, Austria</div>
+        <div style="display:inline-block;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);border-radius:99px;padding:2px 10px;font-family:var(--font-m);font-size:0.6rem;color:var(--orange);margin-top:8px"><i class="fa-solid fa-star"></i> Erasmus Mundus Joint Master</div>
       </div>
       <div class="edu-card fu d3">
         <div class="edu-icon-wrap"><i class="fa-solid fa-graduation-cap" style="color:var(--orange)"></i></div>
         <div class="edu-degree">BSc. Geomatic Engineering | Geographic Information Science and Cartography</div>
         <div class="edu-school"><i class="fa-solid fa-building-columns fa-sm"></i> KNUST — Kwame Nkrumah University of Science &amp; Technology</div>
-        <div class="edu-period"><i class="fa-solid fa-calendar-alt"></i> Jan 2020 – Nov 2024 &nbsp;·&nbsp; <i class="fa-solid fa-map-marker-alt"></i> Kumasi, Ghana</div>
+        <div class="edu-period"><i class="fa-solid fa-calendar-alt"></i> Jan 2020 – Nov 2024 · <i class="fa-solid fa-map-marker-alt"></i> Kumasi, Ghana</div>
       </div>
       <div class="edu-card fu d4">
         <div class="edu-icon-wrap"><i class="fa-solid fa-school" style="color:var(--orange)"></i></div>
-        <div class="edu-degree">High School Diploma (2020) - Ghana National Science and Math Quiz Main Contestant </div>
+        <div class="edu-degree">High School Diploma — Ghana National Science and Math Quiz Main Contestant</div>
         <div class="edu-school"><i class="fa-solid fa-building-columns fa-sm"></i> Bibiani Senior High Technical School</div>
-         <div class="edu-period"><i class="fa-solid fa-calendar-alt"></i> Jan 2018 – Nov 2020 &nbsp;·&nbsp; <i class="fa-solid fa-map-marker-alt"></i> Bibiani, Ghana</div>
+        <div class="edu-period"><i class="fa-solid fa-calendar-alt"></i> Jan 2018 – Nov 2020 · <i class="fa-solid fa-map-marker-alt"></i> Bibiani, Ghana</div>
       </div>
     </div>
   </div>
@@ -1274,66 +805,31 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
       <div class="contact-banner-content">
         <h2>Ready to Build Something <em style="font-style:italic">Extraordinary?</em></h2>
         <p>I turn complex geospatial challenges into elegant, production-ready solutions. Let's talk about your project.</p>
-        <a href="mailto:appiahkubis14@gmail.com" class="btn" style="background:#fff;color:var(--orange-dk);font-weight:800">
-          <i class="fa-solid fa-paper-plane"></i> Start a Conversation
-        </a>
+        <a href="mailto:appiahkubis14@gmail.com" class="btn" style="background:#fff;color:var(--orange-dk);font-weight:800"><i class="fa-solid fa-paper-plane"></i> Start a Conversation</a>
       </div>
     </div>
     <div class="contact-grid">
       <div>
         <div class="section-eyebrow fu"><i class="fa-solid fa-paper-plane"></i> Contact</div>
         <h2 class="section-title fu d1">Let's Build <span class="hl">Together</span></h2>
-        <p style="color:var(--tx2);font-size:0.93rem;line-height:1.8;margin-bottom:22px" class="fu d2">
-          Open for freelance, contract,full-time and collaboration opportunities worldwide. I work across time zones and adapt to your workflow.
-        </p>
+        <p style="color:var(--tx2);font-size:0.93rem;line-height:1.8;margin-bottom:22px" class="fu d2">Open for freelance, contract, full-time and collaboration opportunities worldwide.</p>
         <div class="contact-info-items fu d3">
-          <div class="contact-item">
-            <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
-            <div><div class="ci-label">Email</div><div class="ci-val">appiahkubis14@gmail.com</div></div>
-          </div>
-          <div class="contact-item">
-            <div class="ci-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-            <div><div class="ci-label">Location</div><div class="ci-val">Accra, Greater Accra Region, Ghana</div></div>
-          </div>
-          <div class="contact-item">
-            <div class="ci-icon"><i class="fa-solid fa-clock"></i></div>
-            <div><div class="ci-label">Timezone</div><div class="ci-val">UTC+0 (GMT) · Flexible for clients</div></div>
-          </div>
-          <!-- <div class="contact-item">
-            <div class="ci-icon"><i class="fab fa-linkedin-in"></i></div>
-            <div><div class="ci-label">LinkedIn</div><div class="ci-val">samuel-appiah-kubi-b52633333</div></div>
-          </div> -->
+          <div class="contact-item"><div class="ci-icon"><i class="fa-solid fa-envelope"></i></div><div><div class="ci-label">Email</div><div class="ci-val">appiahkubis14@gmail.com</div></div></div>
+          <div class="contact-item"><div class="ci-icon"><i class="fa-solid fa-map-location-dot"></i></div><div><div class="ci-label">Location</div><div class="ci-val">Accra, Greater Accra Region, Ghana</div></div></div>
+          <div class="contact-item"><div class="ci-icon"><i class="fa-solid fa-clock"></i></div><div><div class="ci-label">Timezone</div><div class="ci-val">UTC+0 (GMT) · Flexible for clients</div></div></div>
         </div>
-        <div class="avail-badge fu d4">
-          <span class="dot"></span> Currently available for new projects
-        </div>
+        <div class="avail-badge fu d4"><span class="dot"></span> Currently available for new projects</div>
       </div>
       <div class="fu d2">
         <form class="contact-form" id="contactForm">
           <div class="form-row">
-            <div class="form-group">
-              <label><i class="fa-solid fa-user fa-sm" style="color:var(--orange)"></i> Full Name</label>
-              <input type="text" placeholder="John Doe" required/>
-            </div>
-            <div class="form-group">
-              <label><i class="fa-solid fa-envelope fa-sm" style="color:var(--orange)"></i> Email Address</label>
-              <input type="email" placeholder="john@example.com" required/>
-            </div>
+            <div class="form-group"><label><i class="fa-solid fa-user fa-sm" style="color:var(--orange)"></i> Full Name</label><input type="text" placeholder="John Doe" required/></div>
+            <div class="form-group"><label><i class="fa-solid fa-envelope fa-sm" style="color:var(--orange)"></i> Email</label><input type="email" placeholder="john@example.com" required/></div>
           </div>
-          <div class="form-group">
-            <label><i class="fa-solid fa-tag fa-sm" style="color:var(--orange)"></i> Subject</label>
-            <input type="text" placeholder="Project Inquiry — GIS Platform" required/>
-          </div>
-          <div class="form-group">
-            <label><i class="fa-solid fa-comment fa-sm" style="color:var(--orange)"></i> Message</label>
-            <textarea rows="6" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px 28px">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-          <div class="form-success" id="formSuccess">
-            <i class="fas fa-check-circle"></i> Message sent! I'll get back to you within 24 hours.
-          </div>
+          <div class="form-group"><label><i class="fa-solid fa-tag fa-sm" style="color:var(--orange)"></i> Subject</label><input type="text" placeholder="Project Inquiry" required/></div>
+          <div class="form-group"><label><i class="fa-solid fa-comment fa-sm" style="color:var(--orange)"></i> Message</label><textarea rows="6" placeholder="Tell me about your project..." required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px 28px"><i class="fas fa-paper-plane"></i> Send Message</button>
+          <div class="form-success" id="formSuccess"><i class="fas fa-check-circle"></i> Message sent! I'll get back to you within 24 hours.</div>
         </form>
       </div>
     </div>
@@ -1348,10 +844,10 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
         <div class="footer-brand-name">SAK<span style="color:var(--orange)">.</span></div>
         <div class="footer-brand-sub">Geospatial Software Engineer &amp; AI Developer based in Accra, Ghana. Building systems where geography meets intelligence.</div>
         <div class="footer-socials-row">
-          <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="foot-soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="foot-soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="mailto:appiahkubis14@gmail.com" class="foot-soc" aria-label="Email"><i class="fas fa-envelope"></i></a>
-          <a href="#" class="foot-soc" aria-label="Upwork"><i class="fas fa-briefcase"></i></a>
+          <a href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" class="foot-soc"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/appiahkubis14" class="foot-soc"><i class="fab fa-github"></i></a>
+          <a href="mailto:appiahkubis14@gmail.com" class="foot-soc"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.upwork.com/freelancers/~016f63fb8674b4c590" class="foot-soc"><i class="fas fa-briefcase"></i></a>
         </div>
       </div>
       <div>
@@ -1377,673 +873,535 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:48px 0 32px
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Samuel Appiah Kubi. All rights reserved.</div>
+      <div class="footer-copy">© 2026 Samuel Appiah Kubi. All rights reserved.</div>
       <div class="footer-love"><i class="fa-solid fa-heart"></i> Built with precision in Accra, Ghana</div>
     </div>
   </div>
 </footer>
 
-<!-- CERTIFICATE LIGHTBOX -->
-<div class="cert-lightbox" id="certLightbox" role="dialog" aria-modal="true">
+<!-- CERT LIGHTBOX -->
+<div class="cert-lightbox" id="certLightbox">
   <div class="cert-lightbox-inner">
     <img id="certLightboxImg" src="" alt="Certificate"/>
-    <button class="cert-lightbox-close" id="certLightboxClose" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </button>
+    <button class="cert-lightbox-close" id="certLightboxClose"><i class="fas fa-times"></i></button>
   </div>
   <div class="cert-lightbox-label" id="certLightboxLabel"></div>
 </div>
 
 <!-- PROJECT MODAL -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+<div class="modal-overlay" id="modalOverlay">
   <div class="modal-box" id="modalBox">
     <div class="modal-img" id="modalImg"></div>
     <div class="modal-header">
-      <div>
-        <div class="section-eyebrow" id="modalNum" style="margin-bottom:8px"></div>
-        <h3 class="modal-title" id="modalTitle"></h3>
-      </div>
-      <button class="modal-close" id="modalClose" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div><div class="section-eyebrow" id="modalNum" style="margin-bottom:8px"></div><h3 class="modal-title" id="modalTitle"></h3></div>
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
 
-<!-- ====================================================
-     JAVASCRIPT
-     ==================================================== -->
+<!-- DEMO VIDEO MODAL -->
+<div class="demo-video-modal" id="demoVideoModal">
+  <div class="demo-video-wrap" id="demoVideoWrap">
+    <button class="demo-video-close" id="demoVideoClose"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
 <script>
-/* ──────────────────────────────
-   PROJECT DATA
-   ────────────────────────────── */
+/* ════════════════════════════════════
+   DATA
+   ════════════════════════════════════ */
 const projects = [
   {
-    num:"01",
-    icon:"fa-solid fa-satellite-dish",
+    num:"12", icon:"fa-solid fa-tree-deciduous",
+    img:"assets/Polluted-Stream.jpeg",   /* replace with a proper atewa image if available */
+    title:"Atewa Forest Reserve — Illegal Mining Detection Pipeline",
+    desc:"Master's thesis: multi-sensor deep learning system fusing Sentinel-2, Sentinel-1 SAR, Landsat 8/9, and UAV imagery to detect illegal artisanal gold mining (galamsey) across 23,663 ha with fully automated checkpoint/resume support.",
+    tags:["U-Net","YOLOv8","GDAL","Roboflow","PyTorch","Sentinel-2","SAR","Python","Folium"],
+    impact:"23,663 ha monitored · Multi-sensor fusion · 15-step pipeline · IEEE-grade research",
+    isThesis:true,
+    categories:["thesis","research","geo","ai"],
+    details:{
+      overview:"Atewa Forest Reserve (23,663 ha, Eastern Region, Ghana) is a globally significant Pleistocene refugium and headwater catchment supplying clean water to over five million people. Between 2017 and 2023 approximately 890 ha were destroyed by illegal mining. This pipeline combines multi-temporal satellite imagery with UAV ground surveys and two deep-learning models — a U-Net segmentation model for satellite-scale site delineation and a YOLOv8 object detector for individual equipment identification — to produce priority-ranked GeoJSONs, change reports, and an interactive web map for rangers and enforcement agencies.",
+      stats:[{val:"23,663 ha",lbl:"Reserve Area"},{val:"890 ha",lbl:"Destroyed 2017–23"},{val:"15 Steps",lbl:"Pipeline Stages"},{val:"5M+",lbl:"People Protected"}],
+      highlights:[
+        "Fuses Sentinel-2 L2A (optical), Sentinel-1 GRD (SAR VV/VH), Landsat 8/9, and UAV orthomosaic — cloud cover exceeds 180 days/yr making single-sensor monitoring insufficient",
+        "Auto-annotation pipeline (generate_masks): bare-soil detection + Shannon entropy + edge density → binary mining mask with morphological cleaning and 10 m resampling to Sentinel-2 grid",
+        "U-Net with ResNet-50 encoder + Attention Gates trained with Focal+Dice loss, AMP, TensorBoard, and encoder freeze scheduling",
+        "YOLOv8 equipment detector trained on Roboflow-annotated UAV tiles: excavator, truck, water_pump, settling_pond, pit",
+        "RANSAC coordinate alignment + spatial join fuses satellite polygons with UAV equipment detections into unified confidence scores",
+        "Multi-date change tracking with Kalman-smoothed area time-series and expansion rate (ha/month) per site",
+        "Every expensive step has checkpoint/resume — re-running after crash/power-cut continues from last saved sentinel file",
+        "Interactive Folium dashboard: basemaps, confidence polygons, equipment markers, change layer, priority-ranked site panel",
+        "15 CLI-driven pipeline steps: preprocess → tile → features → masks → train → infer → postprocess → fusion → change → validate → dashboard"
+      ]
+    }
+  },
+  {
+    num:"08", icon:"fa-solid fa-road",
+    img:"assets/pothole.jpeg",
+    title:"MMFF – Multi-Modal Sensor Fusion for Pothole Dimensioning",
+    desc:"IEEE-submitted research framework achieving metric-accurate pothole depth, width, and volume estimation from a single dashboard camera + smartphone IMU — no LiDAR required.",
+    tags:["ACSH-YOLOv8","BoT-SORT","Kalman Filter","IMU Fusion","Monocular Depth","Python","OpenCV","RANSAC"],
+    impact:"Depth MAE 0.28 m · 30 fps real-time · 50 km road evaluation",
+    isResearch:true,
+    categories:["research","ai"],
+    details:{
+      overview:"MMFF resolves five fundamental challenges of monocular pothole dimensioning — metric scale ambiguity, suspension-induced camera height variation, non-planar road geometry, irregular pothole morphology, and temporal measurement instability — in a single unified pipeline running at 30 fps.",
+      stats:[{val:"0.28 m",lbl:"Depth MAE"},{val:"8.7%",lbl:"Relative Error"},{val:"30 fps",lbl:"Inference Speed"},{val:"50 km",lbl:"Road Coverage"}],
+      highlights:["GADS: converts relative depth to absolute metric via RANSAC regression on ground-plane homography","ETHHI: fuses IMU acceleration only during pothole events; 62% error reduction","MBTP: Delaunay triangulation on depth-segmented contours — 48.9% area error reduction","CDKF: scales measurement noise to detection confidence; 79% jitter reduction","Width error 6.2% · Length 7.8% · Area 9.3% · Volume 14.2%","Evaluated on 50 manually measured ground-truth potholes","Submitted to IEEE Transactions on Intelligent Transportation Systems"]
+    }
+  },
+  {
+    num:"01", icon:"fa-solid fa-satellite-dish",
     img:"assets/cdp.png",
     title:"Plastic Waste Detection from UAV Orthomosaic",
     desc:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline.",
     tags:["YOLOv8","GDAL","GeoTIFF","Python","GeoJSON","OpenCV","Shapely"],
     impact:"~1,000 unique detections · 89 ha · 9mm GSD",
+    isThesisCollab:true,
+    categories:["thesis","geo","ai"],
     details:{
       overview:"End-to-end deep learning pipeline detecting plastic waste from a 27.75 GB UAV orthomosaic covering 2.1 km of coastline. Processed 32,699 tiles using YOLOv8 with 15% overlap and a fault-tolerant checkpoint/resume system for 10-hour processing runs.",
-      highlights:[
-        "27.75 GB file — 232,144 × 42,780 px at 9mm GSD",
-        "32,699 tiles processed with 15% overlap strategy",
-        "1,400+ raw detections merged to ~1,000 unique locations via IoU algorithm",
-        "GeoJSON/CSV/JSON export with full coordinate metadata",
-        "Zero cloud dependency — fully local offline pipeline",
-        "Confidence scoring and IoU-based duplicate merging"
-      ]
+      highlights:["27.75 GB file — 232,144 × 42,780 px at 9mm GSD","32,699 tiles processed with 15% overlap strategy","1,400+ raw detections merged to ~1,000 unique locations via IoU algorithm","GeoJSON/CSV/JSON export with full coordinate metadata","Zero cloud dependency — fully local offline pipeline","Confidence scoring and IoU-based duplicate merging"]
     }
   },
   {
-    num:"02",
-    icon:"fa-solid fa-tree",
+    num:"02", icon:"fa-solid fa-tree",
     img:"assets/ra.png",
     title:"Rainforest Alliance – Sui River Cocoa-Forest Monitoring",
     desc:"Hybrid monitoring system for 333.9 km² cocoa-forest landscape with mobile data collection and real-time GIS dashboard.",
     tags:["Django","GIS","Leaflet","DRF","PostgreSQL","REST APIs"],
     impact:"333.9 km² monitored · Deforestation tracking",
+    categories:["geo","enterprise"],
     details:{
       overview:"Full-stack hybrid monitoring system for the 333.9 km² Sui River cocoa-forest landscape. Combines mobile data collection, real-time GIS visualization, and automated stakeholder reporting.",
-      highlights:[
-        "Mobile data collection for field agents with offline capability",
-        "Real-time GIS dashboard for spatial visualization of forest/cocoa boundaries",
-        "Automated stakeholder reporting generation",
-        "Analytics tracking deforestation rates and cocoa cultivation expansion",
-        "Livelihood indicator monitoring for farming communities",
-        "Participatory feedback tools empowering local communities"
-      ]
+      highlights:["Mobile data collection for field agents with offline capability","Real-time GIS dashboard for spatial visualization","Automated stakeholder reporting generation","Analytics tracking deforestation rates","Livelihood indicator monitoring","Participatory feedback tools empowering local communities"]
     }
   },
   {
-    num:"03",
-    icon:"fa-solid fa-truck",
+    num:"03", icon:"fa-solid fa-truck",
     img:"assets/amp.png",
     title:"AMP Logistics Management System",
     desc:"Enterprise Django logistics platform unifying fleet, inventory, warehouses, and shipments. Production live system.",
     tags:["Django 5.2","PostgreSQL","DRF","Redis","Docker","GeoIP"],
     impact:"6+ warehouse blocks · Real-time tracking · 15+ models",
+    categories:["enterprise"],
     details:{
-      overview:"Comprehensive enterprise logistics platform unifying fleet management, inventory control, warehouse operations, and shipment tracking. Live at amp.afarinick.com.",
-      highlights:[
-        "Transport management with vehicle fleet and driver tracking",
-        "Inventory with multi-warehouse synchronization across 6+ blocks (A–G)",
-        "Employee management with driver licensing and qualification tracking",
-        "Shipment request and dispatch workflows with customer notifications",
-        "GeoIP-based login tracking with geographic analytics",
-        "Role-based access control with permission-driven UI"
-      ]
+      overview:"Comprehensive enterprise logistics platform unifying fleet management, inventory control, warehouse operations, and shipment tracking.",
+      highlights:["Transport management with vehicle fleet and driver tracking","Inventory with multi-warehouse synchronization across 6+ blocks","Employee management with driver licensing tracking","Shipment request and dispatch workflows","GeoIP-based login tracking with geographic analytics","Role-based access control with permission-driven UI"]
     }
   },
   {
-    num:"04",
-    icon:"fa-solid fa-city",
+    num:"04", icon:"fa-solid fa-city",
     img:"assets/prcs.png",
     title:"Municipal Property Tax Platform (PRCS)",
     desc:"GIS-based property tax and revenue collection system for municipal assembly. 10,000+ properties mapped.",
     tags:["Django 6.0","PostGIS","Leaflet","PMTiles","DRF","Kowri"],
     impact:"60% reduction in manual processing · 10,000+ properties",
+    categories:["geo","enterprise"],
     details:{
       overview:"GIS-based property tax and revenue collection system for municipal assembly with interactive maps, automated billing, and payment integration.",
-      highlights:[
-        "Interactive property maps using PMTiles vector tile technology",
-        "10,000+ property polygons optimized for mobile performance",
-        "Automated bill generation with customizable rate structures",
-        "Kowri payment gateway integration with click analytics",
-        "Business operating permit and property rate billing modules",
-        "Role-based access: Admin, Supervisor, Collector"
-      ]
+      highlights:["Interactive property maps using PMTiles vector tile technology","10,000+ property polygons optimized for mobile performance","Automated bill generation with customizable rate structures","Kowri payment gateway integration","Business operating permit and property rate billing modules","Role-based access: Admin, Supervisor, Collector"]
     }
   },
   {
-    num:"05",
-    icon:"fa-solid fa-seedling",
+    num:"05", icon:"fa-solid fa-seedling",
     img:"assets/afarisense.png",
     title:"AI Cocoa Disease Detection (Afarinsene)",
     desc:"Deep learning system detecting CSSVD from mobile phone images. Deployed to 1,000+ farmers with 92.44% accuracy.",
     tags:["TensorFlow","YOLOv8","Django","Celery","Redis","PostgreSQL"],
     impact:"92.44% accuracy · 1,000+ farmers · 40% faster response",
+    categories:["ai","enterprise"],
     details:{
       overview:"Deep learning system detecting Cocoa Swollen Shoot Virus (CSSVD) from standard mobile phone images. Production deployment serving thousands of Ghanaian cocoa farmers.",
-      highlights:[
-        "Custom CNN inference engine with 92.44% detection accuracy",
-        "Image preprocessing pipeline optimized for field conditions",
-        "Prediction with confidence scoring and severity assessment",
-        "Async task queue (Celery/Redis) for batch processing and retraining",
-        "PostgreSQL schema for detection history and farm geolocation",
-        "RESTful APIs serving predictions to frontend applications",
-        "40% reduction in disease response time for farmers"
-      ]
-    }
-  },
- {
-    num:"10",
-    icon:"fa-solid fa-tractor",
-    img:"assets/fms.png",
-    title:"Farm Management System (Django + PostGIS)",
-    desc:"Comprehensive agricultural operations platform covering farm mapping, personnel, activity reporting, IoT monitoring, and harvest tracking — built with Django 5.2 and PostGIS.",
-    tags:["Django 5.2","PostGIS","DRF","Django Channels","Leaflet","WebSocket","Jazzmin","django-allauth"],
-    impact:"Full agri-ops lifecycle · Real-time WebSocket · QR growth tracking",
-    details:{
-      overview:"A production-grade Farm Management System built with Django 5.2 and Django REST Framework, backed by PostgreSQL/PostGIS for spatial farm boundary mapping. The platform unifies every layer of agricultural operations — from GIS farm polygons and IoT sensor telemetry to personnel management, contract workflows, and automated payroll — into a single real-time dashboard.",
-      highlights:[
-        "Farm mapping & boundaries using GeoDjango/PostGIS with interactive Leaflet maps",
-        "Personnel management for Rehab Assistants, Field Assistants, and Staff with role-based access",
-        "Activity reporting & daily monitoring with structured field data collection",
-        "QR code-based growth monitoring — unique cryptographic UIDs per plant/plot",
-        "Irrigation management with scheduling and usage tracking",
-        "Equipment management including maintenance logs and assignment workflows",
-        "Pest & disease monitoring with detection history and severity assessment",
-        "Harvest yield tracking with batch records and export reports",
-        "Payment reports with automated payroll aggregation via Django signals",
-        "Weather forecasting integration for operational planning",
-        "Contract management module with document storage",
-        "Real-time updates via Django Channels (WebSocket) for live field data",
-        "Jazzmin-powered admin UI · django-allauth authentication"
-      ]
+      highlights:["Custom CNN inference engine with 92.44% detection accuracy","Image preprocessing pipeline optimized for field conditions","Prediction with confidence scoring and severity assessment","Async task queue (Celery/Redis) for batch processing","PostgreSQL schema for detection history and farm geolocation","40% reduction in disease response time for farmers"]
     }
   },
   {
-    num:"07",
-    icon:"fa-solid fa-leaf",
+    num:"06", icon:"fa-solid fa-tractor",
+    img:"assets/fms.png",
+    title:"Farm Management System (Django + PostGIS)",
+    desc:"Comprehensive agricultural operations platform covering farm mapping, personnel, activity reporting, IoT monitoring, and harvest tracking.",
+    tags:["Django 5.2","PostGIS","DRF","Django Channels","Leaflet","WebSocket","Jazzmin"],
+    impact:"Full agri-ops lifecycle · Real-time WebSocket · QR growth tracking",
+    categories:["geo","enterprise"],
+    details:{
+      overview:"A production-grade Farm Management System built with Django 5.2 and Django REST Framework, backed by PostgreSQL/PostGIS for spatial farm boundary mapping.",
+      highlights:["Farm mapping & boundaries using GeoDjango/PostGIS with interactive Leaflet maps","Personnel management with role-based access","Activity reporting & daily monitoring","QR code-based growth monitoring with cryptographic UIDs","Irrigation management with scheduling","Pest & disease monitoring with severity assessment","Harvest yield tracking with batch records","Real-time updates via Django Channels (WebSocket)"]
+    }
+  },
+  {
+    num:"07", icon:"fa-solid fa-leaf",
     img:"assets/trace.png",
     title:"EUDR Cocoa Traceability System",
     desc:"Farm-to-export traceability platform for EU Deforestation Regulation compliance across the full cocoa supply chain.",
     tags:["Django 5.1","PostGIS","Leaflet","DRF","Plotly Dash","AWS S3"],
     impact:"Full EUDR compliance · Export audit trail",
+    categories:["geo","enterprise"],
     details:{
       overview:"Farm-to-export traceability platform ensuring compliance with EU Deforestation Regulation (EUDR), tracking cocoa through every stage of the supply chain.",
-      highlights:[
-        "Full chain: Farmers → Purchasing Clerks → Licensed Buying Companies → Ports → Exports",
-        "GIS boundary monitoring for real-time deforestation tracking",
-        "Primary and secondary evacuation tracking modules",
-        "Port arrival management with offloading quantity verification",
-        "REST API with full Swagger/OpenAPI documentation",
-        "Plotly Dash analytics dashboard · AWS S3 file storage"
-      ]
+      highlights:["Full chain: Farmers → Purchasing Clerks → Licensed Buying Companies → Ports → Exports","GIS boundary monitoring for real-time deforestation tracking","Primary and secondary evacuation tracking modules","Port arrival management with offloading verification","REST API with full Swagger/OpenAPI documentation","Plotly Dash analytics dashboard · AWS S3 file storage"]
     }
   },
+  
   {
-    num:"08",
-    icon:"fa-solid fa-road",
-    img:"assets/frame_000025.jpg",
-    title:"MMFF – Multi-Modal Sensor Fusion for Pothole Dimensioning",
-    desc:"IEEE-submitted research framework achieving metric-accurate pothole depth, width, and volume estimation from a single dashboard camera + smartphone IMU — no LiDAR required.",
-    tags:["ACSH-YOLOv8","BoT-SORT","Kalman Filter","IMU Fusion","Monocular Depth","Python","OpenCV","RANSAC"],
-    impact:"Depth MAE 0.28 m · 30 fps real-time · 50 km road evaluation",
-    isResearch: true,
-    details:{
-      overview:"MMFF (Multi-Modal Fusion Framework) resolves five fundamental challenges of monocular pothole dimensioning — metric scale ambiguity, suspension-induced camera height variation, non-planar road geometry, irregular pothole morphology, and temporal measurement instability — in a single unified pipeline running at 30 fps using only a standard dashboard camera and smartphone IMU.",
-      stats:[
-        {val:"0.28 m",lbl:"Depth MAE"},
-        {val:"8.7%",lbl:"Relative Error"},
-        {val:"30 fps",lbl:"Inference Speed"},
-        {val:"50 km",lbl:"Road Coverage"}
-      ],
-      highlights:[
-        "GADS (Geometry-Anchored Depth Scaling): converts relative depth to absolute metric via RANSAC regression on ground-plane homography — no network retraining required",
-        "ETHHI (Event-Triggered Hybrid Height Integration): fuses IMU acceleration only during pothole events; captures 5–15 cm suspension drops with sub-centimeter accuracy, zero long-term drift, 62% error reduction",
-        "MBTP (Minimum Bounding Triangulated Pixel): Delaunay triangulation on depth-segmented contours for accurate area of highly irregular potholes — 48.9% area error reduction",
-        "CDKF (Confidence-Distance Kalman Filter): scales measurement noise to detection confidence and object range; 79% jitter reduction over raw estimates",
-        "Width error 6.2% · Length error 7.8% · Area error 9.3% · Volume error 14.2%",
-        "Evaluated on 50 manually measured ground-truth potholes across diverse urban and rural roads",
-        "Submitted to IEEE Transactions on Intelligent Transportation Systems"
-      ]
-    }
-  },
-  {
-    num:"09",
-    icon:"fa-solid fa-landmark",
+    num:"09", icon:"fa-solid fa-landmark",
     img:"assets/exim.png",
     title:"GEXIM Digital GIS Solution",
     desc:"Comprehensive GIS solution for Ghana Export-Import Bank tracking development projects and loan portfolios.",
     tags:["Django DRF","PostgreSQL","GIS","Python","Mobile APIs","M&E"],
     impact:"Offline field monitoring · Automated M&E reporting",
+    categories:["geo","enterprise"],
     details:{
       overview:"Comprehensive digital GIS solution for Ghana Export-Import Bank, enabling tracking of development projects, loan portfolios, and beneficiary impact assessment.",
-      highlights:[
-        "Secure RESTful API as core data transaction platform",
-        "Offline-capable mobile app for field monitoring and verification",
-        "Project performance indicators with automated data validation",
-        "Results framework module for logical framework analysis",
-        "Real-time dashboard for project milestone tracking",
-        "API-triggered M&E report generation with interactive charts",
-        "Beneficiary tracking with impact assessment and financial system integration"
-      ]
+      highlights:["Secure RESTful API as core data transaction platform","Offline-capable mobile app for field monitoring","Project performance indicators with automated data validation","Results framework module for logical framework analysis","Real-time dashboard for project milestone tracking","Beneficiary tracking with impact assessment"]
     }
   },
-
   {
-      num: "11",
-      icon: "fa-solid fa-map-marked-alt",
-      img: "assets/kapture.png",          // add a screenshot to assets/
-      title: "Kapture — Web GIS Land-Plot Management Platform",
-      desc: "Production-grade Django GIS web application for land-plot registration, polygon geometry management, and geospatial administration — serving planners, surveyors, landowners, lawyers, and government agencies.",
-      tags: ["Django", "PostGIS", "GeoDjango", "OpenLayers", "GeoJSON", "OGC", "PostgreSQL", "Tailwind", "Jazzmin"],
-      impact: "Multi-role GIS platform · OGC-compliant APIs · Ghana Grid ↔ WGS84",
-      details: {
-        overview:
-          "Kapture is a full-stack PostGIS-backed Django GIS application covering the complete software lifecycle — from architecture design through implementation, testing, and deployment. It serves planners, surveyors, landowners, lawyers, and government agencies with polygon geometry management, OGC-compliant geospatial APIs, and a polished admin experience.",
-        highlights: [
-          "Multi-role user system: agent, surveyor, planner, government, landowner, lawyer, broker — each with scoped data permissions",
-          "PostGIS-backed plotDetails geometry with spatial indexing, soft deletion, and Ghana Grid ↔ WGS84 coordinate conversion",
-          "Full OGC GeoJSON API surface: land-use, POI, district, region, and basepoint layers with per-user polygon ownership enforcement",
-          "Secure auth pipeline: 6-digit OTP verification (15-min expiry), IP-geolocation login audit trail stored as spatial points, token-based password reset",
-          "Admin dashboard: live growth analytics (users, plots, country metrics), paginated all-plot management, user suspension controls, team promotion workflows",
-          "Interactive web map frontend (OpenLayers / Leaflet) with polygon save/upload/delete and real-time preview",
-          "Slug-based resource content system with view-count tracking and related-content recommendations",
-          "Tailwind CSS + Jazzmin admin UI; Docker containerised; full system documentation and end-user training materials",
-        ],
-      },
-    },
-    {
-      num: "12",
-      icon: "fa-solid fa-truck-moving",
-      img: "assets/traccar.png",
-      title: "Java GPS Tracking & Fuel Monitoring System (Traccar — AMP Logistics)",
-      desc: "Extended the open-source Java Traccar GPS platform to build a production vehicle-tracking and fuel-monitoring system — custom REST APIs, real-time telemetry, geofencing, and an OpenLayers fleet map.",
-      tags: ["Java", "Traccar", "REST API", "PostGIS", "OpenLayers", "Geofencing", "Docker", "AWS"],
-      impact: "Live fleet tracking · Fuel anomaly detection · Geofenced route alerts",
-      details: {
-        overview:
-          "Built on Traccar — a Java-based open-source GPS tracking platform — to deliver a production fleet management system for AMP Logistics GH. Limited. Customised Java back-end services, designed and consumed REST APIs for real-time telemetry ingestion, and integrated live vehicle data into an OpenLayers-based management dashboard.",
-        highlights: [
-          "Extended Traccar Java back-end: custom event handlers, REST API endpoints, and real-time data-processing pipelines for vehicle position, speed, and fuel sensor readings",
-          "Implemented geofencing logic for route-boundary alerts and arrival/departure notifications via webhook-driven REST callbacks",
-          "Built PostGIS spatial queries for trip-history replay, route deviation detection, and distance/fuel-efficiency reporting per vehicle",
-          "Designed OpenLayers web-map dashboard showing live vehicle positions, historical tracks, and geofence polygon overlays",
-          "Integrated fuel-level sensor feeds with anomaly-detection rules to flag siphoning or excessive consumption events in real time",
-          "Containerised Traccar server + custom Java services on Docker; deployed on AWS EC2 with Nginx reverse proxy",
-          "Gained direct Java enterprise development experience (service layer, REST controllers, ORM patterns) — directly applicable to Spring Boot / Hibernate environments",
-        ],
-      },
-    },
+    num:"10", icon:"fa-solid fa-map-marked-alt",
+    img:"assets/kapture.png",
+    title:"Kapture — Web GIS Land-Plot Management Platform",
+    desc:"Production-grade Django GIS web application for land-plot registration, polygon geometry management, and geospatial administration serving planners, surveyors, landowners, and government agencies.",
+    tags:["Django","PostGIS","GeoDjango","OpenLayers","GeoJSON","OGC","PostgreSQL","Tailwind","Jazzmin"],
+    impact:"Multi-role GIS platform · OGC-compliant APIs · Ghana Grid ↔ WGS84",
+    categories:["geo","enterprise"],
+    details:{
+      overview:"Kapture is a full-stack PostGIS-backed Django GIS application covering the complete software lifecycle — from architecture design through implementation, testing, and deployment.",
+      highlights:["Multi-role user system: agent, surveyor, planner, government, landowner, lawyer, broker","PostGIS-backed geometry with spatial indexing, soft deletion, and Ghana Grid ↔ WGS84 conversion","Full OGC GeoJSON API surface: land-use, POI, district, region, and basepoint layers","Secure auth pipeline: 6-digit OTP verification, IP-geolocation login audit trail","Admin dashboard with live growth analytics and user management","Interactive web map frontend with polygon save/upload/delete","Docker containerised with full system documentation"]
+    }
+  },
+  {
+    num:"11", icon:"fa-solid fa-truck-moving",
+    img:"assets/traccar.png",
+    title:"Java GPS Tracking & Fuel Monitoring System (Traccar)",
+    desc:"Extended the open-source Java Traccar GPS platform to build a production vehicle-tracking and fuel-monitoring system with custom REST APIs, geofencing, and an OpenLayers fleet map.",
+    tags:["Java","Traccar","REST API","PostGIS","OpenLayers","Geofencing","Docker","AWS"],
+    impact:"Live fleet tracking · Fuel anomaly detection · Geofenced route alerts",
+    categories:["enterprise","geo"],
+    details:{
+      overview:"Built on Traccar (Java-based open-source GPS tracking platform) to deliver a production fleet management system for AMP Logistics. Customised Java back-end services and designed REST APIs for real-time telemetry ingestion.",
+      highlights:["Extended Traccar Java back-end: custom event handlers, REST API endpoints, real-time data processing","Geofencing logic for route-boundary alerts and arrival/departure notifications","PostGIS spatial queries for trip-history replay and route deviation detection","OpenLayers web-map dashboard with live vehicle positions and historical tracks","Fuel-level sensor feeds with anomaly-detection rules for siphoning detection","Containerised on Docker; deployed on AWS EC2 with Nginx reverse proxy"]
+    }
+  },
+  /* ═══ NEW: MASTER'S THESIS ═══ */
   
 ];
 
+const INITIAL_PROJECTS = 6;
 
-
-
-
-
-
-
-
-
-/* ──────────────────────────────
-   EXPERIENCE DATA
-   ────────────────────────────── */
-// const experiences = [
-//   {role:"Software Engineer",company:"Afarinick Company Limited",period:"Sep 2024 – Contract Closed",location:"Accra, Ghana",type:"Hybrid",badge:"current",achievements:["Design and develop scalable web applications using Django, React, Python, and AWS","Built AI-powered cocoa disease detection system with 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT integration"]},
-//   {role:"Geospatial Developer",company:"Ghana Export-Import Bank",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Designed E-Digital GIS solution for GEXIM funded farms tracking development projects","Architected secure RESTful API as core platform for data transactions","Built offline-capable mobile data collection app for field monitoring","Created beneficiary tracking system with impact assessment capabilities"]},
-//   {role:"Geospatial Developer",company:"SKTLive LTD",period:"Oct 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Architected municipal tax collection platform achieving 60% reduction in manual processing","Engineered PMTiles vector tile system converting 10,000+ property polygons","Processed raw GeoTIFF aerial imagery into optimized tile pyramids (zoom 5–25)","Built spatial analysis toolkit: buffer analysis, heatmaps, distance measurement"]},
-//   {role:"Geospatial Developer",company:"Rainforest Alliance",period:"Sep 2025 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed hybrid monitoring system for 333.9 km² Sui River cocoa-forest landscape","Built real-time GIS dashboard for spatial visualization of forest and cocoa boundaries","Implemented automated stakeholder reporting system","Deployed participatory tools empowering local farming communities"]},
-//   {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",period:"Aug 2025 – Present",location:"Tema, Ghana",type:"Hybrid",badge:"current",achievements:["Designed comprehensive logistics platform covering transport, warehouse, shipments","Developed real-time vehicle tracking with GPS integration for fleet management","Containerized with Docker for AWS deployment, optimized with Redis caching"]},
-//   {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",period:"Oct 2024 – Present",location:"Accra, Ghana",type:"Remote",badge:"current",achievements:["Developed backend for Ghana's premier cocoa supply chain traceability platform","Built RESTful APIs with geospatial tracking for farm locations","Integrated with Ghana Cocoa Board systems for certification","Containerized with Docker for AWS deployment"]},
-//   {role:"Full-Stack Developer",company:"TRECK – Regional Transport Research Centre",period:"Aug 2024 – Present",location:"Kumasi, Ghana",type:"On-site",badge:"current",achievements:["Built MMFF multi-modal fusion framework submitted to IEEE ITS","Developed ACSH-YOLOv8 pothole detector and BoT-SORT tracking pipeline","Implemented sensor fusion (monocular depth + IMU) achieving sub-cm height accuracy","Built pothole detection mobile app with Flutter and GPS geolocation"]},
-//   {role:"Mine Surveyor (Intern)",company:"Asanko Gold",period:"Oct 2023 – Nov 2023",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic and hydrographic surveys for surface mining operations","Used Total Stations, GPS systems, AutoCAD, Surfer, and ArcGIS"]},
-//   {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",period:"Sep 2023 – Oct 2023",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations and GPS"]}
-// ];
 const experiences = [
-  {role:"Software Engineer | Remote Sensing Specialist",company:"Afarinick Company Limited",site:"https://afarinick.com",period:"",location:"Accra, Ghana",type:"Hybrid",badge:"current",achievements:["Built AI-powered cocoa disease detection system with 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT"]},
-  {role:"Computer Vision Research Engineer",company:"Deep Metrics Team (Ghana)",site:"",period:"",location:"Ghana",type:"Remote",badge:"current",achievements:["Built real-time vehicle detection & counting system for traffic analysis","Optimized YOLOv8 models for edge deployment"]},
-  {role:"Full-Stack Developer & CV Research Engineer",company:"TRECK / Roadessy Team",site:"https://www.knust.edu.gh",period:"",location:"Kumasi, Ghana",type:"Hybrid",badge:"current",achievements:["Built MMFF multi-modal fusion framework (submitted to IEEE ITS)","Developed ACSH-YOLOv8 pothole detector with sensor fusion achieving sub-cm accuracy","Built Flutter mobile app for pothole detection with GPS geolocation"]},
-  {role:"Geospatial Developer",company:"Ghana Export-Import Bank",site:"https://eximbankghana.com/",period:"",location:"Accra, Ghana",type:"Remote",badge:"Contract Closed",achievements:["Designed E-Digital GIS solution for GEXIM funded farms","Built offline-capable mobile app for field monitoring"]},
-  {role:"Geospatial Developer",company:"SKTLive LTD",site:"https://sktlive.com",period:"",location:"Accra, Ghana",type:"Remote",badge:"Contract Closed",achievements:["Architected municipal tax platform with 60% reduction in manual processing","Engineered PMTiles vector tile system for 10,000+ properties"]},
-  {role:"Geospatial Developer",company:"Rainforest Alliance",site:"https://www.rainforest-alliance.org",period:"",location:"Accra, Ghana",type:"Remote",badge:"Contract Closed",achievements:["Built hybrid monitoring system for 333.9 km² cocoa-forest landscape","Developed real-time GIS dashboard and automated reporting"]},
-  {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",site:"https://amplogisticsgh.com/",period:"",location:"Tema, Ghana",type:"Hybrid",badge:"Contract Closed",achievements:["Built logistics platform for fleet, warehouse, and shipment management","Containerized with Docker and deployed on AWS"]},
-  {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",site:"https://www.touton.com",period:"",location:"Accra, Ghana",type:"Remote",badge:"Contract Closed",achievements:["Built backend for Ghana's cocoa supply chain traceability platform","Integrated RESTful APIs with geospatial farm tracking"]},
-  {
-      role: "Full-Stack GIS Developer",
-      company: "Kapture Web GIS Platform",
-      site: "",
-      period: "2024 – 2025",
-      location: "Ghana",
-      type: "Contract",
-      badge: "Contract Closed",
-      achievements: [
-        "Architected and delivered Kapture — a production PostGIS/GeoDjango Web GIS platform covering the full SDLC: architecture, implementation, testing, and Docker deployment",
-        "Built OGC-compliant GeoJSON REST APIs (land-use, POI, district, region layers), Ghana Grid ↔ WGS84 coordinate conversion, and IP-geolocation login audit trail",
-        "Delivered OpenLayers interactive map frontend, multi-role RBAC, 6-digit OTP auth, and live admin analytics dashboard with full system documentation",
-      ],
-    },
-    {
-      role: "Java Back-End & GIS Developer — GPS Tracking System",
-      company: "AMP Logistics GH. Limited",
-      site: "https://amplogisticsgh.com/",
-      period: "2024 – 2025",
-      location: "Tema, Ghana",
-      type: "Hybrid",
-      badge: "Contract Closed",
-      achievements: [
-        "Extended Traccar (Java open-source GPS platform) with custom REST API services, real-time telemetry pipelines, geofencing, and fuel-anomaly detection for live fleet monitoring",
-        "Built PostGIS spatial queries for trip history, route deviation detection, and fuel-efficiency reporting; visualised on an OpenLayers fleet-map dashboard",
-        "Containerised Java services on Docker/AWS with Nginx; gained hands-on Java enterprise patterns (service layer, REST, ORM) applicable to Spring Boot/Hibernate environments",
-      ],
-    },
-  {role:"Mine Surveyor (Intern)",company:"Asanko Gold",site:"https://www.galianogold.com",period:"",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic surveys using Total Stations and GPS","Processed survey data with AutoCAD and ArcGIS"]},
-  {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",site:"https://joshobconstructiongh.com",period:"",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations"]}
+  {role:"Software Engineer | Remote Sensing Specialist",company:"Afarinick Company Limited",site:"https://afarinick.com",location:"Accra, Ghana",type:"Hybrid",badge:"current",achievements:["Built AI-powered cocoa disease detection system with 92.44% accuracy","Architected enterprise farm management platform with GeoDjango and IoT","Developed full EUDR traceability and farm monitoring systems"]},
+  {role:"Computer Vision Research Engineer",company:"Deep Metrics Team (Ghana)",site:"",location:"Ghana",type:"Remote",badge:"current",achievements:["Built real-time vehicle detection & counting system for traffic analysis","Optimized YOLOv8 models for edge deployment","Engineered BoT-SORT multi-object tracking pipeline at 30 fps"]},
+  {role:"Full-Stack Developer & CV Research Engineer",company:"TRECK / Roadessy Team",site:"https://www.knust.edu.gh",location:"Kumasi, Ghana",type:"Hybrid",badge:"current",achievements:["Built MMFF multi-modal fusion framework (submitted to IEEE ITS)","Developed ACSH-YOLOv8 pothole detector with sensor fusion achieving sub-cm accuracy","Built Flutter mobile app for pothole detection with GPS geolocation"]},
+  {role:"Geospatial Developer",company:"Ghana Export-Import Bank",site:"https://eximbankghana.com/",location:"Accra, Ghana",type:"Remote",badge:"closed",achievements:["Designed E-Digital GIS solution for GEXIM funded farms","Built offline-capable mobile app for field monitoring","Created beneficiary tracking system with impact assessment"]},
+  {role:"Geospatial Developer",company:"SKTLive LTD",site:"https://sktlive.com",location:"Accra, Ghana",type:"Remote",badge:"closed",achievements:["Architected municipal tax platform with 60% reduction in manual processing","Engineered PMTiles vector tile system for 10,000+ properties","Built spatial analysis toolkit: buffer analysis, heatmaps, distance measurement"]},
+  {role:"Geospatial Developer",company:"Rainforest Alliance",site:"https://www.rainforest-alliance.org",location:"Accra, Ghana",type:"Remote",badge:"closed",achievements:["Built hybrid monitoring system for 333.9 km² cocoa-forest landscape","Developed real-time GIS dashboard and automated reporting","Deployed participatory tools for local farming communities"]},
+  {role:"Full-Stack Developer",company:"AMP Logistics GH. Limited",site:"https://amplogisticsgh.com/",location:"Tema, Ghana",type:"Hybrid",badge:"closed",achievements:["Built logistics platform for fleet, warehouse, and shipment management","Containerized with Docker and deployed on AWS","Developed real-time GPS tracking with geofencing"]},
+  {role:"Back End Developer",company:"Touton SA (EUDR Traceability)",site:"https://www.touton.com",location:"Accra, Ghana",type:"Remote",badge:"closed",achievements:["Built backend for Ghana's cocoa supply chain traceability platform","Integrated RESTful APIs with geospatial farm tracking","Containerized with Docker for AWS deployment"]},
+  {role:"Full-Stack GIS Developer",company:"Kapture Web GIS Platform",site:"",location:"Ghana",type:"Contract",badge:"closed",achievements:["Architected and delivered Kapture — production PostGIS/GeoDjango Web GIS platform covering full SDLC","Built OGC-compliant GeoJSON REST APIs with Ghana Grid ↔ WGS84 coordinate conversion","Delivered OpenLayers map frontend, multi-role RBAC, 6-digit OTP auth, and admin analytics"]},
+  {role:"Java Back-End & GIS Developer",company:"AMP Logistics — GPS Tracking",site:"https://amplogisticsgh.com/",location:"Tema, Ghana",type:"Hybrid",badge:"closed",achievements:["Extended Traccar (Java GPS platform) with custom REST API, geofencing, and fuel-anomaly detection","Built PostGIS spatial queries for trip history and route deviation detection","Containerised Java services on Docker/AWS with Nginx"]},
+  {role:"Mine Surveyor (Intern)",company:"Asanko Gold",site:"https://www.galianogold.com",location:"Manso-Nkwanta, Ghana",type:"On-site",badge:"past",achievements:["Conducted topographic surveys using Total Stations and GPS","Processed survey data with AutoCAD and ArcGIS"]},
+  {role:"Assistant Highway Engineer (Intern)",company:"Joshob Construction Company",site:"https://joshobconstructiongh.com",location:"Kumasi, Ghana",type:"On-site",badge:"past",achievements:["Applied GIS for spatial analysis of road networks","Conducted field surveys with Total Stations"]}
 ];
-/* ──────────────────────────────
+
+const INITIAL_EXP = 5;
+
+const demos = [
+  {num:"01",thumb:"assets/logo-128x128.png",badgeType:"cv",badgeLabel:"Computer Vision",title:"Machine Traffic Count Detection",desc:"Detect and count cars, buses, trucks with machine vision precision. Virtual line crossing, class-wise counts, and real-time statistics.",tags:["YOLOv8","BoT-SORT","Python","OpenCV"],meta:[{icon:"fa-solid fa-car",text:"Multi-class detection"},{icon:"fa-solid fa-bolt",text:"Real-time inference"},{icon:"fa-solid fa-file-export",text:"Export reports"}],collab:"Deep Metrics Team · Ghana",video:"assets/det_tracking_converted.mp4"},
+  {num:"02",thumb:"assets/logo.png",badgeType:"research",badgeLabel:"IEEE Research",title:"MMFF — Pothole Dimensioning Pipeline",desc:"Multi-modal sensor fusion achieving metric-accurate pothole depth, width and volume from a single dashboard camera + IMU. 30 fps on standard hardware.",tags:["ACSH-YOLOv8","IMU Fusion","Kalman Filter"],meta:[{icon:"fa-solid fa-ruler",text:"Depth MAE 0.28 m"},{icon:"fa-solid fa-gauge-high",text:"30 fps real-time"},{icon:"fa-solid fa-road",text:"50 km evaluated"}],collab:"TRECK · KNUST, Kumasi",video:"assets/annotated_v1.mp4_converted.mp4"},
+  {num:"03",thumb:"assets/plastic.jpeg",badgeType:"geo",badgeLabel:"Geospatial AI",title:"UAV Plastic Waste Detection Pipeline",desc:"Processing 27.75 GB orthomosaics tile-by-tile — detecting coastal plastic waste with geolocation, IoU duplicate merging, and GeoJSON export across 89 ha.",tags:["YOLOv8","GDAL","GeoJSON","Shapely"],meta:[{icon:"fa-solid fa-crosshairs",text:"~1,000 detections"},{icon:"fa-solid fa-layer-group",text:"32,699 tiles"},{icon:"fa-solid fa-satellite",text:"9 mm GSD"}],collab:"Personal Research · Accra",video:"assets/plastic.jpeg"}
+];
+
+/* ════════════════════════════════════
    THEME
-   ────────────────────────────── */
+   ════════════════════════════════════ */
 const html = document.documentElement;
 const savedTheme = localStorage.getItem('theme') || 'dark';
 html.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme);
 document.getElementById('themeToggle').addEventListener('click',()=>{
   const next = html.getAttribute('data-theme')==='dark'?'light':'dark';
-  html.setAttribute('data-theme',next);
-  localStorage.setItem('theme',next);
-  updateThemeIcon(next);
+  html.setAttribute('data-theme',next);localStorage.setItem('theme',next);updateThemeIcon(next);
 });
-function updateThemeIcon(t){
-  document.getElementById('themeIcon').className = t==='dark'?'fa-solid fa-sun':'fa-solid fa-moon';
-}
+function updateThemeIcon(t){ document.getElementById('themeIcon').className = t==='dark'?'fa-solid fa-sun':'fa-solid fa-moon'; }
 
-/* ──────────────────────────────
+/* ════════════════════════════════════
    MOBILE MENU
-   ────────────────────────────── */
+   ════════════════════════════════════ */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click',()=>{
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-});
-document.querySelectorAll('.mob-lnk').forEach(l=>{
-  l.addEventListener('click',()=>{
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-  });
-});
+hamburger.addEventListener('click',()=>{ hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+document.querySelectorAll('.mob-lnk').forEach(l=>l.addEventListener('click',()=>{ hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
 
-/* ──────────────────────────────
+/* ════════════════════════════════════
    ACTIVE NAV
-   ────────────────────────────── */
-const sections = document.querySelectorAll('section[id]');
+   ════════════════════════════════════ */
+const secs = document.querySelectorAll('section[id]');
 window.addEventListener('scroll',()=>{
   let cur='';
-  sections.forEach(s=>{ if(window.scrollY>=s.offsetTop-110) cur=s.id; });
-  document.querySelectorAll('.nav-link').forEach(l=>{
-    l.classList.toggle('active',l.getAttribute('href')==='#'+cur);
-  });
+  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-110) cur=s.id; });
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
 });
 
-/* ──────────────────────────────
+/* ════════════════════════════════════
    TYPING ANIMATION
-   ────────────────────────────── */
+   ════════════════════════════════════ */
 const words=["Geospatial Developer","AI Engineer","Django Expert","Computer Vision Specialist","Full-Stack Developer","Remote Sensing Analyst","Research Engineer"];
 let wIdx=0,cIdx=0,del=false;
 const typedEl=document.getElementById('typedText');
-function type(){
-  const w=words[wIdx];
-  if(!del){typedEl.textContent=w.slice(0,++cIdx);if(cIdx===w.length){del=true;setTimeout(type,1900);return}}
-  else{typedEl.textContent=w.slice(0,--cIdx);if(cIdx===0){del=false;wIdx=(wIdx+1)%words.length}}
-  setTimeout(type,del?55:85);
-}
+function type(){ const w=words[wIdx]; if(!del){typedEl.textContent=w.slice(0,++cIdx);if(cIdx===w.length){del=true;setTimeout(type,1900);return}}else{typedEl.textContent=w.slice(0,--cIdx);if(cIdx===0){del=false;wIdx=(wIdx+1)%words.length}}setTimeout(type,del?55:85); }
 type();
 
-/* ──────────────────────────────
+/* ════════════════════════════════════
    SCROLL REVEAL
-   ────────────────────────────── */
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-},{threshold:0.1});
+   ════════════════════════════════════ */
+const obs = new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }),{threshold:0.1});
 document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 
-/* ──────────────────────────────
+/* ════════════════════════════════════
    MARQUEE
-   ────────────────────────────── */
-const marqueeItems=[
-  {icon:'fa-solid fa-globe',text:'GeoDjango'},
-  {icon:'fa-solid fa-satellite',text:'Remote Sensing'},
-  {icon:'fa-solid fa-brain',text:'Deep Learning'},
-  {icon:'fa-solid fa-eye',text:'Computer Vision'},
-  {icon:'fa-brands fa-python',text:'Python'},
-  {icon:'fa-solid fa-map',text:'PostGIS'},
-  {icon:'fa-brands fa-aws',text:'AWS Cloud'},
-  {icon:'fa-solid fa-code',text:'YOLOv8'},
-  {icon:'fa-solid fa-microchip',text:'TensorFlow'},
-  {icon:'fa-solid fa-layer-group',text:'GDAL'},
-  {icon:'fa-solid fa-database',text:'PostgreSQL'},
-  {icon:'fa-solid fa-mobile',text:'Flutter'},
-  {icon:'fa-solid fa-server',text:'Docker'},
-  {icon:'fa-solid fa-road',text:'Sensor Fusion'},
-  {icon:'fa-solid fa-chart-line',text:'Data Analytics'},
-  {icon:'fa-solid fa-map-marked-alt',text:'QGIS'},
-  {icon:'fa-brands fa-js',text:'JavaScript'},
-  {icon:'fa-brands fa-react',text:'React'},
-  {icon:'fa-solid fa-chart-simple',text:'Pandas'},
-  {icon:'fa-solid fa-cube',text:'PyTorch'},
-  {icon:'fa-solid fa-arrows-spin',text:'BoT-SORT'},
-  {icon:'fa-solid fa-filter',text:'OpenCV'},
-  {icon:'fa-solid fa-cloud-arrow-up',text:'FastAPI'},
-  {icon:'fa-solid fa-draw-polygon',text:'Leaflet'},
-  {icon:'fa-solid fa-map-location-dot',text:'Mapbox'},
-  {icon:'fa-solid fa-chart-line',text:'Plotly'},
-  {icon:'fa-solid fa-database',text:'Redis'},
-  {icon:'fa-brands fa-github',text:'GitHub'},
-  {icon:'fa-solid fa-arrows-spin',text:'Celery'},
-  {icon:'fa-solid fa-microchip',text:'ONNX'},
-  {icon:'fa-solid fa-camera',text:'Multi-spectral'},
-  {icon:'fa-solid fa-satellite-dish',text:'SAR Processing'},
-  {icon:'fa-solid fa-chart-gantt',text:'Django REST'},
-  {icon:'fa-brands fa-linux',text:'Linux'},
-  {icon:'fa-solid fa-cubes',text:'Nginx'},
-  {icon:'fa-brands fa-docker',text:'Kubernetes'},
-  {icon:'fa-regular fa-map',text:'OpenLayers'},
-  {icon:'fa-solid fa-chart-line',text:'IRI Roughness'},
-  {icon:'fa-solid fa-code',text:'Java'},
-];
+   ════════════════════════════════════ */
+const marqueeItems=[{icon:'fa-solid fa-globe',text:'GeoDjango'},{icon:'fa-solid fa-satellite',text:'Remote Sensing'},{icon:'fa-solid fa-brain',text:'Deep Learning'},{icon:'fa-solid fa-eye',text:'Computer Vision'},{icon:'fa-brands fa-python',text:'Python'},{icon:'fa-solid fa-map',text:'PostGIS'},{icon:'fa-brands fa-aws',text:'AWS Cloud'},{icon:'fa-solid fa-code',text:'YOLOv8'},{icon:'fa-solid fa-microchip',text:'TensorFlow'},{icon:'fa-solid fa-layer-group',text:'GDAL'},{icon:'fa-solid fa-database',text:'PostgreSQL'},{icon:'fa-solid fa-mobile',text:'Flutter'},{icon:'fa-solid fa-server',text:'Docker'},{icon:'fa-solid fa-road',text:'Sensor Fusion'},{icon:'fa-solid fa-chart-line',text:'Data Analytics'},{icon:'fa-solid fa-map-marked-alt',text:'QGIS'},{icon:'fa-brands fa-js',text:'JavaScript'},{icon:'fa-brands fa-react',text:'React'},{icon:'fa-solid fa-cube',text:'PyTorch'},{icon:'fa-solid fa-arrows-spin',text:'BoT-SORT'},{icon:'fa-solid fa-filter',text:'OpenCV'},{icon:'fa-solid fa-draw-polygon',text:'Leaflet'},{icon:'fa-solid fa-code',text:'Java'},{icon:'fa-solid fa-satellite-dish',text:'SAR Processing'},{icon:'fa-solid fa-tree',text:'U-Net Segmentation'},{icon:'fa-brands fa-docker',text:'Kubernetes'},{icon:'fa-regular fa-map',text:'OpenLayers'}];
 const track=document.getElementById('marqueeTrack');
-[...marqueeItems,...marqueeItems].forEach((item,i)=>{
-  const el=document.createElement('div');
-  el.className='marquee-item';
-  el.innerHTML=`<i class="${item.icon}"></i>${item.text}${i<marqueeItems.length*2-1?'<span class="marquee-sep">·</span>':''}`;
-  track.appendChild(el);
+[...marqueeItems,...marqueeItems].forEach((item,i)=>{ const el=document.createElement('div');el.className='marquee-item';el.innerHTML=`<i class="${item.icon}"></i>${item.text}${i<marqueeItems.length*2-1?'<span class="marquee-sep">·</span>':''}`;track.appendChild(el); });
+
+/* ════════════════════════════════════
+   RENDER PROJECTS with filter + show more
+   ════════════════════════════════════ */
+const grid = document.getElementById('projectsGrid');
+let currentFilter = 'all';
+let showingAll = false;
+
+function renderProjects(){
+  grid.innerHTML='';
+  const filtered = currentFilter==='all' ? projects : projects.filter(p=>p.categories&&p.categories.includes(currentFilter));
+  const visible = showingAll ? filtered : filtered.slice(0,INITIAL_PROJECTS);
+  const hidden = filtered.length - INITIAL_PROJECTS;
+
+  visible.forEach((p,i)=>{
+    const card=document.createElement('div');
+    card.className=`project-card fu d${(i%3)+1}`;
+    const topTags=p.tags.slice(0,3).map(t=>`<span class="proj-tech-pill">${t}</span>`).join('');
+    let specialBadge='';
+    if(p.isThesis)
+      specialBadge=`<div class="proj-thesis-badge"><i class="fa-solid fa-graduation-cap"></i> Master's Thesis</div>`;
+    else if(p.isThesisCollab)
+      specialBadge=`<div class="proj-thesis-collab-badge"><i class="fa-solid fa-graduation-cap"></i> MSc Research</div>`;
+    else if(p.isResearch)
+      specialBadge=`<div class="proj-ieee-badge"><i class="fa-solid fa-flask"></i> IEEE Research</div>`;
+    card.innerHTML=`
+      <div class="proj-img">
+        <img src="${p.img}" alt="${p.title}" loading="lazy"/>
+        <div class="proj-img-overlay"></div>
+        <div class="proj-num-badge">PROJECT ${p.num}</div>
+        ${specialBadge}
+        <div class="proj-tech-preview">${topTags}</div>
+      </div>
+      <div class="project-body">
+        <div class="project-title">${p.title}</div>
+        <div class="project-desc">${p.desc}</div>
+        <div class="project-impact"><i class="${p.icon}"></i> ${p.impact}</div>
+      </div>
+      <div class="project-footer">
+        <span style="font-family:var(--font-m);font-size:0.7rem;color:var(--tx3)"><i class="fa-solid fa-microchip" style="color:var(--orange)"></i> ${p.tags.length} technologies</span>
+        <span class="view-btn">View Details <i class="fas fa-arrow-right"></i></span>
+      </div>
+    `;
+    card.addEventListener('click',()=>openModal(p));
+    grid.appendChild(card);
+    setTimeout(()=>obs.observe(card),10);
+  });
+
+  // Show more button
+  const btn=document.getElementById('showMoreProjects');
+  const wrap=btn.closest('.show-more-wrap');
+  if(!showingAll && hidden>0){
+    wrap.style.display='block';
+    document.getElementById('hiddenCount').textContent=`(${hidden} more)`;
+    btn.classList.remove('expanded');
+    btn.querySelector('i').className='fa-solid fa-chevron-down';
+    btn.childNodes[btn.childNodes.length-1].textContent=` Show More Projects `;
+  } else if(showingAll && filtered.length>INITIAL_PROJECTS){
+    wrap.style.display='block';
+    document.getElementById('hiddenCount').textContent='';
+    btn.classList.add('expanded');
+    btn.querySelector('i').className='fa-solid fa-chevron-up';
+    btn.childNodes[btn.childNodes.length-1].textContent=` Show Less `;
+  } else {
+    wrap.style.display='none';
+  }
+}
+
+document.getElementById('filterBar').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');
+  if(!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter=btn.dataset.filter;
+  showingAll=false;
+  renderProjects();
 });
 
-/* ──────────────────────────────
-   RENDER PROJECTS
-   ────────────────────────────── */
-const grid=document.getElementById('projectsGrid');
-projects.forEach((p,i)=>{
+document.getElementById('showMoreProjects').addEventListener('click',()=>{
+  showingAll=!showingAll;
+  renderProjects();
+  if(!showingAll) document.getElementById('projects').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+renderProjects();
+
+/* ════════════════════════════════════
+   RENDER EXPERIENCES — Accordion
+   ════════════════════════════════════ */
+const expList = document.getElementById('expList');
+let expExpanded = false;
+
+function renderExperiences(){
+  expList.innerHTML='';
+  const visible = expExpanded ? experiences : experiences.slice(0,INITIAL_EXP);
+
+  visible.forEach((exp,i)=>{
+    const card=document.createElement('div');
+    card.className='exp-card fu d'+(Math.min(i+1,6));
+    const isPast = exp.badge==='past';
+    const isClosed = exp.badge==='closed';
+    card.innerHTML=`
+      <div class="exp-card-header">
+        <div class="exp-dot${isPast?' past':''}"></div>
+        <div class="exp-header-main">
+          <div class="exp-role">${exp.role}</div>
+          <div class="exp-company">
+            <i class="fa-solid fa-building fa-xs"></i> ${exp.company}
+            ${exp.site?`<a href="${exp.site}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.55rem"></i> Visit site</a>`:''}
+          </div>
+          <div class="exp-meta">
+            <span><i class="fa-solid fa-map-marker-alt"></i> ${exp.location}</span>
+            <span><i class="fa-solid fa-laptop-house"></i> ${exp.type}</span>
+          </div>
+        </div>
+        <div class="exp-badges">
+          ${exp.badge==='current'
+            ? '<span class="badge-current"><i class="fa-solid fa-circle fa-xs"></i> Active</span>'
+            : exp.badge==='closed'
+              ? '<span class="badge-past">Contract Closed</span>'
+              : '<span class="badge-past">Past</span>'
+          }
+          <div class="exp-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+      </div>
+      <div class="exp-card-body">
+        <ul class="exp-achievements">
+          ${exp.achievements.map(a=>`<li>${a}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+    card.querySelector('.exp-card-header').addEventListener('click',()=>{
+      card.classList.toggle('open');
+    });
+    expList.appendChild(card);
+    setTimeout(()=>obs.observe(card),10);
+  });
+
+  const showMoreBtn=document.getElementById('showMoreExp');
+  if(!expExpanded && experiences.length>INITIAL_EXP){
+    showMoreBtn.style.display='inline-flex';
+    showMoreBtn.innerHTML=`<i class="fa-solid fa-chevron-down"></i> Show All Experience (${experiences.length-INITIAL_EXP} more)`;
+  } else if(expExpanded){
+    showMoreBtn.style.display='inline-flex';
+    showMoreBtn.innerHTML=`<i class="fa-solid fa-chevron-up"></i> Show Less`;
+  } else {
+    showMoreBtn.style.display='none';
+  }
+}
+
+document.getElementById('showMoreExp').addEventListener('click',()=>{
+  expExpanded=!expExpanded;
+  renderExperiences();
+  if(!expExpanded) document.getElementById('experience').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+renderExperiences();
+
+/* ════════════════════════════════════
+   RENDER DEMOS
+   ════════════════════════════════════ */
+const demosGrid = document.getElementById('demosGrid');
+const badgeColors = {cv:'badge-cv',geo:'badge-geo',research:'badge-research'};
+demos.forEach((d,i)=>{
   const card=document.createElement('div');
-  card.className=`project-card fu d${(i%3)+1}`;
-  const topTags=p.tags.slice(0,3).map(t=>`<span class="proj-tech-pill">${t}</span>`).join('');
-  const researchBadge = p.isResearch
-    ? `<div class="proj-research-badge"><i class="fa-solid fa-flask" style="margin-right:4px"></i>IEEE Research</div>`
-    : '';
+  card.className=`demo-card fu d${(i%3)+1}`;
   card.innerHTML=`
-    <div class="proj-img">
-      <img src="${p.img}" alt="${p.title}" loading="lazy"/>
-      <div class="proj-img-overlay"></div>
-      <div class="proj-num-badge">PROJECT ${p.num}</div>
-      ${researchBadge}
-      <div class="proj-tech-preview">${topTags}</div>
+    <div class="demo-thumb">
+      <img src="${d.thumb}" alt="${d.title}" loading="lazy"/>
+      <div class="demo-thumb-overlay"></div>
+      <div class="play-circle"><i class="fa-solid fa-play"></i></div>
+      <div class="demo-num-badge">DEMO ${d.num}</div>
+      <div class="demo-type-badge ${badgeColors[d.badgeType]}">${d.badgeLabel}</div>
+      <div class="demo-tech-row">${d.tags.slice(0,3).map(t=>`<span class="demo-tech-pill">${t}</span>`).join('')}</div>
     </div>
-    <div class="project-body">
-      <div class="project-title">${p.title}</div>
-      <div class="project-desc">${p.desc}</div>
-      <div class="project-impact"><i class="${p.icon}"></i> ${p.impact}</div>
+    <div class="demo-body">
+      <div class="demo-title">${d.title}</div>
+      <div class="demo-desc">${d.desc}</div>
+      <div class="demo-meta">${d.meta.map(m=>`<div class="demo-meta-item"><i class="${m.icon}"></i>${m.text}</div>`).join('')}</div>
     </div>
-    <div class="project-footer">
-      <span class="proj-count"><i class="fa-solid fa-microchip" style="color:var(--orange)"></i> ${p.tags.length} technologies</span>
-      <span class="view-btn">View Details <i class="fas fa-arrow-right"></i></span>
+    <div class="demo-footer">
+      <div class="demo-collab"><div class="demo-collab-dot"></div>${d.collab}</div>
+      <span class="demo-watch-btn">Watch Demo <i class="fas fa-arrow-right"></i></span>
     </div>
   `;
-  card.addEventListener('click',()=>openModal(p));
-  grid.appendChild(card);
+  const openVideo=()=>openDemoVideo(d);
+  card.querySelector('.demo-thumb').addEventListener('click',openVideo);
+  card.querySelector('.demo-watch-btn').addEventListener('click',openVideo);
+  demosGrid.appendChild(card);
   obs.observe(card);
 });
 
-
-
-
-/* ──────────────────────────────
-   DEMO VIDEOS DATA
-   ────────────────────────────── */
-const demos = [
-  {
-    num:"01",
-    thumb:"assets/logo-128x128.png",
-    badgeType:"cv", badgeLabel:"Computer Vision",
-    title:"Machine Traffic Count Detection",
-    desc:"Effortlessly analyze your videos — detect and count cars, buses, trucks, and more with machine vision precision. Virtual line crossing, class-wise counts, and real-time statistics.",
-    tags:["YOLOv8","BoT-SORT","Python","OpenCV"],
-    meta:[
-      {icon:"fa-solid fa-car",text:"Multi-class detection"},
-      {icon:"fa-solid fa-bolt",text:"Real-time inference"},
-      {icon:"fa-solid fa-file-export",text:"Export reports"}
-    ],
-    collab:"Deep Metrics Team · Ghana",
-    video:"assets/det_tracking_converted.mp4"   // <-- paste your YouTube/video URL here
-  },
-  {
-    num:"02",
-    thumb:"assets/logo.png",
-    badgeType:"research", badgeLabel:"IEEE Research",
-    title:"MMFF — Pothole Dimensioning Pipeline",
-    desc:"Multi-modal sensor fusion achieving metric-accurate pothole depth, width and volume from a single dashboard camera + IMU. No LiDAR — 30 fps on standard hardware.",
-    tags:["ACSH-YOLOv8","IMU Fusion","Kalman Filter"],
-    meta:[
-      {icon:"fa-solid fa-ruler",text:"Depth MAE 0.28 m"},
-      {icon:"fa-solid fa-gauge-high",text:"30 fps real-time"},
-      {icon:"fa-solid fa-road",text:"50 km evaluated"}
-    ],
-    collab:"TRECK · KNUST, Kumasi",
-    video:"assets/annotated_v1.mp4_converted.mp4"
-  },
-  {
-    num:"03",
-    thumb:"assets/plastic.jpeg",
-    badgeType:"geo", badgeLabel:"Geospatial AI",
-    title:"UAV Plastic Waste Detection Pipeline",
-    desc:"Processing 27.75 GB orthomosaics tile-by-tile — detecting coastal plastic waste with geolocation, IoU duplicate merging, and GeoJSON export across 89 ha of coastline.",
-    tags:["YOLOv8","GDAL","GeoJSON","Shapely"],
-    meta:[
-      {icon:"fa-solid fa-crosshairs",text:"~1,000 detections"},
-      {icon:"fa-solid fa-layer-group",text:"32,699 tiles"},
-      {icon:"fa-solid fa-satellite",text:"9 mm GSD"}
-    ],
-    collab:"Personal Research · Accra",
-    video:"assets/plastic.jpeg"
-  },
-  // {
-  //   num:"04",
-  //   thumb:"assets/afarisense.png",
-  //   badgeType:"cv", badgeLabel:"Computer Vision",
-  //   title:"AI Cocoa Disease Detection (Afarinsene)",
-  //   desc:"CSSVD detection from standard mobile phone images taken in the field. 92.44% accuracy — deployed to 1,000+ Ghanaian cocoa farmers, cutting disease response time by 40%.",
-  //   tags:["TensorFlow","YOLOv8","Django","Celery"],
-  //   meta:[
-  //     {icon:"fa-solid fa-percent",text:"92.44% accuracy"},
-  //     {icon:"fa-solid fa-users",text:"1,000+ farmers"},
-  //     {icon:"fa-solid fa-mobile-screen",text:"Mobile-ready"}
-  //   ],
-  //   collab:"Afarinick Company · Accra",
-  //   video:""
-  // }
-];
-
-/* Render demo cards */
-const demosGrid = document.getElementById('demosGrid');
-if(demosGrid){
-  demos.forEach((d,i)=>{
-    const card = document.createElement('div');
-    card.className = `demo-card fu d${(i%3)+1}`;
-    const badgeColors = {cv:'badge-cv',geo:'badge-geo',research:'badge-research'};
-    card.innerHTML=`
-      <div class="demo-thumb">
-        <img src="${d.thumb}" alt="${d.title}" loading="lazy"/>
-        <div class="demo-thumb-overlay"></div>
-        <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-        <div class="demo-num-badge">DEMO ${d.num}</div>
-        <div class="demo-type-badge ${badgeColors[d.badgeType]}">${d.badgeLabel}</div>
-        <div class="demo-tech-row">${d.tags.slice(0,3).map(t=>`<span class="demo-tech-pill">${t}</span>`).join('')}</div>
-      </div>
-      <div class="demo-body">
-        <div class="demo-title">${d.title}</div>
-        <div class="demo-desc">${d.desc}</div>
-        <div class="demo-meta">${d.meta.map(m=>`<div class="demo-meta-item"><i class="${m.icon}"></i>${m.text}</div>`).join('')}</div>
-      </div>
-      <div class="demo-footer">
-        <div class="demo-collab"><div class="demo-collab-dot"></div>${d.collab}</div>
-        <span class="demo-watch-btn">Watch Demo <i class="fas fa-arrow-right"></i></span>
-      </div>
-    `;
-    card.querySelector('.demo-thumb').addEventListener('click',()=>openDemoVideo(d));
-    card.querySelector('.demo-watch-btn').addEventListener('click',()=>openDemoVideo(d));
-    demosGrid.appendChild(card);
-    obs.observe(card);
-  });
-}
-
-/* Demo video modal */
-const demoModal = document.createElement('div');
-demoModal.className = 'demo-video-modal';
-demoModal.innerHTML=`
-  <div class="demo-video-wrap" id="demoVideoWrap">
-    <button class="demo-video-close" id="demoVideoClose"><i class="fas fa-times"></i></button>
-  </div>
-`;
-document.body.appendChild(demoModal);
-document.getElementById('demoVideoClose').addEventListener('click', closeDemoVideo);
-demoModal.addEventListener('click', e=>{ if(e.target===demoModal) closeDemoVideo(); });
+const demoModal=document.getElementById('demoVideoModal');
+document.getElementById('demoVideoClose').addEventListener('click',closeDemoVideo);
+demoModal.addEventListener('click',e=>{ if(e.target===demoModal) closeDemoVideo(); });
 
 function openDemoVideo(d){
-  const wrap = document.getElementById('demoVideoWrap');
-  // Remove previous media
-  wrap.querySelectorAll('video,iframe').forEach(el=>el.remove());
-  if(d.video){
-    // YouTube embed
-    if(d.video.includes('youtube') || d.video.includes('youtu.be')){
-      const id = d.video.match(/(?:v=|youtu\.be\/)([^&?/]+)/)?.[1];
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-      iframe.allow = 'autoplay; fullscreen';
-      wrap.insertBefore(iframe, wrap.firstChild);
-    } else {
-      // Local/direct video file
-      const video = document.createElement('video');
-      video.src = d.video; video.controls = true; video.autoplay = true;
-      wrap.insertBefore(video, wrap.firstChild);
+  const wrap=document.getElementById('demoVideoWrap');
+  wrap.querySelectorAll('video,iframe,div:not([id])').forEach(el=>el.remove());
+  if(d.video && !d.video.endsWith('.jpeg') && !d.video.endsWith('.jpg') && !d.video.endsWith('.png')){
+    if(d.video.includes('youtube')||d.video.includes('youtu.be')){
+      const id=d.video.match(/(?:v=|youtu\.be\/)([^&?/]+)/)?.[1];
+      const iframe=document.createElement('iframe');iframe.src=`https://www.youtube.com/embed/${id}?autoplay=1`;iframe.allow='autoplay;fullscreen';wrap.insertBefore(iframe,wrap.firstChild);
+    }else{
+      const video=document.createElement('video');video.src=d.video;video.controls=true;video.autoplay=true;wrap.insertBefore(video,wrap.firstChild);
     }
-  } else {
-    // Placeholder if no video yet
-    const ph = document.createElement('div');
-    ph.style.cssText='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0d0d12';
+  }else{
+    const ph=document.createElement('div');ph.style.cssText='width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0d0d12';
     ph.innerHTML=`<i class="fa-solid fa-circle-play" style="font-size:3rem;color:var(--orange);opacity:0.5"></i><p style="font-family:var(--font-m);font-size:0.78rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em">DEMO VIDEO COMING SOON</p><p style="font-family:var(--font-h);font-size:0.85rem;color:rgba(255,255,255,0.55);text-align:center;max-width:300px">${d.title}</p>`;
-    wrap.insertBefore(ph, wrap.firstChild);
+    wrap.insertBefore(ph,wrap.firstChild);
   }
-  demoModal.classList.add('open');
-  document.body.style.overflow='hidden';
+  demoModal.classList.add('open');document.body.style.overflow='hidden';
 }
-function closeDemoVideo(){
-  demoModal.classList.remove('open');
-  document.getElementById('demoVideoWrap').querySelectorAll('video,iframe,div:not(.demo-video-close)').forEach(el=>el.remove());
-  document.body.style.overflow='';
-}
+function closeDemoVideo(){demoModal.classList.remove('open');document.getElementById('demoVideoWrap').querySelectorAll('video,iframe,div:not([id]):not(.demo-video-close)').forEach(el=>el.remove());document.body.style.overflow='';}
 
-
-/* ──────────────────────────────
-   MODAL
-   ────────────────────────────── */
+/* ════════════════════════════════════
+   PROJECT MODAL
+   ════════════════════════════════════ */
 const overlay=document.getElementById('modalOverlay');
-const modalClose=document.getElementById('modalClose');
+document.getElementById('modalClose').addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{ if(e.target===overlay) closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeModal();closeDemoVideo();} });
 
 function openModal(p){
   document.getElementById('modalImg').innerHTML=`<img src="${p.img}" alt="${p.title}"/>`;
-  document.getElementById('modalNum').innerHTML=`<i class="${p.icon}"></i> PROJECT ${p.num}${p.isResearch?' &nbsp;<span style="font-size:0.65rem;padding:3px 9px;border-radius:5px;background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.3)">IEEE Submitted</span>':''}`;
+  let eyebrowExtra='';
+  if(p.isThesis)
+    eyebrowExtra=` &nbsp;<span style="font-size:0.65rem;padding:3px 9px;border-radius:5px;background:rgba(139,92,246,0.18);color:#a78bfa;border:1px solid rgba(139,92,246,0.35)"><i class="fa-solid fa-graduation-cap" style="margin-right:3px"></i>Master's Thesis</span>`;
+  else if(p.isThesisCollab)
+    eyebrowExtra=` &nbsp;<span style="font-size:0.65rem;padding:3px 9px;border-radius:5px;background:rgba(99,102,241,0.15);color:#818cf8;border:1px solid rgba(99,102,241,0.35)"><i class="fa-solid fa-graduation-cap" style="margin-right:3px"></i>MSc Research</span>`;
+  else if(p.isResearch)
+    eyebrowExtra=` &nbsp;<span style="font-size:0.65rem;padding:3px 9px;border-radius:5px;background:rgba(234,88,12,0.12);color:var(--orange);border:1px solid rgba(234,88,12,0.35)"><i class="fa-solid fa-flask" style="margin-right:3px"></i>IEEE Submitted</span>`;
+  document.getElementById('modalNum').innerHTML=`<i class="${p.icon}"></i> PROJECT ${p.num}${eyebrowExtra}`;
   document.getElementById('modalTitle').textContent=p.title;
-
-  // Build stat strip for research projects
   const statStrip = p.details.stats
     ? `<div class="modal-stat-strip">${p.details.stats.map(s=>`<div class="modal-stat-chip"><span class="val">${s.val}</span><span class="lbl">${s.lbl}</span></div>`).join('')}</div>`
     : '';
-
   document.getElementById('modalBody').innerHTML=`
     <div class="modal-section">
       <div class="modal-section-title">Overview</div>
@@ -2057,7 +1415,7 @@ function openModal(p){
       </div>
     </div>
     <div class="modal-section">
-      <div class="modal-section-title">${p.isResearch ? 'Novel Contributions' : 'Key Highlights'}</div>
+      <div class="modal-section-title">${p.isResearch||p.isThesis||p.isThesisCollab?'Novel Contributions':'Key Highlights'}</div>
       <ul class="modal-list">${p.details.highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
     </div>
     <div class="modal-section" style="margin-bottom:0">
@@ -2065,92 +1423,31 @@ function openModal(p){
       <div class="modal-text" style="color:var(--orange);font-weight:700;font-family:var(--font-h)">${p.impact}</div>
     </div>
   `;
-  overlay.classList.add('open');
-  document.body.style.overflow='hidden';
+  overlay.classList.add('open');document.body.style.overflow='hidden';
 }
 function closeModal(){overlay.classList.remove('open');document.body.style.overflow='';}
-modalClose.addEventListener('click',closeModal);
-overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-/* ──────────────────────────────
-   RENDER TIMELINE
-   ────────────────────────────── */
-const timeline=document.getElementById('timeline');
-experiences.forEach((exp,i)=>{
-  const item=document.createElement('div');
-  item.className=`timeline-item fu d${(i%3)+1}`;
-  item.innerHTML=`
-    <div class="timeline-dot"></div>
-    <div class="timeline-card">
-      <div class="timeline-header">
-        <div>
-          <div class="timeline-role">${exp.role}</div>
-          <div class="timeline-company">
-            <i class="fa-solid fa-building fa-sm"></i> ${exp.company}
-            
-          </div>
-          <div class="timeline-meta">
-            <span><i class="fa-solid fa-calendar-alt"></i> ${exp.period}</span>
-            <span><i class="fa-solid fa-map-marker-alt"></i> ${exp.location}</span>
-            <span><i class="fa-solid fa-laptop-house"></i> ${exp.type}</span>
-          </div>
-        </div>
-        <span class="${exp.badge==='current'?'badge-current':'badge-past'}">
-          ${exp.badge==='current'?'<i class="fa-solid fa-circle fa-xs"></i> Contract':'Contract Closed'}
-          ${exp.site ? `<a href="${exp.site}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="display:inline-flex;align-items:center;gap:4px;margin-left:10px;font-family:var(--font-m);font-size:0.68rem;color:var(--tx3);border:1px solid var(--bdr);border-radius:6px;padding:2px 8px;transition:all .2s;text-decoration:none" onmouseover="this.style.color='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.color='var(--tx3)';this.style.borderColor='var(--bdr)'"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem"></i> Visit site</a>` : ''}
-        </span>
-      </div>
-      <ul class="timeline-achievements">
-        ${exp.achievements.map(a=>`<li>${a}</li>`).join('')}
-      </ul>
-    </div>
-  `;
-  timeline.appendChild(item);
-  obs.observe(item);
-});
-/* ──────────────────────────────
+
+/* ════════════════════════════════════
    CERTIFICATE LIGHTBOX
-   ────────────────────────────── */
-const certLightbox     = document.getElementById('certLightbox');
-const certLightboxImg  = document.getElementById('certLightboxImg');
-const certLightboxLbl  = document.getElementById('certLightboxLabel');
-const certLightboxClose= document.getElementById('certLightboxClose');
-
+   ════════════════════════════════════ */
+const certLightbox=document.getElementById('certLightbox');
+const certLightboxImg=document.getElementById('certLightboxImg');
+const certLightboxLbl=document.getElementById('certLightboxLabel');
 document.querySelectorAll('.cert-card[data-cert-img]').forEach(card=>{
-  card.addEventListener('click',()=>{
-    certLightboxImg.src = card.dataset.certImg;
-    certLightboxLbl.textContent = card.dataset.certName;
-    certLightbox.classList.add('open');
-    document.body.style.overflow='hidden';
-  });
+  card.addEventListener('click',()=>{ certLightboxImg.src=card.dataset.certImg;certLightboxLbl.textContent=card.dataset.certName;certLightbox.classList.add('open');document.body.style.overflow='hidden'; });
 });
-function closeCertLightbox(){
-  certLightbox.classList.remove('open');
-  certLightboxImg.src='';
-  document.body.style.overflow='';
-}
-certLightboxClose.addEventListener('click', closeCertLightbox);
-certLightbox.addEventListener('click', e=>{ if(e.target===certLightbox) closeCertLightbox(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeCertLightbox(); });
+function closeCertLightbox(){certLightbox.classList.remove('open');certLightboxImg.src='';document.body.style.overflow='';}
+document.getElementById('certLightboxClose').addEventListener('click',closeCertLightbox);
+certLightbox.addEventListener('click',e=>{ if(e.target===certLightbox) closeCertLightbox(); });
 
-/* ──────────────────────────────
+/* ════════════════════════════════════
    CONTACT FORM
-   ────────────────────────────── */
+   ════════════════════════════════════ */
 document.getElementById('contactForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const btn=this.querySelector('button[type=submit]');
-  btn.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Sending...';
-  btn.disabled=true;
-  setTimeout(()=>{
-    btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
-    btn.disabled=false;
-    this.reset();
-    const s=document.getElementById('formSuccess');
-    s.style.display='block';
-    setTimeout(()=>s.style.display='none',5000);
-  },1200);
+  e.preventDefault();const btn=this.querySelector('button[type=submit]');
+  btn.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Sending...';btn.disabled=true;
+  setTimeout(()=>{btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false;this.reset();const s=document.getElementById('formSuccess');s.style.display='block';setTimeout(()=>s.style.display='none',5000);},1200);
 });
 </script>
-<!-- <script src="assets/js/portfolio_patch.js"></script> -->
 </body>
 </html>
