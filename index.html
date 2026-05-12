@@ -980,18 +980,19 @@ const projects = [
     }
   },
   {
-    num:"03", icon:"fa-solid fa-truck",
-    img:"assets/amp.png",
-    title:"AMP Logistics Management System",
-    desc:"Enterprise Django logistics platform unifying fleet, inventory, warehouses, and shipments. Production live system.",
-    tags:["Django 5.2","PostgreSQL","DRF","Redis","Docker","GeoIP"],
-    impact:"6+ warehouse blocks · Real-time tracking · 15+ models",
-    categories:["enterprise"],
+    num:"10", icon:"fa-solid fa-map-marked-alt",
+    img:"assets/kapture.png",
+    title:"Kapture — Web GIS Land-Plot Management Platform",
+    desc:"Production-grade Django GIS web application for land-plot registration, polygon geometry management, and geospatial administration serving planners, surveyors, landowners, and government agencies.",
+    tags:["Django","PostGIS","GeoDjango","OpenLayers","GeoJSON","OGC","PostgreSQL","Tailwind","Jazzmin"],
+    impact:"Multi-role GIS platform · OGC-compliant APIs · Ghana Grid ↔ WGS84",
+    categories:["geo","enterprise"],
     details:{
-      overview:"Comprehensive enterprise logistics platform unifying fleet management, inventory control, warehouse operations, and shipment tracking.",
-      highlights:["Transport management with vehicle fleet and driver tracking","Inventory with multi-warehouse synchronization across 6+ blocks","Employee management with driver licensing tracking","Shipment request and dispatch workflows","GeoIP-based login tracking with geographic analytics","Role-based access control with permission-driven UI"]
+      overview:"Kapture is a full-stack PostGIS-backed Django GIS application covering the complete software lifecycle — from architecture design through implementation, testing, and deployment.",
+      highlights:["Multi-role user system: agent, surveyor, planner, government, landowner, lawyer, broker","PostGIS-backed geometry with spatial indexing, soft deletion, and Ghana Grid ↔ WGS84 conversion","Full OGC GeoJSON API surface: land-use, POI, district, region, and basepoint layers","Secure auth pipeline: 6-digit OTP verification, IP-geolocation login audit trail","Admin dashboard with live growth analytics and user management","Interactive web map frontend with polygon save/upload/delete","Docker containerised with full system documentation"]
     }
   },
+  
   {
     num:"04", icon:"fa-solid fa-city",
     img:"assets/prcs.png",
@@ -1003,6 +1004,19 @@ const projects = [
     details:{
       overview:"GIS-based property tax and revenue collection system for municipal assembly with interactive maps, automated billing, and payment integration.",
       highlights:["Interactive property maps using PMTiles vector tile technology","10,000+ property polygons optimized for mobile performance","Automated bill generation with customizable rate structures","Kowri payment gateway integration","Business operating permit and property rate billing modules","Role-based access: Admin, Supervisor, Collector"]
+    }
+  },
+  {
+    num:"03", icon:"fa-solid fa-truck",
+    img:"assets/amp.png",
+    title:"AMP Logistics Management System",
+    desc:"Enterprise Django logistics platform unifying fleet, inventory, warehouses, and shipments. Production live system.",
+    tags:["Django 5.2","PostgreSQL","DRF","Redis","Docker","GeoIP"],
+    impact:"6+ warehouse blocks · Real-time tracking · 15+ models",
+    categories:["enterprise"],
+    details:{
+      overview:"Comprehensive enterprise logistics platform unifying fleet management, inventory control, warehouse operations, and shipment tracking.",
+      highlights:["Transport management with vehicle fleet and driver tracking","Inventory with multi-warehouse synchronization across 6+ blocks","Employee management with driver licensing tracking","Shipment request and dispatch workflows","GeoIP-based login tracking with geographic analytics","Role-based access control with permission-driven UI"]
     }
   },
   {
@@ -1058,19 +1072,7 @@ const projects = [
       highlights:["Secure RESTful API as core data transaction platform","Offline-capable mobile app for field monitoring","Project performance indicators with automated data validation","Results framework module for logical framework analysis","Real-time dashboard for project milestone tracking","Beneficiary tracking with impact assessment"]
     }
   },
-  {
-    num:"10", icon:"fa-solid fa-map-marked-alt",
-    img:"assets/kapture.png",
-    title:"Kapture — Web GIS Land-Plot Management Platform",
-    desc:"Production-grade Django GIS web application for land-plot registration, polygon geometry management, and geospatial administration serving planners, surveyors, landowners, and government agencies.",
-    tags:["Django","PostGIS","GeoDjango","OpenLayers","GeoJSON","OGC","PostgreSQL","Tailwind","Jazzmin"],
-    impact:"Multi-role GIS platform · OGC-compliant APIs · Ghana Grid ↔ WGS84",
-    categories:["geo","enterprise"],
-    details:{
-      overview:"Kapture is a full-stack PostGIS-backed Django GIS application covering the complete software lifecycle — from architecture design through implementation, testing, and deployment.",
-      highlights:["Multi-role user system: agent, surveyor, planner, government, landowner, lawyer, broker","PostGIS-backed geometry with spatial indexing, soft deletion, and Ghana Grid ↔ WGS84 conversion","Full OGC GeoJSON API surface: land-use, POI, district, region, and basepoint layers","Secure auth pipeline: 6-digit OTP verification, IP-geolocation login audit trail","Admin dashboard with live growth analytics and user management","Interactive web map frontend with polygon save/upload/delete","Docker containerised with full system documentation"]
-    }
-  },
+  
   {
     num:"11", icon:"fa-solid fa-truck-moving",
     img:"assets/traccar.png",
