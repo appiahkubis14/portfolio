@@ -310,23 +310,31 @@
           display: flex;
           align-items: center;
           flex-shrink: 0;
-          line-height: 1
+          height: 64px;
+          text-decoration: none
       }
+
+      /* dark logo (default) shown, light logo hidden */
+      .logo .logo-dark  { display: block }
+      .logo .logo-light { display: none  }
+
+      /* in light theme: swap */
+      [data-theme="light"] .logo .logo-dark  { display: none  }
+      [data-theme="light"] .logo .logo-light { display: block }
 
       .logo img {
-          height: 36px;
+          height: 62px;
           width: auto;
-          max-width: 140px;
+          max-width: 260px;
           display: block;
-          object-fit: contain;
-          transition: filter .3s
+          object-fit: contain
       }
 
-      /* if logo is light-coloured SVG, invert in light theme */
-      [data-theme="light"] .logo img,
-      [data-theme="light"] footer img[src*="samuel_logo"] {
-          filter: invert(1) hue-rotate(180deg) brightness(0.2)
-      }
+      /* footer logos */
+      footer .logo-dark  { display: block }
+      footer .logo-light { display: none  }
+      [data-theme="light"] footer .logo-dark  { display: none  }
+      [data-theme="light"] footer .logo-light { display: block }
 
       .logm {
           width: 30px;
@@ -2740,130 +2748,151 @@
       }
 
       /* ══════════ OPEN-SOURCE SECTION ══════════ */
-      .oss-grid {
+
+      /* repo row layout */
+      .oss-list { display: flex; flex-direction: column; gap: 0; }
+
+      .oss-row {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          margin-bottom: 32px
+          grid-template-columns: 280px 1fr;
+          border: 1px solid var(--wire);
+          border-radius: 0;
+          overflow: hidden;
+          transition: border-color .25s;
+          position: relative;
       }
 
-      .oss-card {
+      .oss-row:first-child { border-radius: 8px 8px 0 0 }
+      .oss-row:last-child  { border-radius: 0 0 8px 8px }
+      .oss-row + .oss-row  { border-top: none }
+      .oss-row:hover { border-color: rgba(255,69,0,.4); z-index: 1 }
+
+      /* left identity panel */
+      .oss-id {
           background: var(--ink3);
-          border: 1px solid var(--wire2);
-          border-radius: 8px;
-          padding: 32px;
+          border-right: 1px solid var(--wire);
+          padding: 32px 28px;
           display: flex;
           flex-direction: column;
-          gap: 20px;
-          transition: border-color .25s, box-shadow .25s;
+          gap: 16px;
           position: relative;
-          overflow: hidden
+          overflow: hidden;
       }
 
-      .oss-card::before {
+      .oss-id::before {
           content: '';
           position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, var(--acc), var(--acc2));
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform .4s var(--ease)
+          inset: 0 auto 0 0;
+          width: 3px;
+          background: var(--acc-clr, var(--acc));
       }
 
-      .oss-card:hover { border-color: rgba(255,69,0,.4); box-shadow: 0 0 40px rgba(255,69,0,.07) }
-      .oss-card:hover::before { transform: scaleX(1) }
-
-      .oss-card-head {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 12px
-      }
-
-      .oss-logo {
-          width: 52px; height: 52px;
-          border-radius: 10px;
-          background: var(--acc-sub);
-          border: 1px solid rgba(255,69,0,.2);
+      .oss-ico {
+          width: 56px; height: 56px;
+          border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.4rem;
-          color: var(--acc);
-          flex-shrink: 0
+          font-size: 1.6rem;
+          background: var(--oss-ico-bg, var(--acc-sub));
+          border: 1px solid var(--oss-ico-bd, rgba(255,69,0,.2));
+          color: var(--oss-ico-cl, var(--acc));
       }
 
-      .oss-badges { display: flex; gap: 8px; flex-wrap: wrap }
+      .oss-id-name {
+          font-family: var(--fh);
+          font-size: 1.35rem;
+          font-weight: 800;
+          letter-spacing: -.03em;
+          color: var(--fg);
+          line-height: 1.1
+      }
 
-      .oss-badge {
+      .oss-id-sub {
           font-family: var(--fm);
           font-size: .6rem;
-          letter-spacing: .12em;
+          color: var(--dim);
+          letter-spacing: .1em;
+          line-height: 1.6
+      }
+
+      .oss-id-badges { display: flex; flex-wrap: wrap; gap: 6px }
+
+      .oss-bdg {
+          font-family: var(--fm);
+          font-size: .57rem;
+          letter-spacing: .1em;
           text-transform: uppercase;
-          padding: 4px 10px;
+          padding: 3px 9px;
           border-radius: 3px;
           display: inline-flex;
           align-items: center;
           gap: 5px
       }
+      .oss-bdg.apache { background: rgba(255,69,0,.1); border: 1px solid rgba(255,69,0,.25); color: var(--acc2) }
+      .oss-bdg.mit    { background: rgba(0,201,167,.08); border: 1px solid rgba(0,201,167,.2); color: var(--teal) }
+      .oss-bdg.pypi   { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25); color: #60a5fa }
 
-      .oss-badge.apache { background: rgba(255,69,0,.1); border: 1px solid rgba(255,69,0,.25); color: var(--acc2) }
-      .oss-badge.mit { background: rgba(0,201,167,.08); border: 1px solid rgba(0,201,167,.2); color: var(--teal) }
-      .oss-badge.pypi { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25); color: #60a5fa }
+      .oss-id-links { display: flex; flex-direction: column; gap: 8px; margin-top: auto }
 
-      .oss-name {
-          font-family: var(--fh);
-          font-size: 1.6rem;
-          font-weight: 800;
-          letter-spacing: -.03em;
-          color: var(--fg);
-          line-height: 1
-      }
-
-      .oss-ver {
+      .oss-id-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
           font-family: var(--fm);
-          font-size: .65rem;
-          color: var(--dim);
-          letter-spacing: .1em
-      }
-
-      .oss-desc {
-          font-size: .93rem;
+          font-size: .68rem;
           color: var(--muted);
-          line-height: 1.75
+          transition: color .2s;
+          text-decoration: none
+      }
+      .oss-id-link i { color: var(--acc); width: 14px; text-align: center }
+      .oss-id-link:hover { color: var(--acc) }
+
+      /* right content panel */
+      .oss-body {
+          background: var(--ink2);
+          padding: 32px 36px;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
       }
 
-      .oss-stats-row {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1px;
-          background: var(--wire);
+      .oss-desc-txt {
+          font-size: .9rem;
+          color: var(--muted);
+          line-height: 1.8;
+          max-width: 680px
+      }
+
+      /* metrics strip */
+      .oss-metrics {
+          display: flex;
+          gap: 0;
           border: 1px solid var(--wire);
           border-radius: 6px;
-          overflow: hidden
+          overflow: hidden;
+          width: fit-content
       }
 
-      .oss-stat {
-          background: var(--ink2);
-          padding: 14px 12px;
+      .oss-metric {
+          padding: 14px 24px;
           text-align: center;
+          background: var(--ink3);
+          border-right: 1px solid var(--wire);
           transition: background .2s
       }
+      .oss-metric:last-child { border-right: none }
+      .oss-metric:hover { background: var(--ink) }
 
-      .oss-stat:hover { background: var(--ink3) }
-
-      .oss-sv {
+      .oss-mval {
           display: block;
           font-family: var(--fh);
-          font-size: 1.25rem;
+          font-size: 1.3rem;
           font-weight: 800;
           color: var(--acc);
           line-height: 1
       }
-
-      .oss-sl {
+      .oss-mlbl {
           display: block;
           font-family: var(--fm);
           font-size: .55rem;
@@ -2873,178 +2902,59 @@
           margin-top: 4px
       }
 
-      .oss-features {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 0 20px
-      }
+      /* highlights list */
+      .oss-hl { display: flex; flex-direction: column; gap: 6px }
 
-      .oss-feat-col { display: flex; flex-direction: column; gap: 8px }
-
-      .oss-feat {
+      .oss-hl-item {
           display: flex;
           align-items: flex-start;
-          gap: 9px;
-          font-size: .82rem;
+          gap: 10px;
+          font-size: .83rem;
           color: var(--fg2);
-          line-height: 1.55
+          line-height: 1.6
       }
-
-      .oss-feat i {
+      .oss-hl-item i {
           color: var(--acc);
-          font-size: .75rem;
-          margin-top: 3px;
+          font-size: .7rem;
+          margin-top: 4px;
           flex-shrink: 0;
           width: 14px
       }
 
-      .oss-pipelines { display: flex; flex-direction: column; gap: 10px }
+      /* tags row */
+      .oss-tags { display: flex; flex-wrap: wrap; gap: 6px }
 
-      .oss-pip-lbl {
+      .oss-tag {
           font-family: var(--fm);
-          font-size: .6rem;
-          letter-spacing: .15em;
-          text-transform: uppercase;
-          color: var(--dim)
-      }
-
-      .oss-pip-tags { display: flex; flex-wrap: wrap; gap: 6px }
-
-      .oss-pip {
-          font-family: var(--fm);
-          font-size: .65rem;
-          padding: 4px 10px;
+          font-size: .62rem;
+          padding: 4px 11px;
           border-radius: 3px;
           background: var(--ink);
           border: 1px solid var(--wire);
           color: var(--muted);
           transition: all .2s
       }
+      .oss-tag:hover { border-color: var(--acc); color: var(--acc) }
 
-      .oss-pip:hover { border-color: var(--acc); color: var(--acc) }
-
-      .oss-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px }
-
-      .oss-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 7px;
-          font-family: var(--fm);
-          font-size: .72rem;
-          letter-spacing: .06em;
-          padding: 9px 18px;
-          border-radius: 4px;
-          border: 1.5px solid var(--wire2);
-          color: var(--fg2);
-          transition: all .22s;
-          text-decoration: none
-      }
-
-      .oss-link:hover { border-color: var(--acc); color: var(--acc); background: var(--acc-sub) }
-      .oss-link.primary { background: var(--acc); border-color: var(--acc); color: #fff }
-      .oss-link.primary:hover { background: var(--acc2); border-color: var(--acc2); box-shadow: 0 6px 20px var(--acc-glow) }
-
-      /* architecture strip */
-      .oss-arch {
-          margin-top: 16px;
-          background: var(--ink3);
-          border: 1px solid var(--wire);
-          border-radius: 8px;
-          padding: 28px 36px;
-          display: flex;
-          align-items: center;
-          gap: 24px;
-          flex-wrap: wrap
-      }
-
-      .oss-arch-lbl {
-          font-family: var(--fm);
-          font-size: .6rem;
-          letter-spacing: .18em;
-          text-transform: uppercase;
-          color: var(--dim);
-          writing-mode: vertical-rl;
-          transform: rotate(180deg);
-          flex-shrink: 0
-      }
-
-      .oss-arch-flow {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          flex: 1;
-          flex-wrap: wrap;
-          justify-content: center
-      }
-
-      .oss-arch-node {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-          text-align: center;
-          background: var(--ink2);
-          border: 1px solid var(--wire);
-          border-radius: 8px;
-          padding: 18px 24px;
-          min-width: 120px;
-          transition: border-color .25s
-      }
-
-      .oss-arch-node:hover { border-color: rgba(255,69,0,.4) }
-
-      .oss-arch-node.oss-arch-main {
-          background: var(--acc-sub);
-          border-color: rgba(255,69,0,.35);
-          box-shadow: 0 0 24px rgba(255,69,0,.1)
-      }
-
-      .oss-arch-ico {
-          font-size: 1.3rem;
-          color: var(--acc)
-      }
-
-      .oss-arch-nt {
-          font-family: var(--fh);
-          font-size: .9rem;
-          font-weight: 700;
-          color: var(--fg)
-      }
-
-      .oss-arch-ns {
-          font-family: var(--fm);
-          font-size: .58rem;
-          color: var(--dim);
-          line-height: 1.5;
-          letter-spacing: .05em
-      }
-
-      .oss-arch-arr {
-          color: var(--acc);
-          font-size: .9rem;
-          opacity: .6
-      }
-
-      @media(max-width:1200px) {
-          .oss-grid { grid-template-columns: repeat(2, 1fr) }
-      }
-
+      /* stat counters inside body */
       @media(max-width:1100px) {
-          .oss-features { grid-template-columns: 1fr }
+          .oss-row { grid-template-columns: 240px 1fr }
+          .oss-body { padding: 24px 28px }
       }
 
-      @media(max-width:768px) {
-          .oss-grid { grid-template-columns: 1fr }
-          .oss-stats-row { grid-template-columns: repeat(2, 1fr) }
-          .oss-arch { padding: 20px }
-          .oss-arch-lbl { writing-mode: horizontal-tb; transform: none }
+      @media(max-width:860px) {
+          .oss-row { grid-template-columns: 1fr }
+          .oss-id  { border-right: none; border-bottom: 1px solid var(--wire) }
+          .oss-id::before { width: 100%; height: 3px; bottom: auto }
+          .oss-metrics { width: 100% }
+          .oss-metric { flex: 1 }
       }
 
       @media(max-width:480px) {
-          .oss-card { padding: 22px 18px }
-          .oss-arch-flow { gap: 8px }
-          .oss-arch-node { min-width: 90px; padding: 14px 12px }
+          .oss-body { padding: 20px 18px }
+          .oss-id   { padding: 24px 20px }
       }
+
       /* ══════════ END OPEN-SOURCE CSS ══════════ */
 
       /* ── theme toggle button ── */
@@ -3125,20 +3035,16 @@
           background: var(--ink2)
       }
 
-      [data-theme="light"] .oss-card {
+      [data-theme="light"] .oss-id {
           background: var(--ink3)
       }
 
-      [data-theme="light"] .oss-stat {
+      [data-theme="light"] .oss-body {
           background: var(--ink2)
       }
 
-      [data-theme="light"] .oss-arch {
+      [data-theme="light"] .oss-metric {
           background: var(--ink3)
-      }
-
-      [data-theme="light"] .oss-arch-node {
-          background: var(--ink2)
       }
 
       [data-theme="light"] .asn,
@@ -3228,8 +3134,8 @@
     <nav id="nav">
       <div class="nvi">
         <a href="#hero" class="logo">
-          
- <img src="samuel_logo.svg" width="180" alt="Samuel Appiah Kubi Logo"/>
+          <img src="logo/samuel_logo_light.svg" class="logo-dark"  alt="Samuel Appiah Kubi"/>
+          <img src="logo/samuel_logo_dark.svg"  class="logo-light" alt="Samuel Appiah Kubi"/>
         </a>
         <div class="nls">
           <a href="#about" class="nl">About</a
@@ -3654,218 +3560,138 @@
         <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:56px">
           <div>
             <h2 class="st rv d1" style="margin-top:12px">Open-Source <em>Ecosystem</em></h2>
-            <p class="ss rv d2" style="max-width:580px">Production-ready platforms bridging satellite data acquisition and geospatial AI — published to PyPI, fully documented, and Apache/MIT licensed.</p>
+            <p class="ss rv d2" style="max-width:580px">Production-ready Python packages bridging satellite data acquisition and geospatial AI — published to PyPI, Apache/MIT licensed, Docker-ready.</p>
           </div>
           <a href="https://github.com/appiahkubis14" target="_blank" rel="noopener" class="btn bb rv d3"><i class="fab fa-github"></i> View All Repos</a>
         </div>
 
-        <!-- OSS Cards -->
-        <div class="oss-grid">
+        <div class="oss-list">
 
-          <!-- PyGeoVision -->
-          <div class="oss-card rv d1">
-            <div class="oss-card-head">
-              <div class="oss-logo">
+          <!-- ── PyGeoVision ── -->
+          <div class="oss-row rv d1">
+            <div class="oss-id">
+              <div class="oss-ico">
                 <i class="fa-solid fa-earth-americas"></i>
               </div>
-              <div class="oss-badges">
-                <span class="oss-badge apache"><i class="fa-solid fa-scale-balanced"></i> Apache 2.0</span>
-                <span class="oss-badge pypi"><i class="fa-brands fa-python"></i> PyPI</span>
+              <div>
+                <div class="oss-id-name">PyGeoVision</div>
+                <div class="oss-id-sub">v1.0.0 · Production Ready<br>Geospatial AI Platform</div>
+              </div>
+              <div class="oss-id-badges">
+                <span class="oss-bdg apache"><i class="fa-solid fa-scale-balanced"></i> Apache 2.0</span>
+                <span class="oss-bdg pypi"><i class="fa-brands fa-python"></i> PyPI</span>
+              </div>
+              <div class="oss-id-links">
+                <a href="https://github.com/appiahkubis14/PyGeoVision" target="_blank" rel="noopener" class="oss-id-link"><i class="fab fa-github"></i> github.com/appiahkubis14/PyGeoVision</a>
+                <a href="https://pypi.org/project/pygeovision" target="_blank" rel="noopener" class="oss-id-link"><i class="fa-brands fa-python"></i> pypi.org/project/pygeovision</a>
+                <a href="https://hub.docker.com" target="_blank" rel="noopener" class="oss-id-link"><i class="fa-brands fa-docker"></i> Docker Hub — pre-built images</a>
               </div>
             </div>
-            <div class="oss-name">PyGeoVision</div>
-            <div class="oss-ver">v1.0.0 · Production Ready</div>
-            <div class="oss-desc">A world-class geospatial AI platform unifying satellite data acquisition from 22+ providers and inference across 24 GeoAI subsystems in a single coherent API. The integration layer bridging PyGeoFetch and GeoAI.</div>
-            <div class="oss-stats-row">
-              <div class="oss-stat"><span class="oss-sv">5,845</span><span class="oss-sl">Lines of Python</span></div>
-              <div class="oss-stat"><span class="oss-sv">22+</span><span class="oss-sl">Data Providers</span></div>
-              <div class="oss-stat"><span class="oss-sv">24</span><span class="oss-sl">AI Subsystems</span></div>
-              <div class="oss-stat"><span class="oss-sv">208</span><span class="oss-sl">Passing Tests</span></div>
-            </div>
-            <div class="oss-features">
-              <div class="oss-feat-col">
-                <div class="oss-feat"><i class="fa-solid fa-terminal"></i> Full CLI with 40+ commands &amp; YAML pipeline orchestration</div>
-                <div class="oss-feat"><i class="fa-solid fa-satellite"></i> USGS, Copernicus, Planet, Maxar, NASA, AWS Earth &amp; more</div>
-                <div class="oss-feat"><i class="fa-solid fa-brain"></i> SAM, GroundedSAM, NASA Prithvi, DINOv3, ChangeSTAR, RF-DETR</div>
-                <div class="oss-feat"><i class="fa-solid fa-cube"></i> 14 model architectures: UNet, SegFormer, DeepLabV3+, ViT, ESRGAN</div>
-                <div class="oss-feat"><i class="fa-brands fa-docker"></i> Docker Hub images · 4 install variants (core, geoai, geo, all)</div>
+            <div class="oss-body">
+              <p class="oss-desc-txt">A world-class geospatial AI platform unifying satellite data acquisition from 22+ providers and inference across 24 GeoAI subsystems in a single coherent API — the integration layer bridging PyGeoFetch (data acquisition) and GeoAI (inference). Ships with a full CLI, YAML pipeline orchestration, and 208 passing tests.</p>
+              <div class="oss-metrics">
+                <div class="oss-metric"><span class="oss-mval">5,845</span><span class="oss-mlbl">Lines of Python</span></div>
+                <div class="oss-metric"><span class="oss-mval">22+</span><span class="oss-mlbl">Data Providers</span></div>
+                <div class="oss-metric"><span class="oss-mval">24</span><span class="oss-mlbl">AI Subsystems</span></div>
+                <div class="oss-metric"><span class="oss-mval">10</span><span class="oss-mlbl">End-to-End Pipelines</span></div>
+                <div class="oss-metric"><span class="oss-mval">208</span><span class="oss-mlbl">Passing Tests</span></div>
               </div>
-              <div class="oss-feat-col">
-                <div class="oss-feat"><i class="fa-solid fa-map"></i> 10 end-to-end pipelines: buildings, change, land cover, water bodies</div>
-                <div class="oss-feat"><i class="fa-solid fa-solar-panel"></i> Solar detection, deforestation, urban growth, carbon estimation</div>
-                <div class="oss-feat"><i class="fa-solid fa-tags"></i> 7 automated labellers: OSM, Microsoft, Google Open Buildings, ESA</div>
-                <div class="oss-feat"><i class="fa-solid fa-chart-line"></i> Cron scheduling, full documentation &amp; architecture diagrams</div>
-                <div class="oss-feat"><i class="fa-solid fa-file-export"></i> ONNX export, INT8 quantisation, cloud masking, super-resolution</div>
+              <div class="oss-hl">
+                <div class="oss-hl-item"><i class="fa-solid fa-terminal"></i> Full CLI with 40+ commands and YAML pipeline orchestration with cron scheduling</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-satellite"></i> 22+ satellite providers: USGS, Copernicus, Planet, Maxar, NASA Earthdata, AWS Earth, Sentinel Hub</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-brain"></i> 24 GeoAI subsystems: SAM, GroundedSAM, NASA Prithvi, DINOv3, ChangeSTAR, RF-DETR, ONNX export</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-cube"></i> 14 architectures: UNet, SegFormer, DeepLabV3+, FCOS, RetinaNet, ViT, ESRGAN, SRCNN and more</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-tags"></i> 7 automated labellers: OSM, Microsoft Building Footprints, Google Open Buildings, ESA WorldCover, SAM</div>
               </div>
-            </div>
-            <div class="oss-pipelines">
-              <div class="oss-pip-lbl">End-to-End Pipelines</div>
-              <div class="oss-pip-tags">
-                <span class="oss-pip">Building Footprints</span>
-                <span class="oss-pip">Change Detection</span>
-                <span class="oss-pip">Land Cover</span>
-                <span class="oss-pip">Water Bodies</span>
-                <span class="oss-pip">Solar Detection</span>
-                <span class="oss-pip">Crop Monitoring</span>
-                <span class="oss-pip">Disaster Assessment</span>
-                <span class="oss-pip">Deforestation</span>
-                <span class="oss-pip">Urban Growth</span>
-                <span class="oss-pip">Carbon Estimation</span>
+              <div class="oss-tags">
+                <span class="oss-tag">Building Footprints</span><span class="oss-tag">Change Detection</span><span class="oss-tag">Land Cover</span><span class="oss-tag">Water Bodies</span><span class="oss-tag">Solar Detection</span><span class="oss-tag">Crop Monitoring</span><span class="oss-tag">Disaster Assessment</span><span class="oss-tag">Deforestation</span><span class="oss-tag">Urban Growth</span><span class="oss-tag">Carbon Estimation</span>
               </div>
-            </div>
-            <div class="oss-links">
-              <a href="https://github.com/appiahkubis14/PyGeoVision" target="_blank" rel="noopener" class="oss-link primary"><i class="fab fa-github"></i> GitHub</a>
-              <a href="https://pypi.org/project/pygeovision" target="_blank" rel="noopener" class="oss-link"><i class="fa-brands fa-python"></i> PyPI: pygeovision</a>
             </div>
           </div>
 
-          <!-- PyGeoFetch -->
-          <div class="oss-card rv d2">
-            <div class="oss-card-head">
-              <div class="oss-logo" style="background:rgba(0,201,167,.12);border-color:rgba(0,201,167,.25);color:var(--teal)">
+          <!-- ── PyGeoFetch ── -->
+          <div class="oss-row rv d2" style="--acc-clr:var(--teal)">
+            <div class="oss-id">
+              <div class="oss-ico" style="background:rgba(0,201,167,.12);border-color:rgba(0,201,167,.25);color:var(--teal)">
                 <i class="fa-solid fa-satellite-dish"></i>
               </div>
-              <div class="oss-badges">
-                <span class="oss-badge mit"><i class="fa-solid fa-scale-balanced"></i> MIT License</span>
-                <span class="oss-badge pypi"><i class="fa-brands fa-python"></i> PyPI</span>
+              <div>
+                <div class="oss-id-name">PyGeoFetch</div>
+                <div class="oss-id-sub">Active Development<br>Universal Data Pipeline</div>
+              </div>
+              <div class="oss-id-badges">
+                <span class="oss-bdg mit"><i class="fa-solid fa-scale-balanced"></i> MIT License</span>
+                <span class="oss-bdg pypi"><i class="fa-brands fa-python"></i> PyPI</span>
+              </div>
+              <div class="oss-id-links">
+                <a href="https://github.com/appiahkubis14/pygeofetch" target="_blank" rel="noopener" class="oss-id-link"><i class="fab fa-github"></i> github.com/appiahkubis14/pygeofetch</a>
+                <a href="https://pypi.org/project/pygeofetch" target="_blank" rel="noopener" class="oss-id-link"><i class="fa-brands fa-python"></i> pypi.org/project/pygeofetch</a>
+                <a href="https://hub.docker.com" target="_blank" rel="noopener" class="oss-id-link"><i class="fa-brands fa-docker"></i> Docker Hub — pre-built images</a>
               </div>
             </div>
-            <div class="oss-name">PyGeoFetch</div>
-            <div class="oss-ver">Active Development · Data Backbone</div>
-            <div class="oss-desc">Universal CLI and Python API for searching and downloading satellite imagery from 22+ global repositories with a single command. The data-acquisition backbone powering PyGeoVision.</div>
-            <div class="oss-stats-row">
-              <div class="oss-stat"><span class="oss-sv">22</span><span class="oss-sl">Providers</span></div>
-              <div class="oss-stat"><span class="oss-sv">10+</span><span class="oss-sl">Post-process Actions</span></div>
-              <div class="oss-stat"><span class="oss-sv">4</span><span class="oss-sl">Output Formats</span></div>
-              <div class="oss-stat"><span class="oss-sv">SHA256</span><span class="oss-sl">Verification</span></div>
-            </div>
-            <div class="oss-features">
-              <div class="oss-feat-col">
-                <div class="oss-feat"><i class="fa-solid fa-key"></i> Provider-agnostic auth via system keyring (macOS/Windows/Linux)</div>
-                <div class="oss-feat"><i class="fa-solid fa-bolt"></i> Parallel downloads with adaptive concurrency &amp; auto-resume</div>
-                <div class="oss-feat"><i class="fa-solid fa-shield-halved"></i> SHA256/MD5/SHA512 checksum verification</div>
-                <div class="oss-feat"><i class="fa-solid fa-clock"></i> YAML pipelines with cron scheduling &amp; webhook notifications</div>
-                <div class="oss-feat"><i class="fa-solid fa-bell"></i> Slack, Teams, email &amp; custom webhook notification support</div>
+            <div class="oss-body">
+              <p class="oss-desc-txt">Unified CLI and Python API for searching and downloading satellite imagery from 22+ global repositories with a single command. The data-acquisition backbone powering PyGeoVision — provider-agnostic, checksum-verified, and resumable.</p>
+              <div class="oss-metrics">
+                <div class="oss-metric"><span class="oss-mval">22</span><span class="oss-mlbl">Providers</span></div>
+                <div class="oss-metric"><span class="oss-mval">10+</span><span class="oss-mlbl">Post-process Actions</span></div>
+                <div class="oss-metric"><span class="oss-mval">5</span><span class="oss-mlbl">Output Formats</span></div>
+                <div class="oss-metric"><span class="oss-mval">SHA256</span><span class="oss-mlbl">Verification</span></div>
               </div>
-              <div class="oss-feat-col">
-                <div class="oss-feat"><i class="fa-solid fa-globe"></i> USGS, Copernicus, Planet, Maxar GBDX, Airbus OneAtlas, GEE</div>
-                <div class="oss-feat"><i class="fa-solid fa-mountain"></i> OpenTopography, Alaska Satellite Facility, NOAA Big Data, JAXA</div>
-                <div class="oss-feat"><i class="fa-solid fa-filter"></i> CQL2 filter expressions for advanced spatial/temporal queries</div>
-                <div class="oss-feat"><i class="fa-solid fa-file-code"></i> STAC, GeoJSON, GeoParquet, JSON, CSV output formats</div>
-                <div class="oss-feat"><i class="fa-solid fa-wand-magic-sparkles"></i> NDVI, NDWI, atmospheric correction, pan-sharpen, COG, merge</div>
+              <div class="oss-hl">
+                <div class="oss-hl-item"><i class="fa-solid fa-key"></i> Provider-agnostic auth via system keyring (macOS / Windows / Linux) with parallel adaptive concurrency</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-clock"></i> YAML pipelines with cron scheduling and webhook notifications — Slack, Teams, email, custom webhooks</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-globe"></i> 22 providers: USGS, Copernicus, NASA Earthdata, Planet, Maxar, Airbus, GEE, JAXA, ISRO, NOAA, INPE, ESA</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-wand-magic-sparkles"></i> 10+ post-processing actions: NDVI, NDWI, composite, atmospheric correction, COG, merge, pan-sharpen</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-filter"></i> Full CQL2 filter expression support for advanced spatial and temporal querying; STAC, GeoJSON, GeoParquet output</div>
               </div>
-            </div>
-            <div class="oss-pipelines">
-              <div class="oss-pip-lbl">Supported Providers</div>
-              <div class="oss-pip-tags">
-                <span class="oss-pip">USGS</span>
-                <span class="oss-pip">Copernicus</span>
-                <span class="oss-pip">NASA Earthdata</span>
-                <span class="oss-pip">Planet</span>
-                <span class="oss-pip">Maxar GBDX</span>
-                <span class="oss-pip">Sentinel Hub</span>
-                <span class="oss-pip">Google Earth Engine</span>
-                <span class="oss-pip">Airbus OneAtlas</span>
-                <span class="oss-pip">JAXA ALOS</span>
-                <span class="oss-pip">INPE CBERS</span>
-                <span class="oss-pip">Planetary Computer</span>
-                <span class="oss-pip">Alaska Sat. Facility</span>
+              <div class="oss-tags">
+                <span class="oss-tag">USGS</span><span class="oss-tag">Copernicus</span><span class="oss-tag">NASA Earthdata</span><span class="oss-tag">Planet</span><span class="oss-tag">Maxar GBDX</span><span class="oss-tag">Sentinel Hub</span><span class="oss-tag">Google Earth Engine</span><span class="oss-tag">Airbus OneAtlas</span><span class="oss-tag">JAXA ALOS</span><span class="oss-tag">Planetary Computer</span>
               </div>
-            </div>
-            <div class="oss-links">
-              <a href="https://github.com/appiahkubis14/pygeofetch" target="_blank" rel="noopener" class="oss-link primary"><i class="fab fa-github"></i> GitHub</a>
-              <a href="https://pypi.org/project/pygeofetch" target="_blank" rel="noopener" class="oss-link"><i class="fa-brands fa-python"></i> PyPI: pygeofetch</a>
             </div>
           </div>
 
-          <!-- raster2pm -->
-          <div class="oss-card rv d3">
-            <div class="oss-card-head">
-              <div class="oss-logo" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.25);color:#a78bfa">
-                <i class="fa-solid fa-map"></i>
+          <!-- ── raster2pm ── -->
+          <div class="oss-row rv d3" style="--acc-clr:#a78bfa">
+            <div class="oss-id">
+              <div class="oss-ico" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.25);color:#a78bfa">
+                <i class="fa-solid fa-layer-group"></i>
               </div>
-              <div class="oss-badges">
-                <span class="oss-badge mit"><i class="fa-solid fa-scale-balanced"></i> MIT License</span>
-                <span class="oss-badge pypi"><i class="fa-brands fa-python"></i> PyPI</span>
+              <div>
+                <div class="oss-id-name">raster2pm</div>
+                <div class="oss-id-sub">Active Development<br>GeoTIFF → PMTiles Converter</div>
               </div>
-            </div>
-            <div class="oss-name">raster2pm</div>
-            <div class="oss-ver">Active Development · Tile Converter</div>
-            <div class="oss-desc">Converts any GeoTIFF (orthomosaics, NDVI, NDRE, satellite imagery) to web-optimised PMTiles map tiles in a single command — eliminating complex tile pipeline setup for researchers publishing geospatial data on the web.</div>
-            <div class="oss-stats-row">
-              <div class="oss-stat"><span class="oss-sv">1</span><span class="oss-sl">Command</span></div>
-              <div class="oss-stat"><span class="oss-sv">64GB</span><span class="oss-sl">Tested On</span></div>
-              <div class="oss-stat"><span class="oss-sv">36K+</span><span class="oss-sl">Tiles</span></div>
-              <div class="oss-stat"><span class="oss-sv">z0–18</span><span class="oss-sl">Zoom Range</span></div>
-            </div>
-            <div class="oss-features">
-              <div class="oss-feat-col">
-                <div class="oss-feat"><i class="fa-solid fa-terminal"></i> One-command CLI: <code style="font-family:var(--fm);font-size:.75em;color:var(--acc)">raster2pm input.tif -o out.pmtiles</code></div>
-                <div class="oss-feat"><i class="fa-solid fa-palette"></i> Smart colormap auto-detection: NDVI/NDRE → RdYlGn, viridis, plasma</div>
-                <div class="oss-feat"><i class="fa-solid fa-memory"></i> Block-by-block processing for massive rasters; tested on 64 GB orthomosaics</div>
+              <div class="oss-id-badges">
+                <span class="oss-bdg mit"><i class="fa-solid fa-scale-balanced"></i> MIT License</span>
+                <span class="oss-bdg pypi"><i class="fa-brands fa-python"></i> PyPI</span>
               </div>
-              <div class="oss-feat-col">
-                <div class="oss-feat"><i class="fa-solid fa-bolt"></i> Parallel processing (--workers 8), custom zoom levels, WEBP/JPEG/PNG output</div>
-                <div class="oss-feat"><i class="fa-solid fa-chart-bar"></i> Built-in diagnostics: stats, histograms, color warning detection</div>
-                <div class="oss-feat"><i class="fa-solid fa-globe"></i> Output compatible with MapLibre, Leaflet, OpenLayers, pmtiles.io</div>
+              <div class="oss-id-links">
+                <a href="https://github.com/appiahkubis14/raster2pm" target="_blank" rel="noopener" class="oss-id-link"><i class="fab fa-github"></i> github.com/appiahkubis14/raster2pm</a>
+                <a href="https://pypi.org/project/raster2pm" target="_blank" rel="noopener" class="oss-id-link"><i class="fa-brands fa-python"></i> pypi.org/project/raster2pm</a>
+                <a href="https://pmtiles.io" target="_blank" rel="noopener" class="oss-id-link"><i class="fa-solid fa-map"></i> Compatible with pmtiles.io</a>
               </div>
             </div>
-            <div class="oss-pipelines">
-              <div class="oss-pip-lbl">Compatible With</div>
-              <div class="oss-pip-tags">
-                <span class="oss-pip">MapLibre GL</span>
-                <span class="oss-pip">Leaflet</span>
-                <span class="oss-pip">OpenLayers</span>
-                <span class="oss-pip">pmtiles.io</span>
-                <span class="oss-pip">NDVI / NDRE</span>
-                <span class="oss-pip">Orthomosaics</span>
-                <span class="oss-pip">Satellite Imagery</span>
+            <div class="oss-body">
+              <p class="oss-desc-txt">Converts any GeoTIFF — orthomosaics, NDVI, NDRE, satellite imagery — to web-optimised PMTiles map tiles in a single command. Eliminates complex tile pipeline setup for researchers publishing geospatial data on the web. Tested on 64 GB orthomosaics across 36,000+ tiles.</p>
+              <div class="oss-metrics">
+                <div class="oss-metric"><span class="oss-mval">1 cmd</span><span class="oss-mlbl">To Convert</span></div>
+                <div class="oss-metric"><span class="oss-mval">64 GB</span><span class="oss-mlbl">Tested On</span></div>
+                <div class="oss-metric"><span class="oss-mval">36K+</span><span class="oss-mlbl">Tiles</span></div>
+                <div class="oss-metric"><span class="oss-mval">z0–18</span><span class="oss-mlbl">Zoom Range</span></div>
               </div>
-            </div>
-            <div class="oss-links">
-              <a href="https://github.com/appiahkubis14/raster2pm" target="_blank" rel="noopener" class="oss-link primary"><i class="fab fa-github"></i> GitHub</a>
-              <a href="https://pypi.org/project/raster2pm" target="_blank" rel="noopener" class="oss-link"><i class="fa-brands fa-python"></i> PyPI: raster2pm</a>
+              <div class="oss-hl">
+                <div class="oss-hl-item"><i class="fa-solid fa-terminal"></i> One-command CLI: <code style="font-family:var(--fm);font-size:.8em;color:var(--acc);background:var(--ink3);padding:1px 6px;border-radius:3px">raster2pm input.tif -o output.pmtiles</code></div>
+                <div class="oss-hl-item"><i class="fa-solid fa-palette"></i> Smart colormap auto-detection for NDVI / NDRE — applies RdYlGn, viridis, and plasma scientific ramps automatically</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-memory"></i> Memory-efficient block-by-block processing for massive rasters; parallel workers, custom zoom levels, WEBP/JPEG/PNG</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-chart-bar"></i> Built-in diagnostics: statistics, histograms, color warning detection before conversion</div>
+                <div class="oss-hl-item"><i class="fa-solid fa-globe"></i> Output directly compatible with MapLibre GL, Leaflet, OpenLayers, and pmtiles.io — no extra tooling</div>
+              </div>
+              <div class="oss-tags">
+                <span class="oss-tag">MapLibre GL</span><span class="oss-tag">Leaflet</span><span class="oss-tag">OpenLayers</span><span class="oss-tag">pmtiles.io</span><span class="oss-tag">NDVI / NDRE</span><span class="oss-tag">Orthomosaics</span><span class="oss-tag">Satellite Imagery</span><span class="oss-tag">GeoTIFF</span>
+              </div>
             </div>
           </div>
 
-        </div><!-- /oss-grid -->
-
-        <!-- Architecture diagram strip -->
-        <div class="oss-arch rv d4">
-          <div class="oss-arch-lbl">Architecture</div>
-          <div class="oss-arch-flow">
-            <div class="oss-arch-node">
-              <div class="oss-arch-ico"><i class="fa-solid fa-satellite-dish"></i></div>
-              <div class="oss-arch-nt">PyGeoFetch</div>
-              <div class="oss-arch-ns">Data Acquisition<br>22+ Providers</div>
-            </div>
-            <div class="oss-arch-arr"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="oss-arch-node oss-arch-main">
-              <div class="oss-arch-ico"><i class="fa-solid fa-earth-americas"></i></div>
-              <div class="oss-arch-nt">PyGeoVision</div>
-              <div class="oss-arch-ns">Unified API<br>Integration Layer</div>
-            </div>
-            <div class="oss-arch-arr"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="oss-arch-node">
-              <div class="oss-arch-ico"><i class="fa-solid fa-brain"></i></div>
-              <div class="oss-arch-nt">GeoAI</div>
-              <div class="oss-arch-ns">Inference Engine<br>24 Subsystems</div>
-            </div>
-            <div class="oss-arch-arr"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="oss-arch-node">
-              <div class="oss-arch-ico"><i class="fa-solid fa-chart-pie"></i></div>
-              <div class="oss-arch-nt">Pipelines</div>
-              <div class="oss-arch-ns">10 End-to-End<br>Workflows</div>
-            </div>
-            <div class="oss-arch-arr"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="oss-arch-node">
-              <div class="oss-arch-ico" style="color:#a78bfa"><i class="fa-solid fa-map"></i></div>
-              <div class="oss-arch-nt">raster2pm</div>
-              <div class="oss-arch-ns">PMTiles Export<br>Web Publishing</div>
-            </div>
-          </div>
-        </div>
-
+        </div><!-- /oss-list -->
       </div>
     </section>
     <!-- ══════════════ END OPEN-SOURCE SECTION ══════════════ -->
@@ -4176,7 +4002,8 @@
       <div class="w">
         <div class="ftg">
           <div>
-            <img src="samuel_logo.svg" style="height:40px;width:auto;max-width:160px;display:block;margin-bottom:14px" alt="Samuel Appiah Kubi Logo"/>
+            <img src="logo/samuel_logo_light.svg" class="logo-dark"  style="height:68px;width:auto;max-width:260px;margin-bottom:16px" alt="Samuel Appiah Kubi"/>
+            <img src="logo/samuel_logo_dark.svg"  class="logo-light" style="height:68px;width:auto;max-width:260px;margin-bottom:16px" alt="Samuel Appiah Kubi"/>
             <div class="ftsub">
               Geospatial Software Engineer, Planetary Scientist &amp; AI
               Developer. From Earth to Mars.
