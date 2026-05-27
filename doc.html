@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PyGeoFetch — Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--accent:#e9660e;--accent-dim:#e0f2fe;--accent-hover:#c76102;--green:#059669;--green-dim:#d1fae5;--amber:#d97706;--amber-dim:#fef3c7;--red:#dc2626;--bg-page:#f8f9fa;--bg-surface:#ffffff;--bg-raised:#f1f3f5;--bg-code:#f6f8fa;--border:#e2e8f0;--border-strong:#cbd5e1;--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--text-code:#1e293b;--nav-bg:rgba(255,255,255,0.95);--nav-border:#e2e8f0;--sidebar-w:262px;--radius-sm:4px;--radius-md:6px;--radius-lg:10px;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;}
+[data-theme="dark"]{--accent:#f89e38;--accent-dim:#0c2d3f;--accent-hover:#7dd3fc;--green:#34d399;--green-dim:#063620;--amber:#fbbf24;--amber-dim:#291800;--bg-page:#0d1117;--bg-surface:#161b22;--bg-raised:#21262d;--bg-code:#1c2128;--border:#30363d;--border-strong:#484f58;--text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;--text-code:#cdd9e5;--nav-bg:rgba(22,27,34,0.97);--nav-border:#30363d;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg-page);color:var(--text-primary);line-height:1.65;transition:background .2s,color .2s;overflow-x:hidden;}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--nav-bg);border-bottom:1px solid var(--nav-border);backdrop-filter:blur(14px);}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:8px;}
+.nav-logo{font-size:15px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:8px;white-space:nowrap;margin-right:16px;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;}
+.nav-links a{font-size:13.5px;color:var(--text-secondary);padding:5px 11px;border-radius:var(--radius-md);transition:color .15s,background .15s;}
+.nav-links a:hover{color:var(--text-primary);background:var(--bg-raised);text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.nav-gh{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);padding:5px 10px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg-surface);transition:all .15s;}
+.nav-gh:hover{color:var(--text-primary);border-color:var(--border-strong);text-decoration:none;}
+.nav-btn{font-size:13px;font-weight:500;padding:5px 14px;background:var(--accent);color:#fff;border-radius:var(--radius-md);transition:background .15s;}
+.nav-btn:hover{background:var(--accent-hover);text-decoration:none;}
+.theme-toggle{width:34px;height:34px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg-surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;}
+.theme-toggle:hover{border-color:var(--border-strong);background:var(--bg-raised);}
+.version-badge{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:10px;background:var(--green-dim);color:var(--green);border:1px solid var(--green-dim);}
+.docs-layout{display:flex;padding-top:56px;min-height:100vh;}
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:fixed;top:56px;left:0;bottom:0;overflow-y:auto;background:var(--bg-surface);border-right:1px solid var(--border);padding:20px 0;z-index:200;}
+.sidebar::-webkit-scrollbar{width:4px;}.sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;}
+.sb-section{padding:0 16px;margin-bottom:20px;}
+.sb-title{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);font-weight:500;margin-bottom:6px;padding:0 4px;}
+.sb-link{display:block;font-size:13px;color:var(--text-secondary);padding:5px 8px;border-radius:var(--radius-sm);transition:all .12s;line-height:1.4;}
+.sb-link:hover{color:var(--text-primary);background:var(--bg-raised);text-decoration:none;}
+.sb-link.active{color:var(--accent);background:var(--accent-dim);font-weight:500;}
+.sb-link.sub{padding-left:18px;font-size:12.5px;}
+.docs-main{margin-left:var(--sidebar-w);flex:1;min-width:0;}
+.hero{padding:72px 64px 56px;background:var(--bg-surface);border-bottom:1px solid var(--border);}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);color:var(--text-secondary);background:var(--bg-raised);margin-bottom:20px;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero-title{font-size:clamp(28px,4vw,44px);font-weight:600;line-height:1.12;letter-spacing:-1.5px;margin-bottom:16px;}
+.hero-title strong{color:var(--accent);}
+.hero-sub{font-size:16px;color:var(--text-secondary);line-height:1.7;max-width:640px;margin-bottom:28px;}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;padding:9px 20px;border-radius:var(--radius-md);font-size:14px;font-weight:500;transition:background .15s;}
+.btn-primary:hover{background:var(--accent-hover);text-decoration:none;}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;background:var(--bg-surface);color:var(--text-primary);padding:9px 20px;border-radius:var(--radius-md);font-size:14px;font-weight:500;border:1px solid var(--border);transition:all .15s;}
+.btn-outline:hover{border-color:var(--border-strong);background:var(--bg-raised);text-decoration:none;}
+.hero-stats{display:inline-flex;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-surface);}
+.hstat{padding:12px 24px;text-align:center;border-right:1px solid var(--border);}
+.hstat:last-child{border-right:none;}
+.hstat-val{font-size:20px;font-weight:600;letter-spacing:-0.5px;line-height:1;}
+.hstat-label{font-size:11px;color:var(--text-muted);margin-top:3px;}
+.install-bar{background:var(--bg-page);border-bottom:1px solid var(--border);padding:12px 64px;}
+.install-inner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:860px;}
+.install-label{font-size:12px;color:var(--text-muted);white-space:nowrap;font-family:var(--mono);}
+.install-tabs{display:flex;gap:2px;}
+.itab{font-family:var(--mono);font-size:11.5px;padding:4px 10px;border-radius:var(--radius-sm);cursor:pointer;border:1px solid transparent;color:var(--text-secondary);background:transparent;transition:all .12s;}
+.itab.active{background:var(--bg-surface);border-color:var(--border);color:var(--text-primary);}
+.install-box{flex:1;display:flex;align-items:center;gap:10px;background:var(--bg-code);border:1px solid var(--border);border-radius:var(--radius-md);padding:7px 14px;min-width:240px;max-width:460px;}
+.install-cmd{font-family:var(--mono);font-size:13px;color:var(--green);flex:1;}
+.copy-btn{font-family:var(--mono);font-size:11px;color:var(--text-muted);background:none;border:1px solid var(--border);cursor:pointer;padding:2px 8px;border-radius:var(--radius-sm);transition:all .12s;}
+.copy-btn:hover{color:var(--text-primary);border-color:var(--border-strong);}
+.pill{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--text-muted);white-space:nowrap;}
+.doc-section{padding:56px 64px;border-bottom:1px solid var(--border);}
+.doc-section.alt{background:var(--bg-surface);}
+.sec-label{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px;}
+.sec-title{font-size:clamp(20px,2.5vw,28px);font-weight:600;letter-spacing:-0.8px;margin-bottom:10px;line-height:1.2;}
+.sec-sub{font-size:14.5px;color:var(--text-secondary);line-height:1.7;max-width:640px;margin-bottom:32px;}
+h3{font-size:17px;font-weight:600;margin:32px 0 12px;letter-spacing:-0.3px;}h3:first-child{margin-top:0;}
+h4{font-size:14px;font-weight:600;margin:24px 0 8px;font-family:var(--mono);}
+p{font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:14px;}
+p:last-child{margin-bottom:0;}
+.code-block{background:var(--bg-code);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:16px 0;}
+.code-header{background:var(--bg-raised);padding:9px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;}
+.cb-dot{width:10px;height:10px;border-radius:50%;}
+.cb-fname{font-family:var(--mono);font-size:12px;color:var(--text-muted);flex:1;margin-left:6px;}
+.cb-copy{font-family:var(--mono);font-size:11px;color:var(--text-muted);background:none;border:1px solid var(--border);cursor:pointer;padding:2px 8px;border-radius:var(--radius-sm);transition:all .12s;}
+.cb-copy:hover{color:var(--text-primary);border-color:var(--border-strong);}
+.code-block pre{font-family:var(--mono);font-size:13px;line-height:1.85;padding:18px 20px;overflow-x:auto;color:var(--text-code);}
+.tc{color:#8c959f;font-style:italic;}
+.ci{font-family:var(--mono);font-size:12.5px;background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1px 6px;color:var(--text-code);}
+.terminal{background:#0d1117;border:1px solid #30363d;border-radius:var(--radius-lg);overflow:hidden;margin:16px 0;}
+.term-header{background:#161b22;border-bottom:1px solid #30363d;padding:9px 16px;display:flex;align-items:center;gap:6px;}
+.term-dot{width:10px;height:10px;border-radius:50%;}
+.term-title{font-family:var(--mono);font-size:12px;color:#8b949e;flex:1;margin-left:6px;}
+.term-body{padding:16px 20px;font-family:var(--mono);font-size:13px;line-height:1.9;color:#e6edf3;min-height:120px;max-height:420px;overflow-y:auto;white-space:pre-wrap;}
+.term-body::-webkit-scrollbar{width:4px;}.term-body::-webkit-scrollbar-thumb{background:#30363d;border-radius:4px;}
+.term-prompt{color:#7ee787;}.term-cmd{color:#e6edf3;}.term-out{color:#8b949e;}.term-ok{color:#3fb950;}.term-warn{color:#d29922;}.term-err{color:#f85149;}.term-info{color:#58a6ff;}
+.term-input-row{display:flex;align-items:center;gap:8px;padding:10px 20px;border-top:1px solid #21262d;}
+.term-input{flex:1;background:transparent;border:none;outline:none;font-family:var(--mono);font-size:13px;color:#e6edf3;}
+.term-run-btn{font-family:var(--mono);font-size:11px;background:#238636;color:#fff;border:none;padding:5px 14px;border-radius:var(--radius-sm);cursor:pointer;transition:background .15s;}
+.term-run-btn:hover{background:#2ea043;}
+.term-select{background:#21262d;border:1px solid #30363d;color:#e6edf3;font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:var(--radius-sm);cursor:pointer;}
+.alert{border-radius:var(--radius-md);padding:12px 16px;margin:16px 0;font-size:13.5px;line-height:1.6;border-left:3px solid;}
+.alert-info{background:var(--accent-dim);border-color:var(--accent);}
+.alert-warn{background:var(--amber-dim);border-color:var(--amber);}
+.alert-ok{background:var(--green-dim);border-color:var(--green);}
+.alert strong{font-weight:600;}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead{background:var(--bg-raised);}
+th{text-align:left;padding:10px 14px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-primary);}
+tr:last-child td{border-bottom:none;}tr:hover td{background:var(--bg-page);}
+td code{font-family:var(--mono);font-size:11.5px;background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1px 5px;}
+.providers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:16px;}
+.pcard{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;transition:border-color .15s;}
+.pcard:hover{border-color:var(--accent);}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:4px;}
+.pc-name{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--text-primary);}
+.pc-badge{font-family:var(--mono);font-size:9.5px;padding:1px 6px;border-radius:10px;white-space:nowrap;}
+.open{background:var(--green-dim);color:var(--green);}.auth{background:var(--bg-raised);color:var(--text-muted);border:1px solid var(--border);}
+.pc-desc{font-size:11.5px;color:var(--text-secondary);line-height:1.5;}
+.pc-chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px;}
+.pchip{font-size:10px;font-family:var(--mono);padding:1px 6px;border-radius:3px;background:var(--bg-raised);color:var(--text-muted);border:1px solid var(--border);}
+.pchip.stac{background:var(--accent-dim);color:var(--accent);}
+.pchip.sar{color:#7c3aed;background:#ede9fe;border-color:#ddd6fe;}[data-theme="dark"] .pchip.sar{color:#a78bfa;background:#1e1b4b;border-color:#312e81;}
+.pchip.vhr{color:var(--amber);background:var(--amber-dim);border-color:#fde68a;}[data-theme="dark"] .pchip.vhr{border-color:#451a03;}
+.pf-tabs{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;}
+.pf-tab{font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:var(--radius-md);cursor:pointer;border:1px solid var(--border);color:var(--text-secondary);background:var(--bg-surface);transition:all .12s;}
+.pf-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.flag-table{margin:16px 0;}
+.flag-row{display:grid;grid-template-columns:210px 90px 1fr;border-bottom:1px solid var(--border);padding:9px 0;align-items:start;}
+.flag-row.hdr{background:var(--bg-raised);border-radius:var(--radius-sm);padding:6px 0;}
+.flag-name{font-family:var(--mono);font-size:12px;color:var(--green);padding:0 12px;}
+.flag-type{font-family:var(--mono);font-size:11.5px;color:var(--amber);padding:0 8px;}
+.flag-desc{font-size:13px;color:var(--text-secondary);padding:0 12px;line-height:1.5;}
+.flag-default{display:inline-block;font-family:var(--mono);font-size:10.5px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;padding:0 5px;color:var(--text-muted);margin-top:3px;}
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+.step-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.step-card-header{background:var(--bg-raised);padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.step-num{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-title{font-size:13.5px;font-weight:500;}
+.step-code{padding:14px 16px;font-family:var(--mono);font-size:12.5px;color:var(--text-code);line-height:1.8;overflow-x:auto;}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:16px;}
+.feat-cell{background:var(--bg-surface);padding:22px;transition:background .15s;}
+.feat-cell:hover{background:var(--bg-raised);}
+.feat-icon{width:34px;height:34px;border-radius:var(--radius-md);background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;}
+.feat-icon.green{background:var(--green-dim);}.feat-icon.amber{background:var(--amber-dim);}.feat-icon.neutral{background:var(--bg-raised);border:1px solid var(--border);}
+.feat-title{font-size:13.5px;font-weight:600;margin-bottom:7px;}
+.feat-body{font-size:12.5px;color:var(--text-secondary);line-height:1.6;}
+.format-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:16px 0;}
+.fmt-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px;}
+.fmt-name{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--accent);margin-bottom:4px;}
+.fmt-flag{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.fmt-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;}
+.pipe-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--border);margin:16px 0;}
+.pstep{background:var(--bg-surface);padding:18px;}
+.ps-n{font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-bottom:8px;}
+.ps-icon{font-size:20px;margin-bottom:8px;}
+.ps-title{font-size:13px;font-weight:600;margin-bottom:4px;}
+.ps-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;}
+.sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.sec-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px;}
+.sec-card-title{font-size:13.5px;font-weight:600;margin-bottom:10px;}
+.sec-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.sec-list li{font-size:13px;color:var(--text-secondary);line-height:1.5;padding-left:16px;position:relative;}
+.sec-list li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:600;}
+/* Python API specific */
+.api-class{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:16px 0;}
+.api-class-header{background:var(--bg-raised);padding:12px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.api-class-name{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--accent);}
+.api-class-type{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:10px;background:var(--accent-dim);color:var(--accent);}
+.api-method{border-bottom:1px solid var(--border);padding:16px 20px;}
+.api-method:last-child{border-bottom:none;}
+.api-sig{font-family:var(--mono);font-size:12.5px;color:var(--text-code);margin-bottom:8px;line-height:1.6;}
+.api-sig .fn{color:var(--accent);font-weight:500;}
+.api-sig .param{color:var(--amber);}
+.api-sig .ret{color:var(--green);}
+.api-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:10px;}
+.api-params{display:flex;flex-direction:column;gap:6px;}
+.api-param-row{display:grid;grid-template-columns:160px 80px 1fr;font-size:12.5px;gap:8px;padding:5px 0;border-top:1px solid var(--border);}
+.api-param-name{font-family:var(--mono);color:var(--amber);}
+.api-param-type{font-family:var(--mono);color:var(--text-muted);font-size:11px;}
+.api-param-desc{color:var(--text-secondary);}
+/* Roadmap */
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+.rm-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;position:relative;overflow:hidden;}
+.rm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.rm-card.done::before{background:var(--green);}
+.rm-card.progress::before{background:var(--accent);}
+.rm-card.planned::before{background:var(--border-strong);}
+.rm-version{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px;}
+.rm-title{font-size:14px;font-weight:600;margin-bottom:4px;}
+.rm-date{font-family:var(--mono);font-size:11px;margin-bottom:14px;}
+.rm-date.done{color:var(--green);}
+.rm-date.progress{color:var(--accent);}
+.rm-date.planned{color:var(--text-muted);}
+.rm-items{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.rm-items li{font-size:12.5px;color:var(--text-secondary);padding-left:16px;position:relative;line-height:1.4;}
+.rm-items li::before{position:absolute;left:0;font-size:11px;}
+.rm-items li.done::before{content:"✓";color:var(--green);}
+.rm-items li.prog::before{content:"◐";color:var(--accent);}
+.rm-items li.todo::before{content:"○";color:var(--text-muted);}
+/* Error table */
+.err-grid{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+.err-row{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;display:grid;grid-template-columns:220px 1fr;gap:16px;align-items:start;}
+.err-code{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:500;}
+.err-desc{font-size:13px;color:var(--text-secondary);line-height:1.5;}
+.err-fix{font-family:var(--mono);font-size:11.5px;color:var(--green);margin-top:4px;}
+/* Docker */
+.docker-tabs{display:flex;gap:4px;margin-bottom:16px;}
+.dtab{font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:var(--radius-md);cursor:pointer;border:1px solid var(--border);color:var(--text-secondary);background:var(--bg-surface);transition:all .12s;}
+.dtab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+/* Compare table */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);margin:16px 0;}
+.cmp-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.cmp-table th{padding:10px 12px;background:var(--bg-raised);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;}
+.cmp-table th:first-child{text-align:left;}
+.cmp-table td{padding:9px 12px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-primary);}
+.cmp-table td:first-child{text-align:left;font-family:var(--mono);font-size:12px;color:var(--text-secondary);}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table tr:hover td{background:var(--bg-page);}
+.cmp-table td.hl{font-weight:600;color:var(--accent);}
+.cmp-yes{color:var(--green);}
+.cmp-no{color:var(--text-muted);}
+/* Callout cards */
+.callout-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;}
+.callout{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;}
+.callout-icon{font-size:20px;margin-bottom:8px;}
+.callout-title{font-size:13px;font-weight:600;margin-bottom:6px;}
+.callout-body{font-size:12.5px;color:var(--text-secondary);line-height:1.55;}
+/* Config */
+.config-section{margin-bottom:24px;}
+.config-key{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;}
+.config-type{font-family:var(--mono);font-size:11px;color:var(--text-muted);}
+footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:40px 64px 24px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;max-width:900px;}
+.f-logo{font-size:15px;font-weight:600;margin-bottom:8px;}.f-logo span{color:var(--accent);}
+.f-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px;}
+.f-badges{display:flex;flex-wrap:wrap;gap:6px;}
+.f-col-title{font-size:12px;font-weight:600;margin-bottom:10px;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.f-col ul li a{font-size:13px;color:var(--text-secondary);transition:color .12s;}
+.f-col ul li a:hover{color:var(--text-primary);text-decoration:none;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap;gap:10px;max-width:900px;}
+.footer-copy{font-size:12px;color:var(--text-muted);}.footer-copy a{color:var(--accent);}
+.footer-built{font-family:var(--mono);font-size:11.5px;color:var(--text-muted);}
+@media(max-width:1024px){.sidebar{width:220px;}.docs-main{margin-left:220px;}.feat-grid{grid-template-columns:1fr 1fr;}.steps-grid{grid-template-columns:1fr;}.sec-grid{grid-template-columns:1fr;}.roadmap-grid{grid-template-columns:1fr 1fr;}.callout-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.sidebar{transform:translateX(-100%);width:260px;}.docs-main{margin-left:0;}.hero,.doc-section,.install-bar,footer{padding-left:24px;padding-right:24px;}.pipe-steps{grid-template-columns:1fr 1fr;}.feat-grid{grid-template-columns:1fr;}.flag-row{grid-template-columns:1fr;gap:2px;}.roadmap-grid{grid-template-columns:1fr;}.callout-row{grid-template-columns:1fr;}.err-row{grid-template-columns:1fr;}.api-param-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">🛰️ <span>PyGeo</span>Fetch</div>
+    <div class="nav-links">
+      <a href="#quickstart">Quick Start</a>
+      <a href="#providers">Providers</a>
+      <a href="#cli">CLI</a>
+      <a href="#api">Python API</a>
+      <a href="#pipelines">Pipelines</a>
+      <a href="#config">Config</a>
+    </div>
+    <div class="nav-right">
+      <span class="version-badge">v1.0.0</span>
+      <a href="https://github.com/appiahkubis14/pygeofetch" class="nav-gh" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.34C3.73 14.36 3.26 12.9 3.26 12.9c-.36-.92-.88-1.16-.88-1.16-.72-.49.05-.48.05-.48.8.06 1.22.82 1.22.82.71 1.22 1.86.87 2.31.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.67 7.67 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 8 0z"/></svg>
+        GitHub
+      </a>
+      <a href="#quickstart" class="nav-btn">Get Started →</a>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="docs-layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sb-section">
+    <div class="sb-title">Getting Started</div>
+    <a href="#overview" class="sb-link active">Overview</a>
+    <a href="#install" class="sb-link">Installation</a>
+    <a href="#quickstart" class="sb-link">Quick Start</a>
+    <a href="#doctor" class="sb-link">Doctor / Diagnostics</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Authentication</div>
+    <a href="#auth-add" class="sb-link">Adding Credentials</a>
+    <a href="#auth-env" class="sb-link">Environment Variables</a>
+    <a href="#auth-table" class="sb-link">Provider Auth Types</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Search</div>
+    <a href="#search-basic" class="sb-link">Basic Search</a>
+    <a href="#search-flags" class="sb-link">All Flags</a>
+    <a href="#search-formats" class="sb-link">Output Formats</a>
+    <a href="#search-cql2" class="sb-link">CQL2 Filters</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Download</div>
+    <a href="#download-basic" class="sb-link">Basic Download</a>
+    <a href="#download-flags" class="sb-link">All Flags</a>
+    <a href="#download-bands" class="sb-link">Band Selection</a>
+    <a href="#download-postprocess" class="sb-link">Post-Processing</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Providers</div>
+    <a href="#providers" class="sb-link sub">All 22 Providers</a>
+    <a href="#providers" class="sb-link sub">Filter by Capability</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Pipelines</div>
+    <a href="#pipeline-yaml" class="sb-link">YAML Pipelines</a>
+    <a href="#pipeline-steps" class="sb-link">Pipeline Steps</a>
+    <a href="#pipeline-schedule" class="sb-link">Scheduling</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Python API</div>
+    <a href="#api" class="sb-link">pygeofetch class</a>
+    <a href="#api-search" class="sb-link">SearchQuery params</a>
+    <a href="#api-download" class="sb-link">DownloadOptions</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Reference</div>
+    <a href="#cli" class="sb-link">CLI Reference</a>
+    <a href="#config" class="sb-link">Configuration</a>
+    <a href="#security" class="sb-link">Security</a>
+    <a href="#errors" class="sb-link">Error Handling</a>
+    <a href="#docker" class="sb-link">Docker</a>
+    <a href="#testing" class="sb-link">Testing</a>
+    <a href="#roadmap" class="sb-link">Roadmap</a>
+  </div>
+</aside>
+
+<main class="docs-main">
+
+<!-- HERO -->
+<div class="hero" id="overview">
+  <div class="badge"><span class="badge-dot"></span>v1.0.0 · Production Ready · 60 Tests Passing</div>
+  <h1 class="hero-title"><strong>pygeofetch</strong> Documentation</h1>
+  <p class="hero-sub">Universal satellite data pipeline — unified access to 22+ providers. Handles auth, federated search, parallel downloads, caching, band selection, and post-processing.</p>
+  <div class="hero-actions">
+    <a href="#quickstart" class="btn-primary">Quick Start →</a>
+    <a href="#cli" class="btn-outline">CLI Reference</a>
+    <a href="#api" class="btn-outline">Python API</a>
+    <a href="https://github.com/appiahkubis14/pygeofetch" class="btn-outline" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.34C3.73 14.36 3.26 12.9 3.26 12.9c-.36-.92-.88-1.16-.88-1.16-.72-.49.05-.48.05-.48.8.06 1.22.82 1.22.82.71 1.22 1.86.87 2.31.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.67 7.67 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 8 0z"/></svg>
+      GitHub
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-val">22+</div><div class="hstat-label">Providers</div></div>
+    <div class="hstat"><div class="hstat-val">10</div><div class="hstat-label">Free (No Login)</div></div>
+    <div class="hstat"><div class="hstat-val">7</div><div class="hstat-label">Output Formats</div></div>
+    <div class="hstat"><div class="hstat-val">60</div><div class="hstat-label">Tests Passing</div></div>
+  </div>
+</div>
+
+<!-- INSTALL BAR -->
+<div class="install-bar" id="install">
+  <div class="install-inner">
+    <span class="install-label">$ install</span>
+    <div class="install-tabs">
+      <button class="itab active" onclick="setInstall('pip',this)">pip</button>
+      <button class="itab" onclick="setInstall('geo',this)">+geo</button>
+      <button class="itab" onclick="setInstall('cloud',this)">+cloud</button>
+      <button class="itab" onclick="setInstall('all',this)">all</button>
+    </div>
+    <div class="install-box">
+      <span class="install-cmd" id="install-cmd">pip install pygeofetch</span>
+      <button class="copy-btn" onclick="copyInstall()">copy</button>
+    </div>
+    <span class="pill">MIT License</span>
+    <span class="pill">Python 3.9+</span>
+  </div>
+</div>
+
+<!-- QUICK START -->
+<div class="doc-section" id="quickstart">
+  <div class="sec-label">Getting Started</div>
+  <h2 class="sec-title">Up and running in 3 minutes</h2>
+  <p class="sec-sub">pygeofetch works immediately with 10 free providers — no credentials needed. Free data includes Sentinel-2, Landsat, NAIP, GOES weather, and more.</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">1</div><div class="step-title">Install</div></div>
+      <div class="step-code"><span style="color:#8c959f;font-style:italic"># Core install — free providers work immediately</span>
+pip install pygeofetch
+
+<span style="color:#8c959f;font-style:italic"># With raster post-processing (reproject, COG)</span>
+pip install "pygeofetch[geo]"
+
+<span style="color:#8c959f;font-style:italic"># Everything including dev tools</span>
+pip install "pygeofetch[all]"</div>
+    </div>
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">2</div><div class="step-title">Verify installation</div></div>
+      <div class="step-code">pygeofetch --version
+<span style="color:#8c959f;font-style:italic"># → pygeofetch, version 1.0.0</span>
+
+pygeofetch doctor
+<span style="color:#8c959f;font-style:italic"># Checks Python, packages, keyring,</span>
+<span style="color:#8c959f;font-style:italic"># and live connectivity to free providers</span></div>
+    </div>
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">3</div><div class="step-title">Search (no login needed)</div></div>
+      <div class="step-code">pygeofetch search run \
+  --bbox "-74.1,40.6,-73.7,40.9" \
+  --start-date 2024-01-01 \
+  --end-date 2024-03-01 \
+  --cloud-cover 0-10 \
+  --providers aws_earth \
+  --format table</div>
+    </div>
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">4</div><div class="step-title">Download results</div></div>
+      <div class="step-code">pygeofetch download run \
+  --from-search results.geojson \
+  --output ./data/ \
+  --parallel 2 \
+  --max-items 3 \
+  --bands "B02,B03,B04"
+<span style="color:#8c959f;font-style:italic"># RGB only — ~150 MB vs 600 MB full scene</span></div>
+    </div>
+  </div>
+
+  <h3 id="doctor">Interactive demo — try commands</h3>
+  <p>Select a command from the dropdown and click Run to see the expected output:</p>
+  <div class="terminal">
+    <div class="term-header">
+      <div class="term-dot" style="background:#ff5f56"></div>
+      <div class="term-dot" style="background:#ffbd2e"></div>
+      <div class="term-dot" style="background:#27c93f"></div>
+      <span class="term-title">pygeofetch — interactive demo</span>
+      <select class="term-select" id="termSelect" onchange="loadCmd()">
+        <option value="doctor">pygeofetch doctor</option>
+        <option value="providers">providers list</option>
+        <option value="search_aws">search — AWS Earth</option>
+        <option value="search_pc">search — Planetary Computer</option>
+        <option value="search_multi">search — 3 providers</option>
+        <option value="download">download 3 scenes</option>
+        <option value="status">status dashboard</option>
+        <option value="auth_list">auth list</option>
+        <option value="cache_stats">cache stats</option>
+        <option value="pipeline_run">pipeline run</option>
+      </select>
+    </div>
+    <div class="term-body" id="termBody"><span class="term-prompt">$ </span><span class="term-cmd">pygeofetch doctor</span>
+<span class="term-out">Select a command above and click ▶ Run</span></div>
+    <div class="term-input-row">
+      <span class="term-prompt">$ </span>
+      <input class="term-input" id="termInput" value="pygeofetch doctor" readonly/>
+      <button class="term-run-btn" onclick="runCmd()">▶ Run</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div class="doc-section alt" id="auth-add">
+  <div class="sec-label">Authentication</div>
+  <h2 class="sec-title">Managing Provider Credentials</h2>
+  <p class="sec-sub">Credentials are stored in your system keyring — never in plain-text files. Supports username/password, API keys, and OAuth2 client credentials.</p>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">auth commands</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Username / password (USGS, NASA, Copernicus)</span>
+pygeofetch auth add usgs --username YOUR_USER --password YOUR_PASS
+pygeofetch auth add copernicus --username email@example.com --password PASS
+pygeofetch auth add nasa_earthdata --username USER --password PASS
+
+<span class="tc"># API key (Planet, OpenTopography, TerraBotics, Airbus)</span>
+pygeofetch auth add planet --api-key YOUR_API_KEY
+pygeofetch auth add opentopography --api-key YOUR_KEY
+
+<span class="tc"># OAuth2 client credentials (Sentinel Hub)</span>
+pygeofetch auth add sentinel_hub --client-id YOUR_ID --client-secret YOUR_SECRET
+
+<span class="tc"># Interactive login — prompts for all fields</span>
+pygeofetch auth login copernicus
+
+<span class="tc"># List, test, remove</span>
+pygeofetch auth list
+pygeofetch auth test usgs
+pygeofetch auth remove planet --yes
+
+<span class="tc"># Export backup (WARNING: contains secrets — store securely)</span>
+pygeofetch auth export --output creds_backup.json</pre>
+  </div>
+
+  <h3 id="auth-env">Environment variables</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">.env / CI/CD</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Format: pygeofetch_{PROVIDER}_{FIELD}</span>
+export pygeofetch_USGS_USERNAME=myuser
+export pygeofetch_USGS_PASSWORD=mypass
+export pygeofetch_PLANET_API_KEY=PL-abc123
+export pygeofetch_COPERNICUS_USERNAME=email@example.com
+export pygeofetch_COPERNICUS_PASSWORD=pass
+export pygeofetch_NASA_EARTHDATA_USERNAME=user
+export pygeofetch_OPENTOPOGRAPHY_API_KEY=mykey
+export pygeofetch_SENTINEL_HUB_CLIENT_ID=id
+export pygeofetch_SENTINEL_HUB_CLIENT_SECRET=secret
+
+<span class="tc"># Global settings</span>
+export pygeofetch_LOG_LEVEL=DEBUG
+export pygeofetch_DOWNLOAD__PARALLEL=8
+export pygeofetch_CACHE__TTL_SECONDS=7200</pre>
+  </div>
+
+  <div class="alert alert-warn"><strong>Headless Linux:</strong> If no D-Bus/keyring daemon is running (Docker, SSH), set <code class="ci">PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring</code> and use environment variables instead.</div>
+
+  <h3 id="auth-table">Provider auth types</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Provider</th><th>Auth Type</th><th>Free?</th><th>Register At</th></tr></thead>
+      <tbody>
+        <tr><td><code>usgs</code></td><td>Username / Password</td><td>✓ Free</td><td><a href="https://ers.cr.usgs.gov/register" target="_blank">ers.cr.usgs.gov</a></td></tr>
+        <tr><td><code>copernicus</code></td><td>Username / Password (OAuth2)</td><td>✓ Free</td><td><a href="https://dataspace.copernicus.eu/" target="_blank">dataspace.copernicus.eu</a></td></tr>
+        <tr><td><code>nasa_earthdata</code></td><td>Username / Password</td><td>✓ Free</td><td><a href="https://urs.earthdata.nasa.gov/" target="_blank">urs.earthdata.nasa.gov</a></td></tr>
+        <tr><td><code>nasa_earthdata_cloud</code></td><td>Username / Password + S3 creds</td><td>✓ Free</td><td><a href="https://urs.earthdata.nasa.gov/" target="_blank">urs.earthdata.nasa.gov</a></td></tr>
+        <tr><td><code>planet</code></td><td>API Key</td><td>Subscription</td><td><a href="https://www.planet.com/account" target="_blank">planet.com/account</a></td></tr>
+        <tr><td><code>sentinel_hub</code></td><td>OAuth2 client credentials</td><td>Freemium</td><td><a href="https://apps.sentinel-hub.com/" target="_blank">apps.sentinel-hub.com</a></td></tr>
+        <tr><td><code>opentopography</code></td><td>API Key</td><td>✓ Free tier</td><td><a href="https://portal.opentopography.org/" target="_blank">portal.opentopography.org</a></td></tr>
+        <tr><td><code>maxar_gbdx</code></td><td>API Token</td><td>Subscription</td><td><a href="https://developers.maxar.com/" target="_blank">developers.maxar.com</a></td></tr>
+        <tr><td><code>airbus_oneatlas</code></td><td>API Key</td><td>Subscription</td><td><a href="https://oneatlas.airbus.com/" target="_blank">oneatlas.airbus.com</a></td></tr>
+        <tr><td><code>alaska_satellite_facility</code></td><td>Earthdata (same as NASA)</td><td>✓ Free</td><td><a href="https://urs.earthdata.nasa.gov/" target="_blank">urs.earthdata.nasa.gov</a></td></tr>
+        <tr><td><code>google_earth_engine</code></td><td>Service Account JSON</td><td>Free tier</td><td><a href="https://console.cloud.google.com/" target="_blank">console.cloud.google.com</a></td></tr>
+        <tr><td><code>terrabotics</code></td><td>API Key</td><td>Subscription</td><td><a href="https://terrabotics.earth/" target="_blank">terrabotics.earth</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="doc-section" id="search-basic">
+  <div class="sec-label">Search</div>
+  <h2 class="sec-title">Searching Satellite Data</h2>
+  <p class="sec-sub">Federated search across multiple providers simultaneously. Results are deduplicated, scored by cloud cover and recency, and returned in STAC 1.0 format.</p>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">search examples</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Free providers — works immediately, no credentials</span>
+pygeofetch search run \
+  --bbox "-74.1,40.6,-73.7,40.9" \
+  --start-date 2024-01-01 --end-date 2024-03-01 \
+  --cloud-cover 0-10 \
+  --providers aws_earth,planetary_computer,element84 \
+  --format table
+
+<span class="tc"># Save to GeoJSON for download, open in QGIS, or share</span>
+pygeofetch search run \
+  --bbox "-74.1,40.6,-73.7,40.9" \
+  --cloud-cover 0-5 \
+  --providers aws_earth \
+  --output results.geojson
+
+<span class="tc"># Specific satellite, sorted by cloud cover ascending</span>
+pygeofetch search run \
+  --bbox "-10,35,10,55" \
+  --start-date 2024-06-01 \
+  --providers copernicus \
+  --satellites Sentinel-2 \
+  --cloud-cover 0-15 \
+  --sort-by cloud_cover --sort-order asc \
+  --max-results 50
+
+<span class="tc"># CQL2 advanced filter (Planetary Computer, Element84)</span>
+pygeofetch search run \
+  --bbox "-74.1,40.6,-73.7,40.9" \
+  --providers planetary_computer \
+  --cql2 "eo:cloud_cover &lt; 5 AND platform = 'sentinel-2b'"
+
+<span class="tc"># Search using a GeoJSON geometry file</span>
+pygeofetch search run \
+  --geometry-file my_area.geojson \
+  --cloud-cover 0-10 \
+  --providers aws_earth
+
+<span class="tc"># CSV output — pipe to spreadsheet or analytics tools</span>
+pygeofetch search run \
+  --bbox "-74.1,40.6,-73.7,40.9" \
+  --providers aws_earth \
+  --format csv --output results.csv</pre>
+  </div>
+
+  <h3 id="search-flags">All search flags</h3>
+  <div class="flag-table">
+    <div class="flag-row hdr"><div class="flag-name" style="color:var(--text-muted)">Flag</div><div class="flag-type" style="color:var(--text-muted)">Type</div><div class="flag-desc" style="color:var(--text-muted)">Description</div></div>
+    <div class="flag-row"><div class="flag-name">--bbox</div><div class="flag-type">string</div><div class="flag-desc">Bounding box <code class="ci">"minlon,minlat,maxlon,maxlat"</code>. Longitude first. Alternative to --geometry-file.</div></div>
+    <div class="flag-row"><div class="flag-name">--geometry-file</div><div class="flag-type">path</div><div class="flag-desc">GeoJSON file with search AOI polygon. Extracts bbox automatically.</div></div>
+    <div class="flag-row"><div class="flag-name">--start-date</div><div class="flag-type">date</div><div class="flag-desc">Temporal filter start. Format: <code class="ci">YYYY-MM-DD</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--end-date</div><div class="flag-type">date</div><div class="flag-desc">Temporal filter end. Defaults to today if omitted.</div></div>
+    <div class="flag-row"><div class="flag-name">--cloud-cover</div><div class="flag-type">range</div><div class="flag-desc">Cloud cover range <code class="ci">min-max</code> in percent. E.g. <code class="ci">0-20</code>.<div class="flag-default">0-100</div></div></div>
+    <div class="flag-row"><div class="flag-name">--resolution</div><div class="flag-type">range</div><div class="flag-desc">Resolution range in metres <code class="ci">min-max</code>. E.g. <code class="ci">10-30</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--providers</div><div class="flag-type">list</div><div class="flag-desc">Comma-separated provider IDs. E.g. <code class="ci">aws_earth,copernicus,usgs</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--satellites</div><div class="flag-type">list</div><div class="flag-desc">Comma-separated satellite names. E.g. <code class="ci">Sentinel-2,Landsat-8</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--processing-level</div><div class="flag-type">string</div><div class="flag-desc">Processing level. E.g. <code class="ci">L2A</code>, <code class="ci">L2SP</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--max-results</div><div class="flag-type">int</div><div class="flag-desc">Maximum results to return.<div class="flag-default">100</div></div></div>
+    <div class="flag-row"><div class="flag-name">--sort-by</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">datetime</code>, <code class="ci">cloud_cover</code>, <code class="ci">score</code>, <code class="ci">satellite</code>.<div class="flag-default">datetime</div></div></div>
+    <div class="flag-row"><div class="flag-name">--sort-order</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">asc</code> or <code class="ci">desc</code>.<div class="flag-default">desc</div></div></div>
+    <div class="flag-row"><div class="flag-name">--cql2</div><div class="flag-type">string</div><div class="flag-desc">CQL2 filter expression. Sent as CQL2-JSON to STAC APIs.</div></div>
+    <div class="flag-row"><div class="flag-name">--output</div><div class="flag-type">path</div><div class="flag-desc">Save results to this file.</div></div>
+    <div class="flag-row"><div class="flag-name">--format</div><div class="flag-type">choice</div><div class="flag-desc">table, json, stac, geojson, geoparquet, csv, ids.<div class="flag-default">table</div></div></div>
+    <div class="flag-row"><div class="flag-name">--on-provider-failure</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">skip</code>, <code class="ci">abort</code>, <code class="ci">retry</code>.<div class="flag-default">skip</div></div></div>
+    <div class="flag-row"><div class="flag-name">--timeout</div><div class="flag-type">int</div><div class="flag-desc">Per-provider timeout in seconds.<div class="flag-default">60</div></div></div>
+    <div class="flag-row"><div class="flag-name">--no-cache</div><div class="flag-type">flag</div><div class="flag-desc">Bypass the in-memory result cache.</div></div>
+  </div>
+
+  <h3 id="search-formats">Output formats</h3>
+  <div class="format-grid">
+    <div class="fmt-card"><div class="fmt-name">table</div><div class="fmt-flag">--format table</div><div class="fmt-desc">Pretty terminal table. Default. ID, date, cloud%, score, satellite.</div></div>
+    <div class="fmt-card"><div class="fmt-name">json</div><div class="fmt-flag">--format json</div><div class="fmt-desc">Full JSON array with all fields. Good for scripting and piping.</div></div>
+    <div class="fmt-card"><div class="fmt-name">stac</div><div class="fmt-flag">--format stac</div><div class="fmt-desc">STAC 1.0 ItemCollection. Compatible with pystac-client.</div></div>
+    <div class="fmt-card"><div class="fmt-name">geojson</div><div class="fmt-flag">--format geojson</div><div class="fmt-desc">GeoJSON FeatureCollection. Open in QGIS, ArcGIS, or Leaflet.</div></div>
+    <div class="fmt-card"><div class="fmt-name">geoparquet</div><div class="fmt-flag">--format geoparquet</div><div class="fmt-desc">GeoParquet file. Requires geopandas. Best for large result sets.</div></div>
+    <div class="fmt-card"><div class="fmt-name">csv</div><div class="fmt-flag">--format csv</div><div class="fmt-desc">CSV with id, provider, satellite, datetime, cloud_cover, bbox.</div></div>
+    <div class="fmt-card"><div class="fmt-name">ids</div><div class="fmt-flag">--format ids</div><div class="fmt-desc">Scene IDs only, one per line. Good for shell scripting.</div></div>
+  </div>
+
+  <h3 id="search-cql2">CQL2 filter examples</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">CQL2 — supported by Planetary Computer, Element84, AWS Earth</span></div>
+    <pre><span class="tc"># Cloud filter</span>
+--cql2 "eo:cloud_cover &lt; 10"
+
+<span class="tc"># Platform filter</span>
+--cql2 "platform = 'sentinel-2b'"
+
+<span class="tc"># Combined AND filter</span>
+--cql2 "eo:cloud_cover &lt; 5 AND platform = 'sentinel-2b'"
+
+<span class="tc"># Processing level</span>
+--cql2 "s2:processing_level = 'L2A'"
+
+<span class="tc"># Landsat tier</span>
+--cql2 "landsat:collection_category = 'T1'"</pre>
+  </div>
+</div>
+
+<!-- DOWNLOAD -->
+<div class="doc-section alt" id="download-basic">
+  <div class="sec-label">Download</div>
+  <h2 class="sec-title">Downloading Satellite Data</h2>
+  <p class="sec-sub">Parallel, resumable downloads with real-time progress, retry logic, band selection, and a post-processing chain. Progress bar updates per-scene as each completes.</p>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">download examples</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Basic — download 3 scenes from search results</span>
+pygeofetch download run \
+  --from-search results.geojson \
+  --output ./data/ \
+  --parallel 2 \
+  --max-items 3
+
+<span class="tc"># RGB bands only — ~150 MB vs 600 MB for full Sentinel-2 scene</span>
+pygeofetch download run \
+  --from-search results.geojson \
+  --output ./data/ \
+  --bands "B02,B03,B04" \
+  --max-items 5
+
+<span class="tc"># Full options — checksum, resume, bandwidth throttle, Slack notify</span>
+pygeofetch download run \
+  --from-search results.geojson \
+  --output ./data/ \
+  --parallel 4 \
+  --retry 5 \
+  --verify-checksum \
+  --resume \
+  --bandwidth-limit 10MB \
+  --priority high \
+  --on-failure skip \
+  --notify webhook:https://hooks.slack.com/services/YOUR/WEBHOOK
+
+<span class="tc"># Post-processing chain</span>
+pygeofetch download run \
+  --from-search results.geojson \
+  --output ./processed/ \
+  --post-process "unzip,reproject:EPSG:4326,compress:lzw,cog"
+
+<span class="tc"># NDVI workflow — download Red + NIR, compute NDVI, export COG</span>
+pygeofetch download run \
+  --from-search results.geojson \
+  --bands "B04,B08" \
+  --post-process "reproject:EPSG:4326,ndvi,cog" \
+  --output ./ndvi/</pre>
+  </div>
+
+  <h3 id="download-flags">All download flags</h3>
+  <div class="flag-table">
+    <div class="flag-row hdr"><div class="flag-name" style="color:var(--text-muted)">Flag</div><div class="flag-type" style="color:var(--text-muted)">Type</div><div class="flag-desc" style="color:var(--text-muted)">Description</div></div>
+    <div class="flag-row"><div class="flag-name">--from-search</div><div class="flag-type">path</div><div class="flag-desc">GeoJSON results file from <code class="ci">search run --output</code>. Required.</div></div>
+    <div class="flag-row"><div class="flag-name">--output</div><div class="flag-type">path</div><div class="flag-desc">Output directory. Created automatically.<div class="flag-default">./pygeofetch_data</div></div></div>
+    <div class="flag-row"><div class="flag-name">--parallel</div><div class="flag-type">int</div><div class="flag-desc">Concurrent download workers.<div class="flag-default">2</div></div></div>
+    <div class="flag-row"><div class="flag-name">--retry</div><div class="flag-type">int</div><div class="flag-desc">Max retry attempts with exponential backoff.<div class="flag-default">3</div></div></div>
+    <div class="flag-row"><div class="flag-name">--retry-delay</div><div class="flag-type">float</div><div class="flag-desc">Base retry delay seconds. Doubles each attempt.<div class="flag-default">5.0</div></div></div>
+    <div class="flag-row"><div class="flag-name">--verify-checksum</div><div class="flag-type">flag</div><div class="flag-desc">SHA256 verification after each download. Auto-retries on mismatch.</div></div>
+    <div class="flag-row"><div class="flag-name">--resume</div><div class="flag-type">flag</div><div class="flag-desc">Resume interrupted downloads from last byte received.<div class="flag-default">on</div></div></div>
+    <div class="flag-row"><div class="flag-name">--bandwidth-limit</div><div class="flag-type">string</div><div class="flag-desc">Throttle bandwidth. E.g. <code class="ci">10MB</code>, <code class="ci">500KB</code>. 0 = unlimited.</div></div>
+    <div class="flag-row"><div class="flag-name">--priority</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">high</code>, <code class="ci">normal</code>, <code class="ci">low</code>.<div class="flag-default">normal</div></div></div>
+    <div class="flag-row"><div class="flag-name">--bands</div><div class="flag-type">list</div><div class="flag-desc">Comma-separated band names. E.g. <code class="ci">B02,B03,B04</code>. Default: all data assets.</div></div>
+    <div class="flag-row"><div class="flag-name">--post-process</div><div class="flag-type">string</div><div class="flag-desc">Comma-separated processing chain. E.g. <code class="ci">"unzip,reproject:EPSG:4326,cog"</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--on-failure</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">skip</code>, <code class="ci">abort</code>, <code class="ci">retry</code>.<div class="flag-default">skip</div></div></div>
+    <div class="flag-row"><div class="flag-name">--max-items</div><div class="flag-type">int</div><div class="flag-desc">Limit to first N items in the results file.</div></div>
+    <div class="flag-row"><div class="flag-name">--overwrite</div><div class="flag-type">flag</div><div class="flag-desc">Overwrite files that already exist. Default: skip existing.</div></div>
+    <div class="flag-row"><div class="flag-name">--notify</div><div class="flag-type">string</div><div class="flag-desc"><code class="ci">webhook:URL</code> or <code class="ci">email:ADDRESS</code>. Repeatable for multiple targets.</div></div>
+    <div class="flag-row"><div class="flag-name">--json</div><div class="flag-type">flag</div><div class="flag-desc">Output results summary as JSON.</div></div>
+  </div>
+
+  <h3 id="download-bands">Band selection for Sentinel-2</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Bands</th><th>Purpose</th><th>Resolution</th><th>Approx Size/Scene</th></tr></thead>
+      <tbody>
+        <tr><td><code>B02,B03,B04</code></td><td>RGB (Blue, Green, Red)</td><td>10m</td><td>~150 MB</td></tr>
+        <tr><td><code>visual</code></td><td>True colour composite (TCI pre-rendered)</td><td>10m</td><td>~200 MB</td></tr>
+        <tr><td><code>B04,B08</code></td><td>NDVI (Red + NIR)</td><td>10m</td><td>~100 MB</td></tr>
+        <tr><td><code>B02,B03,B04,B08</code></td><td>RGB + NIR (4-band)</td><td>10m</td><td>~200 MB</td></tr>
+        <tr><td><code>B11,B12</code></td><td>SWIR (fire, burn scar, soil moisture)</td><td>20m</td><td>~50 MB</td></tr>
+        <tr><td><code>SCL</code></td><td>Scene Classification Layer (cloud mask)</td><td>20m</td><td>~20 MB</td></tr>
+        <tr><td><em>(omit --bands)</em></td><td>All data bands (full scene)</td><td>10/20/60m</td><td>~600 MB</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="download-postprocess">Post-processing actions</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Action</th><th>Syntax</th><th>Description</th><th>Requires</th></tr></thead>
+      <tbody>
+        <tr><td><code>unzip</code></td><td><code>unzip</code></td><td>Extract ZIP/TAR archives</td><td>—</td></tr>
+        <tr><td><code>reproject</code></td><td><code>reproject:EPSG:4326</code></td><td>Reproject to target CRS</td><td>rasterio</td></tr>
+        <tr><td><code>compress</code></td><td><code>compress:lzw</code></td><td>GeoTIFF compression (lzw, deflate, zstd)</td><td>rasterio</td></tr>
+        <tr><td><code>cog</code></td><td><code>cog</code></td><td>Convert to Cloud Optimized GeoTIFF</td><td>rasterio</td></tr>
+        <tr><td><code>clip</code></td><td><code>clip:file.geojson</code></td><td>Clip raster to polygon boundary</td><td>rasterio</td></tr>
+        <tr><td><code>resample</code></td><td><code>resample:30</code></td><td>Resample to target resolution (metres)</td><td>rasterio</td></tr>
+        <tr><td><code>ndvi</code></td><td><code>ndvi</code></td><td>Calculate NDVI from Red and NIR bands</td><td>rasterio</td></tr>
+        <tr><td><code>ndwi</code></td><td><code>ndwi</code></td><td>Calculate NDWI water index</td><td>rasterio</td></tr>
+        <tr><td><code>atmospheric</code></td><td><code>atmospheric:sen2cor</code></td><td>Atmospheric correction</td><td>sen2cor</td></tr>
+        <tr><td><code>pan-sharpen</code></td><td><code>pan-sharpen</code></td><td>Pan-sharpen multispectral with panchromatic</td><td>rasterio</td></tr>
+        <tr><td><code>merge</code></td><td><code>merge</code></td><td>Mosaic overlapping scenes</td><td>rasterio</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PROVIDERS -->
+<div class="doc-section" id="providers">
+  <div class="sec-label">Providers</div>
+  <h2 class="sec-title">22 Satellite Data Providers</h2>
+  <p class="sec-sub">Filter by capability. 10 providers require no authentication and work immediately.</p>
+  <div class="pf-tabs">
+    <button class="pf-tab active" onclick="filterP('all',this)">All (22)</button>
+    <button class="pf-tab" onclick="filterP('open',this)">🌐 Open (10)</button>
+    <button class="pf-tab" onclick="filterP('auth',this)">🔐 Auth Required (12)</button>
+    <button class="pf-tab" onclick="filterP('stac',this)">STAC</button>
+    <button class="pf-tab" onclick="filterP('sar',this)">SAR</button>
+    <button class="pf-tab" onclick="filterP('vhr',this)">&lt;1m VHR</button>
+  </div>
+  <div class="providers-grid" id="pgrid">
+    <div class="pcard" data-open="1" data-stac="1" data-sar="1"><div class="pc-top"><span class="pc-name">planetary_computer</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Microsoft STAC catalog. Sentinel-1/2, Landsat 8/9, MODIS, NAIP, ALOS DEM. SAS tokens auto-generated.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1" data-stac="1"><div class="pc-top"><span class="pc-name">aws_earth</span><span class="pc-badge open">Open</span></div><div class="pc-desc">AWS Earth Open Data. Sentinel-2 COGs, Landsat Collection 2, NAIP. Direct S3 access.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard" data-open="1" data-stac="1" data-sar="1"><div class="pc-top"><span class="pc-name">element84</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Element 84 Earth Search v1. Sentinel-2 L2A, Landsat Col 2, Sentinel-1 RTC, COP-DEM. All COG.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">noaa_big_data</span><span class="pc-badge open">Open</span></div><div class="pc-desc">GOES-16/17/18 weather imagery and NEXRAD radar. AWS Open Data registry.</div><div class="pc-chips"></div></div>
+    <div class="pcard" data-open="1" data-sar="1"><div class="pc-top"><span class="pc-name">esa_scihub</span><span class="pc-badge open">Open</span></div><div class="pc-desc">ESA Copernicus public mirrors. Sentinel-1/2/3/5P open archive access.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1" data-sar="1"><div class="pc-top"><span class="pc-name">jaxa_earth</span><span class="pc-badge open">Open</span></div><div class="pc-desc">JAXA ALOS 30m World 3D DSM and PALSAR-2 forest/non-forest global map.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">isro_bhuvan</span><span class="pc-badge open">Open</span></div><div class="pc-desc">ISRO Bhuvan portal. ResourceSat-2/2A (5.8m), Cartosat-1 (2.5m), Oceansat-2.</div><div class="pc-chips"></div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">inpe_cbers</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Brazil INPE CBERS-4 and CBERS-4A. 5m to 40m optical bands. Free download.</div><div class="pc-chips"></div></div>
+    <div class="pcard" data-open="1" data-vhr="1"><div class="pc-top"><span class="pc-name">digitalglobe</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Maxar Open Data Program. Sub-metre WorldView disaster response imagery for humanitarian use.</div><div class="pc-chips"><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">geoserver_generic</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Generic OGC WMS/WFS/WCS connector for any GeoServer or OGC-compliant service endpoint.</div><div class="pc-chips"></div></div>
+    <!-- Auth required -->
+    <div class="pcard" data-stac="1"><div class="pc-top"><span class="pc-name">usgs</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">USGS Earth Explorer. Landsat 1–9, ASTER, MODIS, EO-1. Machine-to-Machine API.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard" data-stac="1" data-sar="1"><div class="pc-top"><span class="pc-name">copernicus</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Copernicus Data Space Ecosystem. Sentinel-1/2/3/5P. Full STAC API, OAuth2.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-stac="1"><div class="pc-top"><span class="pc-name">nasa_earthdata</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">NASA CMR. MODIS, VIIRS, ICESat-2, GEDI, ASTER. Free registration required.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard" data-stac="1"><div class="pc-top"><span class="pc-name">nasa_earthdata_cloud</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Cloud-native NASA data on AWS. Temporary S3 credentials auto-refreshed.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard"><div class="pc-top"><span class="pc-name">opentopography</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">SRTM 30/90m, COP-DEM 30m, NASADEM, global LiDAR point clouds. Free API key.</div><div class="pc-chips"></div></div>
+    <div class="pcard" data-stac="1" data-vhr="1"><div class="pc-top"><span class="pc-name">planet</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Planet Labs. PlanetScope (3m daily), SkySat (50cm), RapidEye. Subscription required.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-sar="1"><div class="pc-top"><span class="pc-name">sentinel_hub</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Sentinel Hub Processing API. Sentinel-1/2/3, Landsat, custom evalscripts.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-vhr="1"><div class="pc-top"><span class="pc-name">maxar_gbdx</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Maxar WorldView 1–4, GeoEye-1. 30cm–50cm resolution. Commercial subscription.</div><div class="pc-chips"><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-stac="1" data-vhr="1"><div class="pc-top"><span class="pc-name">airbus_oneatlas</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Airbus Pléiades (50cm) and SPOT 6/7 (1.5m). OneAtlas STAC API.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-sar="1"><div class="pc-top"><span class="pc-name">alaska_satellite_facility</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">ASF DAAC. Sentinel-1 SLC/GRD, ALOS PALSAR, UAVSAR. Free with Earthdata login.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-sar="1"><div class="pc-top"><span class="pc-name">google_earth_engine</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">GEE catalog proxy. Access multi-petabyte collection via service account.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-vhr="1"><div class="pc-top"><span class="pc-name">terrabotics</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">TerraBotics archive and tasking. Sub-metre commercial imagery. API key required.</div><div class="pc-chips"><span class="pchip vhr">&lt;1m</span></div></div>
+  </div>
+</div>
+
+<!-- PIPELINES -->
+<div class="doc-section" id="pipeline-yaml">
+  <div class="sec-label">Pipelines</div>
+  <h2 class="sec-title">YAML Pipeline Orchestration</h2>
+  <p class="sec-sub">Define recurring satellite data workflows in a single YAML file. Schedule on cron, run ad-hoc, validate before committing, and watch live logs.</p>
+
+  <div class="pipe-steps">
+    <div class="pstep"><div class="ps-n">STEP 01</div><div class="ps-icon">🔍</div><div class="ps-title">Search</div><div class="ps-desc">Federated query across providers. Supports date ranges, cloud filters, CQL2.</div></div>
+    <div class="pstep"><div class="ps-n">STEP 02</div><div class="ps-icon">🎯</div><div class="ps-title">Filter</div><div class="ps-desc">Expression-based post-filter on results. Any property or scoring field.</div></div>
+    <div class="pstep"><div class="ps-n">STEP 03</div><div class="ps-icon">⬇️</div><div class="ps-title">Download</div><div class="ps-desc">Parallel, resumable download with checksum verification and retry.</div></div>
+    <div class="pstep"><div class="ps-n">STEP 04</div><div class="ps-icon">📤</div><div class="ps-title">Export</div><div class="ps-desc">Push to S3, GCS, local disk, or trigger webhook notification.</div></div>
+  </div>
+
+  <h3 id="pipeline-steps">Full pipeline YAML example</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">weekly-sentinel2.yaml</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># weekly-sentinel2.yaml</span>
+name: weekly-sentinel2-ndvi
+schedule: "0 6 * * 1"  <span class="tc"># Every Monday at 06:00 UTC</span>
+description: Weekly Sentinel-2 acquisition for NDVI monitoring
+
+steps:
+  - search:
+      providers: [copernicus, aws_earth, planetary_computer]
+      date_range: last_7_days
+      cloud_cover: 0-10
+      bbox: "-74.1,40.6,-73.7,40.9"
+      max_results: 20
+      sort_by: cloud_cover
+
+  - filter:
+      expression: "data.cloud_cover &lt; 5"
+      max_items: 5
+
+  - download:
+      parallel: 4
+      output: ./raw/
+      verify_checksum: true
+      bands: "B04,B08"     <span class="tc"># NDVI bands only</span>
+      on_failure: skip
+
+  - post_process:
+      actions: "reproject:EPSG:4326,ndvi,cog"
+
+  - export:
+      format: cloud_optimized_geotiff
+      destination: s3://my-bucket/ndvi/
+      notify:
+        - webhook: https://hooks.slack.com/services/YOUR/WEBHOOK
+        - email: ops@example.com</pre>
+  </div>
+
+  <h3 id="pipeline-schedule">Pipeline CLI commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">pipeline management</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Run immediately (one-shot)</span>
+pygeofetch pipeline run weekly-sentinel2.yaml
+
+<span class="tc"># Validate YAML without executing</span>
+pygeofetch pipeline validate weekly-sentinel2.yaml
+
+<span class="tc"># Schedule for recurring execution</span>
+pygeofetch pipeline schedule weekly-sentinel2.yaml --name ndvi-monitor
+
+<span class="tc"># List all scheduled pipelines</span>
+pygeofetch pipeline list-scheduled
+
+<span class="tc"># Watch logs live</span>
+pygeofetch pipeline logs ndvi-monitor --follow
+
+<span class="tc"># View run history</span>
+pygeofetch pipeline history --limit 20
+
+<span class="tc"># Retry a failed run</span>
+pygeofetch pipeline retry RUN_ID_HERE
+
+<span class="tc"># Stop scheduling</span>
+pygeofetch pipeline unschedule ndvi-monitor
+
+<span class="tc"># Run a specific step only</span>
+pygeofetch pipeline run weekly-sentinel2.yaml --step download</pre>
+  </div>
+
+  <div class="alert alert-info"><strong>Scheduling note:</strong> <code class="ci">pipeline schedule</code> uses the system cron daemon on Linux/macOS, and Windows Task Scheduler on Windows. Run <code class="ci">pygeofetch pipeline list-scheduled</code> to confirm registration.</div>
+</div>
+
+<!-- PYTHON API -->
+<div class="doc-section alt" id="api">
+  <div class="sec-label">Python API</div>
+  <h2 class="sec-title">Python API Reference</h2>
+  <p class="sec-sub">Use pygeofetch as a library in your own scripts, notebooks, or applications. The Python API gives you full programmatic control over search, download, and post-processing.</p>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">example.py — full workflow</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>from pathlib import Path
+from pygeofetch import pygeofetch
+from pygeofetch.models import SearchQuery, DownloadOptions
+
+<span class="tc"># Initialize client</span>
+client = pygeofetch()
+
+<span class="tc"># Add credentials (or use env vars)</span>
+client.add_credentials("usgs", username="user", password="pass")
+client.add_credentials("planet", api_key="PL_KEY")
+
+<span class="tc"># Search across multiple providers</span>
+results = client.search(
+    SearchQuery(
+        bbox=(-74.1, 40.6, -73.7, 40.9),
+        start_date="2024-01-01",
+        end_date="2024-06-01",
+        cloud_cover_max=20,
+        max_results=50,
+        sort_by="cloud_cover",
+    ),
+    providers=["usgs", "copernicus", "planetary_computer", "aws_earth"],
+)
+
+print(f"Found {len(results)} scenes")
+for r in results[:3]:
+    print(f"  {r.id} | {r.datetime} | {r.cloud_cover:.1f}% cloud")
+
+<span class="tc"># Download top 5 results</span>
+download_results = client.download(
+    results[:5],
+    destination=Path("./data/"),
+    options=DownloadOptions(
+        parallel=4,
+        verify_checksum=True,
+        resume=True,
+        bands=["B02", "B03", "B04"],
+        post_process=["reproject:EPSG:4326", "cog"],
+    ),
+)
+
+for dr in download_results:
+    if dr.success:
+        print(f"  ✓ {dr.data_id} ({dr.bytes_downloaded // 1024 // 1024:.1f} MB)")
+    else:
+        print(f"  ✗ {dr.data_id}: {dr.error}")</pre>
+  </div>
+
+  <h3 id="api-search">SearchQuery parameters</h3>
+  <div class="api-class">
+    <div class="api-class-header">
+      <span class="api-class-name">SearchQuery</span>
+      <span class="api-class-type">dataclass</span>
+    </div>
+    <div class="api-method">
+      <div class="api-params">
+        <div class="api-param-row"><div class="api-param-name">bbox</div><div class="api-param-type">tuple[float,4]</div><div class="api-param-desc">Bounding box as (minlon, minlat, maxlon, maxlat). Longitude first (WGS84).</div></div>
+        <div class="api-param-row"><div class="api-param-name">geometry</div><div class="api-param-type">dict | None</div><div class="api-param-desc">GeoJSON geometry dict. Alternative to bbox for polygon AOIs.</div></div>
+        <div class="api-param-row"><div class="api-param-name">start_date</div><div class="api-param-type">str | date</div><div class="api-param-desc">Temporal filter start. ISO format string or date object.</div></div>
+        <div class="api-param-row"><div class="api-param-name">end_date</div><div class="api-param-type">str | date</div><div class="api-param-desc">Temporal filter end. Defaults to today.</div></div>
+        <div class="api-param-row"><div class="api-param-name">cloud_cover_max</div><div class="api-param-type">float</div><div class="api-param-desc">Maximum cloud cover percentage (0–100). Default: 100.</div></div>
+        <div class="api-param-row"><div class="api-param-name">cloud_cover_min</div><div class="api-param-type">float</div><div class="api-param-desc">Minimum cloud cover percentage. Default: 0.</div></div>
+        <div class="api-param-row"><div class="api-param-name">resolution_min</div><div class="api-param-type">float | None</div><div class="api-param-desc">Minimum spatial resolution in metres.</div></div>
+        <div class="api-param-row"><div class="api-param-name">resolution_max</div><div class="api-param-type">float | None</div><div class="api-param-desc">Maximum spatial resolution in metres.</div></div>
+        <div class="api-param-row"><div class="api-param-name">satellites</div><div class="api-param-type">list[str]</div><div class="api-param-desc">Satellite names to filter. E.g. <code class="ci">["Sentinel-2", "Landsat-8"]</code>.</div></div>
+        <div class="api-param-row"><div class="api-param-name">processing_level</div><div class="api-param-type">str | None</div><div class="api-param-desc">Processing level filter. E.g. <code class="ci">"L2A"</code>.</div></div>
+        <div class="api-param-row"><div class="api-param-name">max_results</div><div class="api-param-type">int</div><div class="api-param-desc">Maximum number of results to return. Default: 100.</div></div>
+        <div class="api-param-row"><div class="api-param-name">sort_by</div><div class="api-param-type">str</div><div class="api-param-desc"><code class="ci">"datetime"</code>, <code class="ci">"cloud_cover"</code>, <code class="ci">"score"</code>, <code class="ci">"satellite"</code>. Default: <code class="ci">"datetime"</code>.</div></div>
+        <div class="api-param-row"><div class="api-param-name">sort_order</div><div class="api-param-type">str</div><div class="api-param-desc"><code class="ci">"asc"</code> or <code class="ci">"desc"</code>. Default: <code class="ci">"desc"</code>.</div></div>
+        <div class="api-param-row"><div class="api-param-name">cql2_filter</div><div class="api-param-type">str | None</div><div class="api-param-desc">CQL2 expression string. Only applied to STAC-capable providers.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="api-download">DownloadOptions parameters</h3>
+  <div class="api-class">
+    <div class="api-class-header">
+      <span class="api-class-name">DownloadOptions</span>
+      <span class="api-class-type">dataclass</span>
+    </div>
+    <div class="api-method">
+      <div class="api-params">
+        <div class="api-param-row"><div class="api-param-name">parallel</div><div class="api-param-type">int</div><div class="api-param-desc">Number of concurrent download workers. Default: 2.</div></div>
+        <div class="api-param-row"><div class="api-param-name">retry</div><div class="api-param-type">int</div><div class="api-param-desc">Max retry attempts with exponential backoff. Default: 3.</div></div>
+        <div class="api-param-row"><div class="api-param-name">retry_delay</div><div class="api-param-type">float</div><div class="api-param-desc">Base delay seconds between retries. Default: 5.0.</div></div>
+        <div class="api-param-row"><div class="api-param-name">verify_checksum</div><div class="api-param-type">bool</div><div class="api-param-desc">SHA256 verification after download. Default: False.</div></div>
+        <div class="api-param-row"><div class="api-param-name">resume</div><div class="api-param-type">bool</div><div class="api-param-desc">Resume incomplete downloads. Default: True.</div></div>
+        <div class="api-param-row"><div class="api-param-name">bands</div><div class="api-param-type">list[str]</div><div class="api-param-desc">Band names to download. E.g. <code class="ci">["B02", "B03", "B04"]</code>. Default: all assets.</div></div>
+        <div class="api-param-row"><div class="api-param-name">post_process</div><div class="api-param-type">list[str]</div><div class="api-param-desc">Processing chain steps. E.g. <code class="ci">["reproject:EPSG:4326", "cog"]</code>.</div></div>
+        <div class="api-param-row"><div class="api-param-name">bandwidth_limit</div><div class="api-param-type">str | None</div><div class="api-param-desc">E.g. <code class="ci">"10MB"</code>, <code class="ci">"500KB"</code>. None = unlimited.</div></div>
+        <div class="api-param-row"><div class="api-param-name">on_failure</div><div class="api-param-type">str</div><div class="api-param-desc"><code class="ci">"skip"</code>, <code class="ci">"abort"</code>, or <code class="ci">"retry"</code>. Default: <code class="ci">"skip"</code>.</div></div>
+        <div class="api-param-row"><div class="api-param-name">overwrite</div><div class="api-param-type">bool</div><div class="api-param-desc">Overwrite existing files. Default: False (skip existing).</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>pygeofetch class methods</h3>
+  <div class="api-class">
+    <div class="api-class-header">
+      <span class="api-class-name">pygeofetch</span>
+      <span class="api-class-type">class</span>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">add_credentials</span>(<span class="param">provider</span>: str, *, <span class="param">username</span>=None, <span class="param">password</span>=None, <span class="param">api_key</span>=None, <span class="param">client_id</span>=None, <span class="param">client_secret</span>=None) → None</div>
+      <div class="api-desc">Register credentials for a provider. Stored in system keyring. Overrides env vars.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">search</span>(<span class="param">query</span>: SearchQuery, <span class="param">providers</span>: list[str], <span class="param">timeout</span>: int = 60, <span class="param">on_provider_failure</span>: str = "skip") → <span class="ret">list[SceneResult]</span></div>
+      <div class="api-desc">Execute federated search. Returns sorted, deduplicated list of SceneResult objects.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">download</span>(<span class="param">scenes</span>: list[SceneResult], <span class="param">destination</span>: Path, <span class="param">options</span>: DownloadOptions) → <span class="ret">list[DownloadResult]</span></div>
+      <div class="api-desc">Download scenes in parallel. Returns list of DownloadResult objects with success/error details.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">providers</span>() → <span class="ret">list[ProviderInfo]</span></div>
+      <div class="api-desc">List all registered providers with authentication status and capabilities.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">cache_stats</span>() → <span class="ret">dict</span></div>
+      <div class="api-desc">Return cache statistics: hit rate, size, entry count, TTL.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">clear_cache</span>(<span class="param">provider</span>: str | None = None) → None</div>
+      <div class="api-desc">Clear search result cache. Pass provider name to clear one provider only.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLI REFERENCE -->
+<div class="doc-section" id="cli">
+  <div class="sec-label">Reference</div>
+  <h2 class="sec-title">Full CLI Reference</h2>
+  <p class="sec-sub">Complete listing of all commands, subcommands, and global options.</p>
+
+  <h3>Global options</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">global flags (apply to every command)</span></div>
+    <pre>pygeofetch [OPTIONS] COMMAND [ARGS]
+
+Options:
+  --log-level TEXT        Log level: DEBUG, INFO, WARNING, ERROR [default: INFO]
+  --log-file TEXT         Write logs to file path
+  --log-format TEXT       console or json [default: console]
+  --config FILE           Path to config file [default: ~/.pygeofetch/config.yaml]
+  --version               Show version and exit
+  --help                  Show help message and exit
+  --install-completion    Install shell completion (bash/zsh/fish)</pre>
+  </div>
+
+  <h3>All command groups</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Group</th><th>Subcommands</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>auth</code></td><td>add, login, list, test, remove, export</td><td>Manage provider credentials</td></tr>
+        <tr><td><code>providers</code></td><td>list, info, search</td><td>Browse and inspect providers</td></tr>
+        <tr><td><code>search</code></td><td>run, demo</td><td>Search for satellite scenes</td></tr>
+        <tr><td><code>download</code></td><td>run, demo</td><td>Download scenes to disk</td></tr>
+        <tr><td><code>cache</code></td><td>stats, clear, ttl, location, prune</td><td>Manage search result cache</td></tr>
+        <tr><td><code>pipeline</code></td><td>run, validate, schedule, list-scheduled, unschedule, logs, history, retry</td><td>Pipeline orchestration</td></tr>
+        <tr><td><code>config</code></td><td>show, get, set, path, reset</td><td>Read and modify configuration</td></tr>
+        <tr><td><code>status</code></td><td>—</td><td>System status dashboard</td></tr>
+        <tr><td><code>doctor</code></td><td>—</td><td>Diagnose installation and connectivity</td></tr>
+        <tr><td><code>version</code></td><td>—</td><td>Show version info</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Cache commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">cache</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>pygeofetch cache stats [--json]
+pygeofetch cache clear [--provider PROVIDER] [--older-than 7d] [--dry-run]
+pygeofetch cache ttl show
+pygeofetch cache ttl set 7200
+pygeofetch cache location
+pygeofetch cache prune --max-size 1GB</pre>
+  </div>
+
+  <h3>Providers commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">providers</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># List all providers</span>
+pygeofetch providers list
+
+<span class="tc"># Filter by auth, capability, or satellite</span>
+pygeofetch providers list --no-auth
+pygeofetch providers list --capabilities sar
+pygeofetch providers list --satellite Landsat
+
+<span class="tc"># Detailed info for one provider</span>
+pygeofetch providers info planetary_computer
+
+<span class="tc"># Fuzzy search across provider names and descriptions</span>
+pygeofetch providers search "landsat"</pre>
+  </div>
+
+  <h3>Shell completion</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">tab completion</span></div>
+    <pre><span class="tc"># Bash</span>
+pygeofetch --install-completion bash
+echo 'source ~/.pygeofetch-complete.bash' >> ~/.bashrc
+
+<span class="tc"># Zsh</span>
+pygeofetch --install-completion zsh
+echo 'source ~/.pygeofetch-complete.zsh' >> ~/.zshrc
+
+<span class="tc"># Fish</span>
+pygeofetch --install-completion fish</pre>
+  </div>
+</div>
+
+<!-- CONFIG -->
+<div class="doc-section alt" id="config">
+  <div class="sec-label">Configuration</div>
+  <h2 class="sec-title">Configuration Reference</h2>
+  <p class="sec-sub">pygeofetch uses a layered config system. Settings are merged in order of precedence from lowest to highest.</p>
+
+  <div class="callout-row">
+    <div class="callout"><div class="callout-icon">1️⃣</div><div class="callout-title">Built-in defaults</div><div class="callout-body">Sensible defaults baked into the package. Lowest priority.</div></div>
+    <div class="callout"><div class="callout-icon">2️⃣</div><div class="callout-title">~/.pygeofetch/config.yaml</div><div class="callout-body">User-level config. Applies to all projects on this machine.</div></div>
+    <div class="callout"><div class="callout-icon">3️⃣</div><div class="callout-title">.pygeofetch.yaml</div><div class="callout-body">Project config in current directory. Overrides user config.</div></div>
+  </div>
+  <div class="callout-row" style="margin-top:0;">
+    <div class="callout"><div class="callout-icon">4️⃣</div><div class="callout-title">Environment variables</div><div class="callout-body"><code class="ci">pygeofetch_*</code> env vars. Override file config.</div></div>
+    <div class="callout"><div class="callout-icon">5️⃣</div><div class="callout-title">CLI arguments</div><div class="callout-body">Flags passed on the command line. Highest priority.</div></div>
+    <div class="callout" style="border-color:transparent;background:transparent;"></div>
+  </div>
+
+  <h3>Full configuration file</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">~/.pygeofetch/config.yaml</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>download:
+  parallel: 4
+  retry_attempts: 5
+  retry_delay_seconds: 1.0
+  retry_max_delay_seconds: 60.0
+  retry_jitter: true
+  verify_checksum: false
+  checksum_algorithm: sha256     <span class="tc"># md5, sha256, sha512</span>
+  chunk_size_mb: 10
+  resume: true
+  bandwidth_limit_mbps: null     <span class="tc"># null = unlimited</span>
+  overwrite_existing: false
+  notify_on_completion: null     <span class="tc"># webhook:URL or email:ADDRESS</span>
+  notify_on_failure: null
+  on_failure: skip               <span class="tc"># skip, abort, retry</span>
+
+cache:
+  enabled: true
+  ttl_seconds: 3600
+  max_size_gb: 10
+  location: ~/.pygeofetch/cache
+
+search:
+  default_providers: []
+  max_results: 100
+  timeout_seconds: 60
+  on_provider_failure: skip
+  sort_by: datetime
+  sort_order: desc
+
+auth:
+  storage_backend: keyring       <span class="tc"># keyring or file</span>
+  keyring_service: pygeofetch
+  file_path: ~/.pygeofetch/credentials.enc
+
+proxy:
+  http_proxy: null
+  https_proxy: null
+  no_proxy: []
+
+logging:
+  level: INFO
+  format: console                <span class="tc"># console, json</span>
+  file: null
+  max_file_size_mb: 10
+  backup_count: 3
+
+providers:
+  planetary_computer:
+    endpoint: https://planetarycomputer.microsoft.com/api/stac/v1
+    timeout: 60
+  element84:
+    endpoint: https://earth-search.aws.element84.com/v1
+    timeout: 60
+  copernicus:
+    endpoint: https://catalogue.dataspace.copernicus.eu/resto/api/
+    timeout: 45
+  planet:
+    endpoint: https://api.planet.com/data/v1/
+    rate_limit: 100
+  usgs:
+    endpoint: https://m2m.cr.usgs.gov/api/api/json/stable/
+    timeout: 60</pre>
+  </div>
+
+  <h3>Config CLI commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">config commands</span></div>
+    <pre><span class="tc"># Show the merged effective configuration</span>
+pygeofetch config show
+
+<span class="tc"># Get a specific key</span>
+pygeofetch config get download.parallel
+
+<span class="tc"># Set a value</span>
+pygeofetch config set download.parallel 8
+pygeofetch config set cache.ttl_seconds 7200
+pygeofetch config set search.default_providers "aws_earth,planetary_computer"
+
+<span class="tc"># Show config file path</span>
+pygeofetch config path
+
+<span class="tc"># Reset to defaults</span>
+pygeofetch config reset</pre>
+  </div>
+</div>
+
+<!-- SECURITY -->
+<div class="doc-section" id="security">
+  <div class="sec-label">Security</div>
+  <h2 class="sec-title">Security Model</h2>
+  <p class="sec-sub">pygeofetch is designed with credential safety, network security, and data integrity as first-class concerns.</p>
+
+  <div class="sec-grid">
+    <div class="sec-card">
+      <div class="sec-card-title">🔑 Credential Handling</div>
+      <ul class="sec-list">
+        <li>Credentials never written to disk in plain text</li>
+        <li>System keyring storage: macOS Keychain, Windows Credential Manager, Linux Secret Service</li>
+        <li>Encrypted file fallback (<code class="ci">~/.pygeofetch/credentials.enc</code>) using Fernet AES-128-CBC</li>
+        <li>All log filters redact passwords, tokens, and API keys</li>
+        <li>Credentials cleared from memory immediately after use</li>
+        <li>Environment variable support for CI/CD and Docker</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <div class="sec-card-title">🌐 Network Security</div>
+      <ul class="sec-list">
+        <li>TLS 1.2+ enforced on all outbound connections</li>
+        <li>SSL certificate verification always on — no <code class="ci">verify=False</code> in codebase</li>
+        <li>Certificate pinning available for enterprise deployments</li>
+        <li>HTTP proxy support via <code class="ci">HTTP_PROXY</code> / <code class="ci">HTTPS_PROXY</code></li>
+        <li>Connection timeouts enforced per provider</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <div class="sec-card-title">📦 Data Integrity</div>
+      <ul class="sec-list">
+        <li>SHA256 checksum verification on all downloads (configurable: MD5, SHA256, SHA512)</li>
+        <li>Atomic file writes — partial downloads never corrupt existing data</li>
+        <li>Download resume tokens prevent data duplication</li>
+        <li>Temp files cleaned up on failure or interruption</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <div class="sec-card-title">🔒 Privacy</div>
+      <ul class="sec-list">
+        <li>No telemetry — pygeofetch does not phone home</li>
+        <li>No analytics — zero usage data collection</li>
+        <li>No third-party requests beyond configured providers</li>
+        <li>All data stays local unless you configure export/webhook</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-warn" style="margin-top:20px;">
+    <strong>Reporting vulnerabilities:</strong> Do not open public GitHub issues for security vulnerabilities. Email <strong>security@pygeofetch.dev</strong>. Response time: within 48 hours. Responsible disclosure policy: 90-day window.
+  </div>
+</div>
+
+<!-- ERROR HANDLING -->
+<div class="doc-section alt" id="errors">
+  <div class="sec-label">Reference</div>
+  <h2 class="sec-title">Error Handling &amp; Resilience</h2>
+  <p class="sec-sub">pygeofetch handles failures at every layer — provider outages, network interruptions, checksum mismatches, and partial failures are all managed gracefully.</p>
+
+  <h3>Provider failures</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">failure policies</span></div>
+    <pre><span class="tc"># Skip failing providers — return partial results from others</span>
+pygeofetch search run --providers copernicus,usgs,planet \
+  --on-provider-failure skip
+
+<span class="tc"># Abort entirely if any provider fails</span>
+pygeofetch search run --providers copernicus,usgs \
+  --on-provider-failure abort
+
+<span class="tc"># Auto-retry failing providers (up to 3 attempts)</span>
+pygeofetch search run --providers copernicus \
+  --on-provider-failure retry</pre>
+  </div>
+
+  <h3>Common errors and fixes</h3>
+  <div class="err-grid">
+    <div class="err-row">
+      <div><div class="err-code">ProviderAuthError</div><div class="err-fix">→ Run: pygeofetch auth test PROVIDER</div></div>
+      <div class="err-desc">Credentials missing, expired, or rejected. Re-add with <code class="ci">auth add</code> or set the appropriate env var.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">ProviderTimeoutError</div><div class="err-fix">→ Use: --timeout 120</div></div>
+      <div class="err-desc">Provider API did not respond within the timeout window. Increase <code class="ci">--timeout</code> or check provider status page.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">ChecksumMismatchError</div><div class="err-fix">→ Use: --retry 5 --verify-checksum</div></div>
+      <div class="err-desc">Downloaded file hash does not match provider checksum. Automatic re-download triggered up to retry limit.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">NoResultsError</div><div class="err-fix">→ Widen: --cloud-cover 0-30</div></div>
+      <div class="err-desc">Search returned zero scenes. Relax cloud cover filter, extend date range, or check bbox coordinates (lon first).</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">KeyringUnavailableError</div><div class="err-fix">→ Set: PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring</div></div>
+      <div class="err-desc">No system keyring daemon available (Docker, headless SSH). Use environment variables or file-based auth storage.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">RateLimitError</div><div class="err-fix">→ Use: --parallel 1 --bandwidth-limit 2MB</div></div>
+      <div class="err-desc">Provider API rate limit hit. Reduce parallelism, add delays, or use bandwidth limiting. Planet and Maxar are most restrictive.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">PostProcessError</div><div class="err-fix">→ Run: pip install "pygeofetch[geo]"</div></div>
+      <div class="err-desc">Post-processing action failed. Usually missing rasterio or GDAL. Install the <code class="ci">[geo]</code> extra or verify rasterio installation.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">CircuitBreakerOpen</div><div class="err-fix">→ Wait 60s or use: --on-provider-failure skip</div></div>
+      <div class="err-desc">Provider disabled after 5 consecutive failures. Circuit breaker auto-resets after 60 second cooldown period.</div>
+    </div>
+  </div>
+
+  <h3>Download resilience internals</h3>
+  <div class="feat-grid">
+    <div class="feat-cell">
+      <div class="feat-icon">🔄</div>
+      <div class="feat-title">Exponential Backoff</div>
+      <div class="feat-body">Retries with 1s, 2s, 4s, 8s, 16s delays + random jitter. Configurable base delay and max cap. Prevents thundering herd against recovering providers.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon green">⏸️</div>
+      <div class="feat-title">Resume Support</div>
+      <div class="feat-body">Interrupted downloads resume from the last received byte using HTTP range requests. Resume tokens stored per scene. No re-downloading of completed bytes.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon amber">🛡️</div>
+      <div class="feat-title">Atomic Writes</div>
+      <div class="feat-body">Files written to <code class="ci">.tmp</code> then renamed atomically on completion. Partial files never corrupt existing data. Temp files cleaned up on failure.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon neutral">⚡</div>
+      <div class="feat-title">Circuit Breaker</div>
+      <div class="feat-body">Providers disabled after 5 consecutive failures, automatically retried after 60 second cooldown. Prevents slow cascading failures in multi-provider searches.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon">🗄️</div>
+      <div class="feat-title">Search Caching</div>
+      <div class="feat-body">Search results cached per query with configurable TTL (default 1 hour). Cache hits return instantly without API calls. Auto-invalidates on expiry.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon green">✅</div>
+      <div class="feat-title">Checksum Verification</div>
+      <div class="feat-body">SHA256 (or MD5/SHA512) verified post-download. Mismatches trigger automatic re-download. Configurable: disable for speed, enable for integrity-critical workflows.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCKER -->
+<div class="doc-section" id="docker">
+  <div class="sec-label">Docker</div>
+  <h2 class="sec-title">Docker &amp; Containers</h2>
+  <p class="sec-sub">pygeofetch ships an official Docker image for reproducible environments, CI/CD pipelines, and scheduled pipeline execution.</p>
+
+  <h3>Quick start</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">Docker quick start</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>docker pull pygeofetch/pygeofetch:latest
+
+<span class="tc"># Search — mount credentials and data output</span>
+docker run \
+  -v ~/.pygeofetch:/root/.pygeofetch \
+  -v $(pwd)/data:/data \
+  pygeofetch/pygeofetch search run \
+  --bbox "-74.1,40.6,-73.7,40.9" \
+  --providers aws_earth \
+  --output /data/results.geojson
+
+<span class="tc"># Download from saved results</span>
+docker run \
+  -v ~/.pygeofetch:/root/.pygeofetch \
+  -v $(pwd)/data:/data \
+  pygeofetch/pygeofetch download run \
+  --from-search /data/results.geojson \
+  --output /data/scenes/ \
+  --parallel 4</pre>
+  </div>
+
+  <h3>Docker Compose for scheduled pipelines</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">docker-compose.yml</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>version: '3.8'
+services:
+  pygeofetch-scheduler:
+    image: pygeofetch/pygeofetch:latest
+    volumes:
+      - ~/.pygeofetch:/root/.pygeofetch
+      - ./pipelines:/pipelines
+      - ./data:/data
+    command: pygeofetch pipeline run /pipelines/weekly-ndvi.yaml
+    restart: unless-stopped
+    environment:
+      - pygeofetch_LOG_LEVEL=INFO
+      - pygeofetch_DOWNLOAD__PARALLEL=4
+      - PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+      <span class="tc"># Credentials via env vars for headless Docker</span>
+      - pygeofetch_PLANET_API_KEY=${PLANET_API_KEY}
+      - pygeofetch_COPERNICUS_USERNAME=${COPERNICUS_USER}
+      - pygeofetch_COPERNICUS_PASSWORD=${COPERNICUS_PASS}</pre>
+  </div>
+
+  <h3>Build locally</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">build from source</span></div>
+    <pre>git clone https://github.com/appiahkubis14/pygeofetch
+cd pygeofetch
+docker build -t pygeofetch:local .
+docker run pygeofetch:local doctor</pre>
+  </div>
+
+  <div class="alert alert-info">Images available on <strong>Docker Hub</strong> (<code class="ci">pygeofetch/pygeofetch</code>) and <strong>GitHub Container Registry</strong> (<code class="ci">ghcr.io/appiahkubis14/pygeofetch</code>). Tags: <code class="ci">latest</code>, <code class="ci">1.0.0</code>, <code class="ci">slim</code> (no rasterio).</div>
+</div>
+
+<!-- TESTING -->
+<div class="doc-section alt" id="testing">
+  <div class="sec-label">Testing</div>
+  <h2 class="sec-title">Testing</h2>
+  <p class="sec-sub">pygeofetch ships with 60 tests covering unit, integration, property-based, and CLI end-to-end scenarios.</p>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">running tests</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Install dev dependencies</span>
+pip install -e ".[dev,all]"
+
+<span class="tc"># Run all tests</span>
+pytest tests/ -v
+
+<span class="tc"># With coverage report</span>
+pytest tests/ -v --cov=pygeofetch --cov-report=html
+open htmlcov/index.html
+
+<span class="tc"># Unit tests only (fast, no network)</span>
+pytest tests/unit/ -v
+
+<span class="tc"># Integration tests (requires real credentials)</span>
+pytest tests/integration/ -v --run-integration
+
+<span class="tc"># Run a specific test file</span>
+pytest tests/unit/test_search.py -v
+
+<span class="tc"># With hypothesis property-based testing</span>
+pytest tests/property/ -v --hypothesis-seed=12345</pre>
+  </div>
+
+  <h3>Testing strategy</h3>
+  <div class="feat-grid">
+    <div class="feat-cell">
+      <div class="feat-icon">🧪</div>
+      <div class="feat-title">Unit Tests</div>
+      <div class="feat-body">Every provider, utility, and model has dedicated unit tests. Mocked HTTP responses using <code class="ci">responses</code> and <code class="ci">httpx mocks</code>. No network required.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon green">📼</div>
+      <div class="feat-title">VCR Recordings</div>
+      <div class="feat-body">HTTP interactions recorded with <code class="ci">pytest-vcr</code> for deterministic replay. Cassettes checked into the repo — CI never hits real APIs.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon amber">🎲</div>
+      <div class="feat-title">Property-Based Testing</div>
+      <div class="feat-body">Edge cases generated automatically with <code class="ci">hypothesis</code>. Covers bbox validation, date parsing, band selection, and config merging.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon neutral">🖥️</div>
+      <div class="feat-title">CLI Tests</div>
+      <div class="feat-body">Full workflow tests with Click's <code class="ci">CliRunner</code>. Search → save → download → post-process pipelines tested end-to-end without spawning subprocesses.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon">🌐</div>
+      <div class="feat-title">Integration Tests</div>
+      <div class="feat-body">Optional real-API tests gated behind <code class="ci">--run-integration</code>. Require credentials. Run in CI with secret injection from GitHub Actions.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon green">📊</div>
+      <div class="feat-title">Coverage Gate</div>
+      <div class="feat-body">80% line coverage minimum enforced in CI. PRs failing the threshold are blocked. Coverage report uploaded to Codecov on each merge.</div>
+    </div>
+  </div>
+
+  <h3>Contributing tests</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">test structure</span></div>
+    <pre>tests/
+├── unit/
+│   ├── test_search.py         <span class="tc"># SearchQuery, provider adapters</span>
+│   ├── test_download.py       <span class="tc"># DownloadOptions, resume, checksum</span>
+│   ├── test_auth.py           <span class="tc"># Keyring, env vars, credential storage</span>
+│   ├── test_pipeline.py       <span class="tc"># YAML parsing, step execution</span>
+│   ├── test_postprocess.py    <span class="tc"># Processing chain actions</span>
+│   └── test_config.py         <span class="tc"># Layered config merging</span>
+├── integration/
+│   ├── test_aws_earth.py      <span class="tc"># Live AWS Earth Open Data</span>
+│   ├── test_planetary.py      <span class="tc"># Live Planetary Computer</span>
+│   └── conftest.py
+├── property/
+│   └── test_models.py         <span class="tc"># hypothesis tests</span>
+├── cli/
+│   └── test_cli_workflow.py   <span class="tc"># CliRunner end-to-end</span>
+└── cassettes/                 <span class="tc"># VCR HTTP recordings</span></pre>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="doc-section" id="roadmap">
+  <div class="sec-label">Roadmap</div>
+  <h2 class="sec-title">Roadmap</h2>
+  <p class="sec-sub">Planned features by version. Vote on priorities at <a href="https://github.com/appiahkubis14/pygeofetch/discussions" target="_blank">github.com/appiahkubis14/pygeofetch/discussions</a>.</p>
+
+  <div class="roadmap-grid">
+    <div class="rm-card done">
+      <div class="rm-version">v1.0.0</div>
+      <div class="rm-title">Production Release</div>
+      <div class="rm-date done">✓ Released — Q2 2025</div>
+      <ul class="rm-items">
+        <li class="done">22 provider integrations</li>
+        <li class="done">YAML pipeline orchestration</li>
+        <li class="done">Keyring credential management</li>
+        <li class="done">7 output formats including GeoParquet</li>
+        <li class="done">Post-processing chain (NDVI, COG, reproject)</li>
+        <li class="done">60 test suite with CI</li>
+        <li class="done">Docker image</li>
+      </ul>
+    </div>
+    <div class="rm-card progress">
+      <div class="rm-version">v0.2.0</div>
+      <div class="rm-title">Extended Providers</div>
+      <div class="rm-date progress">◐ In Progress — Q4 2024</div>
+      <ul class="rm-items">
+        <li class="prog">BlackSky provider</li>
+        <li class="prog">SI Imaging Services (KOMPSAT)</li>
+        <li class="todo">Interactive search mode (--interactive)</li>
+        <li class="todo">Slack, Discord, Teams webhook templates</li>
+        <li class="todo">Streaming COG partial reads</li>
+      </ul>
+    </div>
+    <div class="rm-card planned">
+      <div class="rm-version">v0.3.0</div>
+      <div class="rm-title">Dashboard &amp; API Server</div>
+      <div class="rm-date planned">○ Planned — Q1 2025</div>
+      <ul class="rm-items">
+        <li class="todo">Web dashboard for pipeline monitoring</li>
+        <li class="todo">REST API server mode (pygeofetch serve)</li>
+        <li class="todo">Automatic provider health monitoring</li>
+        <li class="todo">Bandwidth scheduling by time of day</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;">Why pygeofetch vs alternatives?</h3>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="hl">pygeofetch</th>
+          <th>EODAG</th>
+          <th>pystac-client</th>
+          <th>satpy</th>
+          <th>sentinelsat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Providers</td><td class="hl cmp-yes">22+</td><td>10+</td><td>STAC only</td><td>Limited</td><td>Sentinel only</td></tr>
+        <tr><td>Full CLI</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>Basic</td></tr>
+        <tr><td>Pipeline / YAML</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>Keyring Auth</td><td class="hl cmp-yes">✓</td><td>Partial</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-yes">✓</td></tr>
+        <tr><td>Parallel Downloads</td><td class="hl cmp-yes">✓ Adaptive</td><td class="cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>STAC Output</td><td class="hl cmp-yes">✓ Native</td><td class="cmp-no">—</td><td class="cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>GeoParquet</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>Docker</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>Cron Scheduler</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>Webhooks</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>Planet / Maxar</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo">🛰️ <span>PyGeo</span>Fetch</div>
+      <div class="f-desc">Universal satellite data pipeline. One CLI, one Python API, 22+ providers. MIT licensed.</div>
+      <div class="f-badges">
+        <span class="pill">v1.0.0</span>
+        <span class="pill">MIT</span>
+        <span class="pill">Python 3.9+</span>
+        <span class="pill">60 Tests</span>
+      </div>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Docs</div>
+      <ul>
+        <li><a href="#quickstart">Quick Start</a></li>
+        <li><a href="#auth-add">Authentication</a></li>
+        <li><a href="#search-basic">Search</a></li>
+        <li><a href="#download-basic">Download</a></li>
+        <li><a href="#providers">Providers</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Reference</div>
+      <ul>
+        <li><a href="#cli">CLI Reference</a></li>
+        <li><a href="#api">Python API</a></li>
+        <li><a href="#pipelines">Pipelines</a></li>
+        <li><a href="#config">Configuration</a></li>
+        <li><a href="#security">Security</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Community</div>
+      <ul>
+        <li><a href="https://github.com/appiahkubis14/pygeofetch" target="_blank">GitHub</a></li>
+        <li><a href="https://github.com/appiahkubis14/pygeofetch/issues" target="_blank">Issues</a></li>
+        <li><a href="https://github.com/appiahkubis14/pygeofetch/discussions" target="_blank">Discussions</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#testing">Contributing</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <a href="https://github.com/appiahkubis14" target="_blank">Samuel Appiah Kubi</a>. Released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</div>
+    <div class="footer-built">pygeofetch v1.0.0</div>
+  </div>
+</footer>
+
+</main>
+</div>
+
+<script>
+/* ── Theme toggle ── */
+const toggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+toggle.addEventListener('click', () => {
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  toggle.textContent = isDark ? '🌙' : '☀️';
+});
+
+/* ── Install tabs ── */
+const cmds = {
+  pip: 'pip install pygeofetch',
+  geo: 'pip install "pygeofetch[geo]"',
+  cloud: 'pip install "pygeofetch[cloud]"',
+  all: 'pip install "pygeofetch[all]"'
+};
+function setInstall(k, btn) {
+  document.getElementById('install-cmd').textContent = cmds[k];
+  document.querySelectorAll('.itab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function copyInstall() {
+  const txt = document.getElementById('install-cmd').textContent;
+  navigator.clipboard.writeText(txt).catch(() => {});
+}
+
+/* ── Copy code blocks ── */
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  }).catch(() => {});
+}
+
+/* ── Provider filter ── */
+function filterP(key, btn) {
+  document.querySelectorAll('.pf-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pcard').forEach(card => {
+    if (key === 'all') { card.style.display = ''; return; }
+    if (key === 'open') { card.style.display = card.dataset.open ? '' : 'none'; return; }
+    if (key === 'auth') { card.style.display = !card.dataset.open ? '' : 'none'; return; }
+    card.style.display = card.dataset[key] ? '' : 'none';
+  });
+}
+
+/* ── Terminal demo ── */
+const termOutputs = {
+  doctor: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch doctor</span>
+
+<span class="term-info">pygeofetch Doctor v1.0.0</span>
+<span class="term-out">────────────────────────────────────────────</span>
+
+<span class="term-ok">✓</span> Python 3.11.4 (≥ 3.9 required)
+<span class="term-ok">✓</span> pygeofetch 1.0.0 installed
+<span class="term-ok">✓</span> click 8.1.7
+<span class="term-ok">✓</span> httpx 0.27.0
+<span class="term-ok">✓</span> pydantic 2.7.1
+<span class="term-ok">✓</span> keyring 25.2.1 — macOS Keychain
+<span class="term-ok">✓</span> rasterio 1.3.10 (geo extras)
+<span class="term-ok">✓</span> geopandas 0.14.4 (geo extras)
+
+<span class="term-out">Provider Connectivity</span>
+<span class="term-ok">✓</span> planetary_computer — STAC API reachable (124ms)
+<span class="term-ok">✓</span> aws_earth       — STAC API reachable (98ms)
+<span class="term-ok">✓</span> element84       — STAC API reachable (211ms)
+<span class="term-ok">✓</span> noaa_big_data   — S3 index reachable (67ms)
+<span class="term-warn">⚠</span> usgs            — credentials not configured
+<span class="term-warn">⚠</span> copernicus      — credentials not configured
+<span class="term-warn">⚠</span> planet          — credentials not configured
+
+<span class="term-out">────────────────────────────────────────────</span>
+<span class="term-ok">Doctor complete. 4/7 providers operational.</span>
+<span class="term-out">Run: pygeofetch auth add usgs --username USER --password PASS</span>`,
+
+  providers: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch providers list --no-auth</span>
+
+<span class="term-info">Open-access providers (no credentials required)</span>
+<span class="term-out">────────────────────────────────────────────────────────</span>
+ ID                       SATELLITES          SAR   STAC
+<span class="term-out"> planetary_computer       S1/2 Landsat NAIP   ✓     ✓   </span>
+<span class="term-out"> aws_earth                S2 Landsat NAIP     -     ✓   </span>
+<span class="term-out"> element84                S2 Landsat S1 RTC   ✓     ✓   </span>
+<span class="term-out"> noaa_big_data            GOES-16/17 NEXRAD   -     -   </span>
+<span class="term-out"> esa_scihub               S1/2/3/5P           ✓     -   </span>
+<span class="term-out"> jaxa_earth               ALOS PALSAR-2       ✓     -   </span>
+<span class="term-out"> isro_bhuvan              ResourceSat Carto   -     -   </span>
+<span class="term-out"> inpe_cbers               CBERS-4/4A          -     -   </span>
+<span class="term-out"> digitalglobe             WorldView (ODP)     -     -   </span>
+<span class="term-out"> geoserver_generic        Any OGC service     -     -   </span>
+
+<span class="term-ok">10 open providers. No login required.</span>`,
+
+  search_aws: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch search run --bbox "-74.1,40.6,-73.7,40.9" --start-date 2024-01-01 --end-date 2024-03-01 --cloud-cover 0-10 --providers aws_earth --format table</span>
+
+<span class="term-info">Searching aws_earth ...</span>
+<span class="term-ok">✓</span> aws_earth: 12 results (1.2s)
+
+<span class="term-out"> ID                                    DATE        CLOUD  SAT        SCORE
+ ─────────────────────────────────────────────────────────────────────────
+ S2B_MSIL2A_20240218T153819_N0510...   2024-02-18   2.1%  Sentinel-2   96
+ S2A_MSIL2A_20240213T153821_N0510...   2024-02-13   3.4%  Sentinel-2   94
+ S2B_MSIL2A_20240208T153809_N0510...   2024-02-08   4.8%  Sentinel-2   91
+ S2A_MSIL2A_20240123T153821_N0510...   2024-01-23   6.2%  Sentinel-2   87
+ S2B_MSIL2A_20240118T153819_N0510...   2024-01-18   7.1%  Sentinel-2   84
+ ... 7 more results</span>
+
+<span class="term-ok">Found 12 scenes. Use --output results.geojson to save.</span>`,
+
+  search_pc: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch search run --bbox "-74.1,40.6,-73.7,40.9" --providers planetary_computer --cql2 "eo:cloud_cover < 5 AND platform = 'sentinel-2b'"</span>
+
+<span class="term-info">Searching planetary_computer with CQL2 filter ...</span>
+<span class="term-ok">✓</span> planetary_computer: 8 results (0.9s)
+
+<span class="term-out"> ID                                    DATE        CLOUD  SAT        SCORE
+ ─────────────────────────────────────────────────────────────────────────
+ S2B_MSIL2A_20240218T153819_N0510...   2024-02-18   2.1%  Sentinel-2B  97
+ S2B_MSIL2A_20240208T153809_N0510...   2024-02-08   4.2%  Sentinel-2B  93
+ S2B_MSIL2A_20240108T153809_N0510...   2024-01-08   3.7%  Sentinel-2B  94
+ ... 5 more results</span>
+
+<span class="term-ok">8 scenes matched CQL2 filter.</span>`,
+
+  search_multi: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch search run --bbox "-74.1,40.6,-73.7,40.9" --cloud-cover 0-15 --providers aws_earth,planetary_computer,element84</span>
+
+<span class="term-info">Federated search across 3 providers ...</span>
+<span class="term-ok">✓</span> aws_earth: 18 results (1.1s)
+<span class="term-ok">✓</span> planetary_computer: 22 results (0.9s)
+<span class="term-ok">✓</span> element84: 19 results (1.4s)
+
+<span class="term-info">Deduplicating 59 results → 24 unique scenes</span>
+
+<span class="term-out"> ID                                    DATE        CLOUD  SAT        PROVIDER
+ ─────────────────────────────────────────────────────────────────────────────
+ S2B_MSIL2A_20240218T153819_N0510...   2024-02-18   2.1%  Sentinel-2   aws_earth
+ S2A_MSIL2A_20240213T153821_N0510...   2024-02-13   3.4%  Sentinel-2   planetary_computer
+ S2B_MSIL2A_20240208T153809_N0510...   2024-02-08   4.8%  Sentinel-2   element84
+ ... 21 more results</span>
+
+<span class="term-ok">24 unique scenes from 3 providers.</span>`,
+
+  download: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch download run --from-search results.geojson --output ./data/ --parallel 2 --max-items 3 --bands "B02,B03,B04"</span>
+
+<span class="term-info">Downloading 3 scenes (bands: B02 B03 B04) → ./data/</span>
+<span class="term-out">────────────────────────────────────────────────</span>
+
+<span class="term-ok">⬇</span> S2B_MSIL2A_20240218_... [B02] ████████████ 100%  48.2 MB  12.1 MB/s
+<span class="term-ok">⬇</span> S2B_MSIL2A_20240218_... [B03] ████████████ 100%  51.3 MB  11.8 MB/s
+<span class="term-ok">⬇</span> S2B_MSIL2A_20240218_... [B04] ████████████ 100%  50.7 MB  12.4 MB/s
+<span class="term-ok">⬇</span> S2A_MSIL2A_20240213_... [B02] ████████████ 100%  47.9 MB  11.2 MB/s
+<span class="term-ok">⬇</span> S2A_MSIL2A_20240213_... [B03] ██████████░░  82%  42.1 MB  10.9 MB/s
+<span class="term-out">... 4 workers active</span>
+
+<span class="term-ok">✓</span> 3 scenes downloaded → 3 succeeded, 0 failed
+<span class="term-ok">✓</span> Total: 452.7 MB in 38.2s (avg 11.9 MB/s)
+<span class="term-out">Output: ./data/S2B_20240218/, ./data/S2A_20240213/, ./data/S2B_20240208/</span>`,
+
+  status: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch status</span>
+
+<span class="term-info">pygeofetch System Status</span>
+<span class="term-out">────────────────────────────────────</span>
+Version      1.0.0
+Config       ~/.pygeofetch/config.yaml
+Cache        ~/.pygeofetch/cache (234 MB / 10 GB max)
+Cache hits   78% (last 24h)
+
+<span class="term-out">Provider Status</span>
+<span class="term-ok"> ✓ OPERATIONAL </span> planetary_computer
+<span class="term-ok"> ✓ OPERATIONAL </span> aws_earth
+<span class="term-ok"> ✓ OPERATIONAL </span> element84
+<span class="term-ok"> ✓ OPERATIONAL </span> noaa_big_data
+<span class="term-warn"> ⚠ NO CREDS    </span> usgs
+<span class="term-warn"> ⚠ NO CREDS    </span> copernicus
+<span class="term-warn"> ⚠ NO CREDS    </span> planet
+
+<span class="term-out">Scheduled Pipelines</span>
+<span class="term-out"> ndvi-monitor   0 6 * * 1   Last run: 2024-03-04 06:00 UTC  ✓ OK</span>`,
+
+  auth_list: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch auth list</span>
+
+<span class="term-info">Stored credentials (system keyring)</span>
+<span class="term-out">────────────────────────────────────────────────</span>
+ PROVIDER         TYPE             STORED    STATUS
+<span class="term-ok"> usgs             username/pass    ✓ Yes     ✓ Valid</span>
+<span class="term-ok"> copernicus       oauth2           ✓ Yes     ✓ Valid</span>
+<span class="term-ok"> planet           api_key          ✓ Yes     ✓ Valid</span>
+<span class="term-warn"> nasa_earthdata   username/pass    ✗ None    ⚠ Missing</span>
+<span class="term-warn"> maxar_gbdx       token            ✗ None    ⚠ Missing</span>
+<span class="term-out">────────────────────────────────────────────────</span>
+<span class="term-ok">3 providers authenticated.</span>
+<span class="term-out">Tip: pygeofetch auth add nasa_earthdata --username USER --password PASS</span>`,
+
+  cache_stats: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch cache stats</span>
+
+<span class="term-info">Search Result Cache</span>
+<span class="term-out">────────────────────────────────────────────────</span>
+Location      ~/.pygeofetch/cache
+Size          234 MB / 10 GB limit
+Entries       1,847 cached queries
+TTL           3600s (1 hour)
+Hit rate      78.4% (last 24h)
+Oldest entry  2024-03-04 08:12 UTC
+
+<span class="term-out">By Provider</span>
+<span class="term-out"> planetary_computer  412 entries   89 MB</span>
+<span class="term-out"> aws_earth           381 entries   76 MB</span>
+<span class="term-out"> element84           298 entries   41 MB</span>
+<span class="term-out"> copernicus          756 entries   28 MB</span>
+
+<span class="term-out">Tip: pygeofetch cache clear --older-than 7d</span>`,
+
+  pipeline_run: `<span class="term-prompt">$ </span><span class="term-cmd">pygeofetch pipeline run weekly-sentinel2.yaml</span>
+
+<span class="term-info">Pipeline: weekly-sentinel2-ndvi</span>
+<span class="term-out">────────────────────────────────────────────────</span>
+
+<span class="term-info">Step 1/4: search</span>
+<span class="term-ok">✓</span> copernicus: 8 results
+<span class="term-ok">✓</span> aws_earth: 12 results
+<span class="term-ok">✓</span> planetary_computer: 11 results
+<span class="term-ok">✓</span> Deduplicated: 18 unique scenes
+
+<span class="term-info">Step 2/4: filter (expression: data.cloud_cover &lt; 5)</span>
+<span class="term-ok">✓</span> 5 scenes passed filter
+
+<span class="term-info">Step 3/4: download (bands: B04, B08)</span>
+<span class="term-ok">⬇</span> Scene 1/5 ████████████ 100%  97.4 MB
+<span class="term-ok">⬇</span> Scene 2/5 ████████████ 100%  101.2 MB
+<span class="term-ok">⬇</span> Scene 3/5 ████████████ 100%  98.8 MB
+<span class="term-ok">⬇</span> Scene 4/5 ████████████ 100%  96.1 MB
+<span class="term-ok">⬇</span> Scene 5/5 ████████████ 100%  99.3 MB
+
+<span class="term-info">Step 4/4: post_process (reproject:EPSG:4326, ndvi, cog)</span>
+<span class="term-ok">✓</span> NDVI computed for 5 scenes → ./raw/
+
+<span class="term-ok">Pipeline complete. 5 scenes. 492.8 MB. 2m 14s.</span>`
+};
+
+const termInputs = {
+  doctor: 'pygeofetch doctor',
+  providers: 'pygeofetch providers list --no-auth',
+  search_aws: 'pygeofetch search run --bbox "-74.1,40.6,-73.7,40.9" ... --providers aws_earth',
+  search_pc: 'pygeofetch search run --providers planetary_computer --cql2 "eo:cloud_cover < 5"',
+  search_multi: 'pygeofetch search run --providers aws_earth,planetary_computer,element84',
+  download: 'pygeofetch download run --from-search results.geojson --max-items 3',
+  status: 'pygeofetch status',
+  auth_list: 'pygeofetch auth list',
+  cache_stats: 'pygeofetch cache stats',
+  pipeline_run: 'pygeofetch pipeline run weekly-sentinel2.yaml',
+};
+
+function loadCmd() {
+  const key = document.getElementById('termSelect').value;
+  document.getElementById('termInput').value = termInputs[key];
+  document.getElementById('termBody').innerHTML = `<span class="term-prompt">$ </span><span class="term-cmd">${termInputs[key]}</span>\n<span class="term-out">Click ▶ Run to execute...</span>`;
+}
+
+function runCmd() {
+  const key = document.getElementById('termSelect').value;
+  const body = document.getElementById('termBody');
+  body.innerHTML = `<span class="term-out">Running...</span>`;
+  setTimeout(() => {
+    body.innerHTML = termOutputs[key] || `<span class="term-err">Unknown command.</span>`;
+    body.scrollTop = body.scrollHeight;
+  }, 320);
+}
+
+/* ── Active sidebar link on scroll ── */
+const sections = document.querySelectorAll('[id]');
+const links = document.querySelectorAll('.sb-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      links.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-56px 0px -70% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
