@@ -1,0 +1,2664 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PyGeoVision — Geospatial AI Platform Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --accent:#0ea5e9;--accent-dim:#e0f2fe;--accent-hover:#0284c7;
+  --green:#059669;--green-dim:#d1fae5;
+  --amber:#d97706;--amber-dim:#fef3c7;
+  --purple:#7c3aed;--purple-dim:#ede9fe;
+  --red:#dc2626;
+  --bg-page:#f8f9fa;--bg-surface:#ffffff;--bg-raised:#f1f3f5;--bg-code:#f6f8fa;
+  --border:#e2e8f0;--border-strong:#cbd5e1;
+  --text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--text-code:#1e293b;
+  --nav-bg:rgba(255,255,255,0.95);--nav-border:#e2e8f0;
+  --sidebar-w:268px;
+  --radius-sm:4px;--radius-md:6px;--radius-lg:10px;
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+}
+[data-theme="dark"]{
+  --accent:#38bdf8;--accent-dim:#0c2d3f;--accent-hover:#7dd3fc;
+  --green:#34d399;--green-dim:#063620;
+  --amber:#fbbf24;--amber-dim:#291800;
+  --purple:#a78bfa;--purple-dim:#1e1b4b;
+  --bg-page:#0d1117;--bg-surface:#161b22;--bg-raised:#21262d;--bg-code:#1c2128;
+  --border:#30363d;--border-strong:#484f58;
+  --text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;--text-code:#cdd9e5;
+  --nav-bg:rgba(22,27,34,0.97);--nav-border:#30363d;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg-page);color:var(--text-primary);line-height:1.65;transition:background .2s,color .2s;overflow-x:hidden;}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--nav-bg);border-bottom:1px solid var(--nav-border);backdrop-filter:blur(14px);}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:8px;}
+.nav-logo{font-size:15px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:8px;white-space:nowrap;margin-right:16px;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;}
+.nav-links a{font-size:13.5px;color:var(--text-secondary);padding:5px 11px;border-radius:var(--radius-md);transition:color .15s,background .15s;}
+.nav-links a:hover{color:var(--text-primary);background:var(--bg-raised);text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.nav-gh{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);padding:5px 10px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg-surface);transition:all .15s;}
+.nav-gh:hover{color:var(--text-primary);border-color:var(--border-strong);text-decoration:none;}
+.nav-btn{font-size:13px;font-weight:500;padding:5px 14px;background:var(--accent);color:#fff;border-radius:var(--radius-md);transition:background .15s;}
+.nav-btn:hover{background:var(--accent-hover);text-decoration:none;}
+.theme-toggle{width:34px;height:34px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg-surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;}
+.theme-toggle:hover{border-color:var(--border-strong);background:var(--bg-raised);}
+.version-badge{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:10px;background:var(--green-dim);color:var(--green);border:1px solid var(--green-dim);}
+
+/* LAYOUT */
+.docs-layout{display:flex;padding-top:56px;min-height:100vh;}
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:fixed;top:56px;left:0;bottom:0;overflow-y:auto;background:var(--bg-surface);border-right:1px solid var(--border);padding:20px 0;z-index:200;}
+.sidebar::-webkit-scrollbar{width:4px;}.sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;}
+.sb-section{padding:0 16px;margin-bottom:20px;}
+.sb-title{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);font-weight:500;margin-bottom:6px;padding:0 4px;}
+.sb-link{display:block;font-size:13px;color:var(--text-secondary);padding:5px 8px;border-radius:var(--radius-sm);transition:all .12s;line-height:1.4;}
+.sb-link:hover{color:var(--text-primary);background:var(--bg-raised);text-decoration:none;}
+.sb-link.active{color:var(--accent);background:var(--accent-dim);font-weight:500;}
+.sb-link.sub{padding-left:18px;font-size:12.5px;}
+.docs-main{margin-left:var(--sidebar-w);flex:1;min-width:0;}
+
+/* HERO */
+.hero{padding:72px 64px 56px;background:var(--bg-surface);border-bottom:1px solid var(--border);}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);color:var(--text-secondary);background:var(--bg-raised);margin-bottom:20px;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero-title{font-size:clamp(28px,4vw,46px);font-weight:600;line-height:1.12;letter-spacing:-1.5px;margin-bottom:16px;}
+.hero-title strong{color:var(--accent);}
+.hero-sub{font-size:16px;color:var(--text-secondary);line-height:1.7;max-width:680px;margin-bottom:28px;}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;padding:9px 20px;border-radius:var(--radius-md);font-size:14px;font-weight:500;transition:background .15s;}
+.btn-primary:hover{background:var(--accent-hover);text-decoration:none;}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;background:var(--bg-surface);color:var(--text-primary);padding:9px 20px;border-radius:var(--radius-md);font-size:14px;font-weight:500;border:1px solid var(--border);transition:all .15s;}
+.btn-outline:hover{border-color:var(--border-strong);background:var(--bg-raised);text-decoration:none;}
+.hero-stats{display:inline-flex;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-surface);}
+.hstat{padding:12px 24px;text-align:center;border-right:1px solid var(--border);}
+.hstat:last-child{border-right:none;}
+.hstat-val{font-size:20px;font-weight:600;letter-spacing:-0.5px;line-height:1;}
+.hstat-label{font-size:11px;color:var(--text-muted);margin-top:3px;}
+
+/* INSTALL BAR */
+.install-bar{background:var(--bg-page);border-bottom:1px solid var(--border);padding:12px 64px;}
+.install-inner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:900px;}
+.install-label{font-size:12px;color:var(--text-muted);white-space:nowrap;font-family:var(--mono);}
+.install-tabs{display:flex;gap:2px;}
+.itab{font-family:var(--mono);font-size:11.5px;padding:4px 10px;border-radius:var(--radius-sm);cursor:pointer;border:1px solid transparent;color:var(--text-secondary);background:transparent;transition:all .12s;}
+.itab.active{background:var(--bg-surface);border-color:var(--border);color:var(--text-primary);}
+.install-box{flex:1;display:flex;align-items:center;gap:10px;background:var(--bg-code);border:1px solid var(--border);border-radius:var(--radius-md);padding:7px 14px;min-width:260px;max-width:500px;}
+.install-cmd{font-family:var(--mono);font-size:13px;color:var(--green);flex:1;}
+.copy-btn{font-family:var(--mono);font-size:11px;color:var(--text-muted);background:none;border:1px solid var(--border);cursor:pointer;padding:2px 8px;border-radius:var(--radius-sm);transition:all .12s;}
+.copy-btn:hover{color:var(--text-primary);border-color:var(--border-strong);}
+.pill{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--text-muted);white-space:nowrap;}
+
+/* DOC SECTIONS */
+.doc-section{padding:56px 64px;border-bottom:1px solid var(--border);}
+.doc-section.alt{background:var(--bg-surface);}
+.sec-label{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px;}
+.sec-title{font-size:clamp(20px,2.5vw,30px);font-weight:600;letter-spacing:-0.8px;margin-bottom:10px;line-height:1.2;}
+.sec-sub{font-size:14.5px;color:var(--text-secondary);line-height:1.7;max-width:660px;margin-bottom:32px;}
+h3{font-size:17px;font-weight:600;margin:36px 0 12px;letter-spacing:-0.3px;}h3:first-child{margin-top:0;}
+h4{font-size:14px;font-weight:600;margin:24px 0 8px;font-family:var(--mono);}
+p{font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:14px;}p:last-child{margin-bottom:0;}
+
+/* CODE BLOCKS */
+.code-block{background:var(--bg-code);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:16px 0;}
+.code-header{background:var(--bg-raised);padding:9px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;}
+.cb-dot{width:10px;height:10px;border-radius:50%;}
+.cb-fname{font-family:var(--mono);font-size:12px;color:var(--text-muted);flex:1;margin-left:6px;}
+.cb-copy{font-family:var(--mono);font-size:11px;color:var(--text-muted);background:none;border:1px solid var(--border);cursor:pointer;padding:2px 8px;border-radius:var(--radius-sm);transition:all .12s;}
+.cb-copy:hover{color:var(--text-primary);border-color:var(--border-strong);}
+.code-block pre{font-family:var(--mono);font-size:13px;line-height:1.85;padding:18px 20px;overflow-x:auto;color:var(--text-code);}
+.tc{color:#8c959f;font-style:italic;}
+.ci{font-family:var(--mono);font-size:12.5px;background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1px 6px;color:var(--text-code);}
+
+/* TERMINAL */
+.terminal{background:#0d1117;border:1px solid #30363d;border-radius:var(--radius-lg);overflow:hidden;margin:16px 0;}
+.term-header{background:#161b22;border-bottom:1px solid #30363d;padding:9px 16px;display:flex;align-items:center;gap:6px;}
+.term-dot{width:10px;height:10px;border-radius:50%;}
+.term-title{font-family:var(--mono);font-size:12px;color:#8b949e;flex:1;margin-left:6px;}
+.term-body{padding:16px 20px;font-family:var(--mono);font-size:13px;line-height:1.9;color:#e6edf3;min-height:140px;max-height:440px;overflow-y:auto;white-space:pre-wrap;}
+.term-body::-webkit-scrollbar{width:4px;}.term-body::-webkit-scrollbar-thumb{background:#30363d;border-radius:4px;}
+.term-prompt{color:#7ee787;}.term-cmd{color:#e6edf3;}.term-out{color:#8b949e;}.term-ok{color:#3fb950;}.term-warn{color:#d29922;}.term-err{color:#f85149;}.term-info{color:#58a6ff;}
+.term-input-row{display:flex;align-items:center;gap:8px;padding:10px 20px;border-top:1px solid #21262d;}
+.term-input{flex:1;background:transparent;border:none;outline:none;font-family:var(--mono);font-size:13px;color:#e6edf3;}
+.term-run-btn{font-family:var(--mono);font-size:11px;background:#238636;color:#fff;border:none;padding:5px 14px;border-radius:var(--radius-sm);cursor:pointer;transition:background .15s;}
+.term-run-btn:hover{background:#2ea043;}
+.term-select{background:#21262d;border:1px solid #30363d;color:#e6edf3;font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:var(--radius-sm);cursor:pointer;}
+
+/* ALERTS */
+.alert{border-radius:var(--radius-md);padding:12px 16px;margin:16px 0;font-size:13.5px;line-height:1.6;border-left:3px solid;}
+.alert-info{background:var(--accent-dim);border-color:var(--accent);}
+.alert-warn{background:var(--amber-dim);border-color:var(--amber);}
+.alert-ok{background:var(--green-dim);border-color:var(--green);}
+.alert strong{font-weight:600;}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead{background:var(--bg-raised);}
+th{text-align:left;padding:10px 14px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-primary);}
+tr:last-child td{border-bottom:none;}tr:hover td{background:var(--bg-page);}
+td code{font-family:var(--mono);font-size:11.5px;background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1px 5px;}
+
+/* PROVIDERS */
+.pf-tabs{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;}
+.pf-tab{font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:var(--radius-md);cursor:pointer;border:1px solid var(--border);color:var(--text-secondary);background:var(--bg-surface);transition:all .12s;}
+.pf-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.providers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:16px;}
+.pcard{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;transition:border-color .15s;}
+.pcard:hover{border-color:var(--accent);}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:4px;}
+.pc-name{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--text-primary);}
+.pc-badge{font-family:var(--mono);font-size:9.5px;padding:1px 6px;border-radius:10px;white-space:nowrap;}
+.open{background:var(--green-dim);color:var(--green);}
+.auth{background:var(--bg-raised);color:var(--text-muted);border:1px solid var(--border);}
+.pc-desc{font-size:11.5px;color:var(--text-secondary);line-height:1.5;}
+.pc-chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px;}
+.pchip{font-size:10px;font-family:var(--mono);padding:1px 6px;border-radius:3px;background:var(--bg-raised);color:var(--text-muted);border:1px solid var(--border);}
+.pchip.stac{background:var(--accent-dim);color:var(--accent);}
+.pchip.sar{color:#7c3aed;background:#ede9fe;border-color:#ddd6fe;}[data-theme="dark"] .pchip.sar{color:#a78bfa;background:#1e1b4b;border-color:#312e81;}
+.pchip.vhr{color:var(--amber);background:var(--amber-dim);border-color:#fde68a;}[data-theme="dark"] .pchip.vhr{border-color:#451a03;}
+
+/* GEOAI SUBSYSTEMS */
+.subsys-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-top:16px;}
+.sscard{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px 18px;transition:border-color .15s;}
+.sscard:hover{border-color:var(--accent);}
+.ss-name{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--accent);margin-bottom:4px;}
+.ss-hint{font-size:11px;color:var(--text-muted);font-family:var(--mono);margin-bottom:8px;line-height:1.55;}
+.ss-desc{font-size:12.5px;color:var(--text-secondary);line-height:1.55;}
+.ss-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.sstag{font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--bg-raised);color:var(--text-muted);border:1px solid var(--border);}
+
+/* PIPELINES */
+.pipe-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--border);margin:16px 0;}
+.pstep{background:var(--bg-surface);padding:20px;}
+.ps-n{font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-bottom:8px;}
+.ps-icon{font-size:22px;margin-bottom:8px;}
+.ps-title{font-size:13.5px;font-weight:600;margin-bottom:5px;}
+.ps-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;}
+.pipelines-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-top:16px;}
+.plcard{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px 18px;transition:border-color .15s;}
+.plcard:hover{border-color:var(--green);}
+.pl-name{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--green);margin-bottom:6px;}
+.pl-data{font-size:11.5px;color:var(--text-muted);font-family:var(--mono);margin-bottom:6px;}
+.pl-desc{font-size:12.5px;color:var(--text-secondary);line-height:1.5;margin-bottom:10px;}
+.pl-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.pltag{font-family:var(--mono);font-size:10.5px;padding:2px 6px;border-radius:var(--radius-sm);background:var(--bg-raised);color:var(--text-muted);border:1px solid var(--border);}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:16px 0;}
+.feat-cell{background:var(--bg-surface);padding:24px;transition:background .15s;}
+.feat-cell:hover{background:var(--bg-raised);}
+.feat-icon{width:34px;height:34px;border-radius:var(--radius-md);background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;}
+.feat-icon.green{background:var(--green-dim);}
+.feat-icon.amber{background:var(--amber-dim);}
+.feat-icon.purple{background:var(--purple-dim);}
+.feat-icon.neutral{background:var(--bg-raised);border:1px solid var(--border);}
+.feat-title{font-size:13.5px;font-weight:600;margin-bottom:7px;}
+.feat-body{font-size:12.5px;color:var(--text-secondary);line-height:1.6;}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+.step-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.step-card-header{background:var(--bg-raised);padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.step-num{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-title{font-size:13.5px;font-weight:500;}
+.step-code{padding:14px 16px;font-family:var(--mono);font-size:12.5px;color:var(--text-code);line-height:1.8;overflow-x:auto;}
+
+/* FLAG TABLE */
+.flag-table{margin:16px 0;}
+.flag-row{display:grid;grid-template-columns:220px 90px 1fr;border-bottom:1px solid var(--border);padding:9px 0;align-items:start;}
+.flag-row.hdr{background:var(--bg-raised);border-radius:var(--radius-sm);padding:6px 0;}
+.flag-name{font-family:var(--mono);font-size:12px;color:var(--green);padding:0 12px;}
+.flag-type{font-family:var(--mono);font-size:11.5px;color:var(--amber);padding:0 8px;}
+.flag-desc{font-size:13px;color:var(--text-secondary);padding:0 12px;line-height:1.5;}
+.flag-default{display:inline-block;font-family:var(--mono);font-size:10.5px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;padding:0 5px;color:var(--text-muted);margin-top:3px;}
+
+/* API DOCS */
+.api-class{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:16px 0;}
+.api-class-header{background:var(--bg-raised);padding:12px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.api-class-name{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--accent);}
+.api-class-type{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:10px;background:var(--accent-dim);color:var(--accent);}
+.api-method{border-bottom:1px solid var(--border);padding:16px 20px;}
+.api-method:last-child{border-bottom:none;}
+.api-sig{font-family:var(--mono);font-size:12.5px;color:var(--text-code);margin-bottom:8px;line-height:1.6;}
+.api-sig .fn{color:var(--accent);font-weight:500;}
+.api-sig .param{color:var(--amber);}
+.api-sig .ret{color:var(--green);}
+.api-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:10px;}
+.api-params{display:flex;flex-direction:column;gap:0;}
+.api-param-row{display:grid;grid-template-columns:180px 80px 1fr;font-size:12.5px;gap:8px;padding:6px 0;border-top:1px solid var(--border);}
+.api-param-name{font-family:var(--mono);color:var(--amber);}
+.api-param-type{font-family:var(--mono);color:var(--text-muted);font-size:11px;}
+.api-param-desc{color:var(--text-secondary);}
+
+/* MODELS TABLE */
+.mbadge{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:2px 8px;border-radius:var(--radius-sm);border:1px solid var(--border);}
+.mb-seg{color:var(--accent);background:var(--accent-dim);border-color:var(--accent-dim);}
+.mb-det{color:var(--amber);background:var(--amber-dim);border-color:var(--amber-dim);}
+.mb-cls{color:var(--green);background:var(--green-dim);border-color:var(--green-dim);}
+.mb-chg{color:#dc2626;background:#fee2e2;border-color:#fecaca;}[data-theme="dark"] .mb-chg{background:#1f0a0a;border-color:#3b1111;}
+.mb-sr{color:var(--purple);background:var(--purple-dim);border-color:var(--purple-dim);}
+.mt-chk{color:var(--green);font-weight:600;}
+.mt-name{font-family:var(--mono);font-size:12.5px;color:var(--accent);}
+
+/* CALLOUTS */
+.callout-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;}
+.callout{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;}
+.callout-icon{font-size:20px;margin-bottom:8px;}
+.callout-title{font-size:13px;font-weight:600;margin-bottom:6px;}
+.callout-body{font-size:12.5px;color:var(--text-secondary);line-height:1.55;}
+
+/* LABELERS GRID */
+.labelers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:16px 0;}
+.lcard{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px;}
+.lcard:hover{border-color:var(--purple);}
+.lc-name{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--purple);margin-bottom:4px;}
+.lc-src{font-family:var(--mono);font-size:10.5px;color:var(--text-muted);margin-bottom:7px;}
+.lc-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;}
+
+/* COMPARE */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);margin:16px 0;}
+.cmp-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.cmp-table th{padding:10px 12px;background:var(--bg-raised);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;}
+.cmp-table th:first-child{text-align:left;}
+.cmp-table td{padding:9px 12px;border-bottom:1px solid var(--border);text-align:center;color:var(--text-primary);}
+.cmp-table td:first-child{text-align:left;font-family:var(--mono);font-size:12px;color:var(--text-secondary);}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table tr:hover td{background:var(--bg-page);}
+.cmp-table td.hl{font-weight:600;color:var(--accent);}
+.cmp-yes{color:var(--green);}
+.cmp-no{color:var(--text-muted);}
+
+/* ERR GRID */
+.err-grid{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+.err-row{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;display:grid;grid-template-columns:230px 1fr;gap:16px;align-items:start;}
+.err-code{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:500;}
+.err-desc{font-size:13px;color:var(--text-secondary);line-height:1.5;}
+.err-fix{font-family:var(--mono);font-size:11.5px;color:var(--green);margin-top:4px;}
+
+/* ROADMAP */
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+.rm-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;position:relative;overflow:hidden;}
+.rm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.rm-card.done::before{background:var(--green);}
+.rm-card.progress::before{background:var(--accent);}
+.rm-card.planned::before{background:var(--border-strong);}
+.rm-version{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px;}
+.rm-title{font-size:14px;font-weight:600;margin-bottom:4px;}
+.rm-date{font-family:var(--mono);font-size:11px;margin-bottom:14px;}
+.rm-date.done{color:var(--green);}.rm-date.progress{color:var(--accent);}.rm-date.planned{color:var(--text-muted);}
+.rm-items{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.rm-items li{font-size:12.5px;color:var(--text-secondary);padding-left:16px;position:relative;line-height:1.4;}
+.rm-items li::before{position:absolute;left:0;font-size:11px;}
+.rm-items li.done::before{content:"✓";color:var(--green);}
+.rm-items li.prog::before{content:"◐";color:var(--accent);}
+.rm-items li.todo::before{content:"○";color:var(--text-muted);}
+
+/* SEC GRID */
+.sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.sec-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px;}
+.sec-card-title{font-size:13.5px;font-weight:600;margin-bottom:10px;}
+.sec-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.sec-list li{font-size:13px;color:var(--text-secondary);line-height:1.5;padding-left:16px;position:relative;}
+.sec-list li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:600;}
+
+/* ARCH TABLE */
+.arch-row{display:grid;grid-template-columns:180px 120px 1fr;border-bottom:1px solid var(--border);padding:10px 0;align-items:center;}
+.arch-row.hdr{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);background:var(--bg-raised);border-radius:var(--radius-sm);}
+.arch-pkg{font-size:13px;color:var(--text-secondary);padding:0 12px;}
+.arch-badge{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:10px;margin:0 8px;display:inline-block;}
+.arch-b-data{background:var(--accent-dim);color:var(--accent);}
+.arch-b-ai{background:var(--green-dim);color:var(--green);}
+.arch-b-bridge{background:var(--amber-dim);color:var(--amber);}
+.arch-resp{font-size:12.5px;color:var(--text-secondary);padding:0 12px;}
+
+/* FOOTER */
+footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:44px 64px 28px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:36px;max-width:960px;}
+.f-logo{font-size:15px;font-weight:600;margin-bottom:8px;}.f-logo span{color:var(--accent);}
+.f-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px;}
+.f-badges{display:flex;flex-wrap:wrap;gap:6px;}
+.f-col-title{font-size:12px;font-weight:600;margin-bottom:10px;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.f-col ul li a{font-size:13px;color:var(--text-secondary);transition:color .12s;}
+.f-col ul li a:hover{color:var(--text-primary);text-decoration:none;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap;gap:10px;max-width:960px;}
+.footer-copy{font-size:12px;color:var(--text-muted);}.footer-copy a{color:var(--accent);}
+.footer-built{font-family:var(--mono);font-size:11.5px;color:var(--text-muted);}
+
+/* EX TABS */
+.ex-tabs{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;}
+.ex-tab{font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:var(--radius-md);cursor:pointer;border:1px solid var(--border);color:var(--text-secondary);background:var(--bg-surface);transition:all .12s;}
+.ex-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.ex-panel{display:none;}.ex-panel.active{display:block;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.sidebar{width:220px;}.docs-main{margin-left:220px;}.feat-grid{grid-template-columns:1fr 1fr;}.steps-grid{grid-template-columns:1fr;}.callout-row{grid-template-columns:1fr 1fr;}.roadmap-grid{grid-template-columns:1fr 1fr;}.pipe-steps{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr 1fr;gap:28px;}}
+@media(max-width:768px){.sidebar{transform:translateX(-100%);width:260px;}.docs-main{margin-left:0;}.hero,.doc-section,.install-bar,footer{padding-left:24px;padding-right:24px;}.feat-grid{grid-template-columns:1fr;}.flag-row{grid-template-columns:1fr;gap:2px;}.roadmap-grid{grid-template-columns:1fr;}.callout-row{grid-template-columns:1fr;}.err-row{grid-template-columns:1fr;}.api-param-row{grid-template-columns:1fr;}.arch-row{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">🛰️ <span>PyGeo</span>Vision</div>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#quickstart">Quick Start</a>
+      <a href="#providers">Providers</a>
+      <a href="#geoai">GeoAI</a>
+      <a href="#pipelines">Pipelines</a>
+      <a href="#cli">CLI</a>
+      <a href="#api">Python API</a>
+    </div>
+    <div class="nav-right">
+      <span class="version-badge">v1.0.0</span>
+      <a href="https://github.com/pygeovision/pygeovision" class="nav-gh" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.34C3.73 14.36 3.26 12.9 3.26 12.9c-.36-.92-.88-1.16-.88-1.16-.72-.49.05-.48.05-.48.8.06 1.22.82 1.22.82.71 1.22 1.86.87 2.31.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.67 7.67 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 8 0z"/></svg>
+        GitHub
+      </a>
+      <a href="#quickstart" class="nav-btn">Get Started →</a>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="docs-layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sb-section">
+    <div class="sb-title">Getting Started</div>
+    <a href="#overview" class="sb-link active">Overview</a>
+    <a href="#architecture" class="sb-link">Architecture</a>
+    <a href="#install" class="sb-link">Installation</a>
+    <a href="#quickstart" class="sb-link">Quick Start</a>
+    <a href="#demo" class="sb-link">Interactive Demo</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Authentication</div>
+    <a href="#auth-add" class="sb-link">Adding Credentials</a>
+    <a href="#auth-env" class="sb-link">Environment Variables</a>
+    <a href="#auth-table" class="sb-link">Provider Auth Types</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Satellite Data</div>
+    <a href="#search" class="sb-link">Search API</a>
+    <a href="#search-flags" class="sb-link sub">All Flags</a>
+    <a href="#search-formats" class="sb-link sub">Output Formats</a>
+    <a href="#download" class="sb-link">Download API</a>
+    <a href="#download-flags" class="sb-link sub">All Flags</a>
+    <a href="#download-postprocess" class="sb-link sub">Post-Processing</a>
+    <a href="#providers" class="sb-link">22 Providers</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">GeoAI</div>
+    <a href="#geoai" class="sb-link">24 Subsystems</a>
+    <a href="#geoai-segment" class="sb-link sub">Segmentation</a>
+    <a href="#geoai-detect" class="sb-link sub">Detection</a>
+    <a href="#geoai-change" class="sb-link sub">Change Detection</a>
+    <a href="#geoai-foundation" class="sb-link sub">Foundation Models</a>
+    <a href="#geoai-train" class="sb-link sub">Model Training</a>
+    <a href="#geoai-embed" class="sb-link sub">Embeddings</a>
+    <a href="#geoai-utils" class="sb-link sub">Utilities</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Pipelines</div>
+    <a href="#pipelines" class="sb-link">10 E2E Pipelines</a>
+    <a href="#pipeline-yaml" class="sb-link sub">YAML Orchestration</a>
+    <a href="#pipeline-builder" class="sb-link sub">Pipeline Builder</a>
+    <a href="#pipeline-schedule" class="sb-link sub">Scheduling</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Own AI Stack</div>
+    <a href="#models" class="sb-link">Model Registry</a>
+    <a href="#trainer" class="sb-link">GeoTrainer</a>
+    <a href="#inference" class="sb-link">Tiled Inference</a>
+    <a href="#labeling" class="sb-link">Auto Labeling</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-title">Reference</div>
+    <a href="#cli" class="sb-link">CLI Reference</a>
+    <a href="#api" class="sb-link">Python API</a>
+    <a href="#config" class="sb-link">Configuration</a>
+    <a href="#errors" class="sb-link">Error Handling</a>
+    <a href="#security" class="sb-link">Security</a>
+    <a href="#docker" class="sb-link">Docker</a>
+    <a href="#testing" class="sb-link">Testing</a>
+    <a href="#compare" class="sb-link">Comparisons</a>
+    <a href="#roadmap" class="sb-link">Roadmap</a>
+  </div>
+</aside>
+
+<main class="docs-main">
+
+<!-- HERO -->
+<div class="hero" id="overview">
+  <div class="badge"><span class="badge-dot"></span>v1.0.0 · 208 Tests Passing · Production Ready</div>
+  <h1 class="hero-title">The complete <strong>Geospatial AI</strong><br>platform — satellite to insight</h1>
+  <p class="hero-sub">PyGeoVision unifies PyGeoFetch (22+ satellite providers) and GeoAI (24 AI subsystems) into a single production-ready Python platform. Search, download, infer, train, and export — all from one coherent API, CLI, or YAML pipeline.</p>
+  <div class="hero-actions">
+    <a href="#quickstart" class="btn-primary">Quick Start →</a>
+    <a href="#demo" class="btn-outline">Interactive Demo</a>
+    <a href="#pipelines" class="btn-outline">View Pipelines</a>
+    <a href="https://github.com/pygeovision/pygeovision" class="btn-outline" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.34C3.73 14.36 3.26 12.9 3.26 12.9c-.36-.92-.88-1.16-.88-1.16-.72-.49.05-.48.05-.48.8.06 1.22.82 1.22.82.71 1.22 1.86.87 2.31.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.67 7.67 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0 0 8 0z"/></svg>
+      GitHub
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-val">22+</div><div class="hstat-label">Satellite Providers</div></div>
+    <div class="hstat"><div class="hstat-val">24</div><div class="hstat-label">GeoAI Subsystems</div></div>
+    <div class="hstat"><div class="hstat-val">10</div><div class="hstat-label">E2E Pipelines</div></div>
+    <div class="hstat"><div class="hstat-val">14</div><div class="hstat-label">Model Architectures</div></div>
+    <div class="hstat"><div class="hstat-val">208</div><div class="hstat-label">Tests Passing</div></div>
+  </div>
+</div>
+
+<!-- INSTALL BAR -->
+<div class="install-bar" id="install">
+  <div class="install-inner">
+    <span class="install-label">$ install</span>
+    <div class="install-tabs">
+      <button class="itab active" onclick="setInstall('core',this)">core</button>
+      <button class="itab" onclick="setInstall('geoai',this)">+geoai</button>
+      <button class="itab" onclick="setInstall('geo',this)">+geo</button>
+      <button class="itab" onclick="setInstall('all',this)">all</button>
+    </div>
+    <div class="install-box">
+      <span class="install-cmd" id="install-cmd">pip install pygeovision</span>
+      <button class="copy-btn" onclick="copyInstall()">copy</button>
+    </div>
+    <span class="pill">Apache 2.0</span>
+    <span class="pill">Python 3.10+</span>
+  </div>
+</div>
+
+<!-- ARCHITECTURE -->
+<div class="doc-section alt" id="architecture">
+  <div class="sec-label">Design</div>
+  <h2 class="sec-title">Architecture — Three-Layer Design</h2>
+  <p class="sec-sub">PyGeoVision never reimplements PyGeoFetch or GeoAI. All data operations delegate to PyGeoFetch. All AI operations delegate to GeoAI. PyGeoVision is the integration layer that makes them work seamlessly together.</p>
+
+  <div class="table-wrap" style="margin-bottom:24px;">
+    <table>
+      <thead><tr><th>Layer</th><th>Package</th><th>Role</th><th>Access via</th></tr></thead>
+      <tbody>
+        <tr><td><span style="font-size:18px;">🛰️</span> <strong>Data</strong></td><td><code>pygeofetch</code></td><td>Search &amp; download from 22+ providers — auth, caching, parallel downloads, post-processing, YAML pipeline orchestration, STAC 1.0 output</td><td><code>client.search()</code> · <code>client.download()</code> · <code>client.data.*</code></td></tr>
+        <tr><td><span style="font-size:18px;">🤖</span> <strong>AI</strong></td><td><code>geoai-py</code></td><td>Full AI stack — segmentation, detection, classification, change detection, SAM, foundation models (Prithvi, DINOv3), embeddings, cloud masking, super-resolution, ONNX export, VLM captioning</td><td><code>client.geoai.*</code> (lazy-loaded)</td></tr>
+        <tr><td><span style="font-size:18px;">🔗</span> <strong>Bridge</strong></td><td><code>pygeovision</code></td><td>Unified API, 10 end-to-end pipelines, own model registry (14 architectures), GeoTrainer, TiledInference, 7 auto-labelers, CLI, YAML orchestration, experiment tracking</td><td><code>client.pipeline()</code> · <code>pygeovision</code> CLI</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>What PyGeoVision adds on top</h3>
+  <div class="feat-grid">
+    <div class="feat-cell">
+      <div class="feat-icon">🔗</div>
+      <div class="feat-title">Unified API</div>
+      <div class="feat-body">One <code class="ci">PyGeoVision()</code> client exposes everything — no need to import or configure PyGeoFetch and GeoAI separately. Lazy-loading means GeoAI only imports when you first access <code class="ci">client.geoai</code>.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon green">⚡</div>
+      <div class="feat-title">10 E2E Pipelines</div>
+      <div class="feat-body">One call from bounding box to finished GeoJSON/GeoTIFF: <code class="ci">client.pipeline("building_footprints", bbox=..., date="2024-06")</code>. PyGeoFetch fetches the data, GeoAI runs the model, PyGeoVision glues them together.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon amber">🏋️</div>
+      <div class="feat-title">Own Training Stack</div>
+      <div class="feat-body">14 registered model architectures, GeoTrainer (6 geospatial losses), TiledInference with Gaussian blending, 7 auto-labelers, ONNX export — all built on top of, but separate from, GeoAI's inference stack.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon purple">🏷️</div>
+      <div class="feat-title">7 Auto-Labelers</div>
+      <div class="feat-body">Generate training labels automatically from OSM, Microsoft Buildings, Google Open Buildings, ESA WorldCover, Google Dynamic World, SAM, and foundation models — zero manual annotation for common classes.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon neutral">🖥️</div>
+      <div class="feat-title">Full CLI</div>
+      <div class="feat-body">The <code class="ci">pygeovision</code> CLI covers everything: data search/download, AI inference, model training, pipeline orchestration, credential management, cache, and status — all in one tool.</div>
+    </div>
+    <div class="feat-cell">
+      <div class="feat-icon neutral">📋</div>
+      <div class="feat-title">YAML Pipelines</div>
+      <div class="feat-body">Define recurring geospatial workflows in YAML — search, filter, download, post-process, export, notify — and schedule on cron. Validate before running. Retry individual steps.</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK START -->
+<div class="doc-section" id="quickstart">
+  <div class="sec-label">Getting Started</div>
+  <h2 class="sec-title">Up and running in 5 minutes</h2>
+  <p class="sec-sub">10 providers work immediately with no credentials. Free data includes Sentinel-2, Landsat, NAIP, and more via Microsoft Planetary Computer, AWS Earth, and Element84.</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">1</div><div class="step-title">Install</div></div>
+      <div class="step-code"><span class="tc"># Core + full GeoAI stack</span>
+pip install "pygeovision[geoai]"
+
+<span class="tc"># Add raster / vector processing</span>
+pip install "pygeovision[geo]"
+
+<span class="tc"># Everything</span>
+pip install "pygeovision[all]"
+
+<span class="tc"># Verify</span>
+pygeovision status</div>
+    </div>
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">2</div><div class="step-title">Add credentials (optional — free providers work immediately)</div></div>
+      <div class="step-code"><span class="tc"># CLI</span>
+pygeovision data auth add usgs \
+  --username USER --password PASS
+pygeovision data auth add planet \
+  --api-key PL-xxxxx
+pygeovision data auth add copernicus \
+  --client-id ID --client-secret SECRET
+
+<span class="tc"># Python</span>
+client.add_credentials("usgs",
+    username="u", password="p")</div>
+    </div>
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">3</div><div class="step-title">Search satellite data</div></div>
+      <div class="step-code">pygeovision data search \
+  --bbox "-0.15,51.47,-0.10,51.52" \
+  --date 2024-06 \
+  --providers planetary_computer \
+  --cloud-max 10 \
+  --output results.geojson</div>
+    </div>
+    <div class="step-card">
+      <div class="step-card-header"><div class="step-num">4</div><div class="step-title">Download + run GeoAI</div></div>
+      <div class="step-code">pygeovision data download \
+  --from-search results.geojson \
+  --output ./data/ --parallel 4
+
+<span class="tc"># Or: one-command E2E pipeline</span>
+pygeovision pipeline building_footprints \
+  --bbox "-0.15,51.47,-0.10,51.52" \
+  --date 2024-06 \
+  --output ./results/</div>
+    </div>
+  </div>
+
+  <h3>Five-minute Python walkthrough</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">five_minute_start.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>import pygeovision as pgv
+
+<span class="tc"># ── 1. Initialise ─────────────────────────────────────────────────────────</span>
+client = pgv.PyGeoVision()
+print(client)
+<span class="tc"># → PyGeoVision(v1.0.0, pygeofetch=✓, geoai=✓)</span>
+
+<span class="tc"># ── 2. Add credentials (open providers need no credentials) ───────────────</span>
+client.add_credentials("usgs",       username="user",    password="pass")
+client.add_credentials("planet",     api_key="PL-xxxx")
+client.add_credentials("copernicus", client_id="id",     client_secret="s")
+
+<span class="tc"># ── 3. Search 22+ providers via PyGeoFetch ────────────────────────────────</span>
+results = client.search(
+    bbox=(-0.15, 51.47, -0.10, 51.52),          <span class="tc"># London, WGS84</span>
+    date_range=("2024-06-01", "2024-06-30"),
+    providers=["planetary_computer", "copernicus"],
+    cloud_cover_max=10,
+    max_results=20,
+    sort_by="cloud_cover",
+)
+for r in results[:3]:
+    print(r)
+<span class="tc"># [planetary_computer] Sentinel-2C | 2024-06-03 | cloud=0% | score=0.99</span>
+
+<span class="tc"># ── 4. Download + post-process via PyGeoFetch ─────────────────────────────</span>
+downloads = client.download(
+    results[:3], output_dir="./sentinel2/",
+    parallel=4, verify_checksum=True,
+    post_process=["reproject:EPSG:4326", "cog"],
+)
+
+<span class="tc"># ── 5. GeoAI: segment buildings ──────────────────────────────────────────</span>
+client.geoai.segment.buildings(
+    downloads[0].path,
+    output_vector="buildings.geojson",
+    confidence_threshold=0.5,
+)
+
+<span class="tc"># ── 6. GeoAI: change detection ────────────────────────────────────────────</span>
+client.geoai.change.detect(
+    "scene_2020.tif", "scene_2024.tif",
+    output_path="changes.tif",
+)
+
+<span class="tc"># ── 7. End-to-end pipeline (search + download + AI in one call) ───────────</span>
+result = client.pipeline(
+    "building_footprints",
+    bbox=(-0.15, 51.47, -0.10, 51.52),
+    date="2024-06", output_dir="./results/",
+)
+print(result.output_path)  <span class="tc"># ./results/building_footprints/prediction.tif</span>
+print(result.stats)        <span class="tc"># {"buildings_detected": 1847, "coverage_pct": 0.312}</span></pre>
+  </div>
+
+  <h3 id="demo">Interactive demo — try commands</h3>
+  <div class="terminal">
+    <div class="term-header">
+      <div class="term-dot" style="background:#ff5f56"></div>
+      <div class="term-dot" style="background:#ffbd2e"></div>
+      <div class="term-dot" style="background:#27c93f"></div>
+      <span class="term-title">pygeovision — interactive demo</span>
+      <select class="term-select" id="termSelect" onchange="loadCmd()">
+        <option value="status">pygeovision status</option>
+        <option value="search">data search</option>
+        <option value="download">data download</option>
+        <option value="segment">ai segment buildings</option>
+        <option value="detect">ai detect grounded</option>
+        <option value="change">ai change detection</option>
+        <option value="train">ai train segmentation</option>
+        <option value="pipeline_bldg">pipeline building_footprints</option>
+        <option value="pipeline_change">pipeline change_detection</option>
+        <option value="pipeline_lc">pipeline land_cover</option>
+        <option value="models">models list</option>
+        <option value="auth">data auth list</option>
+      </select>
+    </div>
+    <div class="term-body" id="termBody"><span class="term-prompt">$ </span><span class="term-cmd">pygeovision status</span>
+<span class="term-out">Select a command above and click ▶ Run</span></div>
+    <div class="term-input-row">
+      <span class="term-prompt">$ </span>
+      <input class="term-input" id="termInput" value="pygeovision status" readonly/>
+      <button class="term-run-btn" onclick="runCmd()">▶ Run</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div class="doc-section alt" id="auth-add">
+  <div class="sec-label">Authentication</div>
+  <h2 class="sec-title">Managing Provider Credentials</h2>
+  <p class="sec-sub">All credentials are stored in your system keyring (macOS Keychain, Windows Credential Manager, Linux Secret Service) via PyGeoFetch — never in plain-text files. Environment variables are fully supported for CI/CD.</p>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">auth — CLI + Python</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc">──── CLI ────────────────────────────────────────────────────────────────────</span>
+<span class="tc"># Username / password (USGS, NASA, Copernicus)</span>
+pygeovision data auth add usgs --username USER --password PASS
+pygeovision data auth add nasa_earthdata --username USER --password PASS
+pygeovision data auth add copernicus --client-id ID --client-secret SECRET
+
+<span class="tc"># API key (Planet, OpenTopography, Airbus, TerraBotics)</span>
+pygeovision data auth add planet --api-key PL-xxxx
+pygeovision data auth add opentopography --api-key OT-xxxx
+
+<span class="tc"># OAuth2 client credentials (Sentinel Hub)</span>
+pygeovision data auth add sentinel_hub --client-id ID --client-secret SECRET
+
+<span class="tc"># List, test, remove</span>
+pygeovision data auth list
+pygeovision data auth test usgs            <span class="tc"># → True</span>
+pygeovision data auth remove planet --yes
+
+<span class="tc">──── Python ─────────────────────────────────────────────────────────────────</span>
+import pygeovision as pgv
+client = pgv.PyGeoVision()
+
+<span class="tc"># Chaining</span>
+client \
+    .add_credentials("usgs",        username="u",  password="p") \
+    .add_credentials("planet",      api_key="PL-xxxx") \
+    .add_credentials("copernicus",  client_id="id", client_secret="secret") \
+    .add_credentials("sentinel_hub",client_id="id", client_secret="secret")
+
+<span class="tc"># Test provider reachability</span>
+client.test_provider("planetary_computer")  <span class="tc"># True</span>
+client.data.list_credentials()              <span class="tc"># ['usgs', 'planet', 'copernicus']</span></pre>
+  </div>
+
+  <h3 id="auth-env">Environment variables</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">.env / CI/CD / Docker</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Format: pygeofetch_{PROVIDER}_{FIELD} (delegated to PyGeoFetch)</span>
+export pygeofetch_USGS_USERNAME=myuser
+export pygeofetch_USGS_PASSWORD=mypass
+export pygeofetch_PLANET_API_KEY=PL-abc123
+export pygeofetch_COPERNICUS_USERNAME=email@example.com
+export pygeofetch_COPERNICUS_PASSWORD=pass
+export pygeofetch_NASA_EARTHDATA_USERNAME=user
+export pygeofetch_OPENTOPOGRAPHY_API_KEY=mykey
+export pygeofetch_SENTINEL_HUB_CLIENT_ID=id
+export pygeofetch_SENTINEL_HUB_CLIENT_SECRET=secret
+
+<span class="tc"># PyGeoVision global settings</span>
+export PYGEOVISION_GPU_DEVICE=cuda
+export PYGEOVISION_GPU_MIXED_PRECISION=true
+export PYGEOVISION_TRAINING_BATCH_SIZE=32
+export PYGEOVISION_MODEL_HUB_CACHE_DIR=/data/models
+export PYGEOVISION_LOG_LEVEL=DEBUG</pre>
+  </div>
+
+  <div class="alert alert-warn"><strong>Headless Linux / Docker:</strong> If no D-Bus/keyring daemon is running, set <code class="ci">PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring</code> and use environment variables for all credentials.</div>
+
+  <h3 id="auth-table">Provider authentication types</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Provider</th><th>Auth Type</th><th>Free?</th><th>Register At</th></tr></thead>
+      <tbody>
+        <tr><td><code>planetary_computer</code></td><td>None (SAS tokens auto-generated)</td><td>✓ Free</td><td>—</td></tr>
+        <tr><td><code>aws_earth</code></td><td>None (public S3)</td><td>✓ Free</td><td>—</td></tr>
+        <tr><td><code>element84</code></td><td>None (public STAC)</td><td>✓ Free</td><td>—</td></tr>
+        <tr><td><code>noaa_big_data</code></td><td>None (AWS Open Data)</td><td>✓ Free</td><td>—</td></tr>
+        <tr><td><code>esa_scihub</code></td><td>None (public mirror)</td><td>✓ Free</td><td>—</td></tr>
+        <tr><td><code>jaxa_earth</code></td><td>None (public FTP/HTTP)</td><td>✓ Free</td><td>—</td></tr>
+        <tr><td><code>usgs</code></td><td>Username / Password (M2M API)</td><td>✓ Free</td><td><a href="https://ers.cr.usgs.gov/register" target="_blank">ers.cr.usgs.gov</a></td></tr>
+        <tr><td><code>copernicus</code></td><td>OAuth2 client credentials</td><td>✓ Free</td><td><a href="https://dataspace.copernicus.eu" target="_blank">dataspace.copernicus.eu</a></td></tr>
+        <tr><td><code>nasa_earthdata</code></td><td>Username / Password</td><td>✓ Free</td><td><a href="https://urs.earthdata.nasa.gov" target="_blank">urs.earthdata.nasa.gov</a></td></tr>
+        <tr><td><code>planet</code></td><td>API Key</td><td>Subscription</td><td><a href="https://www.planet.com/account" target="_blank">planet.com/account</a></td></tr>
+        <tr><td><code>sentinel_hub</code></td><td>OAuth2 client credentials</td><td>Freemium</td><td><a href="https://apps.sentinel-hub.com" target="_blank">apps.sentinel-hub.com</a></td></tr>
+        <tr><td><code>maxar_gbdx</code></td><td>API Token</td><td>Commercial</td><td><a href="https://developers.maxar.com" target="_blank">developers.maxar.com</a></td></tr>
+        <tr><td><code>airbus_oneatlas</code></td><td>API Key</td><td>Commercial</td><td><a href="https://oneatlas.airbus.com" target="_blank">oneatlas.airbus.com</a></td></tr>
+        <tr><td><code>opentopography</code></td><td>API Key</td><td>✓ Free tier</td><td><a href="https://portal.opentopography.org" target="_blank">portal.opentopography.org</a></td></tr>
+        <tr><td><code>google_earth_engine</code></td><td>Service Account JSON</td><td>Free tier</td><td><a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a></td></tr>
+        <tr><td><code>alaska_satellite_facility</code></td><td>Earthdata (same as NASA)</td><td>✓ Free</td><td><a href="https://urs.earthdata.nasa.gov" target="_blank">urs.earthdata.nasa.gov</a></td></tr>
+        <tr><td><code>terrabotics</code></td><td>API Key</td><td>Commercial</td><td><a href="https://terrabotics.earth" target="_blank">terrabotics.earth</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="doc-section" id="search">
+  <div class="sec-label">Satellite Data — PyGeoFetch</div>
+  <h2 class="sec-title">Searching Satellite Data</h2>
+  <p class="sec-sub">Federated search across all configured providers simultaneously. Results are deduplicated, scored by cloud cover and recency, and returned as STAC 1.0-compliant objects.</p>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">search_examples.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>import pygeovision as pgv
+client = pgv.PyGeoVision()
+
+<span class="tc"># ── Basic search — free providers, no credentials ────────────────────────</span>
+results = client.search(
+    bbox=(-74.1, 40.6, -73.7, 40.9),
+    date_range=("2024-01-01", "2024-06-01"),
+    providers=["planetary_computer", "aws_earth", "element84"],
+    cloud_cover_max=10,
+    max_results=50,
+    sort_by="cloud_cover",
+)
+for r in results[:3]:
+    print(r)  <span class="tc"># [planetary_computer] Sentinel-2B | 2024-02-18 | cloud=2%</span>
+
+<span class="tc"># ── By satellite shortcut ─────────────────────────────────────────────────</span>
+results = client.search(
+    bbox=..., date_range=..., satellite="sentinel-2",
+)
+
+<span class="tc"># ── By STAC collection ────────────────────────────────────────────────────</span>
+results = client.search(
+    bbox=..., date_range=...,
+    collections=["sentinel-2-l2a", "landsat-c2-l2"],
+)
+
+<span class="tc"># ── CQL2 advanced filter (Planetary Computer, Element84) ─────────────────</span>
+results = client.search(
+    bbox=..., date_range=...,
+    providers=["planetary_computer"],
+    cql2_filter="eo:cloud_cover &lt; 5 AND platform = 'sentinel-2b'",
+)
+
+<span class="tc"># ── SearchResult properties ───────────────────────────────────────────────</span>
+r = results[0]
+r.id           <span class="tc"># 'S2C_MSIL2A_20240603T153811_R001'</span>
+r.provider     <span class="tc"># 'planetary_computer'</span>
+r.satellite    <span class="tc"># 'Sentinel-2C'</span>
+r.date         <span class="tc"># '2024-06-03'</span>
+r.cloud_cover  <span class="tc"># 0.0</span>
+r.bbox         <span class="tc"># (-0.15, 51.47, -0.10, 51.52)</span>
+r.score        <span class="tc"># 0.99</span>
+r.resolution_m <span class="tc"># 10.0</span>
+r.is_sar       <span class="tc"># False</span>
+r.to_stac_item()   <span class="tc"># pystac Item object</span></pre>
+  </div>
+
+  <h3 id="search-flags">All search flags</h3>
+  <div class="flag-table">
+    <div class="flag-row hdr"><div class="flag-name" style="color:var(--text-muted)">Flag / Parameter</div><div class="flag-type" style="color:var(--text-muted)">Type</div><div class="flag-desc" style="color:var(--text-muted)">Description</div></div>
+    <div class="flag-row"><div class="flag-name">--bbox / bbox</div><div class="flag-type">string/tuple</div><div class="flag-desc">Bounding box <code class="ci">"minlon,minlat,maxlon,maxlat"</code>. Longitude first (WGS84).</div></div>
+    <div class="flag-row"><div class="flag-name">--date / date_range</div><div class="flag-type">string/tuple</div><div class="flag-desc">Date range. CLI: <code class="ci">2024-06</code> (full month) or <code class="ci">2024-06-01:2024-06-30</code>. Python: tuple of two ISO strings.<div class="flag-default">last 30 days</div></div></div>
+    <div class="flag-row"><div class="flag-name">--cloud-max</div><div class="flag-type">int</div><div class="flag-desc">Maximum cloud cover percentage (0–100).<div class="flag-default">100</div></div></div>
+    <div class="flag-row"><div class="flag-name">--providers</div><div class="flag-type">list</div><div class="flag-desc">Comma-separated provider IDs. E.g. <code class="ci">planetary_computer,copernicus,usgs</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--satellite</div><div class="flag-type">string</div><div class="flag-desc">Shortcut: <code class="ci">sentinel-2</code>, <code class="ci">landsat</code>, <code class="ci">planet</code>, <code class="ci">dem</code>. Auto-selects appropriate providers.</div></div>
+    <div class="flag-row"><div class="flag-name">--collections</div><div class="flag-type">list</div><div class="flag-desc">STAC collection IDs. E.g. <code class="ci">sentinel-2-l2a,landsat-c2-l2</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--max-results</div><div class="flag-type">int</div><div class="flag-desc">Maximum total results across all providers.<div class="flag-default">100</div></div></div>
+    <div class="flag-row"><div class="flag-name">--sort-by</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">datetime</code>, <code class="ci">cloud_cover</code>, <code class="ci">score</code>, <code class="ci">satellite</code>.<div class="flag-default">datetime</div></div></div>
+    <div class="flag-row"><div class="flag-name">--sort-order</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">asc</code> or <code class="ci">desc</code>.<div class="flag-default">desc</div></div></div>
+    <div class="flag-row"><div class="flag-name">--cql2</div><div class="flag-type">string</div><div class="flag-desc">CQL2 filter expression. Applied to STAC-capable providers.</div></div>
+    <div class="flag-row"><div class="flag-name">--output</div><div class="flag-type">path</div><div class="flag-desc">Save results to file (GeoJSON by default).</div></div>
+    <div class="flag-row"><div class="flag-name">--format</div><div class="flag-type">choice</div><div class="flag-desc">table, json, stac, geojson, geoparquet, csv, ids.<div class="flag-default">table</div></div></div>
+    <div class="flag-row"><div class="flag-name">--on-provider-failure</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">skip</code>, <code class="ci">abort</code>, <code class="ci">retry</code>. Behaviour when a provider errors.<div class="flag-default">skip</div></div></div>
+    <div class="flag-row"><div class="flag-name">--no-cache</div><div class="flag-type">flag</div><div class="flag-desc">Bypass the search result cache.</div></div>
+  </div>
+
+  <h3 id="search-formats">Output formats</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Format</th><th>Flag</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>table</code></td><td><code>--format table</code></td><td>Pretty terminal table. ID, date, cloud%, score, satellite. Default.</td></tr>
+        <tr><td><code>geojson</code></td><td><code>--format geojson</code></td><td>GeoJSON FeatureCollection. Open in QGIS, ArcGIS, or Leaflet.</td></tr>
+        <tr><td><code>stac</code></td><td><code>--format stac</code></td><td>STAC 1.0 ItemCollection. Compatible with pystac-client and any STAC tool.</td></tr>
+        <tr><td><code>geoparquet</code></td><td><code>--format geoparquet</code></td><td>GeoParquet binary. Requires geopandas. Best for large result sets.</td></tr>
+        <tr><td><code>csv</code></td><td><code>--format csv</code></td><td>CSV with id, provider, satellite, datetime, cloud_cover, bbox.</td></tr>
+        <tr><td><code>json</code></td><td><code>--format json</code></td><td>Full JSON array with all properties for scripting.</td></tr>
+        <tr><td><code>ids</code></td><td><code>--format ids</code></td><td>Scene IDs only, one per line. For shell scripting.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- DOWNLOAD -->
+<div class="doc-section alt" id="download">
+  <div class="sec-label">Satellite Data — Download</div>
+  <h2 class="sec-title">Downloading Satellite Data</h2>
+  <p class="sec-sub">Parallel, resumable downloads with SHA256 verification, exponential backoff retry, bandwidth throttling, band selection, and a composable post-processing chain.</p>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">download_examples.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># ── Basic download ────────────────────────────────────────────────────────</span>
+downloads = client.download(
+    results[:3], output_dir="./data/",
+    parallel=4, verify_checksum=True,
+)
+
+<span class="tc"># ── RGB bands only — ~150 MB vs 600 MB full scene ─────────────────────────</span>
+downloads = client.download(
+    results[:5], output_dir="./data/",
+    bands=["B02", "B03", "B04"],
+)
+
+<span class="tc"># ── Full post-processing chain ─────────────────────────────────────────────</span>
+downloads = client.download(
+    results[:3], output_dir="./processed/",
+    parallel=4, retry_attempts=5,
+    verify_checksum=True, resume=True,
+    bandwidth_limit_mb=20.0,
+    post_process=["unzip", "reproject:EPSG:4326",
+                  "compress:lzw", "cog"],
+)
+
+<span class="tc"># ── NDVI workflow: Red + NIR → NDVI → COG ─────────────────────────────────</span>
+downloads = client.download(
+    results[:3], output_dir="./ndvi/",
+    bands=["B04", "B08"],
+    post_process=["reproject:EPSG:4326", "ndvi", "cog"],
+)
+
+<span class="tc"># ── DownloadResult properties ─────────────────────────────────────────────</span>
+d = downloads[0]
+d.success            <span class="tc"># True</span>
+d.path               <span class="tc"># Path('./data/S2C_MSIL2A_20240603_visual.tif')</span>
+d.size_mb            <span class="tc"># 245.3</span>
+d.duration_seconds   <span class="tc"># 12.1</span>
+d.checksum_verified  <span class="tc"># True</span></pre>
+  </div>
+
+  <h3 id="download-flags">All download flags</h3>
+  <div class="flag-table">
+    <div class="flag-row hdr"><div class="flag-name" style="color:var(--text-muted)">Flag</div><div class="flag-type" style="color:var(--text-muted)">Type</div><div class="flag-desc" style="color:var(--text-muted)">Description</div></div>
+    <div class="flag-row"><div class="flag-name">--from-search</div><div class="flag-type">path</div><div class="flag-desc">GeoJSON results file from <code class="ci">data search --output</code>. Required for CLI.</div></div>
+    <div class="flag-row"><div class="flag-name">--output</div><div class="flag-type">path</div><div class="flag-desc">Output directory. Created if missing.<div class="flag-default">./pgv_data/</div></div></div>
+    <div class="flag-row"><div class="flag-name">--parallel</div><div class="flag-type">int</div><div class="flag-desc">Concurrent download workers.<div class="flag-default">2</div></div></div>
+    <div class="flag-row"><div class="flag-name">--retry</div><div class="flag-type">int</div><div class="flag-desc">Max retry attempts with exponential backoff.<div class="flag-default">3</div></div></div>
+    <div class="flag-row"><div class="flag-name">--verify-checksum</div><div class="flag-type">flag</div><div class="flag-desc">SHA256 verification after each download. Auto-retries on mismatch.</div></div>
+    <div class="flag-row"><div class="flag-name">--resume</div><div class="flag-type">flag</div><div class="flag-desc">Resume interrupted downloads from last byte.<div class="flag-default">on</div></div></div>
+    <div class="flag-row"><div class="flag-name">--bandwidth-limit</div><div class="flag-type">string</div><div class="flag-desc">Throttle: e.g. <code class="ci">10MB</code>, <code class="ci">500KB</code>. 0 = unlimited.</div></div>
+    <div class="flag-row"><div class="flag-name">--bands</div><div class="flag-type">list</div><div class="flag-desc">Comma-separated band names. E.g. <code class="ci">B02,B03,B04</code>. Default: all data assets.</div></div>
+    <div class="flag-row"><div class="flag-name">--post-process</div><div class="flag-type">string</div><div class="flag-desc">Comma-separated processing chain. E.g. <code class="ci">"unzip,reproject:EPSG:4326,cog"</code>.</div></div>
+    <div class="flag-row"><div class="flag-name">--on-failure</div><div class="flag-type">choice</div><div class="flag-desc"><code class="ci">skip</code>, <code class="ci">abort</code>, <code class="ci">retry</code>.<div class="flag-default">skip</div></div></div>
+    <div class="flag-row"><div class="flag-name">--max-items</div><div class="flag-type">int</div><div class="flag-desc">Limit to first N items from the results file.</div></div>
+    <div class="flag-row"><div class="flag-name">--notify</div><div class="flag-type">string</div><div class="flag-desc"><code class="ci">webhook:URL</code> or <code class="ci">email:ADDRESS</code>. Repeatable for multiple targets.</div></div>
+  </div>
+
+  <h3 id="download-postprocess">Post-processing chain actions</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Action</th><th>Syntax</th><th>Description</th><th>Requires</th></tr></thead>
+      <tbody>
+        <tr><td><code>unzip</code></td><td><code>unzip</code></td><td>Extract ZIP/TAR archives</td><td>—</td></tr>
+        <tr><td><code>reproject</code></td><td><code>reproject:EPSG:4326</code></td><td>Reproject to any CRS</td><td>rasterio</td></tr>
+        <tr><td><code>compress</code></td><td><code>compress:lzw</code></td><td>GeoTIFF compression (lzw, deflate, zstd)</td><td>rasterio</td></tr>
+        <tr><td><code>cog</code></td><td><code>cog</code></td><td>Cloud Optimized GeoTIFF conversion</td><td>rasterio</td></tr>
+        <tr><td><code>clip</code></td><td><code>clip:file.geojson</code></td><td>Clip raster to polygon</td><td>rasterio</td></tr>
+        <tr><td><code>resample</code></td><td><code>resample:10</code></td><td>Resample to N metres</td><td>rasterio</td></tr>
+        <tr><td><code>ndvi</code></td><td><code>ndvi</code></td><td>Compute NDVI from Red + NIR bands</td><td>rasterio</td></tr>
+        <tr><td><code>ndwi</code></td><td><code>ndwi</code></td><td>Compute NDWI water index</td><td>rasterio</td></tr>
+        <tr><td><code>merge</code></td><td><code>merge</code></td><td>Mosaic overlapping scenes</td><td>rasterio</td></tr>
+        <tr><td><code>pan-sharpen</code></td><td><code>pan-sharpen</code></td><td>Pan-sharpen multispectral + panchromatic</td><td>rasterio</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PROVIDERS -->
+<div class="doc-section" id="providers">
+  <div class="sec-label">Satellite Data — Providers</div>
+  <h2 class="sec-title">22 Satellite Data Providers</h2>
+  <p class="sec-sub">All data access is handled by PyGeoFetch. 10 providers work immediately with no credentials — including Sentinel-2, Landsat, NAIP, GOES weather, JAXA DEM, and more.</p>
+  <div class="pf-tabs">
+    <button class="pf-tab active" onclick="filterP('all',this)">All (22)</button>
+    <button class="pf-tab" onclick="filterP('open',this)">🌐 Open (10)</button>
+    <button class="pf-tab" onclick="filterP('auth',this)">🔐 Auth (12)</button>
+    <button class="pf-tab" onclick="filterP('stac',this)">STAC</button>
+    <button class="pf-tab" onclick="filterP('sar',this)">SAR</button>
+    <button class="pf-tab" onclick="filterP('vhr',this)">&lt;1m VHR</button>
+  </div>
+  <div class="providers-grid" id="pgrid">
+    <div class="pcard" data-open="1" data-stac="1" data-sar="1"><div class="pc-top"><span class="pc-name">planetary_computer</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Microsoft STAC catalog. Sentinel-1/2, Landsat 8/9, MODIS, NAIP, COP-DEM. SAS tokens auto-generated.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1" data-stac="1"><div class="pc-top"><span class="pc-name">aws_earth</span><span class="pc-badge open">Open</span></div><div class="pc-desc">AWS Earth Open Data. Sentinel-2 COGs, Landsat Collection 2, NAIP. Direct S3 access.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard" data-open="1" data-stac="1" data-sar="1"><div class="pc-top"><span class="pc-name">element84</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Element 84 Earth Search v1. Sentinel-2 L2A, Landsat Col 2, Sentinel-1 RTC. All COG.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">noaa_big_data</span><span class="pc-badge open">Open</span></div><div class="pc-desc">GOES-16/17/18 weather imagery and NEXRAD radar. AWS Open Data registry.</div></div>
+    <div class="pcard" data-open="1" data-sar="1"><div class="pc-top"><span class="pc-name">esa_scihub</span><span class="pc-badge open">Open</span></div><div class="pc-desc">ESA public mirrors. Sentinel-1/2/3/5P Copernicus open data archives.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1" data-sar="1"><div class="pc-top"><span class="pc-name">jaxa_earth</span><span class="pc-badge open">Open</span></div><div class="pc-desc">JAXA ALOS 30m World 3D DSM and PALSAR-2 forest/non-forest global map.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">isro_bhuvan</span><span class="pc-badge open">Open</span></div><div class="pc-desc">ISRO Bhuvan. ResourceSat-2/2A (5.8m), Cartosat-1 (2.5m), Oceansat-2.</div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">inpe_cbers</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Brazil INPE CBERS-4 and CBERS-4A. 5m to 40m optical bands.</div></div>
+    <div class="pcard" data-open="1" data-vhr="1"><div class="pc-top"><span class="pc-name">digitalglobe</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Maxar Open Data Program. Sub-metre WorldView disaster response imagery.</div><div class="pc-chips"><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-open="1"><div class="pc-top"><span class="pc-name">geoserver_generic</span><span class="pc-badge open">Open</span></div><div class="pc-desc">Generic OGC WMS/WFS/WCS connector for any GeoServer or OGC-compliant endpoint.</div></div>
+    <div class="pcard" data-stac="1"><div class="pc-top"><span class="pc-name">usgs</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">USGS Earth Explorer. Landsat 1–9, ASTER, MODIS, EO-1. M2M API.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard" data-stac="1" data-sar="1"><div class="pc-top"><span class="pc-name">copernicus</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Copernicus Data Space. Sentinel-1/2/3/5P. Full STAC API, OAuth2.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-stac="1"><div class="pc-top"><span class="pc-name">nasa_earthdata</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">NASA CMR. MODIS, VIIRS, ICESat-2, GEDI, ASTER. Free registration.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard" data-stac="1"><div class="pc-top"><span class="pc-name">nasa_earthdata_cloud</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Cloud-native NASA on AWS. Temporary S3 credentials auto-refreshed.</div><div class="pc-chips"><span class="pchip stac">STAC</span></div></div>
+    <div class="pcard"><div class="pc-top"><span class="pc-name">opentopography</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">SRTM 30/90m, COP-DEM 30m, NASADEM, global LiDAR point clouds.</div></div>
+    <div class="pcard" data-stac="1" data-vhr="1"><div class="pc-top"><span class="pc-name">planet</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Planet Labs. PlanetScope (3m daily), SkySat (50cm). Subscription.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-sar="1"><div class="pc-top"><span class="pc-name">sentinel_hub</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Sentinel Hub Processing API. All Sentinels, Landsat, custom evalscripts.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-vhr="1"><div class="pc-top"><span class="pc-name">maxar_gbdx</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Maxar WorldView 1–4, GeoEye-1. 30cm–50cm. Commercial subscription.</div><div class="pc-chips"><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-stac="1" data-vhr="1"><div class="pc-top"><span class="pc-name">airbus_oneatlas</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">Airbus Pléiades (50cm) and SPOT 6/7 (1.5m). OneAtlas STAC API.</div><div class="pc-chips"><span class="pchip stac">STAC</span><span class="pchip vhr">&lt;1m</span></div></div>
+    <div class="pcard" data-sar="1"><div class="pc-top"><span class="pc-name">alaska_satellite_facility</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">ASF DAAC. Sentinel-1 SLC/GRD, ALOS PALSAR. Free with Earthdata login.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-sar="1"><div class="pc-top"><span class="pc-name">google_earth_engine</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">GEE catalog proxy. Multi-petabyte global catalog via service account.</div><div class="pc-chips"><span class="pchip sar">SAR</span></div></div>
+    <div class="pcard" data-vhr="1"><div class="pc-top"><span class="pc-name">terrabotics</span><span class="pc-badge auth">🔐 Auth</span></div><div class="pc-desc">TerraBotics archive and tasking. Sub-metre commercial imagery.</div><div class="pc-chips"><span class="pchip vhr">&lt;1m</span></div></div>
+  </div>
+</div>
+
+<!-- GEOAI -->
+<div class="doc-section" id="geoai">
+  <div class="sec-label">GeoAI Integration</div>
+  <h2 class="sec-title">24 AI Subsystems via <code class="ci">client.geoai.*</code></h2>
+  <p class="sec-sub">PyGeoVision exposes GeoAI's complete API as lazy-loaded subsystems — GeoAI is only imported when you first access <code class="ci">client.geoai</code>. All 24 subsystems are available immediately after <code class="ci">pip install "pygeovision[geoai]"</code>.</p>
+
+  <div class="subsys-grid">
+    <div class="sscard"><div class="ss-name">.segment</div><div class="ss-hint">BuildingFootprintExtractor · SolarPanelDetector · AgricultureFieldDelineator · segment_water · SAM · timm · HuggingFace Hub</div><div class="ss-desc">Pixel-accurate semantic segmentation of geospatial features. Buildings, solar panels, agriculture, water, and custom classes.</div><div class="ss-tags"><span class="sstag">GeoJSON out</span><span class="sstag">GeoTIFF out</span><span class="sstag">tiled</span></div></div>
+    <div class="sscard"><div class="ss-name">.detect</div><div class="ss-hint">CarDetector · ShipDetector · ParkingSpotDetector · GroundedSAM · rfdetr_detect · multiclass_detection · instance_segmentation</div><div class="ss-desc">Object detection — vehicles, vessels, parking, arbitrary objects via natural-language prompts (GroundedSAM), or custom trained models.</div><div class="ss-tags"><span class="sstag">GeoJSON</span><span class="sstag">bbox out</span></div></div>
+    <div class="sscard"><div class="ss-name">.classify</div><div class="ss-hint">CLIPVectorClassifier · classify_image · classify_images · train_classifier</div><div class="ss-desc">Scene and land-cover classification. CLIP zero-shot inference for arbitrary classes without any fine-tuning.</div><div class="ss-tags"><span class="sstag">zero-shot</span><span class="sstag">batch</span></div></div>
+    <div class="sscard"><div class="ss-name">.change</div><div class="ss-hint">changestar_detect · ChangeStarDetection · list_changestar_models</div><div class="ss-desc">Bi-temporal change detection using ChangeSTAR transformer. Urban growth, deforestation, disaster damage, infrastructure change.</div><div class="ss-tags"><span class="sstag">bi-temporal</span><span class="sstag">GeoTIFF</span></div></div>
+    <div class="sscard"><div class="ss-name">.train</div><div class="ss-hint">train_segmentation_model · train_segmentation_landcover · train_multiclass_detector · train_instance_segmentation_model · timm_segmentation · rfdetr_train · export_training_data</div><div class="ss-desc">Train segmentation, detection, and classification models with geospatial loss functions and 1000+ timm backbones.</div><div class="ss-tags"><span class="sstag">dice</span><span class="sstag">focal</span><span class="sstag">tversky</span></div></div>
+    <div class="sscard"><div class="ss-name">.infer</div><div class="ss-hint">predict_geotiff · semantic_segmentation</div><div class="ss-desc">Tiled inference on arbitrarily large GeoTIFFs with Gaussian blending at tile boundaries. GPU-accelerated, supports any model.</div><div class="ss-tags"><span class="sstag">tiled</span><span class="sstag">Gaussian blend</span></div></div>
+    <div class="sscard"><div class="ss-name">.embed</div><div class="ss-hint">extract_patch_embeddings · extract_pixel_embeddings · cluster_embeddings · embedding_similarity · visualize_embeddings</div><div class="ss-desc">DINOv3 and Tessera satellite image embeddings. Similarity search, clustering, UMAP/t-SNE visualisation.</div><div class="ss-tags"><span class="sstag">512-d vectors</span><span class="sstag">cosine</span></div></div>
+    <div class="sscard"><div class="ss-name">.sam</div><div class="ss-hint">mask_generation · GroundedSAM</div><div class="ss-desc">Segment Anything Model — auto-mask generation over entire images, or grounded detection with free-text prompts.</div><div class="ss-tags"><span class="sstag">auto-mask</span><span class="sstag">text prompt</span></div></div>
+    <div class="sscard"><div class="ss-name">.prithvi</div><div class="ss-hint">load_prithvi_model · prithvi_inference · get_available_prithvi_models</div><div class="ss-desc">NASA Prithvi foundation model (100M / 300M) for HLS multispectral remote sensing. Pre-trained on global Sentinel-2 time series.</div><div class="ss-tags"><span class="sstag">HLS</span><span class="sstag">foundation</span></div></div>
+    <div class="sscard"><div class="ss-name">.cloud</div><div class="ss-hint">predict_cloud_mask · predict_cloud_mask_batch · calculate_cloud_statistics · create_cloud_free_mask</div><div class="ss-desc">Cloud detection and masking. Batch processing, cloud statistics, and cloud-free composite generation.</div><div class="ss-tags"><span class="sstag">GeoTIFF mask</span><span class="sstag">batch</span></div></div>
+    <div class="sscard"><div class="ss-name">.sr</div><div class="ss-hint">super_resolution (ESRGAN ×2/×4/×8)</div><div class="ss-desc">ESRGAN super-resolution — enhance 30m Landsat to 7.5m equivalent. ×2, ×4, and ×8 upscaling variants.</div><div class="ss-tags"><span class="sstag">×2/4/8</span><span class="sstag">ESRGAN</span></div></div>
+    <div class="sscard"><div class="ss-name">.onnx</div><div class="ss-hint">export_to_onnx · onnx_semantic_segmentation</div><div class="ss-desc">Export any PyTorch model to ONNX for cross-platform deployment. Run ONNX segmentation directly on GeoTIFFs.</div><div class="ss-tags"><span class="sstag">deployment</span><span class="sstag">cross-platform</span></div></div>
+    <div class="sscard"><div class="ss-name">.caption</div><div class="ss-hint">moondream_caption · moondream_query · moondream_detect · sliding_window</div><div class="ss-desc">Moondream VLM for satellite image captioning, visual Q&amp;A ("How many buildings?"), and tile-by-tile sliding-window analysis.</div><div class="ss-tags"><span class="sstag">VLM</span><span class="sstag">Q&A</span></div></div>
+    <div class="sscard"><div class="ss-name">.canopy</div><div class="ss-hint">canopy_height_estimation · list_canopy_models</div><div class="ss-desc">Forest canopy height estimation from satellite imagery. Supports carbon studies, biomass estimation, and forest inventory.</div><div class="ss-tags"><span class="sstag">carbon</span><span class="sstag">biomass</span></div></div>
+    <div class="sscard"><div class="ss-name">.dinov3</div><div class="ss-hint">analyze_image_patches · create_similarity_map · train_dinov3_segmentation · dinov3_segment_geotiff</div><div class="ss-desc">DINOv3 analysis, similarity mapping, fine-tuning, and full GeoTIFF segmentation from DINOv3 features.</div><div class="ss-tags"><span class="sstag">fine-tune</span><span class="sstag">zero-shot</span></div></div>
+    <div class="sscard"><div class="ss-name">.tessera</div><div class="ss-hint">tessera_download · tessera_available_years · tessera_coverage</div><div class="ss-desc">Tessera pre-computed satellite embedding datasets for large-scale geospatial analysis and retrieval.</div><div class="ss-tags"><span class="sstag">pre-computed</span><span class="sstag">global</span></div></div>
+    <div class="sscard"><div class="ss-name">.water</div><div class="ss-hint">segment_water + BAND_ORDER_PRESETS</div><div class="ss-desc">Water body segmentation with satellite-specific band order presets: <code class="ci">sentinel2</code>, <code class="ci">naip</code>, <code class="ci">landsat</code>.</div><div class="ss-tags"><span class="sstag">NDWI</span><span class="sstag">GeoJSON</span></div></div>
+    <div class="sscard"><div class="ss-name">.rfdetr</div><div class="ss-hint">rfdetr_detect · rfdetr_segment · rfdetr_train · list_rfdetr_models</div><div class="ss-desc">RF-DETR real-time detection transformer. State-of-the-art object detection and instance segmentation.</div><div class="ss-tags"><span class="sstag">real-time</span><span class="sstag">anchor-free</span></div></div>
+    <div class="sscard"><div class="ss-name">.timm</div><div class="ss-hint">timm_semantic_segmentation · predict_raster · list_timm_models</div><div class="ss-desc">1000+ timm backbones for segmentation and pixel regression. EfficientNet, ConvNeXt, Swin, ViT and more.</div><div class="ss-tags"><span class="sstag">1000+ backbones</span></div></div>
+    <div class="sscard"><div class="ss-name">.landcover</div><div class="ss-hint">export_landcover_tiles · train_segmentation_landcover</div><div class="ss-desc">Land cover training with specialist losses: dice, focal, tversky, unified_focal. Designed for imbalanced multi-class scenes.</div><div class="ss-tags"><span class="sstag">11 classes</span><span class="sstag">losses</span></div></div>
+    <div class="sscard"><div class="ss-name">.download</div><div class="ss-hint">download_naip · download_overture_buildings · pc_stac_search · download_model_from_hf</div><div class="ss-desc">GeoAI built-in data downloads — NAIP imagery, Overture Maps buildings, Planetary Computer search, HuggingFace Hub models.</div><div class="ss-tags"><span class="sstag">NAIP</span><span class="sstag">Overture</span><span class="sstag">HF Hub</span></div></div>
+    <div class="sscard"><div class="ss-name">.utils</div><div class="ss-hint">raster_to_vector · smooth_vector · regularize · mosaic_geotiffs · calc_iou · stack_bands · segmentation_metrics · get_device</div><div class="ss-desc">Raster/vector processing, geospatial metrics (mIoU, F1), device management, and GeoTIFF mosaicking utilities.</div><div class="ss-tags"><span class="sstag">mIoU</span><span class="sstag">mosaic</span></div></div>
+    <div class="sscard"><div class="ss-name">.map</div><div class="ss-hint">Map (Leafmap) · view_raster · view_vector</div><div class="ss-desc">Interactive Leafmap and MapLibre visualisation of rasters and vectors inline in Jupyter notebooks.</div><div class="ss-tags"><span class="sstag">Jupyter</span><span class="sstag">Leafmap</span></div></div>
+    <div class="sscard"><div class="ss-name">.pipeline</div><div class="ss-hint">load_pipeline · Pipeline</div><div class="ss-desc">GeoAI-level pipeline orchestration. Load, create, and run AI-only processing chains (no data acquisition).</div><div class="ss-tags"><span class="sstag">AI-only</span><span class="sstag">chainable</span></div></div>
+  </div>
+
+  <h3 id="geoai-segment">Segmentation — full API</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">segmentation.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>ga = client.geoai  <span class="tc"># lazy-loads GeoAI on first access</span>
+
+<span class="tc"># Building footprints — BuildingFootprintExtractor</span>
+ga.segment.buildings(
+    "sentinel2.tif",
+    output_path="buildings.tif",
+    output_vector="buildings.geojson",
+    confidence_threshold=0.5,
+    chip_size=512, overlap=64,
+)
+
+<span class="tc"># Solar panel detection — SolarPanelDetector</span>
+ga.segment.solar_panels("aerial.tif", output_vector="solar.geojson")
+
+<span class="tc"># Agricultural field delineation — AgricultureFieldDelineator</span>
+ga.segment.agriculture_fields("s2.tif", output_vector="fields.geojson")
+
+<span class="tc"># Water body segmentation with sensor presets</span>
+ga.segment.water("s2.tif", band_order="sentinel2")  <span class="tc"># or "naip", "landsat"</span>
+
+<span class="tc"># SAM auto-segmentation (no labels needed)</span>
+ga.segment.with_sam("aerial.tif", output_path="masks.tif")
+
+<span class="tc"># Custom model (your trained .pth)</span>
+ga.segment.custom("scene.tif", "model.pth", "pred.tif", num_classes=5)
+
+<span class="tc"># HuggingFace Hub model by repo ID</span>
+ga.segment.from_hub("scene.tif", "giswqs/building-footprint-usa")
+
+<span class="tc"># HuggingFace transformers model (openmmlab, etc.)</span>
+ga.segment.with_hf_model("scene.tif", "openmmlab/upernet-swin-base")
+
+<span class="tc"># timm-backbone segmentation (1000+ backbones)</span>
+ga.segment.timm_model("scene.tif", "timm_seg.pth")</pre>
+  </div>
+
+  <h3 id="geoai-detect">Detection — full API</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">detection.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Specialist detectors</span>
+ga.detect.cars("aerial.tif",    output_path="cars.geojson")
+ga.detect.ships("port.tif",     output_path="ships.geojson")
+ga.detect.parking("lot.tif",    output_path="spots.geojson")
+
+<span class="tc"># Natural language grounded detection (GroundedSAM + DINO)</span>
+ga.detect.grounded("aerial.tif", "swimming pools",       output_path="pools.geojson")
+ga.detect.grounded("aerial.tif", "solar panels on roofs",output_path="solar.geojson")
+ga.detect.grounded("aerial.tif", "cars in parking lots", output_path="cars.geojson")
+
+<span class="tc"># RF-DETR real-time detection transformer</span>
+ga.detect.rfdetr("scene.tif", output_path="det.geojson")
+ga.detect.rfdetr_from_hub("scene.tif", "rfdetr-base")
+
+<span class="tc"># Multi-class detection (NWPU-style)</span>
+ga.detect.multiclass("scene.tif", "nwpu_model.pth", output_path="det.geojson")
+
+<span class="tc"># Instance segmentation (Mask R-CNN)</span>
+ga.detect.instance_segmentation("scene.tif", "maskrcnn.pth")</pre>
+  </div>
+
+  <h3 id="geoai-change">Change Detection — full API</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">change_detection.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># ChangeSTAR bi-temporal change detection</span>
+result = ga.change.detect(
+    "london_2020.tif",
+    "london_2024.tif",
+    output_path="changes.tif",
+)
+
+<span class="tc"># List available ChangeSTAR variants</span>
+models = ga.change.list_models()
+<span class="tc"># → ['changestar-v1', 'changestar-v2']</span>
+
+<span class="tc"># Full E2E change pipeline (search + download + detect)</span>
+result = client.pipeline(
+    "change_detection",
+    bbox=(-74.1, 40.6, -73.7, 40.9),
+    date_before="2020-01",
+    date_after="2024-01",
+    output_dir="./changes/",
+)
+
+<span class="tc"># Deforestation monitoring (Amazon example)</span>
+result = client.pipeline(
+    "deforestation",
+    bbox=(-60.0, -3.0, -59.5, -2.5),
+    date_before="2018-01",
+    date_after="2024-01",
+    output_dir="./deforestation/",
+)</pre>
+  </div>
+
+  <h3 id="geoai-foundation">Foundation Models</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">foundation_models.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># ── NASA Prithvi (HLS multispectral) ────────────────────────────────────</span>
+ga.prithvi.list_models()
+<span class="tc"># → ['prithvi-eo-1.0-100M', 'prithvi-eo-2.0-300M']</span>
+model = ga.prithvi.load("prithvi-eo-1.0-100M")
+ga.prithvi.infer("hls_tile.tif", model, output_path="pred.tif")
+
+<span class="tc"># ── Segment Anything Model (SAM) ─────────────────────────────────────────</span>
+ga.sam.generate_masks("aerial.tif", output_path="masks.tif")
+ga.sam.grounded("aerial.tif", "solar panels on rooftops")
+
+<span class="tc"># ── DINOv3 ───────────────────────────────────────────────────────────────</span>
+ga.dinov3.analyze("scene.tif")
+ga.dinov3.similarity_map("scene.tif", query_point=(256, 256))
+ga.dinov3.finetune("./chips/", "dino_seg.pth", num_classes=5)
+ga.dinov3.segment("scene.tif", "dino_seg.pth", output_path="pred.tif")
+
+<span class="tc"># ── Moondream VLM Captioning ─────────────────────────────────────────────</span>
+caption = ga.caption.caption("tile.tif")
+answer  = ga.caption.query("tile.tif", "How many buildings are visible?")
+detect  = ga.caption.detect("tile.tif", "cars")
+
+<span class="tc"># ── Tessera Embeddings ───────────────────────────────────────────────────</span>
+ga.tessera.available_years(bbox=(-74.1, 40.6, -73.7, 40.9))
+ga.tessera.coverage(bbox=...)
+ga.tessera.download(bbox=..., output_dir="./tessera/")</pre>
+  </div>
+
+  <h3 id="geoai-train">Model Training via GeoAI</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">geoai_training.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Export training chips from imagery + labels</span>
+ga.train.generate_chips(
+    "sentinel2.tif", "labels.tif", "./chips/",
+    chip_size=256, overlap=32,
+)
+
+<span class="tc"># Semantic segmentation</span>
+ga.train.segmentation(
+    "./chips/", "building_model.pth",
+    num_classes=2, epochs=100, backbone="efficientnet-b4",
+)
+
+<span class="tc"># Land cover with specialist losses</span>
+ga.train.segmentation_landcover(
+    "./lc_chips/", "landcover.pth",
+    num_classes=11,
+    loss_fn="unified_focal",  <span class="tc"># dice | focal | tversky | unified_focal</span>
+)
+
+<span class="tc"># Multi-class detection (NWPU-10)</span>
+ga.train.detection("./nwpu/", "detector.pth", num_classes=10)
+
+<span class="tc"># timm-backbone segmentation (1000+ backbones)</span>
+ga.train.timm_segmentation(
+    "./chips/", "timm_seg.pth",
+    backbone="convnext_base", num_classes=5,
+)
+
+<span class="tc"># RF-DETR training</span>
+ga.train.rfdetr("./coco_data/", "rfdetr.pth")
+
+<span class="tc"># ONNX export for deployment</span>
+ga.onnx.export(model, "model.onnx", input_shape=(1, 4, 512, 512))</pre>
+  </div>
+
+  <h3 id="geoai-embed">Embeddings, Cloud, SR</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">embeddings_cloud_sr.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># ── Embeddings ────────────────────────────────────────────────────────────</span>
+embeddings = ga.embed.patch("sentinel2.tif", chip_size=64)  <span class="tc"># (N, 512)</span>
+pix_emb    = ga.embed.pixel("sentinel2.tif")
+ga.embed.cluster(embeddings, n_clusters=10)
+score = ga.embed.similarity(emb_a, emb_b)  <span class="tc"># 0.85</span>
+ga.embed.visualize(embeddings)             <span class="tc"># UMAP / t-SNE</span>
+
+<span class="tc"># ── Cloud masking ─────────────────────────────────────────────────────────</span>
+ga.cloud.predict("sentinel2.tif", output_path="cloud_mask.tif")
+ga.cloud.batch("./scenes/", "./cloud_masks/")
+stats = ga.cloud.statistics("cloud_mask.tif")  <span class="tc"># {"cloud_cover": 0.15}</span>
+ga.cloud.create_composite(["s2_jan.tif", "s2_feb.tif"], "composite.tif")
+
+<span class="tc"># ── Super-resolution (ESRGAN) ─────────────────────────────────────────────</span>
+ga.sr.enhance("landsat.tif", output_path="enhanced.tif", scale_factor=4)
+
+<span class="tc"># ── Canopy height estimation ──────────────────────────────────────────────</span>
+ga.canopy.list_models()
+ga.canopy.estimate("sentinel2.tif", output_path="canopy_height.tif")</pre>
+  </div>
+
+  <h3 id="geoai-utils">Utilities</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">utils.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>ga.utils.raster_info("scene.tif")                            <span class="tc"># width, height, bands, CRS</span>
+ga.utils.raster_to_vector("pred.tif", "polygons.geojson")    <span class="tc"># vectorize mask</span>
+ga.utils.vector_to_raster("polys.geojson", "ref.tif", "r.tif")
+ga.utils.clip_by_bbox("scene.tif", bbox, "clipped.tif")
+ga.utils.mosaic(["tile1.tif", "tile2.tif"], "mosaic.tif")
+ga.utils.stack_bands(["B04.tif", "B08.tif", "B11.tif"], "stack.tif")
+ga.utils.smooth_vector("buildings.geojson", "smooth.geojson")
+ga.utils.regularize("buildings.geojson", "regular.geojson")  <span class="tc"># regularize footprints</span>
+iou     = ga.utils.iou(pred_mask, gt_mask)
+metrics = ga.utils.segmentation_metrics(pred, target)        <span class="tc"># mIoU, F1, accuracy</span>
+device  = ga.utils.get_device()                              <span class="tc"># 'cuda' | 'mps' | 'cpu'</span>
+ga.utils.empty_cache()                                       <span class="tc"># free GPU memory</span></pre>
+  </div>
+</div>
+
+<!-- PIPELINES -->
+<div class="doc-section alt" id="pipelines">
+  <div class="sec-label">End-to-End Workflows</div>
+  <h2 class="sec-title">10 Production Pipelines</h2>
+  <p class="sec-sub">Each pipeline orchestrates the full workflow: PyGeoFetch search → download → GeoAI inference → vector/raster output. One call from a bounding box to finished results.</p>
+
+  <div class="pipe-steps">
+    <div class="pstep"><div class="ps-n">STEP 01</div><div class="ps-icon">🔍</div><div class="ps-title">Search</div><div class="ps-desc">PyGeoFetch queries the appropriate providers with date, bbox, and cloud cover filters.</div></div>
+    <div class="pstep"><div class="ps-n">STEP 02</div><div class="ps-icon">⬇️</div><div class="ps-title">Download</div><div class="ps-desc">Parallel downloads with SAS tokens, retries, checksums, and post-processing chain.</div></div>
+    <div class="pstep"><div class="ps-n">STEP 03</div><div class="ps-icon">🤖</div><div class="ps-title">AI Inference</div><div class="ps-desc">GeoAI runs the appropriate model — tiled, GPU-accelerated, Gaussian-blended.</div></div>
+    <div class="pstep"><div class="ps-n">STEP 04</div><div class="ps-icon">📦</div><div class="ps-title">Export</div><div class="ps-desc">GeoTIFF / GeoJSON / COG output with full metadata and statistics.</div></div>
+  </div>
+
+  <div class="pipelines-grid">
+    <div class="plcard"><div class="pl-name">building_footprints</div><div class="pl-data">Sentinel-2 / NAIP via Planetary Computer</div><div class="pl-desc">Extract building polygons using GeoAI BuildingFootprintExtractor. Returns GeoJSON polygon layer with confidence scores.</div><div class="pl-tags"><span class="pltag">Sentinel-2</span><span class="pltag">NAIP</span><span class="pltag">GeoJSON</span><span class="pltag">GeoTIFF</span></div></div>
+    <div class="plcard"><div class="pl-name">change_detection</div><div class="pl-data">Bi-temporal Sentinel-2 / Landsat</div><div class="pl-desc">ChangeSTAR bi-temporal change analysis between two date windows. Urban growth, infrastructure change, damage assessment.</div><div class="pl-tags"><span class="pltag">bi-temporal</span><span class="pltag">Landsat</span><span class="pltag">Sentinel-2</span><span class="pltag">GeoTIFF</span></div></div>
+    <div class="plcard"><div class="pl-name">land_cover</div><div class="pl-data">Sentinel-2 (PC / Copernicus)</div><div class="pl-desc">11-class land cover classification using ESA WorldCover or a trained GeoAI SegFormer-B2 model.</div><div class="pl-tags"><span class="pltag">Sentinel-2</span><span class="pltag">WorldCover</span><span class="pltag">11 classes</span><span class="pltag">GeoTIFF</span></div></div>
+    <div class="plcard"><div class="pl-name">water_bodies</div><div class="pl-data">Sentinel-2 via Planetary Computer</div><div class="pl-desc">Surface water mapping using NDWI or trained GeoAI water segmentation model. Returns polygon GeoJSON.</div><div class="pl-tags"><span class="pltag">NDWI</span><span class="pltag">Sentinel-2</span><span class="pltag">GeoJSON</span></div></div>
+    <div class="plcard"><div class="pl-name">solar_detection</div><div class="pl-data">NAIP / Planet SkySat</div><div class="pl-desc">Detect solar panel installations from high-resolution aerial or Planet imagery using GeoAI SolarPanelDetector.</div><div class="pl-tags"><span class="pltag">Planet</span><span class="pltag">NAIP</span><span class="pltag">GeoJSON</span></div></div>
+    <div class="plcard"><div class="pl-name">crop_monitoring</div><div class="pl-data">Sentinel-2 seasonal time series</div><div class="pl-desc">Crop type classification from Sentinel-2 multi-temporal stack with SegFormer-B2. Supports custom crop class lists.</div><div class="pl-tags"><span class="pltag">time series</span><span class="pltag">Sentinel-2</span><span class="pltag">GeoTIFF</span></div></div>
+    <div class="plcard"><div class="pl-name">disaster_assessment</div><div class="pl-data">VHR Maxar / Planet — pre/post event</div><div class="pl-desc">Rapid damage assessment comparing pre/post-event imagery with GeoAI Siamese-UNet change detection.</div><div class="pl-tags"><span class="pltag">VHR</span><span class="pltag">bi-temporal</span><span class="pltag">damage map</span></div></div>
+    <div class="plcard"><div class="pl-name">deforestation</div><div class="pl-data">Landsat multi-temporal (USGS)</div><div class="pl-desc">Forest loss detection from Landsat multi-temporal analysis with ChangeFormer transformer. Amazon / global coverage.</div><div class="pl-tags"><span class="pltag">Landsat</span><span class="pltag">PRODES</span><span class="pltag">GeoJSON</span></div></div>
+    <div class="plcard"><div class="pl-name">urban_growth</div><div class="pl-data">Landsat long-term stack (USGS)</div><div class="pl-desc">Urban expansion mapping from long-term Landsat time series using GeoAI Siamese-UNet.</div><div class="pl-tags"><span class="pltag">multi-temporal</span><span class="pltag">Landsat</span><span class="pltag">GeoTIFF</span></div></div>
+    <div class="plcard"><div class="pl-name">carbon_estimation</div><div class="pl-data">Sentinel-2 via Planetary Computer</div><div class="pl-desc">Above-ground biomass and carbon density estimation from NDVI-based modelling and GeoAI canopy height.</div><div class="pl-tags"><span class="pltag">NDVI</span><span class="pltag">Sentinel-2</span><span class="pltag">GeoTIFF</span><span class="pltag">canopy</span></div></div>
+  </div>
+
+  <h3>Pipeline Python API</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">pipeline_api.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># All 10 pipelines share the same interface</span>
+result = client.pipeline(
+    "building_footprints",
+    bbox=(-0.15, 51.47, -0.10, 51.52),
+    date="2024-06",
+    output_dir="./results/",
+)
+
+<span class="tc"># Bi-temporal pipelines take date_before / date_after</span>
+result = client.pipeline(
+    "change_detection",
+    bbox=(-74.1, 40.6, -73.7, 40.9),
+    date_before="2020-01",
+    date_after="2024-01",
+)
+
+result = client.pipeline(
+    "deforestation",
+    bbox=(-60.0, -3.0, -59.5, -2.5),   <span class="tc"># Amazon region</span>
+    date_before="2018-01",
+    date_after="2024-01",
+)
+
+<span class="tc"># PipelineResult</span>
+result.success      <span class="tc"># True</span>
+result.output_path  <span class="tc"># Path('./results/building_footprints/prediction.tif')</span>
+result.stats        <span class="tc"># {"buildings_detected": 1847, "coverage_pct": 0.312}</span>
+result.metadata     <span class="tc"># {"provider": "planetary_computer", "scene_id": "..."}</span></pre>
+  </div>
+
+  <h3 id="pipeline-yaml">YAML Pipeline Orchestration</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">weekly-sentinel2.yaml</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>name: weekly-sentinel2-buildings
+schedule: "0 6 * * 1"            <span class="tc"># Every Monday 06:00 UTC</span>
+description: Weekly London building extraction
+
+steps:
+  - search:
+      providers: [planetary_computer, copernicus]
+      date_range: last_7_days
+      cloud_cover: 0-10
+      bbox: "-0.15,51.47,-0.10,51.52"
+      max_results: 10
+
+  - filter:
+      expression: "data.cloud_cover &lt; 5"
+      max_items: 3
+
+  - download:
+      parallel: 4
+      output: ./raw/
+      verify_checksum: true
+      post_process: reproject:EPSG:4326,cog
+
+  - ai:
+      task: segment_buildings
+      input: ./raw/
+      output: ./buildings.geojson
+      confidence_threshold: 0.5
+
+  - export:
+      format: cloud_optimized_geotiff
+      destination: s3://my-bucket/london/
+      notify:
+        webhook: https://hooks.slack.com/services/YOUR/WEBHOOK
+        email: ops@example.com</pre>
+  </div>
+
+  <h3 id="pipeline-builder">Programmatic Pipeline Builder</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">pipeline_builder.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>pipeline = (
+    client.create_pipeline("weekly-sentinel2", description="Weekly S2")
+    .search(
+        providers=["planetary_computer", "copernicus"],
+        bbox=(-0.15, 51.47, -0.10, 51.52),
+        date_range="last_7_days",
+        cloud_cover="0-10",
+    )
+    .filter("data.cloud_cover &lt; 5")
+    .download(
+        parallel=4, output="./raw/",
+        verify_checksum=True,
+        post_process=["reproject:EPSG:4326", "cog"],
+    )
+    .export(destination="s3://my-bucket/")
+    .set_schedule("0 6 * * 1")
+)
+
+pipeline.save("weekly-sentinel2.yaml")
+pipeline.run()
+
+<span class="tc"># Run a YAML directly</span>
+client.run_pipeline_yaml("weekly-sentinel2.yaml")
+client.run_pipeline_yaml("weekly-sentinel2.yaml", step="download")
+
+<span class="tc"># Scheduling management</span>
+client.data.schedule_pipeline("weekly-sentinel2.yaml", cron="0 6 * * 1")
+client.data.list_scheduled_pipelines()
+client.data.pipeline_history(limit=20)</pre>
+  </div>
+
+  <h3 id="pipeline-schedule">Pipeline CLI Commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">pipeline CLI</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Run immediately</span>
+pygeovision data pipeline run weekly-sentinel2.yaml
+
+<span class="tc"># Validate without running</span>
+pygeovision data pipeline validate weekly-sentinel2.yaml
+
+<span class="tc"># Schedule recurring execution</span>
+pygeovision data pipeline schedule weekly-sentinel2.yaml --name ndvi-monitor
+
+<span class="tc"># List all scheduled pipelines</span>
+pygeovision data pipeline list
+
+<span class="tc"># Live log streaming</span>
+pygeovision data pipeline logs ndvi-monitor --follow
+
+<span class="tc"># View run history</span>
+pygeovision data pipeline history --limit 20
+
+<span class="tc"># Retry a failed run</span>
+pygeovision data pipeline retry RUN_ID
+
+<span class="tc"># Stop scheduling</span>
+pygeovision data pipeline unschedule ndvi-monitor
+
+<span class="tc"># Run single step only</span>
+pygeovision data pipeline run weekly-sentinel2.yaml --step download</pre>
+  </div>
+</div>
+
+<!-- OWN AI STACK -->
+<div class="doc-section" id="models">
+  <div class="sec-label">PyGeoVision — Own AI Stack</div>
+  <h2 class="sec-title">Model Registry — 14 Architectures</h2>
+  <p class="sec-sub">PyGeoVision ships its own production model registry separate from GeoAI. 14 architectures with pretrained weights, loadable by name. Used by GeoTrainer for custom training.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Model Name</th><th>Task</th><th>Architecture</th><th>Pretrained</th></tr></thead>
+      <tbody>
+        <tr><td><span class="mt-name">unet_resnet50</span></td><td><span class="mbadge mb-seg">Segmentation</span></td><td>U-Net + ResNet-50 encoder</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">unet_efficientnet_b4</span></td><td><span class="mbadge mb-seg">Segmentation</span></td><td>U-Net + EfficientNet-B4</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">segformer_b2</span></td><td><span class="mbadge mb-seg">Segmentation</span></td><td>SegFormer-B2 (MiT-B2)</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">segformer_b5</span></td><td><span class="mbadge mb-seg">Segmentation</span></td><td>SegFormer-B5 (MiT-B5)</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">deeplabv3plus_resnet101</span></td><td><span class="mbadge mb-seg">Segmentation</span></td><td>DeepLabV3+ ResNet-101</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">changeformer</span></td><td><span class="mbadge mb-chg">Change</span></td><td>ChangeFormer transformer</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">siamese_unet</span></td><td><span class="mbadge mb-chg">Change</span></td><td>Siamese U-Net</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">retinanet_resnet50</span></td><td><span class="mbadge mb-det">Detection</span></td><td>RetinaNet + ResNet-50 FPN</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">fcos_resnet50</span></td><td><span class="mbadge mb-det">Detection</span></td><td>FCOS + ResNet-50 (anchor-free)</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">resnet50_cls</span></td><td><span class="mbadge mb-cls">Classification</span></td><td>ResNet-50</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">efficientnet_b3_cls</span></td><td><span class="mbadge mb-cls">Classification</span></td><td>EfficientNet-B3</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">vit_b16_cls</span></td><td><span class="mbadge mb-cls">Classification</span></td><td>ViT-B/16</td><td><span class="mt-chk">✓</span></td></tr>
+        <tr><td><span class="mt-name">esrgan_geo</span></td><td><span class="mbadge mb-sr">Super-Res</span></td><td>ESRGAN (geospatial fine-tuned)</td><td>—</td></tr>
+        <tr><td><span class="mt-name">srcnn</span></td><td><span class="mbadge mb-sr">Super-Res</span></td><td>SRCNN baseline</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">model_hub.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>from pygeovision.ai.models import ModelHub
+from pygeovision.ai.models.registry import registry
+
+hub = ModelHub()
+
+<span class="tc"># Load by name</span>
+model = hub.load("segformer_b2", num_classes=5, pretrained=True)
+
+<span class="tc"># List models by task</span>
+seg_models  = registry.list_models(task="segmentation")
+det_models  = registry.list_models(task="detection", pretrained_only=True)
+all_models  = registry.list_models()
+
+<span class="tc"># Inspect a model</span>
+info = registry.info("unet_efficientnet_b4")
+<span class="tc"># → {name, task, architecture, params, pretrained, input_channels}</span></pre>
+  </div>
+
+  <h3 id="trainer">GeoTrainer — Full Training Pipeline</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">geotrainer.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>from pygeovision.ai.training.trainer import GeoTrainer
+
+trainer = GeoTrainer(
+    model=model,
+    train_dataset=train_ds,
+    val_dataset=val_ds,
+    num_classes=5,
+    max_epochs=100,
+    learning_rate=1e-4,
+    batch_size=16,
+    loss_fn="dice",            <span class="tc"># dice | focal | tversky | unified_focal | weighted_ce | change_loss</span>
+    optimizer="adamw",         <span class="tc"># adamw | sgd | lion</span>
+    scheduler="cosine",        <span class="tc"># cosine | step | plateau</span>
+    mixed_precision=True,      <span class="tc"># FP16 training</span>
+    gradient_accumulation_steps=4,
+    callbacks=["early_stopping", "model_checkpoint", "rich_progress"],
+    export_onnx=True,          <span class="tc"># auto-export ONNX on training complete</span>
+)
+result = trainer.fit()
+<span class="tc"># → TrainingResult(best_val_miou=0.847, epochs=73, model_path=...)</span>
+
+<span class="tc"># Distributed / multi-GPU</span>
+from pygeovision.ai.training.distributed import DistributedGeoTrainer
+trainer = DistributedGeoTrainer(model=model, gpus=[0, 1, 2, 3], ...)</pre>
+  </div>
+
+  <p>Supported losses: <code class="ci">DiceLoss</code>, <code class="ci">FocalLoss</code>, <code class="ci">DiceFocalLoss</code>, <code class="ci">TverskyLoss</code>, <code class="ci">WeightedCrossEntropyLoss</code>, <code class="ci">ChangeDetectionLoss</code></p>
+  <p>Supported metrics: <code class="ci">SegmentationMetrics</code> (mIoU, F1, accuracy, precision, recall), <code class="ci">ConfusionMatrix</code>, <code class="ci">BinaryMetrics</code></p>
+
+  <h3 id="inference">TiledInference</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">tiled_inference.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>from pygeovision.ai.inference.tiled_inference import TiledInference
+
+engine = TiledInference(
+    model=model,
+    tile_size=512,
+    overlap=64,
+    blend_mode="gaussian",   <span class="tc"># gaussian | average — removes tile boundary artefacts</span>
+    batch_size=4,
+    device="cuda",
+)
+prediction = engine.run(
+    "large_scene.tif",       <span class="tc"># any size — tiled automatically</span>
+    "prediction.tif",
+    num_classes=5,
+)
+
+<span class="tc"># Ensemble multiple models</span>
+from pygeovision.ai.inference.ensemble import EnsembleInference
+ensemble = EnsembleInference(
+    models=[model_a, model_b, model_c],
+    strategy="mean",         <span class="tc"># mean | max | vote</span>
+    device="cuda",
+)
+pred = ensemble.run("scene.tif", "ensemble_pred.tif", num_classes=5)</pre>
+  </div>
+
+  <h3 id="labeling">Automated Labeling — 7 Labelers</h3>
+  <p>Generate training labels automatically from public data sources. Zero manual annotation for buildings, land cover, and other common geospatial classes.</p>
+  <div class="labelers-grid">
+    <div class="lcard"><div class="lc-name">osm</div><div class="lc-src">OpenStreetMap</div><div class="lc-desc">Extract building, road, water, landuse polygons from OSM for any location globally.</div></div>
+    <div class="lcard"><div class="lc-name">microsoft_buildings</div><div class="lc-src">Microsoft Global Footprints</div><div class="lc-desc">1.4 billion building footprints globally from ML-detected satellite imagery.</div></div>
+    <div class="lcard"><div class="lc-name">google_buildings</div><div class="lc-src">Google Open Buildings</div><div class="lc-desc">817M+ building footprints in Africa, South and Southeast Asia, Latin America.</div></div>
+    <div class="lcard"><div class="lc-name">esa_worldcover</div><div class="lc-src">ESA WorldCover 10m</div><div class="lc-desc">11-class global land cover at 10m resolution. 2020 and 2021 editions available.</div></div>
+    <div class="lcard"><div class="lc-name">dynamic_world</div><div class="lc-src">Google Dynamic World</div><div class="lc-desc">Near-real-time global land use/land cover. Updated frequently from Sentinel-2.</div></div>
+    <div class="lcard"><div class="lc-name">sam</div><div class="lc-src">Segment Anything</div><div class="lc-desc">Auto-label anything — SAM generates dense masks without class labels. Review in QGIS.</div></div>
+    <div class="lcard"><div class="lc-name">foundation</div><div class="lc-src">HuggingFace Hub</div><div class="lc-desc">Use any HF Hub model (e.g. giswqs/building-footprint) as a labeler for pseudo-labels.</div></div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">auto_labeling.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># OpenStreetMap building polygons</span>
+client.ai.label(tiles, labeler="osm", feature_type="building")
+
+<span class="tc"># Microsoft global building footprints</span>
+client.ai.label(tiles, labeler="microsoft_buildings")
+
+<span class="tc"># ESA WorldCover land cover labels</span>
+client.ai.label(tiles, labeler="esa_worldcover")
+
+<span class="tc"># SAM auto-label — generates masks without classes</span>
+client.ai.label(tiles, labeler="sam")
+
+<span class="tc"># Foundation model pseudo-labels from HF Hub</span>
+client.ai.label(tiles, labeler="foundation",
+    model_id="giswqs/building-footprint")</pre>
+  </div>
+</div>
+
+<!-- CLI -->
+<div class="doc-section alt" id="cli">
+  <div class="sec-label">Reference</div>
+  <h2 class="sec-title">Full CLI Reference</h2>
+  <p class="sec-sub">The <code class="ci">pygeovision</code> CLI covers every capability — data acquisition, AI inference, model training, pipeline orchestration, credential management, cache, and diagnostics.</p>
+
+  <h3>Command groups</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Group</th><th>Subcommands</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>data auth</code></td><td>add, login, list, test, remove, export</td><td>Manage provider credentials (via PyGeoFetch keyring)</td></tr>
+        <tr><td><code>data search</code></td><td>run, demo</td><td>Search satellite data across 22+ providers</td></tr>
+        <tr><td><code>data download</code></td><td>run, demo</td><td>Download scenes with post-processing</td></tr>
+        <tr><td><code>data providers</code></td><td>list, info, search</td><td>Browse and inspect provider capabilities</td></tr>
+        <tr><td><code>data pipeline</code></td><td>run, validate, schedule, list, unschedule, logs, history, retry</td><td>Data pipeline orchestration</td></tr>
+        <tr><td><code>data cache</code></td><td>stats, clear, ttl, location, prune</td><td>Search result cache management</td></tr>
+        <tr><td><code>ai segment</code></td><td>buildings, solar, water, agriculture, custom, sam</td><td>Semantic segmentation tasks</td></tr>
+        <tr><td><code>ai detect</code></td><td>cars, ships, parking, grounded, rfdetr, multiclass</td><td>Object detection tasks</td></tr>
+        <tr><td><code>ai classify</code></td><td>scene, land-cover, batch</td><td>Image classification tasks</td></tr>
+        <tr><td><code>ai change</code></td><td>detect, list-models</td><td>Bi-temporal change detection</td></tr>
+        <tr><td><code>ai train</code></td><td>segmentation, land-cover, detection, rfdetr, chips</td><td>Model training</td></tr>
+        <tr><td><code>ai infer</code></td><td>(flags)</td><td>Tiled inference on large GeoTIFFs</td></tr>
+        <tr><td><code>ai cloud-mask</code></td><td>(flags)</td><td>Cloud mask generation</td></tr>
+        <tr><td><code>ai sr</code></td><td>(flags)</td><td>Super-resolution upscaling</td></tr>
+        <tr><td><code>ai caption</code></td><td>caption, query, detect</td><td>Moondream VLM captioning and Q&amp;A</td></tr>
+        <tr><td><code>pipeline</code></td><td>building_footprints, change_detection, land_cover, water_bodies, solar_detection, crop_monitoring, disaster_assessment, deforestation, urban_growth, carbon_estimation</td><td>End-to-end data + AI pipelines</td></tr>
+        <tr><td><code>models</code></td><td>list, info, cache</td><td>Model registry management</td></tr>
+        <tr><td><code>status</code></td><td>—</td><td>Full system status dashboard</td></tr>
+        <tr><td><code>doctor</code></td><td>—</td><td>Diagnose installation and connectivity</td></tr>
+        <tr><td><code>config</code></td><td>show, get, set, path, reset</td><td>Configuration management</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Data commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">data commands</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Auth</span>
+pygeovision data auth add usgs --username USER --password PASS
+pygeovision data auth add planet --api-key PL-xxxx
+pygeovision data auth list
+pygeovision data auth test planetary_computer
+
+<span class="tc"># Search</span>
+pygeovision data search \
+  --bbox "-0.15,51.47,-0.10,51.52" \
+  --date 2024-06 \
+  --providers planetary_computer,copernicus \
+  --cloud-max 10 \
+  --output results.geojson
+
+<span class="tc"># Download</span>
+pygeovision data download \
+  --from-search results.geojson \
+  --output ./data/ --parallel 4 \
+  --verify-checksum \
+  --post-process "reproject:EPSG:4326,cog"
+
+<span class="tc"># Providers</span>
+pygeovision data providers list --open-only
+pygeovision data providers list --sar
+pygeovision data providers info planetary_computer
+
+<span class="tc"># Cache</span>
+pygeovision data cache stats
+pygeovision data cache clear --older-than 7d
+pygeovision data cache prune --max-size 5GB</pre>
+  </div>
+
+  <h3>AI commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">ai commands</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre><span class="tc"># Segmentation</span>
+pygeovision ai segment buildings \
+  --input sentinel2.tif \
+  --output buildings.tif \
+  --vector buildings.geojson \
+  --confidence 0.5
+
+pygeovision ai segment solar  --input aerial.tif --output solar.tif
+pygeovision ai segment water  --input s2.tif --output water.tif
+pygeovision ai segment custom --input scene.tif --output pred.tif --model model.pth
+
+<span class="tc"># Detection</span>
+pygeovision ai detect cars    --input aerial.tif --output cars.geojson
+pygeovision ai detect ships   --input port.tif   --output ships.geojson
+pygeovision ai detect grounded \
+  --input aerial.tif --prompt "swimming pools" --output pools.geojson
+pygeovision ai detect rfdetr  --input scene.tif  --output det.geojson
+
+<span class="tc"># Change detection</span>
+pygeovision ai change detect \
+  --before london_2020.tif --after london_2024.tif --output changes.tif
+
+<span class="tc"># Cloud masking</span>
+pygeovision ai cloud-mask --input sentinel2.tif --output cloud.tif
+
+<span class="tc"># Super-resolution</span>
+pygeovision ai sr --input landsat.tif --output enhanced.tif --scale 4
+
+<span class="tc"># VLM captioning</span>
+pygeovision ai caption caption --input tile.tif
+pygeovision ai caption query   --input tile.tif --prompt "How many buildings?"
+
+<span class="tc"># Training</span>
+pygeovision ai train segmentation \
+  --data ./building_chips/ \
+  --output building_model.pth \
+  --num-classes 2 --epochs 100 \
+  --backbone efficientnet-b4
+
+pygeovision ai train land-cover \
+  --data ./lc_chips/ \
+  --output lc_model.pth \
+  --num-classes 11 --loss-fn unified_focal
+
+<span class="tc"># Tiled inference</span>
+pygeovision ai infer \
+  --input large_scene.tif \
+  --model model.pth \
+  --output prediction.tif \
+  --num-classes 5 \
+  --tile-size 512 --overlap 64
+
+<span class="tc"># Export training chips</span>
+pygeovision ai chips \
+  --image sentinel2.tif \
+  --label labels.tif \
+  --output ./chips/ \
+  --chip-size 256</pre>
+  </div>
+
+  <h3>End-to-end pipeline commands</h3>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">E2E pipeline commands</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>pygeovision pipeline building_footprints \
+  --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06 --output ./results/
+
+pygeovision pipeline change_detection \
+  --bbox "-74.1,40.6,-73.7,40.9" \
+  --date-before 2020-01 --date-after 2024-01 --output ./changes/
+
+pygeovision pipeline land_cover \
+  --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06
+
+pygeovision pipeline deforestation \
+  --bbox "-60.0,-3.0,-59.5,-2.5" \
+  --date-before 2018-01 --date-after 2024-01 --output ./amazon/
+
+pygeovision pipeline list   <span class="tc"># Show all 10 available pipelines</span>
+
+<span class="tc"># Models</span>
+pygeovision models list
+pygeovision models list --task segmentation --pretrained-only
+pygeovision models info segformer_b2
+pygeovision models cache --clear
+
+<span class="tc"># System</span>
+pygeovision status
+pygeovision doctor
+pygeovision status --json</pre>
+  </div>
+</div>
+
+<!-- PYTHON API -->
+<div class="doc-section" id="api">
+  <div class="sec-label">Python API</div>
+  <h2 class="sec-title">Python API Reference</h2>
+  <p class="sec-sub">Full programmatic control. Use PyGeoVision as a library in scripts, notebooks, or applications.</p>
+
+  <h3>PyGeoVision class — core methods</h3>
+  <div class="api-class">
+    <div class="api-class-header">
+      <span class="api-class-name">PyGeoVision</span>
+      <span class="api-class-type">class</span>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">add_credentials</span>(<span class="param">provider</span>: str, *, <span class="param">username</span>=None, <span class="param">password</span>=None, <span class="param">api_key</span>=None, <span class="param">client_id</span>=None, <span class="param">client_secret</span>=None) → <span class="ret">self</span></div>
+      <div class="api-desc">Register credentials for a provider. Stored in system keyring via PyGeoFetch. Returns self for chaining.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">search</span>(<span class="param">bbox</span>: tuple, <span class="param">date_range</span>: tuple | None, <span class="param">providers</span>: list[str], ...) → <span class="ret">list[SearchResult]</span></div>
+      <div class="api-desc">Federated search via PyGeoFetch. Returns sorted, deduplicated SearchResult objects.</div>
+      <div class="api-params">
+        <div class="api-param-row"><div class="api-param-name">bbox</div><div class="api-param-type">tuple[float,4]</div><div class="api-param-desc">Bounding box (minlon, minlat, maxlon, maxlat), longitude first.</div></div>
+        <div class="api-param-row"><div class="api-param-name">date_range</div><div class="api-param-type">tuple[str,str]</div><div class="api-param-desc">ISO date range (start, end). None defaults to last 30 days.</div></div>
+        <div class="api-param-row"><div class="api-param-name">providers</div><div class="api-param-type">list[str]</div><div class="api-param-desc">Provider IDs to query. See provider registry for full list.</div></div>
+        <div class="api-param-row"><div class="api-param-name">cloud_cover_max</div><div class="api-param-type">float</div><div class="api-param-desc">Max cloud cover %. Default 100.</div></div>
+        <div class="api-param-row"><div class="api-param-name">max_results</div><div class="api-param-type">int</div><div class="api-param-desc">Max total results. Default 100.</div></div>
+        <div class="api-param-row"><div class="api-param-name">satellite</div><div class="api-param-type">str | None</div><div class="api-param-desc">Shortcut: "sentinel-2", "landsat", "planet", "dem".</div></div>
+        <div class="api-param-row"><div class="api-param-name">sort_by</div><div class="api-param-type">str</div><div class="api-param-desc">"datetime", "cloud_cover", "score", "satellite". Default "datetime".</div></div>
+        <div class="api-param-row"><div class="api-param-name">cql2_filter</div><div class="api-param-type">str | None</div><div class="api-param-desc">CQL2 expression. Only applied to STAC providers.</div></div>
+      </div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">download</span>(<span class="param">results</span>: list[SearchResult], <span class="param">output_dir</span>: str | Path, ...) → <span class="ret">list[DownloadResult]</span></div>
+      <div class="api-desc">Download scenes via PyGeoFetch with parallel workers, retries, verification, and post-processing.</div>
+      <div class="api-params">
+        <div class="api-param-row"><div class="api-param-name">parallel</div><div class="api-param-type">int</div><div class="api-param-desc">Concurrent workers. Default 2.</div></div>
+        <div class="api-param-row"><div class="api-param-name">bands</div><div class="api-param-type">list[str]</div><div class="api-param-desc">Band names to download. Default: all assets.</div></div>
+        <div class="api-param-row"><div class="api-param-name">post_process</div><div class="api-param-type">list[str]</div><div class="api-param-desc">Processing chain. E.g. ["reproject:EPSG:4326", "cog"].</div></div>
+        <div class="api-param-row"><div class="api-param-name">verify_checksum</div><div class="api-param-type">bool</div><div class="api-param-desc">SHA256 verification. Default False.</div></div>
+        <div class="api-param-row"><div class="api-param-name">retry_attempts</div><div class="api-param-type">int</div><div class="api-param-desc">Max retry attempts with exponential backoff. Default 3.</div></div>
+        <div class="api-param-row"><div class="api-param-name">bandwidth_limit_mb</div><div class="api-param-type">float | None</div><div class="api-param-desc">Throttle in MB/s. None = unlimited.</div></div>
+      </div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">pipeline</span>(<span class="param">name</span>: str, <span class="param">bbox</span>: tuple, <span class="param">date</span>: str | None, ...) → <span class="ret">PipelineResult</span></div>
+      <div class="api-desc">Run one of 10 end-to-end pipelines. Searches, downloads, and runs AI in one call.</div>
+      <div class="api-params">
+        <div class="api-param-row"><div class="api-param-name">name</div><div class="api-param-type">str</div><div class="api-param-desc">Pipeline name. One of the 10 registered pipelines.</div></div>
+        <div class="api-param-row"><div class="api-param-name">date</div><div class="api-param-type">str | None</div><div class="api-param-desc">Date or month. E.g. "2024-06" or "2024-06-15".</div></div>
+        <div class="api-param-row"><div class="api-param-name">date_before</div><div class="api-param-type">str | None</div><div class="api-param-desc">For bi-temporal pipelines: before date.</div></div>
+        <div class="api-param-row"><div class="api-param-name">date_after</div><div class="api-param-type">str | None</div><div class="api-param-desc">For bi-temporal pipelines: after date.</div></div>
+        <div class="api-param-row"><div class="api-param-name">output_dir</div><div class="api-param-type">str | Path</div><div class="api-param-desc">Output directory for results.</div></div>
+      </div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">create_pipeline</span>(<span class="param">name</span>: str, <span class="param">description</span>: str | None) → <span class="ret">DataPipeline</span></div>
+      <div class="api-desc">Create a chainable DataPipeline builder. Call .search(), .filter(), .download(), .export(), .set_schedule() then .run() or .save().</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">status</span>() → <span class="ret">dict</span></div>
+      <div class="api-desc">Full system status: pygeovision version, pygeofetch availability, geoai availability, torch device, registered models, provider connectivity.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">cache_stats</span>() → <span class="ret">dict</span> &nbsp;|&nbsp; <span class="fn">clear_cache</span>(<span class="param">provider</span>: str | None) → <span class="ret">None</span></div>
+      <div class="api-desc">Cache statistics (hit rate, size, entries) and cache clearing. Delegates to PyGeoFetch cache layer.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">doctor</span>() → <span class="ret">None</span> &nbsp;|&nbsp; <span class="fn">test_provider</span>(<span class="param">provider</span>: str) → <span class="ret">bool</span></div>
+      <div class="api-desc">Run diagnostics and connectivity checks. <code class="ci">doctor()</code> prints a full report; <code class="ci">test_provider()</code> returns True/False.</div>
+    </div>
+  </div>
+
+  <h3>GeoAIEngine proxy</h3>
+  <div class="api-class">
+    <div class="api-class-header">
+      <span class="api-class-name">client.geoai</span>
+      <span class="api-class-type">GeoAIEngine (lazy proxy)</span>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">version</span> → <span class="ret">str</span> &nbsp;|&nbsp; <span class="fn">is_available</span> → <span class="ret">bool</span></div>
+      <div class="api-desc">GeoAI version string and availability check. Importing GeoAI is deferred until first attribute access.</div>
+    </div>
+    <div class="api-method">
+      <div class="api-sig"><span class="fn">raw</span>() → <span class="ret">module</span></div>
+      <div class="api-desc">Return the raw <code class="ci">geoai</code> module for direct access to any function not exposed through the subsystem proxies.</div>
+    </div>
+  </div>
+
+  <h3>Code examples — all subsystems</h3>
+  <div class="ex-tabs">
+    <button class="ex-tab active" onclick="showEx('full',this)">Full Workflow</button>
+    <button class="ex-tab" onclick="showEx('embed',this)">Embeddings</button>
+    <button class="ex-tab" onclick="showEx('cloud',this)">Cloud + SR</button>
+    <button class="ex-tab" onclick="showEx('vlm',this)">VLM / Captions</button>
+    <button class="ex-tab" onclick="showEx('labeling',this)">Auto-Labeling</button>
+  </div>
+  <div class="ex-panel active" id="ex-full">
+    <div class="code-block">
+      <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">full_workflow.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+      <pre>import pygeovision as pgv
+
+client = pgv.PyGeoVision()
+client.add_credentials("copernicus", client_id="id", client_secret="secret")
+
+<span class="tc"># 1. Search</span>
+results = client.search(
+    bbox=(-0.15, 51.47, -0.10, 51.52),
+    date_range=("2024-06-01", "2024-06-30"),
+    providers=["planetary_computer", "copernicus"],
+    cloud_cover_max=10,
+)
+
+<span class="tc"># 2. Download</span>
+downloads = client.download(
+    results[:2], output_dir="./data/",
+    bands=["B02","B03","B04","B08"],
+    post_process=["reproject:EPSG:4326","cog"],
+)
+
+ga = client.geoai
+
+<span class="tc"># 3. Segment buildings</span>
+ga.segment.buildings(downloads[0].path,
+    output_vector="buildings.geojson")
+
+<span class="tc"># 4. Cloud-mask and check quality</span>
+ga.cloud.predict(downloads[0].path, output_path="cloud.tif")
+stats = ga.cloud.statistics("cloud.tif")
+
+<span class="tc"># 5. NDVI analysis</span>
+ga.utils.stack_bands([f"B04.tif","B08.tif"], "ndvi_stack.tif")
+
+<span class="tc"># 6. Super-resolve</span>
+ga.sr.enhance(downloads[0].path, output_path="sr_4x.tif", scale_factor=4)
+
+<span class="tc"># 7. Detect vehicles with natural language</span>
+ga.detect.grounded("aerial.tif", "large vehicles in car parks",
+    output_path="vehicles.geojson")
+
+<span class="tc"># 8. Caption the scene with VLM</span>
+print(ga.caption.caption("aerial.tif"))
+print(ga.caption.query("aerial.tif", "How many building rooftops are visible?"))
+
+<span class="tc"># 9. View results</span>
+m = ga.map.leafmap()
+ga.map.view_raster("buildings.tif")
+ga.map.view_vector("buildings.geojson")</pre>
+    </div>
+  </div>
+  <div class="ex-panel" id="ex-embed">
+    <div class="code-block">
+      <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">embeddings.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+      <pre><span class="tc"># Extract DINOv3 patch embeddings</span>
+embeddings = ga.embed.patch("sentinel2.tif", chip_size=64)
+print(embeddings.shape)  <span class="tc"># (N, 512)</span>
+
+<span class="tc"># Find most similar patch to a query point</span>
+sim_map = ga.dinov3.similarity_map("scene.tif", query_point=(512, 512))
+ga.map.view_raster(sim_map)
+
+<span class="tc"># Cluster scene into N land types unsupervised</span>
+labels = ga.embed.cluster(embeddings, n_clusters=8)
+
+<span class="tc"># Visualize embedding space (UMAP)</span>
+ga.embed.visualize(embeddings, method="umap", labels=labels)
+
+<span class="tc"># Tessera pre-computed embeddings (large scale)</span>
+bbox = (-74.1, 40.6, -73.7, 40.9)
+years = ga.tessera.available_years(bbox=bbox)
+ga.tessera.download(bbox=bbox, output_dir="./tessera/", years=[2023, 2024])
+
+<span class="tc"># Cosine similarity between two scenes</span>
+emb_a = ga.embed.patch("scene_a.tif")
+emb_b = ga.embed.patch("scene_b.tif")
+score = ga.embed.similarity(emb_a.mean(0), emb_b.mean(0))
+print(f"Scene similarity: {score:.3f}")</pre>
+    </div>
+  </div>
+  <div class="ex-panel" id="ex-cloud">
+    <div class="code-block">
+      <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">cloud_sr.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+      <pre><span class="tc"># ── Cloud masking ─────────────────────────────────────────────────────────</span>
+ga.cloud.predict("sentinel2.tif", output_path="cloud_mask.tif")
+
+<span class="tc"># Batch cloud masking</span>
+ga.cloud.batch("./scenes/", "./cloud_masks/")
+
+<span class="tc"># Cloud statistics for a scene</span>
+stats = ga.cloud.statistics("cloud_mask.tif")
+<span class="tc"># → {"cloud_cover": 0.08, "shadow_cover": 0.03, "clear_pct": 0.89}</span>
+
+<span class="tc"># Cloud-free composite from multiple scenes</span>
+ga.cloud.create_composite(
+    ["s2_jan.tif", "s2_feb.tif", "s2_mar.tif"],
+    "composite_q1.tif",
+    method="median",
+)
+
+<span class="tc"># ── Super-resolution ─────────────────────────────────────────────────────</span>
+<span class="tc"># Upscale Landsat 30m → 7.5m equivalent (×4)</span>
+ga.sr.enhance("landsat.tif", output_path="landsat_sr.tif", scale_factor=4)
+
+<span class="tc"># ×2 for Sentinel-2 10m → 5m</span>
+ga.sr.enhance("sentinel2.tif", output_path="s2_sr.tif", scale_factor=2)</pre>
+    </div>
+  </div>
+  <div class="ex-panel" id="ex-vlm">
+    <div class="code-block">
+      <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">vlm_captions.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+      <pre><span class="tc"># ── Moondream VLM ─────────────────────────────────────────────────────────</span>
+
+<span class="tc"># Generate a natural-language caption</span>
+caption = ga.caption.caption("satellite_tile.tif")
+print(caption)
+<span class="tc"># → "Aerial view of a dense urban area with residential buildings, tree-lined</span>
+<span class="tc">#   streets, and a river visible at the lower edge."</span>
+
+<span class="tc"># Ask a question about the image</span>
+answer = ga.caption.query("satellite_tile.tif", "Are there any large industrial buildings?")
+count  = ga.caption.query("satellite_tile.tif", "How many distinct building rooftops are visible?")
+change = ga.caption.query("satellite_tile.tif", "Is there evidence of recent construction?")
+
+<span class="tc"># Detect objects with VLM</span>
+result = ga.caption.detect("aerial.tif", "cars")
+
+<span class="tc"># Sliding-window VLM over large raster (tile-by-tile)</span>
+results = ga.caption.sliding_window(
+    "large_scene.tif",
+    prompt="Describe the dominant land use.",
+    tile_size=512,
+    stride=384,
+)</pre>
+    </div>
+  </div>
+  <div class="ex-panel" id="ex-labeling">
+    <div class="code-block">
+      <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">auto_labeling.py</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+      <pre>from pygeovision.ai.labeling.osm_labeler import OSMLabeler
+from pygeovision.ai.labeling.microsoft_buildings import MicrosoftBuildingsLabeler
+
+<span class="tc"># OSM building labels</span>
+labeler = OSMLabeler()
+labels = labeler.label(tiles, feature_type="building")
+
+<span class="tc"># Microsoft global buildings</span>
+ms = MicrosoftBuildingsLabeler()
+labels = ms.label(tiles)
+
+<span class="tc"># High-level API</span>
+client.ai.label(tiles, labeler="osm",                feature_type="building")
+client.ai.label(tiles, labeler="microsoft_buildings")
+client.ai.label(tiles, labeler="google_buildings")
+client.ai.label(tiles, labeler="esa_worldcover")
+client.ai.label(tiles, labeler="dynamic_world")
+client.ai.label(tiles, labeler="sam")
+client.ai.label(tiles, labeler="foundation",
+    model_id="giswqs/building-footprint")
+
+<span class="tc"># Labels returned as GeoJSON masks aligned to input tiles</span>
+<span class="tc"># Ready to pass directly to client.ai.train.segmentation()</span></pre>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIG -->
+<div class="doc-section alt" id="config">
+  <div class="sec-label">Configuration</div>
+  <h2 class="sec-title">Configuration Reference</h2>
+  <p class="sec-sub">PyGeoVision uses a layered configuration system. Settings are merged in precedence order (lowest to highest).</p>
+  <div class="callout-row">
+    <div class="callout"><div class="callout-icon">1️⃣</div><div class="callout-title">Built-in defaults</div><div class="callout-body">Sensible defaults baked in. Lowest priority. Works out of the box.</div></div>
+    <div class="callout"><div class="callout-icon">2️⃣</div><div class="callout-title">~/.pygeovision/config.yaml</div><div class="callout-body">User-level config. Applies to all projects on this machine.</div></div>
+    <div class="callout"><div class="callout-icon">3️⃣</div><div class="callout-title">.pygeovision.yaml</div><div class="callout-body">Project config in current directory. Overrides user config.</div></div>
+  </div>
+  <div class="callout-row" style="margin-top:0;">
+    <div class="callout"><div class="callout-icon">4️⃣</div><div class="callout-title">Environment variables</div><div class="callout-body"><code class="ci">PYGEOVISION_*</code> env vars. Override file config.</div></div>
+    <div class="callout"><div class="callout-icon">5️⃣</div><div class="callout-title">Constructor arguments</div><div class="callout-body">Passed to <code class="ci">PyGeoVision(config=...)</code>. Highest priority.</div></div>
+    <div class="callout" style="border-color:transparent;background:transparent;"></div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">~/.pygeovision/config.yaml</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>gpu:
+  device: cuda             <span class="tc"># cuda | mps | cpu | auto</span>
+  mixed_precision: true
+  amp_dtype: float16
+
+training:
+  batch_size: 16
+  learning_rate: 1.0e-4
+  max_epochs: 100
+  num_workers: 4
+  pin_memory: true
+  early_stopping_patience: 10
+  save_best_only: true
+
+model_hub:
+  cache_dir: ~/.pygeovision/models
+  auto_download: true
+  verify_checksum: true
+
+pygeofetch:
+  default_providers: [planetary_computer, copernicus]
+  cache_ttl_seconds: 3600
+  download_parallel: 4
+  verify_checksum: false
+  on_failure: skip
+
+logging:
+  level: INFO
+  format: console           <span class="tc"># console | json</span>
+  file: null</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">config CLI</span></div>
+    <pre>pygeovision config show
+pygeovision config get gpu.device
+pygeovision config set training.batch_size 32
+pygeovision config set gpu.device cuda
+pygeovision config path
+pygeovision config reset</pre>
+  </div>
+</div>
+
+<!-- ERRORS -->
+<div class="doc-section" id="errors">
+  <div class="sec-label">Reference</div>
+  <h2 class="sec-title">Error Handling &amp; Resilience</h2>
+  <p class="sec-sub">PyGeoVision handles failures at every layer — provider outages, network interruptions, checksum mismatches, GPU OOM, and model load failures are all managed gracefully.</p>
+
+  <div class="err-grid">
+    <div class="err-row">
+      <div><div class="err-code">ProviderAuthError</div><div class="err-fix">→ pygeovision data auth test PROVIDER</div></div>
+      <div class="err-desc">Credentials missing, expired, or rejected. Re-add with <code class="ci">data auth add</code> or set the env var.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">ProviderTimeoutError</div><div class="err-fix">→ Add --timeout 120 or use skip policy</div></div>
+      <div class="err-desc">Provider API did not respond in time. Increase timeout or check provider status page.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">NoResultsError</div><div class="err-fix">→ Widen --cloud-max 30 or extend date range</div></div>
+      <div class="err-desc">Search returned zero scenes. Relax filters, check bbox (lon first), or try additional providers.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">ChecksumMismatchError</div><div class="err-fix">→ --retry 5 --verify-checksum</div></div>
+      <div class="err-desc">Downloaded file hash mismatch. Automatic re-download up to retry limit.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">GeoAINotAvailableError</div><div class="err-fix">→ pip install "pygeovision[geoai]"</div></div>
+      <div class="err-desc">GeoAI package not installed. Install the <code class="ci">[geoai]</code> extra to use <code class="ci">client.geoai.*</code>.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">ModelNotFoundError</div><div class="err-fix">→ pygeovision models list</div></div>
+      <div class="err-desc">Requested model name not in registry. Run <code class="ci">models list</code> for valid names or check HF Hub ID.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">GPUOutOfMemoryError</div><div class="err-fix">→ Reduce --tile-size 256 or --batch-size 4</div></div>
+      <div class="err-desc">CUDA OOM during inference or training. Reduce tile size, batch size, or use CPU.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">PostProcessError</div><div class="err-fix">→ pip install "pygeovision[geo]"</div></div>
+      <div class="err-desc">Post-processing chain failed. Usually missing rasterio or GDAL.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">KeyringUnavailableError</div><div class="err-fix">→ PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring</div></div>
+      <div class="err-desc">No system keyring daemon (Docker, headless SSH). Use environment variables instead.</div>
+    </div>
+    <div class="err-row">
+      <div><div class="err-code">PipelineStepError</div><div class="err-fix">→ --step download to re-run single step</div></div>
+      <div class="err-desc">One step of an E2E pipeline failed. Re-run only the failing step after fixing the issue.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY -->
+<div class="doc-section alt" id="security">
+  <div class="sec-label">Security</div>
+  <h2 class="sec-title">Security Model</h2>
+  <div class="sec-grid">
+    <div class="sec-card">
+      <div class="sec-card-title">🔑 Credential Handling</div>
+      <ul class="sec-list">
+        <li>Credentials never written to disk in plain text</li>
+        <li>System keyring: macOS Keychain, Windows Credential Manager, Linux Secret Service</li>
+        <li>Encrypted file fallback using Fernet AES-128-CBC</li>
+        <li>All logs redact passwords, tokens, and API keys</li>
+        <li>Credentials cleared from memory after use</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <div class="sec-card-title">🌐 Network Security</div>
+      <ul class="sec-list">
+        <li>TLS 1.2+ enforced on all connections</li>
+        <li>SSL certificate verification always on</li>
+        <li>Connection timeouts per provider</li>
+        <li>HTTP proxy support via env vars</li>
+        <li>No telemetry — PyGeoVision does not phone home</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <div class="sec-card-title">📦 Data Integrity</div>
+      <ul class="sec-list">
+        <li>SHA256 checksum verification on downloads</li>
+        <li>Atomic file writes — partial downloads never corrupt data</li>
+        <li>Temp files cleaned on failure</li>
+        <li>Download resume prevents data duplication</li>
+      </ul>
+    </div>
+    <div class="sec-card">
+      <div class="sec-card-title">🔒 Privacy</div>
+      <ul class="sec-list">
+        <li>No analytics or usage tracking</li>
+        <li>No third-party requests beyond configured providers</li>
+        <li>All data stays local unless you configure export</li>
+        <li>Model weights downloaded directly from official sources</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DOCKER -->
+<div class="doc-section" id="docker">
+  <div class="sec-label">Deployment</div>
+  <h2 class="sec-title">Docker &amp; Containers</h2>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">docker-compose.yml</span><button class="cb-copy" onclick="copyCode(this)">copy</button></div>
+    <pre>version: '3.8'
+services:
+  pygeovision:
+    image: pygeovision/pygeovision:latest
+    volumes:
+      - ~/.pygeovision:/root/.pygeovision
+      - ./pipelines:/pipelines
+      - ./data:/data
+    command: pygeovision pipeline run /pipelines/weekly.yaml
+    restart: unless-stopped
+    environment:
+      - PYGEOVISION_GPU_DEVICE=cuda
+      - PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+      - pygeofetch_PLANET_API_KEY=${PLANET_API_KEY}
+      - pygeofetch_COPERNICUS_USERNAME=${COPERNICUS_USER}
+      - pygeofetch_COPERNICUS_PASSWORD=${COPERNICUS_PASS}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">CLI commands</span></div>
+    <pre>docker pull pygeovision/pygeovision:latest
+
+docker run \
+  -v ~/.pygeovision:/root/.pygeovision \
+  -v $(pwd)/data:/data \
+  pygeovision/pygeovision \
+  pygeovision data search \
+  --bbox "-0.15,51.47,-0.10,51.52" \
+  --providers planetary_computer \
+  --output /data/results.geojson</pre>
+  </div>
+</div>
+
+<!-- TESTING -->
+<div class="doc-section alt" id="testing">
+  <div class="sec-label">Quality</div>
+  <h2 class="sec-title">Testing — 208 Tests Passing</h2>
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">test structure</span></div>
+    <pre>tests/
+├── test_core.py              14   Config, exceptions, engine
+├── test_data_layer.py        68   SatelliteFetcher, SearchResult, DataPipeline, all 22 providers
+├── test_geoai_integration.py 68   All 24 GeoAI subsystems (mocked GeoAI)
+├── test_validation.py        21   TiledInference, vectorization, metrics
+├── test_training.py              GeoTrainer, losses, metrics, callbacks
+├── test_labeling.py              7 labelers (OSM, MS Buildings, WorldCover, SAM, ...)
+├── test_inference.py             PostProcessor, Ensemble, ONNX export
+├── test_integration.py           End-to-end pipeline integration (12 scenarios)
+└── conftest.py                   Shared fixtures, mocked providers, VCR cassettes
+
+208 passing  19 skipped  0 failing</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="cb-dot" style="background:#ff5f56"></div><div class="cb-dot" style="background:#ffbd2e"></div><div class="cb-dot" style="background:#27c93f"></div><span class="cb-fname">running tests</span></div>
+    <pre>pip install -e ".[dev,all]"
+
+pytest tests/ -q                                    <span class="tc"># all tests</span>
+pytest tests/ -q --cov=pygeovision --cov-report=html  <span class="tc"># with coverage</span>
+pytest tests/test_geoai_integration.py -v           <span class="tc"># GeoAI only</span>
+pytest tests/test_data_layer.py -v                  <span class="tc"># data layer only</span>
+pytest tests/ --run-integration                     <span class="tc"># real API calls (needs creds)</span></pre>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="doc-section" id="compare">
+  <div class="sec-label">Comparison</div>
+  <h2 class="sec-title">PyGeoVision vs Alternatives</h2>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="hl">PyGeoVision</th>
+          <th>EODAG</th>
+          <th>TorchGeo</th>
+          <th>TerraTorch</th>
+          <th>Raw GeoAI</th>
+          <th>Raw pygeofetch</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Satellite providers</td><td class="hl cmp-yes">22+</td><td>10+</td><td>Limited</td><td>Limited</td><td>3</td><td>22+</td></tr>
+        <tr><td>GeoAI integration (24 subsystems)</td><td class="hl cmp-yes">✓ Full</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-yes">✓ Direct</td><td class="cmp-no">—</td></tr>
+        <tr><td>E2E pipelines (1 call)</td><td class="hl cmp-yes">10</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>Full CLI</td><td class="hl cmp-yes">✓</td><td>Partial</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td></tr>
+        <tr><td>YAML pipeline orchestration</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td></tr>
+        <tr><td>Keyring auth management</td><td class="hl cmp-yes">✓</td><td>Partial</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td></tr>
+        <tr><td>Parallel downloads + checksum</td><td class="hl cmp-yes">✓</td><td>✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td></tr>
+        <tr><td>Foundation models (Prithvi, DINOv3)</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td>✓</td><td>✓</td><td>✓</td><td class="cmp-no">—</td></tr>
+        <tr><td>SAM / GroundedSAM</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td><td class="cmp-no">—</td></tr>
+        <tr><td>7 auto-labelers</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td></tr>
+        <tr><td>VLM captioning (Moondream)</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td><td class="cmp-no">—</td></tr>
+        <tr><td>ONNX export + inference</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td><td class="cmp-no">—</td></tr>
+        <tr><td>Commercial providers (Planet, Maxar)</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td></tr>
+        <tr><td>Docker image</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td></tr>
+        <tr><td>Cron scheduler</td><td class="hl cmp-yes">✓</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td class="cmp-no">—</td><td>✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="doc-section alt" id="roadmap">
+  <div class="sec-label">Roadmap</div>
+  <h2 class="sec-title">Roadmap</h2>
+  <div class="roadmap-grid">
+    <div class="rm-card done">
+      <div class="rm-version">v1.0.0</div>
+      <div class="rm-title">Production Release</div>
+      <div class="rm-date done">✓ Released — Q2 2025</div>
+      <ul class="rm-items">
+        <li class="done">22 provider integrations via PyGeoFetch</li>
+        <li class="done">24 GeoAI subsystem proxies</li>
+        <li class="done">10 end-to-end pipelines</li>
+        <li class="done">14 model registry architectures</li>
+        <li class="done">GeoTrainer + TiledInference</li>
+        <li class="done">7 auto-labelers</li>
+        <li class="done">Full CLI + YAML pipelines</li>
+        <li class="done">208 test suite with CI</li>
+        <li class="done">Docker image</li>
+      </ul>
+    </div>
+    <div class="rm-card progress">
+      <div class="rm-version">v1.1.0</div>
+      <div class="rm-title">Extended AI + Providers</div>
+      <div class="rm-date progress">◐ In Progress — Q3 2025</div>
+      <ul class="rm-items">
+        <li class="prog">BlackSky provider</li>
+        <li class="prog">KOMPSAT-3/3A via SI Imaging</li>
+        <li class="prog">Prithvi 2.0 300M support</li>
+        <li class="todo">Interactive search mode (--interactive)</li>
+        <li class="todo">Slack / Discord / Teams webhook templates</li>
+        <li class="todo">Streaming COG partial reads</li>
+        <li class="todo">MLflow experiment tracking integration</li>
+      </ul>
+    </div>
+    <div class="rm-card planned">
+      <div class="rm-version">v1.2.0</div>
+      <div class="rm-title">Dashboard + API Server</div>
+      <div class="rm-date planned">○ Planned — Q1 2026</div>
+      <ul class="rm-items">
+        <li class="todo">Web dashboard for pipeline monitoring</li>
+        <li class="todo">REST API server mode (pygeovision serve)</li>
+        <li class="todo">Provider health auto-monitoring</li>
+        <li class="todo">Distributed TiledInference across workers</li>
+        <li class="todo">GeoParquet output for all pipelines</li>
+        <li class="todo">Time-series AI analysis pipelines</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo">🛰️ <span>PyGeo</span>Vision</div>
+      <div class="f-desc">The geospatial AI platform — unifying PyGeoFetch satellite data and GeoAI intelligence. Satellite to insight in one Python package. Apache 2.0 licensed.</div>
+      <div class="f-badges">
+        <span class="pill">v1.0.0</span>
+        <span class="pill">Apache 2.0</span>
+        <span class="pill">Python 3.10+</span>
+        <span class="pill">208 Tests ✓</span>
+      </div>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Data</div>
+      <ul>
+        <li><a href="#providers">22 Providers</a></li>
+        <li><a href="#search">Search API</a></li>
+        <li><a href="#download">Download API</a></li>
+        <li><a href="#pipeline-yaml">YAML Pipelines</a></li>
+        <li><a href="#auth-add">Authentication</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">GeoAI</div>
+      <ul>
+        <li><a href="#geoai">24 Subsystems</a></li>
+        <li><a href="#models">Model Registry</a></li>
+        <li><a href="#trainer">GeoTrainer</a></li>
+        <li><a href="#labeling">Auto-Labeling</a></li>
+        <li><a href="#pipelines">E2E Pipelines</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Resources</div>
+      <ul>
+        <li><a href="https://github.com/pygeovision/pygeovision" target="_blank">GitHub ↗</a></li>
+        <li><a href="https://github.com/appiahkubis14/PyGeoFetch" target="_blank">PyGeoFetch ↗</a></li>
+        <li><a href="https://opengeoai.org" target="_blank">GeoAI ↗</a></li>
+        <li><a href="#cli">CLI Reference</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 PyGeoVision Contributors. Released under <a href="#">Apache 2.0</a>. Built on <a href="https://github.com/appiahkubis14/PyGeoFetch">PyGeoFetch</a> and <a href="https://opengeoai.org">GeoAI</a>.</div>
+    <div class="footer-built">pip install "pygeovision[geoai]"</div>
+  </div>
+</footer>
+
+</main>
+</div>
+
+<script>
+/* ── Theme ── */
+const toggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+toggle.addEventListener('click', () => {
+  const d = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', d ? 'light' : 'dark');
+  toggle.textContent = d ? '🌙' : '☀️';
+});
+
+/* ── Install tabs ── */
+const cmds = {
+  core:  'pip install pygeovision',
+  geoai: 'pip install "pygeovision[geoai]"',
+  geo:   'pip install "pygeovision[geo]"',
+  all:   'pip install "pygeovision[all]"',
+};
+function setInstall(k, btn) {
+  document.getElementById('install-cmd').textContent = cmds[k];
+  document.querySelectorAll('.itab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function copyInstall() {
+  navigator.clipboard.writeText(document.getElementById('install-cmd').textContent).catch(()=>{});
+}
+
+/* ── Copy code blocks ── */
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    const o = btn.textContent; btn.textContent = 'copied!';
+    setTimeout(() => btn.textContent = o, 1500);
+  }).catch(()=>{});
+}
+
+/* ── Provider filter ── */
+function filterP(key, btn) {
+  document.querySelectorAll('.pf-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pcard').forEach(c => {
+    if (key === 'all') { c.style.display = ''; return; }
+    if (key === 'open') { c.style.display = c.dataset.open ? '' : 'none'; return; }
+    if (key === 'auth') { c.style.display = !c.dataset.open ? '' : 'none'; return; }
+    c.style.display = c.dataset[key] ? '' : 'none';
+  });
+}
+
+/* ── Code example tabs ── */
+// Define showEx as a global function
+function showEx(id, btn) {
+    // Remove active class from all tabs
+    document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
+    // Remove active class from all panels
+    document.querySelectorAll('.ex-panel').forEach(p => p.classList.remove('active'));
+    // Add active class to clicked tab
+    if (btn) btn.classList.add('active');
+    // Show the selected panel
+    const panel = document.getElementById('ex-' + id);
+    if (panel) panel.classList.add('active');
+}
+// Also attach to window to ensure global availability
+window.showEx = showEx;
+
+/* ── Terminal demo ── */
+const termOutputs = {
+  status:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision status</span>
+
+<span class="term-info">PyGeoVision System Status v1.0.0</span>
+<span class="term-out">────────────────────────────────────────────────────</span>
+<span class="term-ok">✓</span> pygeovision        1.0.0
+<span class="term-ok">✓</span> pygeofetch         1.0.0    22 providers (10 open)
+<span class="term-ok">✓</span> geoai              0.39.2   24 subsystems
+<span class="term-ok">✓</span> torch              2.3.0    CUDA 12.1
+<span class="term-ok">✓</span> GPU                NVIDIA A100 80GB
+<span class="term-ok">✓</span> rasterio           1.3.10
+<span class="term-ok">✓</span> geopandas          1.1.3
+<span class="term-ok">✓</span> Registered models  14
+
+<span class="term-out">Provider Status</span>
+<span class="term-ok"> ✓ OPERATIONAL </span> planetary_computer (124ms)
+<span class="term-ok"> ✓ OPERATIONAL </span> aws_earth (98ms)
+<span class="term-ok"> ✓ OPERATIONAL </span> element84 (211ms)
+<span class="term-warn"> ⚠ NO CREDS    </span> usgs
+<span class="term-warn"> ⚠ NO CREDS    </span> planet`,
+
+  search:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision data search --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06 --providers planetary_computer --cloud-max 10 --output results.geojson</span>
+
+<span class="term-info">Searching planetary_computer ...</span>
+<span class="term-ok">✓</span> planetary_computer: 8 results (0.9s)
+
+<span class="term-out"> ID                                     DATE        CLOUD  SAT          SCORE
+ ─────────────────────────────────────────────────────────────────────────────
+ S2C_MSIL2A_20240628T111251_R137...    2024-06-28   0.0%  Sentinel-2C    99
+ S2B_MSIL2A_20240623T111109_R137...    2024-06-23   2.1%  Sentinel-2B    96
+ S2C_MSIL2A_20240618T111231_R137...    2024-06-18   3.4%  Sentinel-2C    93
+ S2A_MSIL2A_20240613T111041_R137...    2024-06-13   5.8%  Sentinel-2A    88
+ ... 4 more results</span>
+
+<span class="term-ok">8 scenes saved → results.geojson</span>`,
+
+  download:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision data download --from-search results.geojson --output ./data/ --parallel 4 --verify-checksum --post-process "reproject:EPSG:4326,cog"</span>
+
+<span class="term-info">Downloading 8 scenes → ./data/ (parallel=4)</span>
+<span class="term-out">────────────────────────────────────────────────────</span>
+
+<span class="term-ok">⬇</span> S2C_20240628_... ████████████ 100%  247.3 MB  14.2 MB/s  ✓ SHA256
+<span class="term-ok">⬇</span> S2B_20240623_... ████████████ 100%  251.1 MB  13.8 MB/s  ✓ SHA256
+<span class="term-ok">⬇</span> S2C_20240618_... ██████████░░  83%  208.6 MB  12.9 MB/s
+<span class="term-ok">⬇</span> S2A_20240613_... ██████░░░░░░  52%  129.4 MB  13.1 MB/s
+
+<span class="term-info">Post-processing: reproject:EPSG:4326, cog</span>
+<span class="term-ok">✓</span> All 8 scenes downloaded and processed
+<span class="term-ok">✓</span> Total: 1.94 GB in 2m 21s  avg 13.7 MB/s`,
+
+  segment:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision ai segment buildings --input ./data/S2C_20240628.tif --output buildings.tif --vector buildings.geojson --confidence 0.5</span>
+
+<span class="term-info">Loading GeoAI BuildingFootprintExtractor ...</span>
+<span class="term-ok">✓</span> Model loaded  (cuda:0)
+
+<span class="term-info">Tiled inference: 512×512 tiles, overlap=64, blend=gaussian</span>
+<span class="term-out"> Tile  1/24  ████████████ 100%</span>
+<span class="term-out"> Tile  2/24  ████████████ 100%</span>
+<span class="term-out"> ...  24/24  ████████████ 100%</span>
+
+<span class="term-ok">✓</span> buildings.tif  saved  (mask raster)
+<span class="term-ok">✓</span> buildings.geojson saved  →  <strong>1,847 building polygons</strong>
+<span class="term-ok">✓</span> Mean confidence: 0.871  |  Area coverage: 31.2%`,
+
+  detect:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision ai detect grounded --input ./data/aerial.tif --prompt "cars in parking lots" --output cars.geojson</span>
+
+<span class="term-info">Loading GeoAI GroundedSAM ...</span>
+<span class="term-ok">✓</span> GroundedSAM loaded  DINO+SAM  (cuda:0)
+
+<span class="term-info">Detecting: "cars in parking lots"</span>
+<span class="term-out"> Grounding DINO: 94 candidate boxes</span>
+<span class="term-out"> SAM segmentation: 94 / 94 masks</span>
+<span class="term-out"> Post-filter (confidence > 0.35): 71 kept</span>
+
+<span class="term-ok">✓</span> cars.geojson  →  <strong>71 vehicle instances</strong>
+<span class="term-ok">✓</span> Mean IoU: 0.84  |  Processing: 8.2s`,
+
+  change:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision ai change detect --before london_2020.tif --after london_2024.tif --output changes.tif</span>
+
+<span class="term-info">Loading GeoAI ChangeSTAR ...</span>
+<span class="term-ok">✓</span> ChangeSTAR v2 loaded  (cuda:0)
+
+<span class="term-info">Bi-temporal change detection</span>
+<span class="term-out"> Before: london_2020.tif  (2020-03-14)</span>
+<span class="term-out"> After:  london_2024.tif  (2024-03-09)</span>
+
+<span class="term-ok">✓</span> changes.tif saved
+<span class="term-out"> Changed pixels: 4.2%  (urban growth / construction)</span>
+<span class="term-out"> Unchanged:      95.8%</span>
+<span class="term-ok">✓</span> Vectorised change polygons → changes.geojson  (342 regions)`,
+
+  train:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision ai train segmentation --data ./chips/ --output building_model.pth --num-classes 2 --epochs 100 --backbone efficientnet-b4</span>
+
+<span class="term-info">GeoTrainer — Segmentation Training</span>
+<span class="term-out"> Model:     UNet + EfficientNet-B4</span>
+<span class="term-out"> Classes:   2  (background, building)</span>
+<span class="term-out"> Loss:      DiceLoss</span>
+<span class="term-out"> Optimizer: AdamW  lr=1e-4</span>
+<span class="term-out"> Device:    cuda:0  (A100 80GB)</span>
+<span class="term-out"> Chips:     4,218 train  /  842 val</span>
+<span class="term-out">────────────────────────────────────────────────────────</span>
+<span class="term-out"> Epoch  10/100  loss=0.312  val_mIoU=0.741  val_F1=0.849</span>
+<span class="term-out"> Epoch  20/100  loss=0.241  val_mIoU=0.801  val_F1=0.889</span>
+<span class="term-out"> Epoch  50/100  loss=0.178  val_mIoU=0.841  val_F1=0.913  ← best</span>
+<span class="term-out"> Epoch  65/100  loss=0.172  val_mIoU=0.847  val_F1=0.917  ← best</span>
+<span class="term-ok">✓</span> Early stopping at epoch 75  (patience=10)
+<span class="term-ok">✓</span> building_model.pth saved  (best val_mIoU=0.847)
+<span class="term-ok">✓</span> building_model.onnx exported`,
+
+  pipeline_bldg:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision pipeline building_footprints --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06 --output ./results/</span>
+
+<span class="term-info">Pipeline: building_footprints</span>
+<span class="term-out"> bbox:   -0.15, 51.47, -0.10, 51.52  (London)</span>
+<span class="term-out"> date:   2024-06</span>
+<span class="term-out">────────────────────────────────────────────────────────────</span>
+
+<span class="term-info">Step 1/4: search  →  planetary_computer</span>
+<span class="term-ok">✓</span> 3 Sentinel-2 scenes  (best: cloud=0.0%, 2024-06-28)
+
+<span class="term-info">Step 2/4: download</span>
+<span class="term-ok">✓</span> 247.3 MB  →  ./results/raw/S2C_20240628.tif
+
+<span class="term-info">Step 3/4: ai  →  GeoAI BuildingFootprintExtractor</span>
+<span class="term-ok">✓</span> Segmented  24 tiles  (Gaussian blend)
+
+<span class="term-info">Step 4/4: export</span>
+<span class="term-ok">✓</span> prediction.tif  (COG, EPSG:4326)
+<span class="term-ok">✓</span> buildings.geojson  →  <strong>1,847 polygons</strong>
+
+<span class="term-ok">Pipeline complete in 3m 14s</span>
+<span class="term-out"> Output: ./results/building_footprints/
+ Stats:  {"buildings_detected": 1847, "coverage_pct": 0.312}</span>`,
+
+  pipeline_change:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision pipeline change_detection --bbox "-74.1,40.6,-73.7,40.9" --date-before 2020-01 --date-after 2024-01 --output ./changes/</span>
+
+<span class="term-info">Pipeline: change_detection  (bi-temporal)</span>
+<span class="term-out"> Before: 2020-01  |  After: 2024-01</span>
+<span class="term-out">────────────────────────────────────────────────────────────</span>
+
+<span class="term-info">Step 1/4: search  (before + after)</span>
+<span class="term-ok">✓</span> Before scene: Landsat-8  2020-01-12  cloud=4.1%
+<span class="term-ok">✓</span> After scene:  Landsat-9  2024-01-07  cloud=1.8%
+
+<span class="term-info">Step 2/4: download  (2 scenes)</span>
+<span class="term-ok">✓</span> 312 MB downloaded
+
+<span class="term-info">Step 3/4: ai  →  GeoAI ChangeSTAR v2</span>
+<span class="term-ok">✓</span> Change detection complete
+
+<span class="term-info">Step 4/4: export</span>
+<span class="term-ok">✓</span> changes.tif  +  changes.geojson  →  342 change regions  (4.2%)
+
+<span class="term-ok">Pipeline complete in 4m 02s</span>`,
+
+  pipeline_lc:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision pipeline land_cover --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06</span>
+
+<span class="term-info">Pipeline: land_cover  (11 classes)</span>
+<span class="term-out">────────────────────────────────────────────────────────────</span>
+
+<span class="term-info">Step 1/4: search  →  planetary_computer</span>
+<span class="term-ok">✓</span> 1 scene  Sentinel-2C  2024-06-28  cloud=0.0%
+
+<span class="term-info">Step 2/4: download</span>
+<span class="term-ok">✓</span> 247.3 MB  →  ./raw/
+
+<span class="term-info">Step 3/4: ai  →  GeoAI SegFormer-B2 (land cover)</span>
+<span class="term-out"> Classes: urban, bare, crops, grass, shrubs, trees,</span>
+<span class="term-out">          water, wetlands, moss, snow, permanent water</span>
+<span class="term-ok">✓</span> Classification complete
+
+<span class="term-info">Step 4/4: export</span>
+<span class="term-ok">✓</span> land_cover.tif  (COG 11-class GeoTIFF)
+<span class="term-out"> Dominant class: urban (54.1%)  trees (18.2%)  grass (12.7%)</span>
+
+<span class="term-ok">Pipeline complete in 2m 47s</span>`,
+
+  models:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision models list</span>
+
+<span class="term-info">PyGeoVision Model Registry — 14 architectures</span>
+<span class="term-out">──────────────────────────────────────────────────────────────────</span>
+<span class="term-out"> NAME                      TASK              ARCHITECTURE     PRE</span>
+<span class="term-out"> ─────────────────────────────────────────────────────────────────</span>
+<span class="term-out"> unet_resnet50             Segmentation      U-Net + ResNet50  ✓</span>
+<span class="term-out"> unet_efficientnet_b4      Segmentation      U-Net + EffNetB4  ✓</span>
+<span class="term-out"> segformer_b2              Segmentation      SegFormer-B2      ✓</span>
+<span class="term-out"> segformer_b5              Segmentation      SegFormer-B5      ✓</span>
+<span class="term-out"> deeplabv3plus_resnet101   Segmentation      DeepLabV3+        ✓</span>
+<span class="term-out"> changeformer              Change Detection  ChangeFormer      ✓</span>
+<span class="term-out"> siamese_unet              Change Detection  Siamese U-Net     ✓</span>
+<span class="term-out"> retinanet_resnet50        Detection         RetinaNet FPN     ✓</span>
+<span class="term-out"> fcos_resnet50             Detection         FCOS              ✓</span>
+<span class="term-out"> resnet50_cls              Classification    ResNet-50         ✓</span>
+<span class="term-out"> efficientnet_b3_cls       Classification    EfficientNet-B3   ✓</span>
+<span class="term-out"> vit_b16_cls               Classification    ViT-B/16          ✓</span>
+<span class="term-out"> esrgan_geo                Super Resolution  ESRGAN-Geo        —</span>
+<span class="term-out"> srcnn                     Super Resolution  SRCNN baseline    —</span>`,
+
+  auth:`<span class="term-prompt">$ </span><span class="term-cmd">pygeovision data auth list</span>
+
+<span class="term-info">Stored credentials (PyGeoFetch keyring)</span>
+<span class="term-out">──────────────────────────────────────────────────────</span>
+<span class="term-out"> PROVIDER         TYPE            STORED  STATUS</span>
+<span class="term-ok"> usgs             username/pass   ✓ Yes   ✓ Valid</span>
+<span class="term-ok"> copernicus       oauth2          ✓ Yes   ✓ Valid</span>
+<span class="term-ok"> planet           api_key         ✓ Yes   ✓ Valid</span>
+<span class="term-warn"> nasa_earthdata   username/pass   ✗ None  ⚠ Missing</span>
+<span class="term-out">──────────────────────────────────────────────────────</span>
+<span class="term-ok">3 providers authenticated</span>`,
+};
+
+
+// Terminal command loading function
+function loadCmd() {
+  const select = document.getElementById('termSelect');
+  const cmd = select.value;
+  const input = document.getElementById('termInput');
+  
+  if (cmd === 'status') {
+    input.value = 'pygeovision status';
+  } else if (cmd === 'search') {
+    input.value = 'pygeovision data search --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06 --providers planetary_computer --cloud-max 10 --output results.geojson';
+  } else if (cmd === 'download') {
+    input.value = 'pygeovision data download --from-search results.geojson --output ./data/ --parallel 4 --verify-checksum --post-process "reproject:EPSG:4326,cog"';
+  } else if (cmd === 'segment') {
+    input.value = 'pygeovision ai segment buildings --input ./data/S2C_20240628.tif --output buildings.tif --vector buildings.geojson --confidence 0.5';
+  } else if (cmd === 'detect') {
+    input.value = 'pygeovision ai detect grounded --input ./data/aerial.tif --prompt "cars in parking lots" --output cars.geojson';
+  } else if (cmd === 'change') {
+    input.value = 'pygeovision ai change detect --before london_2020.tif --after london_2024.tif --output changes.tif';
+  } else if (cmd === 'train') {
+    input.value = 'pygeovision ai train segmentation --data ./chips/ --output building_model.pth --num-classes 2 --epochs 100 --backbone efficientnet-b4';
+  } else if (cmd === 'pipeline_bldg') {
+    input.value = 'pygeovision pipeline building_footprints --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06 --output ./results/';
+  } else if (cmd === 'pipeline_change') {
+    input.value = 'pygeovision pipeline change_detection --bbox "-74.1,40.6,-73.7,40.9" --date-before 2020-01 --date-after 2024-01 --output ./changes/';
+  } else if (cmd === 'pipeline_lc') {
+    input.value = 'pygeovision pipeline land_cover --bbox "-0.15,51.47,-0.10,51.52" --date 2024-06';
+  } else if (cmd === 'models') {
+    input.value = 'pygeovision models list';
+  } else if (cmd === 'auth') {
+    input.value = 'pygeovision data auth list';
+  }
+}
+
+// Terminal run command function
+function runCmd() {
+  const select = document.getElementById('termSelect');
+  const cmd = select.value;
+  const termBody = document.getElementById('termBody');
+  
+  if (termOutputs && termOutputs[cmd]) {
+    termBody.innerHTML = termOutputs[cmd];
+  } else {
+    termBody.innerHTML = `<span class="term-prompt">$ </span><span class="term-cmd">${document.getElementById('termInput').value}</span>\n<span class="term-err">Command not found in demo. This is a simulated terminal.</span>`;
+  }
+}
+
+</script>
+
+</body>
+</html>
