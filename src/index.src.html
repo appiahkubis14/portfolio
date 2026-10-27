@@ -37,7 +37,19 @@
 							<ul class="menu">
 								<li class="menu__item active"><a class="menu__link" href="#hero">Home</a></li>
 								<li><a class="menu__link" href="#about">About</a></li>
-								<li><a class="menu__link" href="#expertise">Expertise</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="#expertise">What I Do</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="expertise/index.html">How I work</a></li>
+										<li><a href="expertise/sar-insar.html">SAR &amp; InSAR</a></li>
+										<li><a href="expertise/geospatial-ai.html">Geospatial AI &amp; Vision</a></li>
+										<li><a href="expertise/eo-data-engineering.html">EO Data Engineering</a></li>
+										<li><a href="expertise/backend-cloud.html">Backend &amp; Cloud</a></li>
+										<li><a href="expertise/applied-eo-research.html">Applied EO Research</a></li>
+										<li><a href="expertise/field-validation.html">Field Survey &amp; Validation</a></li>
+									</ul>
+								</li>
 								<li><a class="menu__link" href="#experience">Experience</a></li>
 								<li class="menu__item has-submenu">
 									<a class="menu__link" href="#opensource">Open Source</a>
@@ -247,7 +259,7 @@
 				<div class="container">
 					<div class="section-headline section-headline--dark">
 						<h4>What I do</h4>
-						<p>Six disciplines I combine to take a question from a bounding box and a date range to a validated, deployed answer.</p>
+						<p>Six disciplines I combine to take a question from a bounding box and a date range to a validated, deployed answer. Open any of them to see exactly what I deliver and how I approach the problem.</p>
 					</div>
 					<ul class="row-list gap--1">
 						<li class="row-list__item">
@@ -257,7 +269,8 @@
 								<div class="text-wrap">
 									<p>Sentinel-1 SLC processing, burst coregistration with ESD, SNAPHU unwrapping, SBAS time series and ERA5 / IONEX atmospheric correction.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="SAR and InSAR projects"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/sar-insar.html" class="card__link" aria-label="SAR and InSAR: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
@@ -267,7 +280,8 @@
 								<div class="text-wrap">
 									<p>U-Net, Swin-UNETR, SegFormer, YOLOv8, GNNs and EO foundation models (Clay, Prithvi, DINOv3) — with spatial-block cross-validation.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="GeoAI projects"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/geospatial-ai.html" class="card__link" aria-label="GeoAI: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
@@ -277,7 +291,8 @@
 								<div class="text-wrap">
 									<p>STAC 1.0, Cloud Optimized GeoTIFF, GeoParquet, PMTiles and OGC services; federated, checksum-verified access to 22 providers.</p>
 								</div>
-								<a href="#opensource" class="card__link" aria-label="Open-source software"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/eo-data-engineering.html" class="card__link" aria-label="Open-source software: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
@@ -287,7 +302,8 @@
 								<div class="text-wrap">
 									<p>Django, FastAPI, PostgreSQL / PostGIS, Redis, Celery, MQTT and WebSockets — shipped with Docker, AWS, GitHub Actions CI and PyPI.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="Backend systems"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/backend-cloud.html" class="card__link" aria-label="Backend systems: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
@@ -297,7 +313,8 @@
 								<div class="text-wrap">
 									<p>Crop-type mapping, NDVI forecasting, forest-carbon and coastal-erosion digital twins, flood and deformation monitoring.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="Applied research projects"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/applied-eo-research.html" class="card__link" aria-label="Applied research: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
@@ -307,7 +324,8 @@
 								<div class="text-wrap">
 									<p>Total Station, GNSS and UAV photogrammetry, ground-control networks and participatory plot-level ground truth.</p>
 								</div>
-								<a href="#experience" class="card__link" aria-label="Field experience"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/field-validation.html" class="card__link" aria-label="Field experience: how I work"></a>
 							</div>
 						</li>
 					</ul>
@@ -329,7 +347,11 @@
 							<ul class="tag-list"><li><span class="tag-list__link">Sentinel-1 / 2</span></li><li><span class="tag-list__link">Landsat</span></li><li><span class="tag-list__link">GEDI</span></li><li><span class="tag-list__link">SMAP</span></li><li><span class="tag-list__link">ERA5</span></li><li><span class="tag-list__link">CHIRPS</span></li><li><span class="tag-list__link">HiRISE / CTX (Mars)</span></li><li><span class="tag-list__link">UAV</span></li></ul>
 						</div>
 					</div>
-					<div class="btn-holder">
+					<div class="btn-holder btn-holder--pair">
+						<a href="expertise/index.html" class="btn btn--primary">
+							How I Work
+							{{ARROW}}
+						</a>
 						<a href="assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener" class="btn btn--outline-primary">
 							Download CV
 							{{ARROW}}
@@ -454,8 +476,9 @@
 										<span class="listing-meta__item">MIT · Pre-alpha</span>
 									</div>
 									<h3 class="post-card__title"><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap — Regime-Aware InSAR Phase Unwrapping</a></h3>
-									<p class="post-card__text">AmbiguityNet predicts the integer phase ambiguity with a physics-informed loss, then routes each region to SNAPHU or the learned model — whichever its own benchmarks show is stronger.</p>
+									<p class="post-card__text">AmbiguityNet predicts the integer phase ambiguity, so output always re-wraps to the input; 99.1% exact cycles on easy and 96.6% on moderate synthetic test scenes. Each region is routed to SNAPHU or the learned model, whichever benchmarks stronger.</p>
 									<div class="post-card__links">
+<a href="projects/pyunwrap.html" class="btn btn--link">Case study</a>
 										<a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
 									</div>
 								</div>
@@ -467,8 +490,9 @@
 										<span class="listing-meta__item">MIT · Pre-alpha</span>
 									</div>
 									<h3 class="post-card__title"><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn — Graph Neural Networks for PS Selection</a></h3>
-									<p class="post-card__text">Persistent-scatterer selection reframed as node classification: GCN, 8-head GAT and GraphSAGE over a 19-feature node vector, with 5-fold spatial-block cross-validation.</p>
+									<p class="post-card__text">Persistent-scatterer selection reframed as node classification: GCN, 8-head GAT and GraphSAGE over a 19-feature node vector. F1 0.82 vs 0.69 for StaMPS-style selection on hard synthetic test scenes.</p>
 									<div class="post-card__links">
+<a href="projects/ps-gnn.html" class="btn btn--link">Case study</a>
 										<a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
 									</div>
 								</div>
@@ -543,8 +567,15 @@
 			<section class="section geo--bathy" id="projects">
 				<div class="container">
 					<div class="section-headline section-headline--dark">
+						<h4>Flagship research</h4>
+						<p>Two open-source GeoAI methods I designed for the hardest steps in radar interferometry, benchmarked against the classical methods they aim to improve.</p>
+					</div>
+					<div class="flagships">
+{{FLAGSHIPS}}
+					</div>
+					<div class="section-headline section-headline--dark projects-sub">
 						<h4>Selected projects</h4>
-						<p>Backend systems, InSAR and GeoAI research built on real data. Open any project for its aim, approach, data, results and validation.</p>
+						<p>GeoAI first, then backend systems, InSAR and applied research. Open any project for its aim, approach, data, results and validation.</p>
 					</div>
 					<ul class="filter-group project-filter" role="tablist" aria-label="Filter projects">
 						<li><button class="filter-group__btn is-checked" data-filter="*">All</button></li>
@@ -590,16 +621,16 @@
 						</li>
 						<li class="team__item">
 							<div class="team-member">
-								<div class="team-member__img"><img src="img/v-codecraft.jpg" alt="CodeCraft STEM Institute"></div>
+								<div class="team-member__img"><img src="img/v-deepmetrics.jpg" alt="Deep Metrics Research"></div>
 								<div class="team-member__expanded">
-									<h3 class="team-title">CodeCraft STEM</h3>
-									<strong class="team-position">Co-Founder &amp; Lead Engineer · Kumasi</strong>
+									<h3 class="team-title">Deep Metrics Research</h3>
+									<strong class="team-position">Member · 2025 – 2026 · Columbia, MO, USA</strong>
 									<ul class="contact-info top--line">
-										<li class="contact-info__item"><span class="contact-info__text">Web</span><a class="contact-info__link" href="https://codecraftstem.com" target="_blank" rel="noopener">codecraftstem.com</a></li>
-										<li class="contact-info__item"><span class="contact-info__text">Stack</span><a class="contact-info__link" href="#codecraft">Django · Channels · WebRTC</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Focus</span><a class="contact-info__link" href="#affiliations">Computer vision for intelligent transportation</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Work</span><a class="contact-info__link" href="#affiliations">Real-time traffic analytics &amp; infrastructure assessment</a></li>
 									</ul>
 								</div>
-								<a href="#codecraft" class="team-member__link" aria-label="About CodeCraft STEM Institute"></a>
+								<a href="#affiliations" class="team-member__link" aria-label="About Deep Metrics Research"></a>
 							</div>
 						</li>
 						<li class="team__item">
@@ -624,7 +655,7 @@
 									<strong class="team-position">Member · 2024 – Present · KNUST</strong>
 									<ul class="contact-info top--line">
 										<li class="contact-info__item"><span class="contact-info__text">Focus</span><a class="contact-info__link" href="#research">Camera / IMU / GPS fusion</a></li>
-										<li class="contact-info__item"><span class="contact-info__text">Also</span><a class="contact-info__link" href="#research">Deep Metrics Research (2025 – 26)</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Dept</span><a class="contact-info__link" href="#affiliations">Geomatic Engineering, KNUST</a></li>
 									</ul>
 								</div>
 								<a href="#research" class="team-member__link" aria-label="Roadessy Lab research"></a>
@@ -656,29 +687,30 @@
 						</a>
 					</div>
 				</div>
-				<div class="section-tile__item geo--topo" id="codecraft">
+				<div class="section-tile__item geo--topo" id="affiliations">
 					<div class="container">
-						<div class="venture-head">
-							<img src="img/codecraft-logo.png" width="56" height="56" alt="CodeCraft STEM Institute logo">
-						</div>
-						<h4 class="headtitle mb--5">CO-FOUNDED · CODECRAFT STEM INSTITUTE</h4>
-						<h3>An EdTech operating system built for the African learning ecosystem.</h3>
-						<p>As co-founder and lead engineer I architected the platform from the ground up in Ahodwo, Kumasi — serving students, instructors, parents, schools and corporate partners with live classrooms, a school management system, a careers ATS and real-time collaboration.</p>
-						<ul class="mini-stats">
-							<li><strong>25</strong><span>Django apps</span></li>
-							<li><strong>105</strong><span>DB models</span></li>
-							<li><strong>287</strong><span>URL routes</span></li>
-							<li><strong>7</strong><span>User roles</span></li>
+						<h4 class="headtitle mb--5">RESEARCH AFFILIATIONS</h4>
+						<h3>The groups I research with, from radar in Salzburg to sensor fusion in Kumasi.</h3>
+						<ul class="edu-list">
+							<li>
+								<span class="tl-meta text--primary">2026 – Present · Salzburg, Austria</span>
+								<h3 class="edu-list__title">Z_GIS, University of Salzburg</h3>
+								<strong class="edu-list__org">Student Assistant, Geospatial Sustainability Compliance</strong>
+								<p>Supporting research on sustainable change through geospatial innovation: physics-informed and geometric deep learning, cloud-native radar interferometry and agentic AI for multi-sensor Earth observation.</p>
+							</li>
+							<li>
+								<span class="tl-meta text--primary">2024 – Present · Kumasi, Ghana</span>
+								<h3 class="edu-list__title">Roadessy Lab, KNUST</h3>
+								<strong class="edu-list__org">Member, Multi-Modal Sensor Fusion Research</strong>
+								<p>Road monitoring, asset management and inventory research in the Department of Geomatic Engineering, including the TRECK camera / IMU / GPS fusion project.</p>
+							</li>
+							<li>
+								<span class="tl-meta text--primary">2025 – 2026 · Columbia, Missouri, USA</span>
+								<h3 class="edu-list__title">Deep Metrics Research</h3>
+								<strong class="edu-list__org">Member, Computer Vision for Intelligent Transportation</strong>
+								<p>An AI research group developing computer vision and sensor-fusion methods for real-time traffic analytics and infrastructure assessment.</p>
+							</li>
 						</ul>
-						<ul class="list list--border">
-							<li>Live classroom on WebRTC — screen share, recording, hand-raise, parent observer mode</li>
-							<li>Full school SMS — academics, fees, exams, library, transport, hostel</li>
-							<li>Paystack payments — Mobile Money, card and USSD in Ghanaian cedis</li>
-						</ul>
-						<a href="https://codecraftstem.com" target="_blank" rel="noopener" class="btn btn--outline-primary">
-							Visit codecraftstem.com
-							{{ARROW}}
-						</a>
 					</div>
 				</div>
 			</section>
@@ -726,7 +758,7 @@
 								<span class="tl-meta text--primary">Jan 2020 – Aug 2024 · Kumasi, Ghana</span>
 								<h3 class="edu-list__title">BSc Geomatic Engineering — First Class Honours</h3>
 								<strong class="edu-list__org">Kwame Nkrumah University of Science and Technology (KNUST) · CWA 71.74%</strong>
-								<p>Best Final Year Project Award (88%) for sensor-fusion and computer-vision research. Coursework in remote sensing, GIS, satellite image processing, photogrammetry, geodesy and cartography.</p>
+								<!-- <p>Best Final Year Project Award (88%) for sensor-fusion and computer-vision research. Coursework in remote sensing, GIS, satellite image processing, photogrammetry, geodesy and cartography.</p> -->
 							</li>
 							<li>
 								<span class="tl-meta text--primary">Bibiani, Ghana</span>
@@ -753,27 +785,27 @@
 								<div class="text-wrap"><p>Erasmus Mundus Joint Master Degree.</p></div>
 							</div>
 						</li>
-						<li class="row-list__item">
+						<!-- <li class="row-list__item">
 							<div class="card card--bg-light card--left">
 								<span class="card__kicker text--primary">2024 · KNUST</span>
 								<h4 class="card__title">Best Final Year Project</h4>
 								<div class="text-wrap"><p>Highest departmental score (88%), Dept. of Geomatic Engineering.</p></div>
 							</div>
-						</li>
+						</li> -->
 						<li class="row-list__item">
 							<div class="card card--bg-light card--left">
 								<span class="card__kicker text--primary">2024 · KNUST</span>
 								<h4 class="card__title">First Class Honours</h4>
-								<div class="text-wrap"><p>BSc Geomatic Engineering, CWA 71.74%.</p></div>
+								<div class="text-wrap"><p>BSc Geomatic Engineering</p></div>
 							</div>
 						</li>
-						<li class="row-list__item">
+						<!-- <li class="row-list__item">
 							<div class="card card--bg-light card--left">
 								<span class="card__kicker text--primary">2024 · KNUST</span>
 								<h4 class="card__title">2nd Place — TRECK Annual Research Conference</h4>
 								<div class="text-wrap"><p>Annual research conference, KNUST.</p></div>
 							</div>
-						</li>
+						</li> -->
 						<li class="row-list__item">
 							<div class="card card--bg-light card--left">
 								<span class="card__kicker text--primary">GhIS-SS</span>
@@ -860,7 +892,6 @@
 								<h5 class="title">Ventures</h5>
 								<ul class="contact-info">
 									<li class="contact-info__item"><span class="contact-info__text">EO</span><a class="contact-info__link" href="https://eocoreint.com" target="_blank" rel="noopener">eocoreint.com</a></li>
-									<li class="contact-info__item"><span class="contact-info__text">EdTech</span><a class="contact-info__link" href="https://codecraftstem.com" target="_blank" rel="noopener">codecraftstem.com</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -900,20 +931,21 @@
 					<div class="footer-upper__col col--2">
 						<h4 class="footer-upper__title">Focus Areas</h4>
 						<ul class="footer-list">
-							<li><a href="#expertise" class="footer-list__link">SAR &amp; InSAR</a></li>
-							<li><a href="#expertise" class="footer-list__link">Geospatial AI</a></li>
-							<li><a href="#expertise" class="footer-list__link">EO Data Engineering</a></li>
-							<li><a href="#expertise" class="footer-list__link">Digital Twins</a></li>
-							<li><a href="#expertise" class="footer-list__link">Field Validation</a></li>
+							<li><a href="expertise/sar-insar.html" class="footer-list__link">SAR &amp; InSAR</a></li>
+							<li><a href="expertise/geospatial-ai.html" class="footer-list__link">Geospatial AI</a></li>
+							<li><a href="expertise/eo-data-engineering.html" class="footer-list__link">EO Data Engineering</a></li>
+							<li><a href="expertise/applied-eo-research.html" class="footer-list__link">Applied EO Research</a></li>
+							<li><a href="expertise/field-validation.html" class="footer-list__link">Field Validation</a></li>
+							<li><a href="expertise/index.html" class="footer-list__link">How I Work</a></li>
 						</ul>
 					</div>
 					<div class="footer-upper__col col--2">
 						<h4 class="footer-upper__title">Ventures</h4>
 						<ul class="footer-list">
 							<li><a href="https://eocoreint.com" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT</a></li>
-							<li><a href="https://codecraftstem.com" target="_blank" rel="noopener" class="footer-list__link">CodeCraft STEM</a></li>
-							<li><a href="#ventures" class="footer-list__link">Roadessy Lab</a></li>
-							<li><a href="#ventures" class="footer-list__link">Z_GIS Salzburg</a></li>
+							<li><a href="#affiliations" class="footer-list__link">Roadessy Lab</a></li>
+							<li><a href="#affiliations" class="footer-list__link">Deep Metrics Research</a></li>
+							<li><a href="#affiliations" class="footer-list__link">Z_GIS Salzburg</a></li>
 						</ul>
 					</div>
 				</div>

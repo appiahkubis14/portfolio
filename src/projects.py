@@ -4,7 +4,7 @@ Every number here comes from Samuel's CV. Keep it that way: if a figure isn't
 in the CV or the repo, leave it out rather than estimating it.
 """
 
-PROJECTS = [
+_PROJECTS = [
     dict(
         slug='flood-watch-ghana',
         cls='systems', img='p-flood',
@@ -311,3 +311,6 @@ PROJECTS = [
         notes=None, links=[],
     ),
 ]
+
+_ORDER = ['atewa-mining-detector', 'crop-type-mapping-clay', 'uav-cocoa-counting', 'agricultural-digital-twin', 'smart-forest', 'coastal-erosion-digital-twin', 'treck-road-assessment', 'flood-watch-ghana', 'fatal-flaw-risk-platform', 'urban-subsidence-watcher', 'mexico-city-subsidence', 'obuasi-ndvi-trend']
+PROJECTS = sorted(_PROJECTS, key=lambda p: _ORDER.index(p["slug"]))

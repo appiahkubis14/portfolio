@@ -36,7 +36,19 @@
 							<ul class="menu">
 								<li class="menu__item active"><a class="menu__link" href="../index.html#hero">Home</a></li>
 								<li><a class="menu__link" href="../index.html#about">About</a></li>
-								<li><a class="menu__link" href="../index.html#expertise">Expertise</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="../index.html#expertise">What I Do</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="../expertise/index.html">How I work</a></li>
+										<li><a href="../expertise/sar-insar.html">SAR &amp; InSAR</a></li>
+										<li><a href="../expertise/geospatial-ai.html">Geospatial AI &amp; Vision</a></li>
+										<li><a href="../expertise/eo-data-engineering.html">EO Data Engineering</a></li>
+										<li><a href="../expertise/backend-cloud.html">Backend &amp; Cloud</a></li>
+										<li><a href="../expertise/applied-eo-research.html">Applied EO Research</a></li>
+										<li><a href="../expertise/field-validation.html">Field Survey &amp; Validation</a></li>
+									</ul>
+								</li>
 								<li><a class="menu__link" href="../index.html#experience">Experience</a></li>
 								<li class="menu__item has-submenu">
 									<a class="menu__link" href="../index.html#opensource">Open Source</a>
@@ -158,12 +170,12 @@
 							<hr class="divider">
 							<ul class="post-pagination">
 								<li class="post-pagination__item prev">
-									<a href="obuasi-ndvi-trend.html" class="post-pagination__link" data-title="Obuasi Vegetation Decline"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M15 7.5C15 3.36 11.64 0 7.5 0S0 3.36 0 7.5 3.36 15 7.5 15 15 11.64 15 7.5Z" fill="#1D40CA"/><path fill-rule="evenodd" clip-rule="evenodd" d="M8.18 4.14L5.14 7.16a.48.48 0 0 0 0 .68l3.04 3.02a.48.48 0 0 0 .68-.67L6.04 7.5l2.82-2.69a.48.48 0 0 0-.68-.67Z" fill="white"/></svg>
+									<a href="coastal-erosion-digital-twin.html" class="post-pagination__link" data-title="Coastal Erosion Digital Twin"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M15 7.5C15 3.36 11.64 0 7.5 0S0 3.36 0 7.5 3.36 15 7.5 15 15 11.64 15 7.5Z" fill="#43B1E7"/><path fill-rule="evenodd" clip-rule="evenodd" d="M8.18 4.14L5.14 7.16a.48.48 0 0 0 0 .68l3.04 3.02a.48.48 0 0 0 .68-.67L6.04 7.5l2.82-2.69a.48.48 0 0 0-.68-.67Z" fill="white"/></svg>
 										Previous project
 									</a>
 								</li>
 								<li class="post-pagination__item next">
-									<a href="flood-watch-ghana.html" class="post-pagination__link" data-title="Flood Watch Ghana"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M0 7.5C0 3.36 3.36 0 7.5 0S15 3.36 15 7.5 11.64 15 7.5 15 0 11.64 0 7.5Z" fill="#1D40CA"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.82 4.14l3.04 3.02a.48.48 0 0 1 0 .68l-3.04 3.02a.48.48 0 0 1-.68-.67L8.96 7.5 6.14 4.81a.48.48 0 0 1 .68-.67Z" fill="white"/></svg>
+									<a href="flood-watch-ghana.html" class="post-pagination__link" data-title="Flood Watch Ghana"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M0 7.5C0 3.36 3.36 0 7.5 0S15 3.36 15 7.5 11.64 15 7.5 15 0 11.64 0 7.5Z" fill="#43B1E7"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.82 4.14l3.04 3.02a.48.48 0 0 1 0 .68l-3.04 3.02a.48.48 0 0 1-.68-.67L8.96 7.5 6.14 4.81a.48.48 0 0 1 .68-.67Z" fill="white"/></svg>
 										Next project
 									</a>
 								</li>
@@ -183,10 +195,19 @@
 								<ul class="recent-list">
 									<li>
 										<div class="recent-post">
-											<div class="recent-post__visual"><img src="../img/p-croptype.jpg" alt=""></div>
+											<div class="recent-post__visual"><img src="../img/p-pyunwrap.jpg" alt=""></div>
 											<div class="recent-post__content">
-												<div class="listing-meta"><span class="listing-meta__item text--primary">Foundation Models</span></div>
-												<h4 class="recent-post__title"><a href="crop-type-mapping-clay.html">Crop-Type Mapping with EO Foundation Models</a></h4>
+												<div class="listing-meta"><span class="listing-meta__item text--primary">Flagship</span></div>
+												<h4 class="recent-post__title"><a href="pyunwrap.html">pyunwrap: Learned InSAR Phase Unwrapping</a></h4>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-psgnn.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">Flagship</span></div>
+												<h4 class="recent-post__title"><a href="ps-gnn.html">PS-GNN: Graph Neural Networks for Persistent Scatterer Selection</a></h4>
 											</div>
 										</div>
 									</li>
@@ -196,15 +217,6 @@
 											<div class="recent-post__content">
 												<div class="listing-meta"><span class="listing-meta__item text--primary">SAR–Optical Fusion</span></div>
 												<h4 class="recent-post__title"><a href="atewa-mining-detector.html">Atewa Illegal Mining Detector</a></h4>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="recent-post">
-											<div class="recent-post__visual"><img src="../img/p-agtwin.jpg" alt=""></div>
-											<div class="recent-post__content">
-												<div class="listing-meta"><span class="listing-meta__item text--primary">LSTM</span></div>
-												<h4 class="recent-post__title"><a href="agricultural-digital-twin.html">Agricultural Digital Twin</a></h4>
 											</div>
 										</div>
 									</li>
@@ -255,20 +267,21 @@
 					<div class="footer-upper__col col--2">
 						<h4 class="footer-upper__title">Focus Areas</h4>
 						<ul class="footer-list">
-							<li><a href="../index.html#expertise" class="footer-list__link">SAR &amp; InSAR</a></li>
-							<li><a href="../index.html#expertise" class="footer-list__link">Geospatial AI</a></li>
-							<li><a href="../index.html#expertise" class="footer-list__link">EO Data Engineering</a></li>
-							<li><a href="../index.html#expertise" class="footer-list__link">Digital Twins</a></li>
-							<li><a href="../index.html#expertise" class="footer-list__link">Field Validation</a></li>
+							<li><a href="../expertise/sar-insar.html" class="footer-list__link">SAR &amp; InSAR</a></li>
+							<li><a href="../expertise/geospatial-ai.html" class="footer-list__link">Geospatial AI</a></li>
+							<li><a href="../expertise/eo-data-engineering.html" class="footer-list__link">EO Data Engineering</a></li>
+							<li><a href="../expertise/applied-eo-research.html" class="footer-list__link">Applied EO Research</a></li>
+							<li><a href="../expertise/field-validation.html" class="footer-list__link">Field Validation</a></li>
+							<li><a href="../expertise/index.html" class="footer-list__link">How I Work</a></li>
 						</ul>
 					</div>
 					<div class="footer-upper__col col--2">
 						<h4 class="footer-upper__title">Ventures</h4>
 						<ul class="footer-list">
 							<li><a href="https://eocoreint.com" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT</a></li>
-							<li><a href="https://codecraftstem.com" target="_blank" rel="noopener" class="footer-list__link">CodeCraft STEM</a></li>
-							<li><a href="../index.html#ventures" class="footer-list__link">Roadessy Lab</a></li>
-							<li><a href="../index.html#ventures" class="footer-list__link">Z_GIS Salzburg</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Roadessy Lab</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Deep Metrics Research</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Z_GIS Salzburg</a></li>
 						</ul>
 					</div>
 				</div>

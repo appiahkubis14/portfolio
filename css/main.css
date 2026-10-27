@@ -1243,16 +1243,16 @@ th {
 }
 .btn--outline-primary {
   color: #051c2c;
-  border-color: #1d40ca;
+  border-color: #43B1E7;
 }
 .btn--outline-primary:hover {
   color: #fff;
-  background-color: #1d40ca;
+  background-color: #43B1E7;
 }
 .btn--primary {
   color: #fff;
-  border-color: #1d40ca;
-  background-color: #1d40ca;
+  border-color: #43B1E7;
+  background-color: #43B1E7;
 }
 .btn--primary:hover {
   color: #fff;
@@ -1278,7 +1278,7 @@ th {
   background-color: #051c2c;
 }
 .btn--white {
-  color: #1d40ca;
+  color: #146e9a;
   background-color: #fff;
   border-color: #fff;
 }
@@ -1293,8 +1293,8 @@ th {
 }
 .btn--outline-white:hover {
   color: #fff;
-  border-color: #1d40ca;
-  background-color: #1d40ca;
+  border-color: #43B1E7;
+  background-color: #43B1E7;
 }
 .btn--outline {
   border: none;
@@ -1314,7 +1314,7 @@ th {
   right: 0;
   width: 15px;
   height: 15px;
-  background-color: #1D40CA;
+  background-color: #43B1E7;
   border-radius: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -1491,7 +1491,7 @@ a {
   transition: all 0.35s ease;
 }
 a:hover {
-  color: #1D40CA;
+  color: #146e9a;
 }
 
 .subtitle {
@@ -1688,7 +1688,7 @@ blockquote cite::before {
 }
 
 .text--primary {
-  color: #1D40CA;
+  color: #146e9a;
 }
 
 .text--secondary {
@@ -2304,7 +2304,7 @@ input.input-form[readonly] {
   }
 }
 .menu__item.active {
-  color: #1d40ca;
+  color: #146e9a;
 }
 @media (min-width: 1024px) {
   .menu__item:last-child.has-submenu:hover .sub-menu {
@@ -2352,7 +2352,7 @@ input.input-form[readonly] {
     right: 0;
     height: 3px;
     opacity: 0;
-    background-color: #1d40ca;
+    background-color: #43B1E7;
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
     -webkit-transition: all 0.35s ease;
@@ -2509,7 +2509,7 @@ input.input-form[readonly] {
 @media (min-width: 1024px) {
   .sub-menu li:hover a {
     background-color: #fff;
-    color: #1D40CA;
+    color: #146e9a;
   }
   .header--menu .sub-menu li:hover a {
     color: #43b1e7;
@@ -2520,7 +2520,7 @@ input.input-form[readonly] {
   padding-top: 10px;
 }
 .sub-menu li.active a {
-  color: #1d40ca;
+  color: #146e9a;
 }
 .sub-menu li a {
   display: block;
@@ -2838,7 +2838,7 @@ body.nav-active .menu-overlay {
 
 .bg--gradient {
   color: #fff;
-  --section-bg-color: linear-gradient(100deg, #051c2c 9%, #042c7b 100%);
+  --section-bg-color: linear-gradient(100deg, #051c2c 9%, #0f4661 100%);
   background: var(--section-bg-color) !important;
 }
 
@@ -3171,7 +3171,7 @@ section {
   left: 0;
   right: 0;
   z-index: -1;
-  background: linear-gradient(100deg, #051c2c 9%, #042c7b 100%);
+  background: linear-gradient(100deg, #051c2c 9%, #0f4661 100%);
   opacity: 0;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
@@ -3392,7 +3392,7 @@ section {
 .card--overlay::before {
   opacity: 0;
   z-index: 0;
-  background: linear-gradient(100deg, #051c2c 0%, #042c7b 100%);
+  background: linear-gradient(100deg, #051c2c 0%, #0f4661 100%);
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
 }
@@ -4416,7 +4416,7 @@ section {
   font-size: 13px;
   line-height: 1.5;
   font-weight: bold;
-  color: #1D40CA;
+  color: #146e9a;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
@@ -5078,7 +5078,7 @@ section {
   vertical-align: middle;
   margin-right: 10px;
   margin-top: -0.25em;
-  background-color: #1D40CA;
+  background-color: #43B1E7;
 }
 .list > li a:hover {
   color: #43b1e7;
@@ -5387,7 +5387,7 @@ section {
   }
 }
 .filter-group__btn.is-checked, .filter-group__btn:hover {
-  color: #1D40CA;
+  color: #146e9a;
   text-decoration: none;
 }
 .filter-group__btn.is-checked::before {
@@ -5401,7 +5401,7 @@ section {
   right: 0;
   height: 3px;
   opacity: 0;
-  background-color: #1D40CA;
+  background-color: #43B1E7;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
 }
@@ -5442,7 +5442,7 @@ section {
   max-width: 355px;
 }
 .post-pagination__link:hover {
-  color: #1D40CA;
+  color: #146e9a;
   text-decoration: none;
 }
 .post-pagination__link:hover::after {
@@ -5592,8 +5592,8 @@ section {
   bottom: 0;
   left: 0;
   width: 0;
-  background: -webkit-gradient(linear, left top, right top, from(#165aa2), to(#59daff));
-  background: linear-gradient(to right, #165aa2 0%, #59daff 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#146e9a), to(#59daff));
+  background: linear-gradient(to right, #146e9a 0%, #59daff 100%);
   -webkit-transition: width 1.5s ease;
   transition: width 1.5s ease;
 }
@@ -5682,7 +5682,7 @@ section {
   font-size: 60px;
   font-weight: bold;
   line-height: 1.4em;
-  color: #1d40ca;
+  color: #146e9a;
   margin-bottom: 5px;
 }
 .highlight-item__title {

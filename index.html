@@ -37,7 +37,19 @@
 							<ul class="menu">
 								<li class="menu__item active"><a class="menu__link" href="#hero">Home</a></li>
 								<li><a class="menu__link" href="#about">About</a></li>
-								<li><a class="menu__link" href="#expertise">Expertise</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="#expertise">What I Do</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="expertise/index.html">How I work</a></li>
+										<li><a href="expertise/sar-insar.html">SAR &amp; InSAR</a></li>
+										<li><a href="expertise/geospatial-ai.html">Geospatial AI &amp; Vision</a></li>
+										<li><a href="expertise/eo-data-engineering.html">EO Data Engineering</a></li>
+										<li><a href="expertise/backend-cloud.html">Backend &amp; Cloud</a></li>
+										<li><a href="expertise/applied-eo-research.html">Applied EO Research</a></li>
+										<li><a href="expertise/field-validation.html">Field Survey &amp; Validation</a></li>
+									</ul>
+								</li>
 								<li><a class="menu__link" href="#experience">Experience</a></li>
 								<li class="menu__item has-submenu">
 									<a class="menu__link" href="#opensource">Open Source</a>
@@ -247,67 +259,73 @@
 				<div class="container">
 					<div class="section-headline section-headline--dark">
 						<h4>What I do</h4>
-						<p>Six disciplines I combine to take a question from a bounding box and a date range to a validated, deployed answer.</p>
+						<p>Six disciplines I combine to take a question from a bounding box and a date range to a validated, deployed answer. Open any of them to see exactly what I deliver and how I approach the problem.</p>
 					</div>
 					<ul class="row-list gap--1">
 						<li class="row-list__item">
 							<div class="card card--bg-light">
-								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#1D40CA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="8" width="8" height="6" rx="1" transform="rotate(-30 18 11)"/><path d="M6 6l7 4M23 15l7 4"/><path d="M14 22c2 4 6 6 10 6M10 24c3 6 9 9 15 9M18 20c1 2 3 3 5 3"/><path d="M4 36h32"/></svg></div>
+								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#43B1E7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="8" width="8" height="6" rx="1" transform="rotate(-30 18 11)"/><path d="M6 6l7 4M23 15l7 4"/><path d="M14 22c2 4 6 6 10 6M10 24c3 6 9 9 15 9M18 20c1 2 3 3 5 3"/><path d="M4 36h32"/></svg></div>
 								<h4 class="card__title">SAR &amp; InSAR</h4>
 								<div class="text-wrap">
 									<p>Sentinel-1 SLC processing, burst coregistration with ESD, SNAPHU unwrapping, SBAS time series and ERA5 / IONEX atmospheric correction.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="SAR and InSAR projects"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/sar-insar.html" class="card__link" aria-label="SAR and InSAR: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
 							<div class="card card--bg-light">
-								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#1D40CA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="20" height="20" rx="2"/><circle cx="20" cy="20" r="4"/><path d="M15 4v6M20 4v6M25 4v6M15 30v6M20 30v6M25 30v6M4 15h6M4 20h6M4 25h6M30 15h6M30 20h6M30 25h6"/></svg></div>
+								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#43B1E7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="20" height="20" rx="2"/><circle cx="20" cy="20" r="4"/><path d="M15 4v6M20 4v6M25 4v6M15 30v6M20 30v6M25 30v6M4 15h6M4 20h6M4 25h6M30 15h6M30 20h6M30 25h6"/></svg></div>
 								<h4 class="card__title">Geospatial AI &amp; Vision</h4>
 								<div class="text-wrap">
 									<p>U-Net, Swin-UNETR, SegFormer, YOLOv8, GNNs and EO foundation models (Clay, Prithvi, DINOv3) — with spatial-block cross-validation.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="GeoAI projects"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/geospatial-ai.html" class="card__link" aria-label="GeoAI: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
 							<div class="card card--bg-light">
-								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#1D40CA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5l15 7.5L20 20 5 12.5z"/><path d="M5 19.5L20 27l15-7.5"/><path d="M5 26.5L20 34l15-7.5"/></svg></div>
+								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#43B1E7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5l15 7.5L20 20 5 12.5z"/><path d="M5 19.5L20 27l15-7.5"/><path d="M5 26.5L20 34l15-7.5"/></svg></div>
 								<h4 class="card__title">EO Data Engineering</h4>
 								<div class="text-wrap">
 									<p>STAC 1.0, Cloud Optimized GeoTIFF, GeoParquet, PMTiles and OGC services; federated, checksum-verified access to 22 providers.</p>
 								</div>
-								<a href="#opensource" class="card__link" aria-label="Open-source software"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/eo-data-engineering.html" class="card__link" aria-label="Open-source software: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
 							<div class="card card--bg-light">
-								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#1D40CA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 24a7 7 0 0 1 1-13.9A9 9 0 0 1 30 12a6 6 0 0 1 0 12z"/><rect x="11" y="28" width="18" height="8" rx="1.5"/><path d="M15 32h.01M20 24v4"/></svg></div>
+								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#43B1E7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 24a7 7 0 0 1 1-13.9A9 9 0 0 1 30 12a6 6 0 0 1 0 12z"/><rect x="11" y="28" width="18" height="8" rx="1.5"/><path d="M15 32h.01M20 24v4"/></svg></div>
 								<h4 class="card__title">Backend &amp; Cloud</h4>
 								<div class="text-wrap">
 									<p>Django, FastAPI, PostgreSQL / PostGIS, Redis, Celery, MQTT and WebSockets — shipped with Docker, AWS, GitHub Actions CI and PyPI.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="Backend systems"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/backend-cloud.html" class="card__link" aria-label="Backend systems: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
 							<div class="card card--bg-light">
-								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#1D40CA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 32C8 16 18 7 34 6c0 16-9 26-26 26z"/><path d="M8 32L24 16"/><path d="M14 26h6M18 22h5"/></svg></div>
+								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#43B1E7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 32C8 16 18 7 34 6c0 16-9 26-26 26z"/><path d="M8 32L24 16"/><path d="M14 26h6M18 22h5"/></svg></div>
 								<h4 class="card__title">Applied EO Research</h4>
 								<div class="text-wrap">
 									<p>Crop-type mapping, NDVI forecasting, forest-carbon and coastal-erosion digital twins, flood and deformation monitoring.</p>
 								</div>
-								<a href="#projects" class="card__link" aria-label="Applied research projects"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/applied-eo-research.html" class="card__link" aria-label="Applied research: how I work"></a>
 							</div>
 						</li>
 						<li class="row-list__item">
 							<div class="card card--bg-light">
-								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#1D40CA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="6" width="12" height="9" rx="1.5"/><circle cx="20" cy="10.5" r="2"/><path d="M20 15v4M20 19L10 35M20 19l10 16M20 19v16"/></svg></div>
+								<div class="card__image"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#43B1E7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="6" width="12" height="9" rx="1.5"/><circle cx="20" cy="10.5" r="2"/><path d="M20 15v4M20 19L10 35M20 19l10 16M20 19v16"/></svg></div>
 								<h4 class="card__title">Field Survey &amp; Validation</h4>
 								<div class="text-wrap">
 									<p>Total Station, GNSS and UAV photogrammetry, ground-control networks and participatory plot-level ground truth.</p>
 								</div>
-								<a href="#experience" class="card__link" aria-label="Field experience"></a>
+								<span class="btn btn--link card__more">Explore</span>
+								<a href="expertise/field-validation.html" class="card__link" aria-label="Field experience: how I work"></a>
 							</div>
 						</li>
 					</ul>
@@ -329,7 +347,11 @@
 							<ul class="tag-list"><li><span class="tag-list__link">Sentinel-1 / 2</span></li><li><span class="tag-list__link">Landsat</span></li><li><span class="tag-list__link">GEDI</span></li><li><span class="tag-list__link">SMAP</span></li><li><span class="tag-list__link">ERA5</span></li><li><span class="tag-list__link">CHIRPS</span></li><li><span class="tag-list__link">HiRISE / CTX (Mars)</span></li><li><span class="tag-list__link">UAV</span></li></ul>
 						</div>
 					</div>
-					<div class="btn-holder">
+					<div class="btn-holder btn-holder--pair">
+						<a href="expertise/index.html" class="btn btn--primary">
+							How I Work
+							<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
+						</a>
 						<a href="assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener" class="btn btn--outline-primary">
 							Download CV
 							<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
@@ -360,10 +382,10 @@
 						</li>
 						<li class="timeline__item">
 							<div class="timeline-tile">
-								<span class="timeline-tile__num">2025</span>
+								<span class="timeline-tile__num">2024</span>
 								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
 								<div class="timeline-tile__content">
-									<span class="tl-meta">Sep 2024 – 2025 · Accra, Ghana</span>
+									<span class="tl-meta">Sep 2024 – Present · Accra, Ghana</span>
 									<h3 class="timeline-tile__title">AI Research Engineer — Agricultural Remote Sensing</h3>
 									<span class="tl-org">Afarinick Company Limited</span>
 									<p>Integrated mobile imagery, satellite NDVI/EVI time series and IoT ground sensors into a production monitoring system on AWS (EC2, S3). Diagnosed a crop-disease CNN that scored 95.8% in-domain but near-zero on smallholder farms, and fixed it with geographically stratified data and field re-validation.</p>
@@ -372,10 +394,10 @@
 						</li>
 						<li class="timeline__item">
 							<div class="timeline-tile">
-								<span class="timeline-tile__num">2025</span>
+								<span class="timeline-tile__num">2024</span>
 								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
 								<div class="timeline-tile__content">
-									<span class="tl-meta">2025 · Accra, Ghana · Remote</span>
+									<span class="tl-meta">2024 · Accra, Ghana · Remote</span>
 									<h3 class="timeline-tile__title">Geospatial Researcher — Satellite &amp; Ground-Data Fusion</h3>
 									<span class="tl-org">Rainforest Alliance</span>
 									<p>Built a hybrid monitoring system fusing Sentinel-2 (10 m) with participatory plot-level ground truth, running automated change detection over 333.9 km² of land and forest.</p>
@@ -454,8 +476,9 @@
 										<span class="listing-meta__item">MIT · Pre-alpha</span>
 									</div>
 									<h3 class="post-card__title"><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap — Regime-Aware InSAR Phase Unwrapping</a></h3>
-									<p class="post-card__text">AmbiguityNet predicts the integer phase ambiguity with a physics-informed loss, then routes each region to SNAPHU or the learned model — whichever its own benchmarks show is stronger.</p>
+									<p class="post-card__text">AmbiguityNet predicts the integer phase ambiguity, so output always re-wraps to the input; 99.1% exact cycles on easy and 96.6% on moderate synthetic test scenes. Each region is routed to SNAPHU or the learned model, whichever benchmarks stronger.</p>
 									<div class="post-card__links">
+<a href="projects/pyunwrap.html" class="btn btn--link">Case study</a>
 										<a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
 									</div>
 								</div>
@@ -467,8 +490,9 @@
 										<span class="listing-meta__item">MIT · Pre-alpha</span>
 									</div>
 									<h3 class="post-card__title"><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn — Graph Neural Networks for PS Selection</a></h3>
-									<p class="post-card__text">Persistent-scatterer selection reframed as node classification: GCN, 8-head GAT and GraphSAGE over a 19-feature node vector, with 5-fold spatial-block cross-validation.</p>
+									<p class="post-card__text">Persistent-scatterer selection reframed as node classification: GCN, 8-head GAT and GraphSAGE over a 19-feature node vector. F1 0.82 vs 0.69 for StaMPS-style selection on hard synthetic test scenes.</p>
 									<div class="post-card__links">
+<a href="projects/ps-gnn.html" class="btn btn--link">Case study</a>
 										<a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
 									</div>
 								</div>
@@ -543,8 +567,36 @@
 			<section class="section geo--bathy" id="projects">
 				<div class="container">
 					<div class="section-headline section-headline--dark">
+						<h4>Flagship research</h4>
+						<p>Two open-source GeoAI methods I designed for the hardest steps in radar interferometry, benchmarked against the classical methods they aim to improve.</p>
+					</div>
+					<div class="flagships">
+						<article class="flagship">
+							<a href="projects/pyunwrap.html" class="flagship__visual" tabindex="-1" aria-hidden="true"><img src="img/p-pyunwrap-lg.jpg" alt="" loading="lazy"></a>
+							<div class="flagship__body">
+								<span class="flagship__badge">Flagship research · Learned InSAR unwrapping</span>
+								<h3 class="flagship__title"><a href="projects/pyunwrap.html">pyunwrap</a></h3>
+								<p class="flagship__sub">AmbiguityNet predicts integer phase cycles, so its output re-wraps to the measured interferogram by construction</p>
+								<p class="flagship__pitch">Phase unwrapping is where most InSAR errors are born. pyunwrap learns the integer cycle count rather than the phase itself, so every answer stays consistent with the radar measurement.</p>
+								<ul class="flagship__metrics"><li><strong>99.1%</strong><span>Exact cycle count, easy test scenes</span></li><li><strong>96.6%</strong><span>Exact cycle count, moderate test scenes</span></li><li><strong>92.0%</strong><span>Full-scene skill, easy (oracle = 100)</span></li></ul>
+								<a href="projects/pyunwrap.html" class="btn btn--primary">Read the case study <svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg></a>
+							</div>
+						</article>
+						<article class="flagship">
+							<a href="projects/ps-gnn.html" class="flagship__visual" tabindex="-1" aria-hidden="true"><img src="img/p-psgnn-lg.jpg" alt="" loading="lazy"></a>
+							<div class="flagship__body">
+								<span class="flagship__badge">Flagship research · Graph neural networks</span>
+								<h3 class="flagship__title"><a href="projects/ps-gnn.html">PS-GNN</a></h3>
+								<p class="flagship__sub">Each candidate radar pixel is judged together with its neighbours, not in isolation</p>
+								<p class="flagship__pitch">Classical PS-InSAR picks stable radar targets one pixel at a time with fixed thresholds. PS-GNN looks at each pixel in the context of its neighbours, and on hard scenes it beats the StaMPS-style baseline on every metric.</p>
+								<ul class="flagship__metrics"><li><strong>0.82 vs 0.69</strong><span>F1 on hard test scenes vs StaMPS-style</span></li><li><strong>0.97</strong><span>Borderline-PS recall on hard scenes (StaMPS-style 0.47)</span></li><li><strong>0.96</strong><span>F1 on easy test scenes</span></li></ul>
+								<a href="projects/ps-gnn.html" class="btn btn--primary">Read the case study <svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg></a>
+							</div>
+						</article>
+					</div>
+					<div class="section-headline section-headline--dark projects-sub">
 						<h4>Selected projects</h4>
-						<p>Backend systems, InSAR and GeoAI research built on real data. Open any project for its aim, approach, data, results and validation.</p>
+						<p>GeoAI first, then backend systems, InSAR and applied research. Open any project for its aim, approach, data, results and validation.</p>
 					</div>
 					<ul class="filter-group project-filter" role="tablist" aria-label="Filter projects">
 						<li><button class="filter-group__btn is-checked" data-filter="*">All</button></li>
@@ -555,6 +607,118 @@
 						<li><button class="filter-group__btn" data-filter="env">Environment</button></li>
 					</ul>
 					<div class="project-grid" id="project-grid" data-limit="3">
+						<article class="project-card" data-cats="geoai env">
+							<div class="blog-post">
+								<div class="blog-post__visual">
+									<a href="projects/atewa-mining-detector.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
+										<img src="img/p-atewa.jpg" alt="" loading="lazy">
+									</a>
+								</div>
+								<div class="blog-post__content">
+									<div class="listing-meta"><span class="listing-meta__item text--primary">SAR–Optical Fusion</span><span class="listing-meta__item text--primary">YOLOv8</span></div>
+									<h4 class="blog-post__title"><a href="projects/atewa-mining-detector.html" class="project-card__link">Atewa Illegal Mining Detector</a></h4>
+									<span class="project-years">2026</span>
+									<div class="blog-post__description"><p>Dual-stream U-Net + YOLOv8 fusing Sentinel-1 and Sentinel-2, trained on UAV-derived labels. Recall 82%, F1 0.79 on held-out tiles.</p></div>
+									<span class="btn btn--link project-card__more">View case study</span>
+								</div>
+							</div>
+						</article>
+						<article class="project-card" data-cats="geoai agri">
+							<div class="blog-post">
+								<div class="blog-post__visual">
+									<a href="projects/crop-type-mapping-clay.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
+										<img src="img/p-croptype.jpg" alt="" loading="lazy">
+									</a>
+								</div>
+								<div class="blog-post__content">
+									<div class="listing-meta"><span class="listing-meta__item text--primary">Foundation Models</span><span class="listing-meta__item text--primary">Sentinel-2</span></div>
+									<h4 class="blog-post__title"><a href="projects/crop-type-mapping-clay.html" class="project-card__link">Crop-Type Mapping with EO Foundation Models</a></h4>
+									<span class="project-years">2026</span>
+									<div class="blog-post__description"><p>Clay fine-tuned on multi-temporal Sentinel-2 stacks for 10 m crop types, benchmarked against ResNet-50; F1 above 0.70 under spatial cross-validation.</p></div>
+									<span class="btn btn--link project-card__more">View case study</span>
+								</div>
+							</div>
+						</article>
+						<article class="project-card" data-cats="agri geoai">
+							<div class="blog-post">
+								<div class="blog-post__visual">
+									<a href="projects/uav-cocoa-counting.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
+										<img src="img/p-uav.jpg" alt="" loading="lazy">
+									</a>
+								</div>
+								<div class="blog-post__content">
+									<div class="listing-meta"><span class="listing-meta__item text--primary">UAV</span><span class="listing-meta__item text--primary">Object Detection</span></div>
+									<h4 class="blog-post__title"><a href="projects/uav-cocoa-counting.html" class="project-card__link">Cocoa Plant Detection &amp; Counting</a></h4>
+									<span class="project-years">2026</span>
+									<div class="blog-post__description"><p>YOLOv8 with multi-temporal analysis and ensemble uncertainty scoring to detect and count cocoa plants across smallholder and commercial layouts.</p></div>
+									<span class="btn btn--link project-card__more">View case study</span>
+								</div>
+							</div>
+						</article>
+						<article class="project-card" data-cats="agri geoai">
+							<div class="blog-post">
+								<div class="blog-post__visual">
+									<a href="projects/agricultural-digital-twin.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
+										<img src="img/p-agtwin.jpg" alt="" loading="lazy">
+									</a>
+								</div>
+								<div class="blog-post__content">
+									<div class="listing-meta"><span class="listing-meta__item text--primary">LSTM</span><span class="listing-meta__item text--primary">NDVI</span></div>
+									<h4 class="blog-post__title"><a href="projects/agricultural-digital-twin.html" class="project-card__link">Agricultural Digital Twin</a></h4>
+									<span class="project-years">2024 – Present</span>
+									<div class="blog-post__description"><p>LSTM forecasting of 10 m Sentinel-2 NDVI from CHIRPS rainfall and ESA CCI soil moisture; R² above 0.50 and MAE below 0.07 at parcel level.</p></div>
+									<span class="btn btn--link project-card__more">View case study</span>
+								</div>
+							</div>
+						</article>
+						<article class="project-card" data-cats="env geoai">
+							<div class="blog-post">
+								<div class="blog-post__visual">
+									<a href="projects/smart-forest.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
+										<img src="img/p-canopy.jpg" alt="" loading="lazy">
+									</a>
+								</div>
+								<div class="blog-post__content">
+									<div class="listing-meta"><span class="listing-meta__item text--primary">REDD+</span><span class="listing-meta__item text--primary">GNN</span></div>
+									<h4 class="blog-post__title"><a href="projects/smart-forest.html" class="project-card__link">SMART-FOREST</a></h4>
+									<span class="project-years">2026 – Present</span>
+									<div class="blog-post__description"><p>Fuses Sentinel-1/2, GEDI LiDAR, SMAP and ERA5 in object-based and temporal GNNs to forecast above-ground biomass over 10-year horizons under RCP scenarios.</p></div>
+									<span class="btn btn--link project-card__more">View case study</span>
+								</div>
+							</div>
+						</article>
+						<article class="project-card" data-cats="env geoai">
+							<div class="blog-post">
+								<div class="blog-post__visual">
+									<a href="projects/coastal-erosion-digital-twin.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
+										<img src="img/p-coast.jpg" alt="" loading="lazy">
+									</a>
+								</div>
+								<div class="blog-post__content">
+									<div class="listing-meta"><span class="listing-meta__item text--primary">Swin-UNETR</span><span class="listing-meta__item text--primary">Shoreline</span></div>
+									<h4 class="blog-post__title"><a href="projects/coastal-erosion-digital-twin.html" class="project-card__link">Coastal Erosion Digital Twin</a></h4>
+									<span class="project-years">2025 – Present</span>
+									<div class="blog-post__description"><p>3-month shoreline forecasts (MAE below 8 m) from Sentinel-1/2, Landsat, UAV orthomosaics and wave climatology, validated against DSAS transects.</p></div>
+									<span class="btn btn--link project-card__more">View case study</span>
+								</div>
+							</div>
+						</article>
+						<article class="project-card" data-cats="geoai">
+							<div class="blog-post">
+								<div class="blog-post__visual">
+									<a href="projects/treck-road-assessment.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
+										<img src="img/p-road.jpg" alt="" loading="lazy">
+									</a>
+								</div>
+								<div class="blog-post__content">
+									<div class="listing-meta"><span class="listing-meta__item text--primary">Sensor Fusion</span><span class="listing-meta__item text--primary">IEEE T-ITS</span></div>
+									<h4 class="blog-post__title"><a href="projects/treck-road-assessment.html" class="project-card__link">Multi-Modal Road Assessment (TRECK)</a></h4>
+									<span class="project-years">Aug 2025 – Present</span>
+									<div class="blog-post__description"><p>Camera / IMU / GPS fusion for metric-accurate road assessment, validated against 50 surveyed ground-truth measurements along 50 km of road.</p></div>
+									<span class="btn btn--link project-card__more">View case study</span>
+								</div>
+							</div>
+						</article>
 						<article class="project-card" data-cats="systems">
 							<div class="blog-post">
 								<div class="blog-post__visual">
@@ -619,102 +783,6 @@
 								</div>
 							</div>
 						</article>
-						<article class="project-card" data-cats="geoai agri">
-							<div class="blog-post">
-								<div class="blog-post__visual">
-									<a href="projects/crop-type-mapping-clay.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
-										<img src="img/p-croptype.jpg" alt="" loading="lazy">
-									</a>
-								</div>
-								<div class="blog-post__content">
-									<div class="listing-meta"><span class="listing-meta__item text--primary">Foundation Models</span><span class="listing-meta__item text--primary">Sentinel-2</span></div>
-									<h4 class="blog-post__title"><a href="projects/crop-type-mapping-clay.html" class="project-card__link">Crop-Type Mapping with EO Foundation Models</a></h4>
-									<span class="project-years">2026</span>
-									<div class="blog-post__description"><p>Clay fine-tuned on multi-temporal Sentinel-2 stacks for 10 m crop types, benchmarked against ResNet-50; F1 above 0.70 under spatial cross-validation.</p></div>
-									<span class="btn btn--link project-card__more">View case study</span>
-								</div>
-							</div>
-						</article>
-						<article class="project-card" data-cats="geoai env">
-							<div class="blog-post">
-								<div class="blog-post__visual">
-									<a href="projects/atewa-mining-detector.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
-										<img src="img/p-atewa.jpg" alt="" loading="lazy">
-									</a>
-								</div>
-								<div class="blog-post__content">
-									<div class="listing-meta"><span class="listing-meta__item text--primary">SAR–Optical Fusion</span><span class="listing-meta__item text--primary">YOLOv8</span></div>
-									<h4 class="blog-post__title"><a href="projects/atewa-mining-detector.html" class="project-card__link">Atewa Illegal Mining Detector</a></h4>
-									<span class="project-years">2026</span>
-									<div class="blog-post__description"><p>Dual-stream U-Net + YOLOv8 fusing Sentinel-1 and Sentinel-2, trained on UAV-derived labels. Recall 82%, F1 0.79 on held-out tiles.</p></div>
-									<span class="btn btn--link project-card__more">View case study</span>
-								</div>
-							</div>
-						</article>
-						<article class="project-card" data-cats="agri geoai">
-							<div class="blog-post">
-								<div class="blog-post__visual">
-									<a href="projects/agricultural-digital-twin.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
-										<img src="img/p-agtwin.jpg" alt="" loading="lazy">
-									</a>
-								</div>
-								<div class="blog-post__content">
-									<div class="listing-meta"><span class="listing-meta__item text--primary">LSTM</span><span class="listing-meta__item text--primary">NDVI</span></div>
-									<h4 class="blog-post__title"><a href="projects/agricultural-digital-twin.html" class="project-card__link">Agricultural Digital Twin</a></h4>
-									<span class="project-years">2024 – Present</span>
-									<div class="blog-post__description"><p>LSTM forecasting of 10 m Sentinel-2 NDVI from CHIRPS rainfall and ESA CCI soil moisture; R² above 0.50 and MAE below 0.07 at parcel level.</p></div>
-									<span class="btn btn--link project-card__more">View case study</span>
-								</div>
-							</div>
-						</article>
-						<article class="project-card" data-cats="env geoai">
-							<div class="blog-post">
-								<div class="blog-post__visual">
-									<a href="projects/smart-forest.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
-										<img src="img/p-canopy.jpg" alt="" loading="lazy">
-									</a>
-								</div>
-								<div class="blog-post__content">
-									<div class="listing-meta"><span class="listing-meta__item text--primary">REDD+</span><span class="listing-meta__item text--primary">GNN</span></div>
-									<h4 class="blog-post__title"><a href="projects/smart-forest.html" class="project-card__link">SMART-FOREST</a></h4>
-									<span class="project-years">2026 – Present</span>
-									<div class="blog-post__description"><p>Fuses Sentinel-1/2, GEDI LiDAR, SMAP and ERA5 in object-based and temporal GNNs to forecast above-ground biomass over 10-year horizons under RCP scenarios.</p></div>
-									<span class="btn btn--link project-card__more">View case study</span>
-								</div>
-							</div>
-						</article>
-						<article class="project-card" data-cats="env geoai">
-							<div class="blog-post">
-								<div class="blog-post__visual">
-									<a href="projects/coastal-erosion-digital-twin.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
-										<img src="img/p-coast.jpg" alt="" loading="lazy">
-									</a>
-								</div>
-								<div class="blog-post__content">
-									<div class="listing-meta"><span class="listing-meta__item text--primary">Swin-UNETR</span><span class="listing-meta__item text--primary">Shoreline</span></div>
-									<h4 class="blog-post__title"><a href="projects/coastal-erosion-digital-twin.html" class="project-card__link">Coastal Erosion Digital Twin</a></h4>
-									<span class="project-years">2025 – Present</span>
-									<div class="blog-post__description"><p>3-month shoreline forecasts (MAE below 8 m) from Sentinel-1/2, Landsat, UAV orthomosaics and wave climatology, validated against DSAS transects.</p></div>
-									<span class="btn btn--link project-card__more">View case study</span>
-								</div>
-							</div>
-						</article>
-						<article class="project-card" data-cats="agri geoai">
-							<div class="blog-post">
-								<div class="blog-post__visual">
-									<a href="projects/uav-cocoa-counting.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
-										<img src="img/p-uav.jpg" alt="" loading="lazy">
-									</a>
-								</div>
-								<div class="blog-post__content">
-									<div class="listing-meta"><span class="listing-meta__item text--primary">UAV</span><span class="listing-meta__item text--primary">Object Detection</span></div>
-									<h4 class="blog-post__title"><a href="projects/uav-cocoa-counting.html" class="project-card__link">Cocoa Plant Detection &amp; Counting</a></h4>
-									<span class="project-years">2026</span>
-									<div class="blog-post__description"><p>YOLOv8 with multi-temporal analysis and ensemble uncertainty scoring to detect and count cocoa plants across smallholder and commercial layouts.</p></div>
-									<span class="btn btn--link project-card__more">View case study</span>
-								</div>
-							</div>
-						</article>
 						<article class="project-card" data-cats="agri env">
 							<div class="blog-post">
 								<div class="blog-post__visual">
@@ -727,22 +795,6 @@
 									<h4 class="blog-post__title"><a href="projects/obuasi-ndvi-trend.html" class="project-card__link">Obuasi Vegetation Decline</a></h4>
 									<span class="project-years">2018 – 2024</span>
 									<div class="blog-post__description"><p>Boundary-clipped USGS Landsat NDVI trend: 32.0% of the district in measurable decline (9.2% strong, 22.8% moderate), concentrated around mining.</p></div>
-									<span class="btn btn--link project-card__more">View case study</span>
-								</div>
-							</div>
-						</article>
-						<article class="project-card" data-cats="geoai">
-							<div class="blog-post">
-								<div class="blog-post__visual">
-									<a href="projects/treck-road-assessment.html" class="blog-post__img sm" tabindex="-1" aria-hidden="true">
-										<img src="img/p-road.jpg" alt="" loading="lazy">
-									</a>
-								</div>
-								<div class="blog-post__content">
-									<div class="listing-meta"><span class="listing-meta__item text--primary">Sensor Fusion</span><span class="listing-meta__item text--primary">IEEE T-ITS</span></div>
-									<h4 class="blog-post__title"><a href="projects/treck-road-assessment.html" class="project-card__link">Multi-Modal Road Assessment (TRECK)</a></h4>
-									<span class="project-years">Aug 2025 – Present</span>
-									<div class="blog-post__description"><p>Camera / IMU / GPS fusion for metric-accurate road assessment, validated against 50 surveyed ground-truth measurements along 50 km of road.</p></div>
 									<span class="btn btn--link project-card__more">View case study</span>
 								</div>
 							</div>
@@ -781,16 +833,16 @@
 						</li>
 						<li class="team__item">
 							<div class="team-member">
-								<div class="team-member__img"><img src="img/v-codecraft.jpg" alt="CodeCraft STEM Institute"></div>
+								<div class="team-member__img"><img src="img/v-deepmetrics.jpg" alt="Deep Metrics Research"></div>
 								<div class="team-member__expanded">
-									<h3 class="team-title">CodeCraft STEM</h3>
-									<strong class="team-position">Co-Founder &amp; Lead Engineer · Kumasi</strong>
+									<h3 class="team-title">Deep Metrics Research</h3>
+									<strong class="team-position">Member · 2025 – 2026 · Columbia, MO, USA</strong>
 									<ul class="contact-info top--line">
-										<li class="contact-info__item"><span class="contact-info__text">Web</span><a class="contact-info__link" href="https://codecraftstem.com" target="_blank" rel="noopener">codecraftstem.com</a></li>
-										<li class="contact-info__item"><span class="contact-info__text">Stack</span><a class="contact-info__link" href="#codecraft">Django · Channels · WebRTC</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Focus</span><a class="contact-info__link" href="#affiliations">Computer vision for intelligent transportation</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Work</span><a class="contact-info__link" href="#affiliations">Real-time traffic analytics &amp; infrastructure assessment</a></li>
 									</ul>
 								</div>
-								<a href="#codecraft" class="team-member__link" aria-label="About CodeCraft STEM Institute"></a>
+								<a href="#affiliations" class="team-member__link" aria-label="About Deep Metrics Research"></a>
 							</div>
 						</li>
 						<li class="team__item">
@@ -815,7 +867,7 @@
 									<strong class="team-position">Member · 2024 – Present · KNUST</strong>
 									<ul class="contact-info top--line">
 										<li class="contact-info__item"><span class="contact-info__text">Focus</span><a class="contact-info__link" href="#research">Camera / IMU / GPS fusion</a></li>
-										<li class="contact-info__item"><span class="contact-info__text">Also</span><a class="contact-info__link" href="#research">Deep Metrics Research (2025 – 26)</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Dept</span><a class="contact-info__link" href="#affiliations">Geomatic Engineering, KNUST</a></li>
 									</ul>
 								</div>
 								<a href="#research" class="team-member__link" aria-label="Roadessy Lab research"></a>
@@ -847,31 +899,32 @@
 						</a>
 					</div>
 				</div>
-				<!-- <div class="section-tile__item geo--topo" id="codecraft">
+				<div class="section-tile__item geo--topo" id="affiliations">
 					<div class="container">
-						<div class="venture-head">
-							<img src="img/codecraft-logo.png" width="56" height="56" alt="CodeCraft STEM Institute logo">
-						</div>
-						<h4 class="headtitle mb--5">CO-FOUNDED · CODECRAFT STEM INSTITUTE</h4>
-						<h3>An EdTech operating system built for the African learning ecosystem.</h3>
-						<p>As co-founder and lead engineer I architected the platform from the ground up in Ahodwo, Kumasi — serving students, instructors, parents, schools and corporate partners with live classrooms, a school management system, a careers ATS and real-time collaboration.</p>
-						<ul class="mini-stats">
-							<li><strong>25</strong><span>Django apps</span></li>
-							<li><strong>105</strong><span>DB models</span></li>
-							<li><strong>287</strong><span>URL routes</span></li>
-							<li><strong>7</strong><span>User roles</span></li>
+						<h4 class="headtitle mb--5">RESEARCH AFFILIATIONS</h4>
+						<h3>The groups I research with, from radar in Salzburg to sensor fusion in Kumasi.</h3>
+						<ul class="edu-list">
+							<li>
+								<span class="tl-meta text--primary">2026 – Present · Salzburg, Austria</span>
+								<h3 class="edu-list__title">Z_GIS, University of Salzburg</h3>
+								<strong class="edu-list__org">Student Assistant, Geospatial Sustainability Compliance</strong>
+								<p>Supporting research on sustainable change through geospatial innovation: physics-informed and geometric deep learning, cloud-native radar interferometry and agentic AI for multi-sensor Earth observation.</p>
+							</li>
+							<li>
+								<span class="tl-meta text--primary">2024 – Present · Kumasi, Ghana</span>
+								<h3 class="edu-list__title">Roadessy Lab, KNUST</h3>
+								<strong class="edu-list__org">Member, Multi-Modal Sensor Fusion Research</strong>
+								<p>Road monitoring, asset management and inventory research in the Department of Geomatic Engineering, including the TRECK camera / IMU / GPS fusion project.</p>
+							</li>
+							<li>
+								<span class="tl-meta text--primary">2025 – 2026 · Columbia, Missouri, USA</span>
+								<h3 class="edu-list__title">Deep Metrics Research</h3>
+								<strong class="edu-list__org">Member, Computer Vision for Intelligent Transportation</strong>
+								<p>An AI research group developing computer vision and sensor-fusion methods for real-time traffic analytics and infrastructure assessment.</p>
+							</li>
 						</ul>
-						<ul class="list list--border">
-							<li>Live classroom on WebRTC — screen share, recording, hand-raise, parent observer mode</li>
-							<li>Full school SMS — academics, fees, exams, library, transport, hostel</li>
-							<li>Paystack payments — Mobile Money, card and USSD in Ghanaian cedis</li>
-						</ul>
-						<a href="https://codecraftstem.com" target="_blank" rel="noopener" class="btn btn--outline-primary">
-							Visit codecraftstem.com
-							<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
-						</a>
 					</div>
-				</div> -->
+				</div>
 			</section>
 
 			<!-- ============ RESEARCH + EDUCATION ============ -->
@@ -917,7 +970,7 @@
 								<span class="tl-meta text--primary">Jan 2020 – Aug 2024 · Kumasi, Ghana</span>
 								<h3 class="edu-list__title">BSc Geomatic Engineering — First Class Honours</h3>
 								<strong class="edu-list__org">Kwame Nkrumah University of Science and Technology (KNUST) · CWA 71.74%</strong>
-								<p>Best Final Year Project Award (88%) for sensor-fusion and computer-vision research. Coursework in remote sensing, GIS, satellite image processing, photogrammetry, geodesy and cartography.</p>
+								<!-- <p>Best Final Year Project Award (88%) for sensor-fusion and computer-vision research. Coursework in remote sensing, GIS, satellite image processing, photogrammetry, geodesy and cartography.</p> -->
 							</li>
 							<li>
 								<span class="tl-meta text--primary">Bibiani, Ghana</span>
@@ -955,7 +1008,7 @@
 							<div class="card card--bg-light card--left">
 								<span class="card__kicker text--primary">2024 · KNUST</span>
 								<h4 class="card__title">First Class Honours</h4>
-								<div class="text-wrap"><p>BSc Geomatic Engineering, CWA 71.74%.</p></div>
+								<div class="text-wrap"><p>BSc Geomatic Engineering</p></div>
 							</div>
 						</li>
 						<!-- <li class="row-list__item">
@@ -996,7 +1049,7 @@
 					<div class="container">
 						<div class="cta-form">
 							<h2>Let's Build Together</h2>
-							<p>Open to research collaboration, contract work ,full-time and part-time roles in Earth observation,Software Engineering, geospatial engineering and GeoAI — in Europe, Africa or remote.</p>
+							<p>Open to research collaboration, contract work and full-time roles in Earth observation, geospatial engineering and GeoAI — in Europe, Africa or remote.</p>
 							<form action="mailto:appiahkubis14@gmail.com" method="post" enctype="text/plain" id="contact-form">
 								<div class="form-row">
 									<div class="form-row__field">
@@ -1051,7 +1104,6 @@
 								<h5 class="title">Ventures</h5>
 								<ul class="contact-info">
 									<li class="contact-info__item"><span class="contact-info__text">EO</span><a class="contact-info__link" href="https://eocoreint.com" target="_blank" rel="noopener">eocoreint.com</a></li>
-									<li class="contact-info__item"><span class="contact-info__text">EdTech</span><a class="contact-info__link" href="https://codecraftstem.com" target="_blank" rel="noopener">codecraftstem.com</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -1091,20 +1143,21 @@
 					<div class="footer-upper__col col--2">
 						<h4 class="footer-upper__title">Focus Areas</h4>
 						<ul class="footer-list">
-							<li><a href="#expertise" class="footer-list__link">SAR &amp; InSAR</a></li>
-							<li><a href="#expertise" class="footer-list__link">Geospatial AI</a></li>
-							<li><a href="#expertise" class="footer-list__link">EO Data Engineering</a></li>
-							<li><a href="#expertise" class="footer-list__link">Digital Twins</a></li>
-							<li><a href="#expertise" class="footer-list__link">Field Validation</a></li>
+							<li><a href="expertise/sar-insar.html" class="footer-list__link">SAR &amp; InSAR</a></li>
+							<li><a href="expertise/geospatial-ai.html" class="footer-list__link">Geospatial AI</a></li>
+							<li><a href="expertise/eo-data-engineering.html" class="footer-list__link">EO Data Engineering</a></li>
+							<li><a href="expertise/applied-eo-research.html" class="footer-list__link">Applied EO Research</a></li>
+							<li><a href="expertise/field-validation.html" class="footer-list__link">Field Validation</a></li>
+							<li><a href="expertise/index.html" class="footer-list__link">How I Work</a></li>
 						</ul>
 					</div>
 					<div class="footer-upper__col col--2">
 						<h4 class="footer-upper__title">Ventures</h4>
 						<ul class="footer-list">
 							<li><a href="https://eocoreint.com" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT</a></li>
-							<li><a href="https://codecraftstem.com" target="_blank" rel="noopener" class="footer-list__link">CodeCraft STEM</a></li>
-							<li><a href="#ventures" class="footer-list__link">Roadessy Lab</a></li>
-							<li><a href="#ventures" class="footer-list__link">Z_GIS Salzburg</a></li>
+							<li><a href="#affiliations" class="footer-list__link">Roadessy Lab</a></li>
+							<li><a href="#affiliations" class="footer-list__link">Deep Metrics Research</a></li>
+							<li><a href="#affiliations" class="footer-list__link">Z_GIS Salzburg</a></li>
 						</ul>
 					</div>
 				</div>

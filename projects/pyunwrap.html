@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pyunwrap: Learned InSAR Phase Unwrapping — Samuel Appiah Kubi</title>
+	<meta name="description" content="Recover continuous deformation phase from noisy, wrapped interferograms, including the low-coherence regimes where classical unwrappers struggle, without ever producing a result that contradicts the data.">
+	<meta name="author" content="Samuel Appiah Kubi">
+	<meta property="og:title" content="pyunwrap: Learned InSAR Phase Unwrapping — Samuel Appiah Kubi">
+	<meta property="og:description" content="AmbiguityNet predicts integer phase cycles, so its output re-wraps to the measured interferogram by construction">
+	<meta property="og:image" content="../img/p-pyunwrap-lg.jpg">
+	<meta name="theme-color" content="#051c2c">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='12' fill='%23051c2c'/%3E%3Cg fill='none' stroke='white' stroke-width='2.6'%3E%3Ccircle cx='28' cy='28' r='17'/%3E%3Cellipse cx='28' cy='28' rx='17' ry='7'/%3E%3Cpath d='M28 11v34'/%3E%3C/g%3E%3Cellipse cx='28' cy='28' rx='24' ry='9' transform='rotate(-25 28 28)' fill='none' stroke='%2343B1E7' stroke-width='2'/%3E%3C/svg%3E">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link media="all" rel="stylesheet" href="../css/main.css">
+	<link media="all" rel="stylesheet" href="../css/portfolio.css">
+</head>
+
+<body class="page-project">
+	<div class="wrapper wrapper--offset-0">
+		<header class="header header--menu">
+			<div class="container">
+				<div class="header-under">
+					<div class="header-inner">
+						<a href="../index.html#hero" class="header-inner__logo" aria-label="Samuel Appiah Kubi — home">
+							<span class="visible--md text--white"><svg class="site-logo" viewBox="0 0 364 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text><line x1="242" y1="13" x2="242" y2="43" stroke="currentColor" stroke-opacity=".45"/><text font-family="Roboto, Arial, sans-serif" font-size="11.5" fill="currentColor" fill-opacity=".85"><tspan x="254" y="25">geospatial &amp;</tspan><tspan x="254" y="40">earth observation</tspan></text></svg></span>
+							<span class="hidden--md text--white"><svg class="site-logo" viewBox="0 0 234 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text></svg></span>
+						</a>
+					</div>
+					<span class="nav-opener" role="button" aria-label="Open menu"><span></span></span>
+					<div class="nav-drop">
+						<nav class="nav">
+							<ul class="menu">
+								<li class="menu__item active"><a class="menu__link" href="../index.html#hero">Home</a></li>
+								<li><a class="menu__link" href="../index.html#about">About</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="../index.html#expertise">What I Do</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="../expertise/index.html">How I work</a></li>
+										<li><a href="../expertise/sar-insar.html">SAR &amp; InSAR</a></li>
+										<li><a href="../expertise/geospatial-ai.html">Geospatial AI &amp; Vision</a></li>
+										<li><a href="../expertise/eo-data-engineering.html">EO Data Engineering</a></li>
+										<li><a href="../expertise/backend-cloud.html">Backend &amp; Cloud</a></li>
+										<li><a href="../expertise/applied-eo-research.html">Applied EO Research</a></li>
+										<li><a href="../expertise/field-validation.html">Field Survey &amp; Validation</a></li>
+									</ul>
+								</li>
+								<li><a class="menu__link" href="../index.html#experience">Experience</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="../index.html#opensource">Open Source</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener">pygeofetch</a></li>
+										<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener">pygeovision</a></li>
+										<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap</a></li>
+										<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn</a></li>
+										<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener">EOCoreINT toolkit</a></li>
+									</ul>
+								</li>
+								<li><a class="menu__link" href="../index.html#projects">Projects</a></li>
+								<li><a class="menu__link" href="../index.html#ventures">Ventures</a></li>
+								<li><a class="menu__link" href="../index.html#research">Research &amp; Education</a></li>
+								<li><a class="menu__link" href="../index.html#honours">Honours</a></li>
+								<li><a class="menu__link" href="../index.html#contact">Contact</a></li>
+								<li><a class="menu__link" href="../assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener">Download CV</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<span class="menu-overlay"></span>
+		</header>
+		<main class="main">
+			<section class="section-intro project-intro text--white">
+				<div class="container">
+					<div class="listing-meta"><span class="listing-meta__item">Flagship</span><span class="listing-meta__item">Learned InSAR unwrapping</span></div>
+					<h1>pyunwrap: Learned InSAR Phase Unwrapping</h1>
+					<h6 class="headtitle">AmbiguityNet predicts integer phase cycles, so its output re-wraps to the measured interferogram by construction</h6>
+				</div>
+				<div class="bg-stretch">
+					<img src="../img/p-pyunwrap-lg.jpg" alt="">
+				</div>
+			</section>
+			<section class="section-breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs">
+						<li class="breadcrumbs__item"><a href="../index.html" class="breadcrumbs__link">Home</a></li>
+						<li class="breadcrumbs__item"><a href="../index.html#projects" class="breadcrumbs__link">Projects</a></li>
+						<li class="breadcrumbs__item current">pyunwrap: Learned InSAR Phase Unwrapping</li>
+					</ul>
+				</div>
+			</section>
+			<section class="section geo--topo project-body">
+				<div class="container">
+					<div class="main-wrapper">
+						<div class="main-content">
+							<h4 class="headtitle">Project aim</h4>
+							<p class="project-aim">Recover continuous deformation phase from noisy, wrapped interferograms, including the low-coherence regimes where classical unwrappers struggle, without ever producing a result that contradicts the data.</p>
+							<ul class="project-metrics"><li class="project-metric"><strong class="project-metric__value">99.1%</strong><span class="project-metric__label">Exact cycle count, easy test scenes</span></li><li class="project-metric"><strong class="project-metric__value">96.6%</strong><span class="project-metric__label">Exact cycle count, moderate test scenes</span></li><li class="project-metric"><strong class="project-metric__value">92.0%</strong><span class="project-metric__label">Full-scene skill, easy (oracle = 100)</span></li><li class="project-metric"><strong class="project-metric__value">≤ 3 pts</strong><span class="project-metric__label">Train–validation gap at every difficulty</span></li></ul>
+							<p class="xp-why">Phase unwrapping is where most InSAR errors are born. pyunwrap learns the integer cycle count rather than the phase itself, so every answer stays consistent with the radar measurement.</p>
+							<h4 class="headtitle">What is new</h4>
+							<ul class="xp-diffs xp-diffs--wide"><li class="xp-diff"><span class="xp-diff__num">1</span><h4 class="xp-diff__title">Predict the integer, not the phase</h4><p>Unwrapping is posed as per-pixel classification of the cycle count k. The output is consistent with the input by construction, so the network cannot invent phase that was never measured.</p></li><li class="xp-diff"><span class="xp-diff__num">2</span><h4 class="xp-diff__title">Physics-informed training objective</h4><p>An ambiguity term, with optional re-wrap, smoothness and residue terms. The run shown here is ablation A, ambiguity term only, which sets the baseline the physics terms must beat.</p></li><li class="xp-diff"><span class="xp-diff__num">3</span><h4 class="xp-diff__title">Tile, stitch and align</h4><p>The network works on 256 px tiles; full scenes are reassembled with overlap and per-tile cycle alignment. Alignment lifts full-scene skill on easy scenes from 47.8% to 92.0%.</p></li><li class="xp-diff"><span class="xp-diff__num">4</span><h4 class="xp-diff__title">Difficulty curriculum</h4><p>Training starts on easy scenes and shifts to a 20 / 30 / 50 easy / moderate / hard mix, while the hard-scene coherence level ramps from 0.6 down to 0.3 between epochs 30 and 300.</p></li><li class="xp-diff"><span class="xp-diff__num">5</span><h4 class="xp-diff__title">Regime-aware routing</h4><p>SNAPHU and the learned model are combined region by region, based on which one benchmarks stronger, rather than claiming one method always wins.</p></li></ul>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<img class="project-figure" src="../img/p-pyunwrap-lg.jpg" alt="Illustrative map for pyunwrap: Learned InSAR Phase Unwrapping">
+									<span class="project-figure__caption">Real run output: wrapped input and predicted cycle map</span>
+								</div>
+								<div class="col-6">
+									<h3>Overview</h3>
+									<p>Phase unwrapping turns a wrapped interferogram, whose values only span −π to π, into continuous phase; any error here propagates into every deformation map built on it. pyunwrap&#x27;s AmbiguityNet does not regress phase directly. It predicts the integer number of 2π cycles, k, at each pixel. Because the unwrapped phase is the wrapped input plus 2πk, re-wrapping the output always reproduces the observed interferogram exactly. At scene level, pyunwrap routes each region to SNAPHU or to the learned model, whichever its benchmarks show is stronger.</p>
+								</div>
+							</div>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<h3>The challenge</h3>
+									<p>Low coherence from vegetation, long temporal baselines or steep deformation creates phase residues, and classical path-following and network-flow unwrappers can propagate a single cycle error across a whole scene. Learned unwrappers that regress continuous phase have the opposite problem: they can drift away from the measurement itself. The goal was to learn from data while keeping the physical constraint exact, and to work on scenes larger than the tiles the network sees in training.</p>
+								</div>
+								<div class="col-6">
+									<h3>Data &amp; inputs</h3>
+									<ul class="tag-list project-tags"><li><span class="tag-list__link">Synthetic interferograms, 512 × 512</span></li><li><span class="tag-list__link">Gaussian bowl · Mogi · Okada sources</span></li><li><span class="tag-list__link">L-, C- and X-band</span></li><li><span class="tag-list__link">4-look speckle noise</span></li><li><span class="tag-list__link">80 / 80 / 400 training scenes</span></li><li><span class="tag-list__link">12 + 12 + 12 test scenes</span></li></ul>
+								</div>
+							</div>
+
+							<h4 class="headtitle">Approach</h4>
+							<ol class="project-steps">
+								<li class="project-step">
+									<span class="project-step__num">01</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Simulate realistic interferograms</h4>
+										<p>Synthetic 512 × 512 scenes with three deformation sources (Gaussian subsidence bowls, Mogi volcanic point sources and Okada fault dislocations) at L-, C- and X-band, with a 4-look speckle noise model and spatially varying coherence.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">02</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Encode the physics in the target</h4>
+										<p>The label is the true integer cycle map k; a re-wrap check on every training example confirms that ψ + 2πk reproduces the input.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">03</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Train with a curriculum</h4>
+										<p>400 epochs of 1,200 tiles each, batch 8, peak learning rate 2 × 10⁻⁴ with warm-up and cosine decay, mixing difficulty levels over time. The best checkpoint came at epoch 387.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">04</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Predict, stitch and align</h4>
+										<p>Tiles overlap by 64 px in training and 128 px at inference; predictions are stitched into full scenes with cycle alignment between tiles.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">05</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Measure against an oracle</h4>
+										<p>Skill is scored against a do-nothing baseline (0) and the oracle (100), together with the share of pixels whose cycle count is exactly right, across a sweep of coherence levels.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">06</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Route by regime</h4>
+										<p>At scene level, regions go to SNAPHU or to AmbiguityNet depending on which performs better under the local conditions.</p>
+									</div>
+								</li>
+							</ol>
+							<h4 class="headtitle">Model &amp; training setup</h4>
+							<div class="flag-table-wrap"><table class="flag-table flag-table--spec"><tbody><tr><th scope="row">Model</th><td>AmbiguityNet: per-pixel classification of integer cycle count k</td></tr><tr><th scope="row">Training data</th><td>Synthetic interferograms: 80 easy, 80 moderate, 400 hard scenes (512 × 512)</td></tr><tr><th scope="row">Deformation sources</th><td>Gaussian bowl, Mogi point source, Okada fault</td></tr><tr><th scope="row">Bands &amp; noise</th><td>L-, C- and X-band; speckle, 4 looks</td></tr><tr><th scope="row">Tiling</th><td>256 px tiles; 64 px overlap in training, 128 px at inference</td></tr><tr><th scope="row">Schedule</th><td>400 epochs × 1,200 tiles, batch 8, peak LR 2e-4, cosine to 10% floor</td></tr><tr><th scope="row">Curriculum</th><td>Easy → 50/50 → 30/40/30 → 20/30/50 mix; hard coherence 0.6 → 0.3</td></tr><tr><th scope="row">Loss (this run)</th><td>Ambiguity term only (ablation A)</td></tr><tr><th scope="row">Selected checkpoint</th><td>Epoch 387 of 400</td></tr><tr><th scope="row">Hardware</th><td>Single CUDA GPU</td></tr></tbody></table></div>
+
+							<h4 class="headtitle">Benchmark</h4>
+							<div class="flag-table-wrap"><table class="flag-table"><caption>Held-out test scenes. Skill is relative to doing nothing (0) and the oracle (100).</caption><thead><tr><th scope="col">Difficulty</th><th scope="col">Tile skill</th><th scope="col">Full-scene skill</th><th scope="col">Full scene, no alignment</th><th scope="col">Exact cycles</th></tr></thead><tbody><tr><th scope="row">Easy</th><td>86.1%</td><td>92.0%</td><td>47.8%</td><td>99.1%</td></tr><tr><th scope="row">Moderate</th><td>86.4%</td><td>87.2%</td><td>25.7%</td><td>96.6%</td></tr><tr><th scope="row">Hard</th><td>57.9%</td><td>53.9%</td><td>32.7%</td><td>80.0%</td></tr></tbody></table></div>
+
+							<h4 class="headtitle">Figures from the run</h4>
+							<div class="flag-figs">
+								<figure class="flag-fig">
+									<a href="../img/fx-pyunwrap-predictions.jpg" target="_blank" rel="noopener"><img src="../img/fx-pyunwrap-predictions.jpg" alt="Held-out test scenes at the selected epoch: wrapped input, true cycle map k, predicted k and per-pixel error in cycles. Exact on 100% of pixels for the easy scene and 99% for the moderate one; 84–85% on the hard scenes." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">Run output</span>Held-out test scenes at the selected epoch: wrapped input, true cycle map k, predicted k and per-pixel error in cycles. Exact on 100% of pixels for the easy scene and 99% for the moderate one; 84–85% on the hard scenes.</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-pyunwrap-skill.png" target="_blank" rel="noopener"><img src="../img/fx-pyunwrap-skill.png" alt="Skill by difficulty for a single tile, the full stitched scene with alignment, and the full scene without alignment. Stitching with alignment is what makes whole scenes work." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">Chart from summary.json</span>Skill by difficulty for a single tile, the full stitched scene with alignment, and the full scene without alignment. Stitching with alignment is what makes whole scenes work.</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-pyunwrap-coherence.png" target="_blank" rel="noopener"><img src="../img/fx-pyunwrap-coherence.png" alt="Coherence sweep: skill and exact-cycle share against the mean coherence of the test scene. Performance holds near 75% skill down to a mean coherence of about 0.4, then drops." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">Chart from summary.json</span>Coherence sweep: skill and exact-cycle share against the mean coherence of the test scene. Performance holds near 75% skill down to a mean coherence of about 0.4, then drops.</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-pyunwrap-examples.jpg" target="_blank" rel="noopener"><img src="../img/fx-pyunwrap-examples.jpg" alt="Training examples: wrapped phase, coherence, true k and the re-wrapped check, which must equal the input." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">Run output</span>Training examples: wrapped phase, coherence, true k and the re-wrapped check, which must equal the input.</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-pyunwrap-dashboard.jpg" target="_blank" rel="noopener"><img src="../img/fx-pyunwrap-dashboard.jpg" alt="Training dashboard: loss, tile and full-scene validation skill, and the learning-rate and curriculum schedule over 400 epochs." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">Run output</span>Training dashboard: loss, tile and full-scene validation skill, and the learning-rate and curriculum schedule over 400 epochs.</figcaption>
+								</figure>
+							</div>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<h3>Results</h3>
+									<p>On held-out test scenes, 99.1% of pixels receive exactly the right cycle count on easy scenes, 96.6% on moderate and 80.0% on hard. Full stitched scenes reach 92.0%, 87.2% and 53.9% of oracle skill, and training and validation skill stay within 3 points of each other at every level, so the model generalises to unseen scenes rather than memorising them. By deformation type, Mogi sources are easiest (97.5% full-scene skill on easy scenes) and Okada faults, with their sharp discontinuities, are hardest.</p>
+								</div>
+								<div class="col-6">
+									<h3>Validation</h3>
+									<p>Separate validation and test scene sets (12 per difficulty level), a coherence sweep from 0.80 down to 0.20, breakdowns by deformation source, and a train-versus-validation check. The CV records that, on the project&#x27;s own benchmarks, SNAPHU wins on most scenes and the learned model wins under low-coherence decorrelation, which is why pyunwrap routes rather than replaces.</p>
+								</div>
+							</div>
+							<div class="project-note">
+								<h4 class="project-note__title">Limitations, stated plainly</h4>
+								<ul class="flag-lim"><li>These results are on synthetic interferograms. Real-scene performance has to be established scene type by scene type.</li><li>Skill falls steeply below a mean coherence of about 0.35, to roughly 20–30% of oracle skill at the lowest levels tested.</li><li>Fault discontinuities (Okada sources) remain the hardest case: 53.1% full-scene skill on hard scenes with faults versus 62.0% without.</li><li>This run is the ambiguity-only ablation. The contribution of the re-wrap, smoothness and residue terms is measured in separate ablation runs.</li></ul>
+							</div>
+
+							<hr class="divider">
+							<ul class="post-pagination">
+								<li class="post-pagination__item prev">
+									<a href="obuasi-ndvi-trend.html" class="post-pagination__link" data-title="Obuasi Vegetation Decline"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M15 7.5C15 3.36 11.64 0 7.5 0S0 3.36 0 7.5 3.36 15 7.5 15 15 11.64 15 7.5Z" fill="#43B1E7"/><path fill-rule="evenodd" clip-rule="evenodd" d="M8.18 4.14L5.14 7.16a.48.48 0 0 0 0 .68l3.04 3.02a.48.48 0 0 0 .68-.67L6.04 7.5l2.82-2.69a.48.48 0 0 0-.68-.67Z" fill="white"/></svg>
+										Previous project
+									</a>
+								</li>
+								<li class="post-pagination__item next">
+									<a href="ps-gnn.html" class="post-pagination__link" data-title="PS-GNN: Graph Neural Networks for Persistent Scatterer Selection"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M0 7.5C0 3.36 3.36 0 7.5 0S15 3.36 15 7.5 11.64 15 7.5 15 0 11.64 0 7.5Z" fill="#43B1E7"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.82 4.14l3.04 3.02a.48.48 0 0 1 0 .68l-3.04 3.02a.48.48 0 0 1-.68-.67L8.96 7.5 6.14 4.81a.48.48 0 0 1 .68-.67Z" fill="white"/></svg>
+										Next project
+									</a>
+								</li>
+							</ul>
+						</div>
+						<aside class="sidebar">
+							<div class="widget project-facts">
+								<h4 class="widget__title">Project facts</h4>
+								<ul class="project-facts__list"><li class="project-facts__item"><span class="project-facts__label">Timeline</span><strong class="project-facts__value">2025 – Present</strong></li><li class="project-facts__item"><span class="project-facts__label">Role</span><strong class="project-facts__value">Author &amp; maintainer</strong></li><li class="project-facts__item"><span class="project-facts__label">Status</span><strong class="project-facts__value">Pre-alpha · PyPI: pyunwrap-insar · MIT</strong></li><li class="project-facts__item"><span class="project-facts__label">Category</span><strong class="project-facts__value">InSAR · GeoAI</strong></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Tech stack</h4>
+								<ul class="tag-list project-tags"><li><span class="tag-list__link">PyTorch</span></li><li><span class="tag-list__link">CUDA</span></li><li><span class="tag-list__link">NumPy</span></li><li><span class="tag-list__link">SNAPHU</span></li><li><span class="tag-list__link">Synthetic InSAR simulation</span></li><li><span class="tag-list__link">Matplotlib</span></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Links</h4>
+								<ul class="list list--border project-links"><li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">PyPI: pyunwrap-insar <span aria-hidden="true">↗</span></a></li><li><a href="https://doi.org/10.5281/zenodo.22209219" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.22209219 <span aria-hidden="true">↗</span></a></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Related projects</h4>
+								<ul class="recent-list">
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-psgnn.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">Flagship</span></div>
+												<h4 class="recent-post__title"><a href="ps-gnn.html">PS-GNN: Graph Neural Networks for Persistent Scatterer Selection</a></h4>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-atewa.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">SAR–Optical Fusion</span></div>
+												<h4 class="recent-post__title"><a href="atewa-mining-detector.html">Atewa Illegal Mining Detector</a></h4>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-croptype.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">Foundation Models</span></div>
+												<h4 class="recent-post__title"><a href="crop-type-mapping-clay.html">Crop-Type Mapping with EO Foundation Models</a></h4>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="widget project-cta bg--gradient text--white">
+								<h3 class="project-cta__title">Interested in this work?</h3>
+								<p>Happy to talk about collaboration, data or code.</p>
+								<a href="../index.html#contact" class="btn btn--white">
+									Get In Touch
+									<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
+								</a>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-upper">
+					<div class="footer-upper__col col--4">
+						<a href="../index.html#hero" class="footer-logo text--white" aria-label="Back to top"><svg class="site-logo" viewBox="0 0 364 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text><line x1="242" y1="13" x2="242" y2="43" stroke="currentColor" stroke-opacity=".45"/><text font-family="Roboto, Arial, sans-serif" font-size="11.5" fill="currentColor" fill-opacity=".85"><tspan x="254" y="25">geospatial &amp;</tspan><tspan x="254" y="40">earth observation</tspan></text></svg></a>
+						<p class="footer-blurb">Geospatial software engineer and Earth observation researcher. From satellite data to decisions.</p>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Navigate</h4>
+						<ul class="footer-list">
+							<li><a href="../index.html#about" class="footer-list__link">About</a></li>
+							<li><a href="../index.html#expertise" class="footer-list__link">Expertise</a></li>
+							<li><a href="../index.html#experience" class="footer-list__link">Experience</a></li>
+							<li><a href="../index.html#projects" class="footer-list__link">Projects</a></li>
+							<li><a href="../index.html#research" class="footer-list__link">Research</a></li>
+							<li><a href="../index.html#education" class="footer-list__link">Education</a></li>
+							<li><a href="../index.html#contact" class="footer-list__link">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Open Source</h4>
+						<ul class="footer-list">
+							<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener" class="footer-list__link">pygeofetch</a></li>
+							<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener" class="footer-list__link">pygeovision</a></li>
+							<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="footer-list__link">pyunwrap</a></li>
+							<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="footer-list__link">ps-gnn</a></li>
+							<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT toolkit</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Focus Areas</h4>
+						<ul class="footer-list">
+							<li><a href="../expertise/sar-insar.html" class="footer-list__link">SAR &amp; InSAR</a></li>
+							<li><a href="../expertise/geospatial-ai.html" class="footer-list__link">Geospatial AI</a></li>
+							<li><a href="../expertise/eo-data-engineering.html" class="footer-list__link">EO Data Engineering</a></li>
+							<li><a href="../expertise/applied-eo-research.html" class="footer-list__link">Applied EO Research</a></li>
+							<li><a href="../expertise/field-validation.html" class="footer-list__link">Field Validation</a></li>
+							<li><a href="../expertise/index.html" class="footer-list__link">How I Work</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Ventures</h4>
+						<ul class="footer-list">
+							<li><a href="https://eocoreint.com" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Roadessy Lab</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Deep Metrics Research</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Z_GIS Salzburg</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-contact">
+					<div class="footer-contact__item">
+						<ul class="info-list">
+							<li class="info-list__item"><span class="info-list__text">Based in</span><a class="info-list__link" href="../index.html#contact">Salzburg, Austria</a></li>
+							<li class="info-list__item"><span class="info-list__text">Mail</span><a class="info-list__link" href="mailto:appiahkubis14@gmail.com">appiahkubis14@gmail.com</a></li>
+							<li class="info-list__item"><span class="info-list__text">Tel</span><a class="info-list__link" href="tel:+436606182808">+43 6606 182 808</a></li>
+						</ul>
+					</div>
+					<div class="footer-contact__item">
+						<ul class="social">
+							<li>
+								<a class="social__link" href="https://github.com/appiahkubis14" target="_blank" rel="noopener" aria-label="GitHub">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" rel="noopener" aria-label="LinkedIn">
+									<svg width="15" height="15" viewBox="0 0 12 12"><path d="M2.68661 12H0.198214V3.98839H2.68661V12ZM1.44107 2.89554C0.645536 2.89554 0 2.23661 0 1.44107C0 1.05888 0.151827 0.692333 0.42208 0.42208C0.692333 0.151827 1.05888 0 1.44107 0C1.82327 0 2.18981 0.151827 2.46006 0.42208C2.73032 0.692333 2.88214 1.05888 2.88214 1.44107C2.88214 2.23661 2.23661 2.89554 1.44107 2.89554ZM11.9973 12H9.51429V8.1C9.51429 7.17054 9.49554 5.97857 8.22054 5.97857C6.92679 5.97857 6.72857 6.98839 6.72857 8.03304V12H4.24286V3.98839H6.62946V5.08125H6.66429C6.99643 4.45179 7.80804 3.7875 9.01875 3.7875C11.5366 3.7875 12 5.44554 12 7.59911V12H11.9973Z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://orcid.org/0009-0002-1376-108X" target="_blank" rel="noopener" aria-label="ORCID">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zM7.4 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM6.5 9.3h1.8v9.3H6.5V9.3zm4.1 0h4.1c3.3 0 5 2.3 5 4.65 0 2.5-1.9 4.65-5 4.65h-4.1V9.3zm1.8 1.6v6.1h2.1c2.6 0 3.3-1.8 3.3-3.05 0-1.6-1-3.05-3.3-3.05h-2.1z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="mailto:appiahkubis14@gmail.com" aria-label="Email">
+									<svg width="16" height="13" viewBox="0 0 24 19"><path d="M0 2.5A2.5 2.5 0 0 1 2.5 0h19A2.5 2.5 0 0 1 24 2.5v14a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 16.5v-14zm2.3-.3L12 9.4l9.7-7.2H2.3zM22 4.1l-10 7.4-10-7.4v12.4c0 .3.2.5.5.5h19c.3 0 .5-.2.5-.5V4.1z"/></svg>
+								</a>
+							</li>
+						</ul>
+						<a href="../index.html#contact" class="btn btn--white">
+							Get In Touch
+							<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
+						</a>
+					</div>
+				</div>
+				<div class="footer-under">
+					<ul class="footer-list footer-list--row">
+						<li><a href="../assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener" class="footer-list__link">Download CV</a></li>
+						<li><a href="https://github.com/appiahkubis14" target="_blank" rel="noopener" class="footer-list__link">GitHub</a></li>
+						<li>&copy; 2026 Samuel Appiah Kubi. All rights reserved.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="bg-stretch">
+				<img src="../img/footer-nightlights.jpg" alt="">
+			</div>
+		</footer>
+	</div>
+	<script src="../js/all.js"></script>
+	<script>
+		document.querySelectorAll('.nav-drop a[href*="#"]').forEach(function (a) {
+			a.addEventListener('click', function () { document.body.classList.remove('nav-active'); });
+		});
+	</script>
+</body>
+
+</html>
