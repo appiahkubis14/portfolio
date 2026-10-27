@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Coastal Erosion Digital Twin — Samuel Appiah Kubi</title>
+	<meta name="description" content="Forecast where the shoreline will be three months ahead, with uncertainty, so erosion hotspots can be watched before infrastructure is lost.">
+	<meta name="author" content="Samuel Appiah Kubi">
+	<meta property="og:title" content="Coastal Erosion Digital Twin — Samuel Appiah Kubi">
+	<meta property="og:description" content="Shoreline-change forecasting">
+	<meta property="og:image" content="../img/p-coast-lg.jpg">
+	<meta name="theme-color" content="#051c2c">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='12' fill='%23051c2c'/%3E%3Cg fill='none' stroke='white' stroke-width='2.6'%3E%3Ccircle cx='28' cy='28' r='17'/%3E%3Cellipse cx='28' cy='28' rx='17' ry='7'/%3E%3Cpath d='M28 11v34'/%3E%3C/g%3E%3Cellipse cx='28' cy='28' rx='24' ry='9' transform='rotate(-25 28 28)' fill='none' stroke='%2343B1E7' stroke-width='2'/%3E%3C/svg%3E">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link media="all" rel="stylesheet" href="../css/main.css">
+	<link media="all" rel="stylesheet" href="../css/portfolio.css">
+</head>
+
+<body class="page-project">
+	<div class="wrapper wrapper--offset-0">
+		<header class="header header--menu">
+			<div class="container">
+				<div class="header-under">
+					<div class="header-inner">
+						<a href="../index.html#hero" class="header-inner__logo" aria-label="Samuel Appiah Kubi — home">
+							<span class="visible--md text--white"><svg class="site-logo" viewBox="0 0 364 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text><line x1="242" y1="13" x2="242" y2="43" stroke="currentColor" stroke-opacity=".45"/><text font-family="Roboto, Arial, sans-serif" font-size="11.5" fill="currentColor" fill-opacity=".85"><tspan x="254" y="25">geospatial &amp;</tspan><tspan x="254" y="40">earth observation</tspan></text></svg></span>
+							<span class="hidden--md text--white"><svg class="site-logo" viewBox="0 0 234 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text></svg></span>
+						</a>
+					</div>
+					<span class="nav-opener" role="button" aria-label="Open menu"><span></span></span>
+					<div class="nav-drop">
+						<nav class="nav">
+							<ul class="menu">
+								<li class="menu__item active"><a class="menu__link" href="../index.html#hero">Home</a></li>
+								<li><a class="menu__link" href="../index.html#about">About</a></li>
+								<li><a class="menu__link" href="../index.html#expertise">Expertise</a></li>
+								<li><a class="menu__link" href="../index.html#experience">Experience</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="../index.html#opensource">Open Source</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener">pygeofetch</a></li>
+										<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener">pygeovision</a></li>
+										<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap</a></li>
+										<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn</a></li>
+										<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener">EOCoreINT toolkit</a></li>
+									</ul>
+								</li>
+								<li><a class="menu__link" href="../index.html#projects">Projects</a></li>
+								<li><a class="menu__link" href="../index.html#ventures">Ventures</a></li>
+								<li><a class="menu__link" href="../index.html#research">Research &amp; Education</a></li>
+								<li><a class="menu__link" href="../index.html#honours">Honours</a></li>
+								<li><a class="menu__link" href="../index.html#contact">Contact</a></li>
+								<li><a class="menu__link" href="../assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener">Download CV</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<span class="menu-overlay"></span>
+		</header>
+		<main class="main">
+			<section class="section-intro project-intro text--white">
+				<div class="container">
+					<div class="listing-meta"><span class="listing-meta__item">Swin-UNETR</span><span class="listing-meta__item">Shoreline</span></div>
+					<h1>Coastal Erosion Digital Twin</h1>
+					<h6 class="headtitle">Shoreline-change forecasting</h6>
+				</div>
+				<div class="bg-stretch">
+					<img src="../img/p-coast-lg.jpg" alt="">
+				</div>
+			</section>
+			<section class="section-breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs">
+						<li class="breadcrumbs__item"><a href="../index.html" class="breadcrumbs__link">Home</a></li>
+						<li class="breadcrumbs__item"><a href="../index.html#projects" class="breadcrumbs__link">Projects</a></li>
+						<li class="breadcrumbs__item current">Coastal Erosion Digital Twin</li>
+					</ul>
+				</div>
+			</section>
+			<section class="section geo--topo project-body">
+				<div class="container">
+					<div class="main-wrapper">
+						<div class="main-content">
+							<h4 class="headtitle">Project aim</h4>
+							<p class="project-aim">Forecast where the shoreline will be three months ahead, with uncertainty, so erosion hotspots can be watched before infrastructure is lost.</p>
+							<ul class="project-metrics"><li class="project-metric"><strong class="project-metric__value">&lt;8 m</strong><span class="project-metric__label">Forecast MAE</span></li><li class="project-metric"><strong class="project-metric__value">3 months</strong><span class="project-metric__label">Forecast horizon</span></li><li class="project-metric"><strong class="project-metric__value">4</strong><span class="project-metric__label">Imagery sources</span></li><li class="project-metric"><strong class="project-metric__value">DSAS</strong><span class="project-metric__label">Validation standard</span></li></ul>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<img class="project-figure" src="../img/p-coast-lg.jpg" alt="Illustrative map for Coastal Erosion Digital Twin">
+									<span class="project-figure__caption">Illustrative graphic</span>
+								</div>
+								<div class="col-6">
+									<h3>Overview</h3>
+									<p>The digital twin combines Sentinel-1/2, Landsat, UAV orthomosaics and wave climatology. A Swin-UNETR backbone extracts shoreline features and a Bayesian LSTM forecasts their position, reaching MAE below 8 m for 3-month forecasts when validated against DSAS transects.</p>
+								</div>
+							</div>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<h3>The challenge</h3>
+									<p>Shorelines move with tides, seasons and storms, so a single image can mislead. Different sensors see the coast at different resolutions and times, and a forecast is only useful if it reports how uncertain it is.</p>
+								</div>
+								<div class="col-6">
+									<h3>Data &amp; inputs</h3>
+									<ul class="tag-list project-tags"><li><span class="tag-list__link">Sentinel-1/2</span></li><li><span class="tag-list__link">Landsat</span></li><li><span class="tag-list__link">UAV orthomosaics</span></li><li><span class="tag-list__link">Wave climatology</span></li><li><span class="tag-list__link">DSAS transects</span></li></ul>
+								</div>
+							</div>
+
+							<h4 class="headtitle">Approach</h4>
+							<ol class="project-steps">
+								<li class="project-step">
+									<span class="project-step__num">01</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Multi-sensor archive</h4>
+										<p>Sentinel-1/2, Landsat and UAV orthomosaics provide shoreline observations at different scales.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">02</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Wave climatology</h4>
+										<p>Wave conditions are added as drivers of change.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">03</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Swin-UNETR backbone</h4>
+										<p>A transformer-based segmentation backbone extracts the shoreline from imagery.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">04</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Bayesian LSTM</h4>
+										<p>A Bayesian LSTM forecasts shoreline position with uncertainty.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">05</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">DSAS validation</h4>
+										<p>Forecasts are checked against Digital Shoreline Analysis System transects.</p>
+									</div>
+								</li>
+							</ol>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<h3>Results</h3>
+									<p>3-month shoreline forecasts reach a mean absolute error below 8 m against DSAS transects.</p>
+								</div>
+								<div class="col-6">
+									<h3>Validation</h3>
+									<p>Validated against DSAS (Digital Shoreline Analysis System) transects.</p>
+								</div>
+							</div>
+
+							<hr class="divider">
+							<ul class="post-pagination">
+								<li class="post-pagination__item prev">
+									<a href="smart-forest.html" class="post-pagination__link" data-title="SMART-FOREST"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M15 7.5C15 3.36 11.64 0 7.5 0S0 3.36 0 7.5 3.36 15 7.5 15 15 11.64 15 7.5Z" fill="#1D40CA"/><path fill-rule="evenodd" clip-rule="evenodd" d="M8.18 4.14L5.14 7.16a.48.48 0 0 0 0 .68l3.04 3.02a.48.48 0 0 0 .68-.67L6.04 7.5l2.82-2.69a.48.48 0 0 0-.68-.67Z" fill="white"/></svg>
+										Previous project
+									</a>
+								</li>
+								<li class="post-pagination__item next">
+									<a href="uav-cocoa-counting.html" class="post-pagination__link" data-title="Cocoa Plant Detection &amp; Counting"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M0 7.5C0 3.36 3.36 0 7.5 0S15 3.36 15 7.5 11.64 15 7.5 15 0 11.64 0 7.5Z" fill="#1D40CA"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.82 4.14l3.04 3.02a.48.48 0 0 1 0 .68l-3.04 3.02a.48.48 0 0 1-.68-.67L8.96 7.5 6.14 4.81a.48.48 0 0 1 .68-.67Z" fill="white"/></svg>
+										Next project
+									</a>
+								</li>
+							</ul>
+						</div>
+						<aside class="sidebar">
+							<div class="widget project-facts">
+								<h4 class="widget__title">Project facts</h4>
+								<ul class="project-facts__list"><li class="project-facts__item"><span class="project-facts__label">Timeline</span><strong class="project-facts__value">2025 – Present</strong></li><li class="project-facts__item"><span class="project-facts__label">Role</span><strong class="project-facts__value">Design, modelling &amp; evaluation</strong></li><li class="project-facts__item"><span class="project-facts__label">Status</span><strong class="project-facts__value">Ongoing</strong></li><li class="project-facts__item"><span class="project-facts__label">Category</span><strong class="project-facts__value">Environment · GeoAI</strong></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Tech stack</h4>
+								<ul class="tag-list project-tags"><li><span class="tag-list__link">PyTorch</span></li><li><span class="tag-list__link">Swin-UNETR</span></li><li><span class="tag-list__link">Bayesian LSTM</span></li><li><span class="tag-list__link">Sentinel-1/2</span></li><li><span class="tag-list__link">Landsat</span></li><li><span class="tag-list__link">DSAS</span></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Related projects</h4>
+								<ul class="recent-list">
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-atewa.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">SAR–Optical Fusion</span></div>
+												<h4 class="recent-post__title"><a href="atewa-mining-detector.html">Atewa Illegal Mining Detector</a></h4>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-canopy.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">REDD+</span></div>
+												<h4 class="recent-post__title"><a href="smart-forest.html">SMART-FOREST</a></h4>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-croptype.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">Foundation Models</span></div>
+												<h4 class="recent-post__title"><a href="crop-type-mapping-clay.html">Crop-Type Mapping with EO Foundation Models</a></h4>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="widget project-cta bg--gradient text--white">
+								<h3 class="project-cta__title">Interested in this work?</h3>
+								<p>Happy to talk about collaboration, data or code.</p>
+								<a href="../index.html#contact" class="btn btn--white">
+									Get In Touch
+									<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
+								</a>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-upper">
+					<div class="footer-upper__col col--4">
+						<a href="../index.html#hero" class="footer-logo text--white" aria-label="Back to top"><svg class="site-logo" viewBox="0 0 364 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text><line x1="242" y1="13" x2="242" y2="43" stroke="currentColor" stroke-opacity=".45"/><text font-family="Roboto, Arial, sans-serif" font-size="11.5" fill="currentColor" fill-opacity=".85"><tspan x="254" y="25">geospatial &amp;</tspan><tspan x="254" y="40">earth observation</tspan></text></svg></a>
+						<p class="footer-blurb">Geospatial software engineer and Earth observation researcher. From satellite data to decisions.</p>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Navigate</h4>
+						<ul class="footer-list">
+							<li><a href="../index.html#about" class="footer-list__link">About</a></li>
+							<li><a href="../index.html#expertise" class="footer-list__link">Expertise</a></li>
+							<li><a href="../index.html#experience" class="footer-list__link">Experience</a></li>
+							<li><a href="../index.html#projects" class="footer-list__link">Projects</a></li>
+							<li><a href="../index.html#research" class="footer-list__link">Research</a></li>
+							<li><a href="../index.html#education" class="footer-list__link">Education</a></li>
+							<li><a href="../index.html#contact" class="footer-list__link">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Open Source</h4>
+						<ul class="footer-list">
+							<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener" class="footer-list__link">pygeofetch</a></li>
+							<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener" class="footer-list__link">pygeovision</a></li>
+							<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="footer-list__link">pyunwrap</a></li>
+							<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="footer-list__link">ps-gnn</a></li>
+							<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT toolkit</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Focus Areas</h4>
+						<ul class="footer-list">
+							<li><a href="../index.html#expertise" class="footer-list__link">SAR &amp; InSAR</a></li>
+							<li><a href="../index.html#expertise" class="footer-list__link">Geospatial AI</a></li>
+							<li><a href="../index.html#expertise" class="footer-list__link">EO Data Engineering</a></li>
+							<li><a href="../index.html#expertise" class="footer-list__link">Digital Twins</a></li>
+							<li><a href="../index.html#expertise" class="footer-list__link">Field Validation</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Ventures</h4>
+						<ul class="footer-list">
+							<li><a href="https://eocoreint.com" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT</a></li>
+							<li><a href="https://codecraftstem.com" target="_blank" rel="noopener" class="footer-list__link">CodeCraft STEM</a></li>
+							<li><a href="../index.html#ventures" class="footer-list__link">Roadessy Lab</a></li>
+							<li><a href="../index.html#ventures" class="footer-list__link">Z_GIS Salzburg</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-contact">
+					<div class="footer-contact__item">
+						<ul class="info-list">
+							<li class="info-list__item"><span class="info-list__text">Based in</span><a class="info-list__link" href="../index.html#contact">Salzburg, Austria</a></li>
+							<li class="info-list__item"><span class="info-list__text">Mail</span><a class="info-list__link" href="mailto:appiahkubis14@gmail.com">appiahkubis14@gmail.com</a></li>
+							<li class="info-list__item"><span class="info-list__text">Tel</span><a class="info-list__link" href="tel:+436606182808">+43 6606 182 808</a></li>
+						</ul>
+					</div>
+					<div class="footer-contact__item">
+						<ul class="social">
+							<li>
+								<a class="social__link" href="https://github.com/appiahkubis14" target="_blank" rel="noopener" aria-label="GitHub">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" rel="noopener" aria-label="LinkedIn">
+									<svg width="15" height="15" viewBox="0 0 12 12"><path d="M2.68661 12H0.198214V3.98839H2.68661V12ZM1.44107 2.89554C0.645536 2.89554 0 2.23661 0 1.44107C0 1.05888 0.151827 0.692333 0.42208 0.42208C0.692333 0.151827 1.05888 0 1.44107 0C1.82327 0 2.18981 0.151827 2.46006 0.42208C2.73032 0.692333 2.88214 1.05888 2.88214 1.44107C2.88214 2.23661 2.23661 2.89554 1.44107 2.89554ZM11.9973 12H9.51429V8.1C9.51429 7.17054 9.49554 5.97857 8.22054 5.97857C6.92679 5.97857 6.72857 6.98839 6.72857 8.03304V12H4.24286V3.98839H6.62946V5.08125H6.66429C6.99643 4.45179 7.80804 3.7875 9.01875 3.7875C11.5366 3.7875 12 5.44554 12 7.59911V12H11.9973Z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://orcid.org/0009-0002-1376-108X" target="_blank" rel="noopener" aria-label="ORCID">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zM7.4 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM6.5 9.3h1.8v9.3H6.5V9.3zm4.1 0h4.1c3.3 0 5 2.3 5 4.65 0 2.5-1.9 4.65-5 4.65h-4.1V9.3zm1.8 1.6v6.1h2.1c2.6 0 3.3-1.8 3.3-3.05 0-1.6-1-3.05-3.3-3.05h-2.1z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="mailto:appiahkubis14@gmail.com" aria-label="Email">
+									<svg width="16" height="13" viewBox="0 0 24 19"><path d="M0 2.5A2.5 2.5 0 0 1 2.5 0h19A2.5 2.5 0 0 1 24 2.5v14a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 16.5v-14zm2.3-.3L12 9.4l9.7-7.2H2.3zM22 4.1l-10 7.4-10-7.4v12.4c0 .3.2.5.5.5h19c.3 0 .5-.2.5-.5V4.1z"/></svg>
+								</a>
+							</li>
+						</ul>
+						<a href="../index.html#contact" class="btn btn--white">
+							Get In Touch
+							<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
+						</a>
+					</div>
+				</div>
+				<div class="footer-under">
+					<ul class="footer-list footer-list--row">
+						<li><a href="../assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener" class="footer-list__link">Download CV</a></li>
+						<li><a href="https://github.com/appiahkubis14" target="_blank" rel="noopener" class="footer-list__link">GitHub</a></li>
+						<li>&copy; 2026 Samuel Appiah Kubi. All rights reserved.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="bg-stretch">
+				<img src="../img/footer-nightlights.jpg" alt="">
+			</div>
+		</footer>
+	</div>
+	<script src="../js/all.js"></script>
+	<script>
+		document.querySelectorAll('.nav-drop a[href*="#"]').forEach(function (a) {
+			a.addEventListener('click', function () { document.body.classList.remove('nav-active'); });
+		});
+	</script>
+</body>
+
+</html>

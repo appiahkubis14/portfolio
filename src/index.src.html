@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Samuel Appiah Kubi — Geospatial Software Engineer &amp; EO Researcher</title>
+	<meta name="description" content="Samuel Appiah Kubi — geospatial software engineer and Earth observation researcher. Author of pygeofetch and pygeovision, InSAR and GeoAI pipelines. Copernicus Master's in Digital Earth, Salzburg.">
+	<meta name="author" content="Samuel Appiah Kubi">
+	<meta property="og:title" content="Samuel Appiah Kubi — Geospatial Software Engineer &amp; EO Researcher">
+	<meta property="og:description" content="From satellite data to decisions: open-source EO software, InSAR deformation monitoring and validated GeoAI.">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="img/image-61.jpg">
+	<meta name="theme-color" content="#051c2c">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='12' fill='%23051c2c'/%3E%3Cg fill='none' stroke='white' stroke-width='2.6'%3E%3Ccircle cx='28' cy='28' r='17'/%3E%3Cellipse cx='28' cy='28' rx='17' ry='7'/%3E%3Cpath d='M28 11v34'/%3E%3C/g%3E%3Cellipse cx='28' cy='28' rx='24' ry='9' transform='rotate(-25 28 28)' fill='none' stroke='%2343B1E7' stroke-width='2'/%3E%3C/svg%3E">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link media="all" rel="stylesheet" href="css/portfolio.css">
+</head>
+
+<body>
+	<div class="wrapper wrapper--offset-0">
+		<header class="header header--menu">
+			<div class="container">
+				<div class="header-under">
+					<div class="header-inner">
+						<a href="#hero" class="header-inner__logo" aria-label="Samuel Appiah Kubi — home">
+							<span class="visible--md text--white">{{LOGO_FULL}}</span>
+							<span class="hidden--md text--white">{{LOGO_SHORT}}</span>
+						</a>
+					</div>
+					<span class="nav-opener" role="button" aria-label="Open menu"><span></span></span>
+					<div class="nav-drop">
+						<nav class="nav">
+							<ul class="menu">
+								<li class="menu__item active"><a class="menu__link" href="#hero">Home</a></li>
+								<li><a class="menu__link" href="#about">About</a></li>
+								<li><a class="menu__link" href="#expertise">Expertise</a></li>
+								<li><a class="menu__link" href="#experience">Experience</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="#opensource">Open Source</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener">pygeofetch</a></li>
+										<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener">pygeovision</a></li>
+										<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap</a></li>
+										<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn</a></li>
+										<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener">EOCoreINT toolkit</a></li>
+									</ul>
+								</li>
+								<li><a class="menu__link" href="#projects">Projects</a></li>
+								<li><a class="menu__link" href="#ventures">Ventures</a></li>
+								<li><a class="menu__link" href="#research">Research &amp; Education</a></li>
+								<li><a class="menu__link" href="#honours">Honours</a></li>
+								<li><a class="menu__link" href="#contact">Contact</a></li>
+								<li><a class="menu__link" href="assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener">Download CV</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<span class="menu-overlay"></span>
+		</header>
+		<main class="main">
+
+			<!-- ============ HERO ============ -->
+			<section class="section-hero" id="hero">
+				<div class="main-slider">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="hero-tile">
+								<div class="container">
+									<span class="hero-kicker fade-up">Samuel Appiah Kubi · Geospatial Software Engineer</span>
+									<h1 class="hero-tile__title h1">From Satellite Data <br> to Decisions.</h1>
+									<div class="text-wrap fade-up">
+										<p>I build the software that sits between satellite archives and decisions — open-source Earth observation platforms, InSAR deformation pipelines and GeoAI models validated against field ground truth.</p>
+									</div>
+									<a href="#projects" class="btn btn--white text--uppercase fade-up">
+										View My Work
+										{{ARROW}}
+									</a>
+								</div>
+								<div class="bg-stretch">
+									<img src="img/image-61.jpg" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="hero-tile">
+								<div class="container">
+									<span class="hero-kicker fade-up">Author &amp; Maintainer · PyPI · Zenodo DOIs</span>
+									<h2 class="hero-tile__title h1">Open-Source EO <br> Software, Built to Ship.</h2>
+									<div class="text-wrap fade-up">
+										<p>pygeofetch, pygeovision, pyunwrap and ps-gnn — CI-tested Python packages spanning 22 verified data providers, a full Sentinel-1 InSAR chain and 51 end-to-end GeoAI pipelines.</p>
+									</div>
+									<a href="#opensource" class="btn btn--white text--uppercase fade-up">
+										Explore the Code
+										{{ARROW}}
+									</a>
+								</div>
+								<div class="bg-stretch">
+									<img src="img/image-63.jpg" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="hero-tile">
+								<div class="container">
+									<span class="hero-kicker fade-up">Erasmus Mundus Scholar · Salzburg, Austria</span>
+									<h2 class="hero-tile__title h1">Digital Earth. <br> From Accra to Salzburg.</h2>
+									<div class="text-wrap fade-up">
+										<p>Copernicus Master's in Digital Earth at Paris Lodron University of Salzburg and Student Assistant at Z_GIS — after a First Class Honours BSc in Geomatic Engineering at KNUST.</p>
+									</div>
+									<a href="#contact" class="btn btn--white text--uppercase fade-up">
+										Get In Touch
+										{{ARROW}}
+									</a>
+								</div>
+								<div class="bg-stretch">
+									<img src="img/image-62.jpg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="thumbs-slider">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="thumbs-image">
+								<img src="img/image-61.jpg" alt="Slide 1: From satellite data to decisions">
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="thumbs-image">
+								<img src="img/image-63.jpg" alt="Slide 2: Open-source EO software">
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="thumbs-image">
+								<img src="img/image-62.jpg" alt="Slide 3: Digital Earth">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ ABOUT + CASE STUDIES ============ -->
+			<section class="section-tile" id="about">
+				<div class="section-tile__item bg--gradient">
+					<div class="container">
+						<div class="about-byline">
+							<img src="img/profile.jpg" width="84" height="84" alt="Samuel Appiah Kubi">
+							<div>
+								<h4 class="headtitle mb--5">ABOUT ME</h4>
+								<span class="about-byline__meta">Salzburg, Austria · Accra, Ghana</span>
+							</div>
+						</div>
+						<h3>Geospatial software engineer and Earth observation researcher. I document limitations as carefully as results.</h3>
+						<p>I work daily in Python with GDAL, Rasterio, PyTorch, Docker and PostgreSQL/PostGIS — building open-source EO platforms, Django/PostGIS and FastAPI backends for flood early warning and site screening, and GeoAI models for crop mapping, mining detection and deformation monitoring, validated with spatial cross-validation and field ground truth.</p>
+						<ul class="row-list col--6">
+							<li class="row-list__item">
+								<div class="awards-img cred">
+									<span class="cred__label">KNUST</span>
+									<strong class="cred__title">First Class Honours</strong>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="awards-img cred">
+									<span class="cred__label">Erasmus Mundus</span>
+									<strong class="cred__title">Copernicus Digital Earth</strong>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="awards-img cred">
+									<span class="cred__label">Amazon Web Services</span>
+									<strong class="cred__title">Solutions Architect – Pro</strong>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="awards-img cred">
+									<span class="cred__label">IEEE T-ITS</span>
+									<strong class="cred__title">Manuscript Submitted</strong>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="section-tile__item bg--light geo--graticule">
+					<div class="container">
+						<h4 class="headtitle">FEATURED CASE STUDIES</h4>
+						<ul class="recent-list">
+							<li>
+								<div class="recent-post">
+									<div class="recent-post__content">
+										<div class="listing-meta">
+											<span class="listing-meta__item text--primary"><a href="#projects">Sentinel-1 InSAR</a></span>
+											<span class="listing-meta__item text--primary"><a href="#projects">SBAS</a></span>
+										</div>
+										<h4 class="recent-post__title"><a href="projects/mexico-city-subsidence.html">Mexico City Land Subsidence: 67 SLC Scenes to −35.5 cm/yr</a></h4>
+									</div>
+									<div class="recent-post__visual">
+										<img src="img/p-mexico.jpg" alt="Interferogram fringes over a subsidence bowl">
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="recent-post">
+									<div class="recent-post__content">
+										<div class="listing-meta">
+											<span class="listing-meta__item text--primary"><a href="#projects">Landsat NDVI</a></span>
+											<span class="listing-meta__item text--primary"><a href="#projects">2018–2024</a></span>
+										</div>
+										<h4 class="recent-post__title"><a href="projects/obuasi-ndvi-trend.html">Obuasi District: 32% of Land in Measurable Vegetation Decline</a></h4>
+									</div>
+									<div class="recent-post__visual">
+										<img src="img/p-obuasi.jpg" alt="NDVI trend map with district boundary">
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="recent-post">
+									<div class="recent-post__content">
+										<div class="listing-meta">
+											<span class="listing-meta__item text--primary"><a href="#projects">SAR–Optical Fusion</a></span>
+											<span class="listing-meta__item text--primary"><a href="#projects">GeoAI</a></span>
+										</div>
+										<h4 class="recent-post__title"><a href="projects/atewa-mining-detector.html">Detecting Illegal Mining in the Atewa Forest Reserve (F1 0.79)</a></h4>
+									</div>
+									<div class="recent-post__visual">
+										<img src="img/p-atewa.jpg" alt="Forest canopy with detected mining scars">
+									</div>
+								</div>
+							</li>
+						</ul>
+						<a href="#projects" class="btn btn--outline-primary">
+							All Projects
+							{{ARROW}}
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ EXPERTISE ============ -->
+			<section class="section geo--topo" id="expertise">
+				<div class="container">
+					<div class="section-headline section-headline--dark">
+						<h4>What I do</h4>
+						<p>Six disciplines I combine to take a question from a bounding box and a date range to a validated, deployed answer.</p>
+					</div>
+					<ul class="row-list gap--1">
+						<li class="row-list__item">
+							<div class="card card--bg-light">
+								<div class="card__image">{{ICON_SAR}}</div>
+								<h4 class="card__title">SAR &amp; InSAR</h4>
+								<div class="text-wrap">
+									<p>Sentinel-1 SLC processing, burst coregistration with ESD, SNAPHU unwrapping, SBAS time series and ERA5 / IONEX atmospheric correction.</p>
+								</div>
+								<a href="#projects" class="card__link" aria-label="SAR and InSAR projects"></a>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light">
+								<div class="card__image">{{ICON_AI}}</div>
+								<h4 class="card__title">Geospatial AI &amp; Vision</h4>
+								<div class="text-wrap">
+									<p>U-Net, Swin-UNETR, SegFormer, YOLOv8, GNNs and EO foundation models (Clay, Prithvi, DINOv3) — with spatial-block cross-validation.</p>
+								</div>
+								<a href="#projects" class="card__link" aria-label="GeoAI projects"></a>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light">
+								<div class="card__image">{{ICON_DATA}}</div>
+								<h4 class="card__title">EO Data Engineering</h4>
+								<div class="text-wrap">
+									<p>STAC 1.0, Cloud Optimized GeoTIFF, GeoParquet, PMTiles and OGC services; federated, checksum-verified access to 22 providers.</p>
+								</div>
+								<a href="#opensource" class="card__link" aria-label="Open-source software"></a>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light">
+								<div class="card__image">{{ICON_CLOUD}}</div>
+								<h4 class="card__title">Backend &amp; Cloud</h4>
+								<div class="text-wrap">
+									<p>Django, FastAPI, PostgreSQL / PostGIS, Redis, Celery, MQTT and WebSockets — shipped with Docker, AWS, GitHub Actions CI and PyPI.</p>
+								</div>
+								<a href="#projects" class="card__link" aria-label="Backend systems"></a>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light">
+								<div class="card__image">{{ICON_LEAF}}</div>
+								<h4 class="card__title">Applied EO Research</h4>
+								<div class="text-wrap">
+									<p>Crop-type mapping, NDVI forecasting, forest-carbon and coastal-erosion digital twins, flood and deformation monitoring.</p>
+								</div>
+								<a href="#projects" class="card__link" aria-label="Applied research projects"></a>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light">
+								<div class="card__image">{{ICON_FIELD}}</div>
+								<h4 class="card__title">Field Survey &amp; Validation</h4>
+								<div class="text-wrap">
+									<p>Total Station, GNSS and UAV photogrammetry, ground-control networks and participatory plot-level ground truth.</p>
+								</div>
+								<a href="#experience" class="card__link" aria-label="Field experience"></a>
+							</div>
+						</li>
+					</ul>
+					<div class="toolkit">
+						<div class="toolkit__group">
+							<h5 class="toolkit__title">Languages</h5>
+							<ul class="tag-list"><li><span class="tag-list__link">Python</span></li><li><span class="tag-list__link">SQL</span></li><li><span class="tag-list__link">JavaScript (Earth Engine)</span></li><li><span class="tag-list__link">R</span></li><li><span class="tag-list__link">Bash</span></li></ul>
+						</div>
+						<div class="toolkit__group">
+							<h5 class="toolkit__title">Geospatial</h5>
+							<ul class="tag-list"><li><span class="tag-list__link">GDAL / OGR</span></li><li><span class="tag-list__link">Rasterio</span></li><li><span class="tag-list__link">GeoPandas</span></li><li><span class="tag-list__link">Xarray</span></li><li><span class="tag-list__link">Google Earth Engine</span></li><li><span class="tag-list__link">QGIS plugins</span></li><li><span class="tag-list__link">ArcGIS Pro</span></li><li><span class="tag-list__link">MapLibre</span></li><li><span class="tag-list__link">Leaflet</span></li></ul>
+						</div>
+						<div class="toolkit__group">
+							<h5 class="toolkit__title">Machine learning</h5>
+							<ul class="tag-list"><li><span class="tag-list__link">PyTorch</span></li><li><span class="tag-list__link">PyTorch Geometric</span></li><li><span class="tag-list__link">TensorFlow</span></li><li><span class="tag-list__link">scikit-learn</span></li><li><span class="tag-list__link">Optuna</span></li><li><span class="tag-list__link">ONNX</span></li><li><span class="tag-list__link">Domain adaptation</span></li></ul>
+						</div>
+						<div class="toolkit__group">
+							<h5 class="toolkit__title">Data &amp; sensors</h5>
+							<ul class="tag-list"><li><span class="tag-list__link">Sentinel-1 / 2</span></li><li><span class="tag-list__link">Landsat</span></li><li><span class="tag-list__link">GEDI</span></li><li><span class="tag-list__link">SMAP</span></li><li><span class="tag-list__link">ERA5</span></li><li><span class="tag-list__link">CHIRPS</span></li><li><span class="tag-list__link">HiRISE / CTX (Mars)</span></li><li><span class="tag-list__link">UAV</span></li></ul>
+						</div>
+					</div>
+					<div class="btn-holder">
+						<a href="assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener" class="btn btn--outline-primary">
+							Download CV
+							{{ARROW}}
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ EXPERIENCE (template timeline) ============ -->
+			<section class="section text--white" id="experience">
+				<div class="container">
+					<div class="section-headline">
+						<h4>Professional experience</h4>
+						<p>Industry, NGO and research roles across Ghana and Austria — from mine surveying in the field to production AI in the cloud.</p>
+					</div>
+					<ul class="timeline">
+						<li class="timeline__item">
+							<div class="timeline-tile">
+								<span class="timeline-tile__num">2026</span>
+								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
+								<div class="timeline-tile__content">
+									<span class="tl-meta">Sep 2026 – Present · Salzburg, Austria</span>
+									<h3 class="timeline-tile__title">Student Assistant — Geospatial Sustainability Compliance</h3>
+									<span class="tl-org">Z_GIS, Department of Geoinformatics, University of Salzburg</span>
+									<p>Supporting research on sustainable change through geospatial innovation — physics-informed and geometric deep learning, cloud-native radar interferometry and agentic AI for multi-sensor EO workflows.</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline__item">
+							<div class="timeline-tile">
+								<span class="timeline-tile__num">2024</span>
+								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
+								<div class="timeline-tile__content">
+									<span class="tl-meta">Sep 2024 – Present · Accra, Ghana</span>
+									<h3 class="timeline-tile__title">AI Research Engineer — Agricultural Remote Sensing</h3>
+									<span class="tl-org">Afarinick Company Limited</span>
+									<p>Integrated mobile imagery, satellite NDVI/EVI time series and IoT ground sensors into a production monitoring system on AWS (EC2, S3). Diagnosed a crop-disease CNN that scored 95.8% in-domain but near-zero on smallholder farms, and fixed it with geographically stratified data and field re-validation.</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline__item">
+							<div class="timeline-tile">
+								<span class="timeline-tile__num">2024</span>
+								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
+								<div class="timeline-tile__content">
+									<span class="tl-meta">2024 · Accra, Ghana · Remote</span>
+									<h3 class="timeline-tile__title">Geospatial Researcher — Satellite &amp; Ground-Data Fusion</h3>
+									<span class="tl-org">Rainforest Alliance</span>
+									<p>Built a hybrid monitoring system fusing Sentinel-2 (10 m) with participatory plot-level ground truth, running automated change detection over 333.9 km² of land and forest.</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline__item">
+							<div class="timeline-tile">
+								<span class="timeline-tile__num">2024</span>
+								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
+								<div class="timeline-tile__content">
+									<span class="tl-meta">2024 · Accra, Ghana</span>
+									<h3 class="timeline-tile__title">Geospatial Data Engineer</h3>
+									<span class="tl-org">Ghana Export-Import Bank / SKTLive Ltd</span>
+									<p>Engineered PostgreSQL/PostGIS spatial databases and Python/GDAL pipelines converting GeoTIFF aerial imagery into multi-scale tile pyramids for web map delivery.</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline__item">
+							<div class="timeline-tile">
+								<span class="timeline-tile__num">2023</span>
+								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
+								<div class="timeline-tile__content">
+									<span class="tl-meta">Oct – Nov 2023 · Manso-Nkwanta, Ghana</span>
+									<h3 class="timeline-tile__title">Assistant Mine Surveyor (Intern)</h3>
+									<span class="tl-org">Asanko Gold Ghana Ltd</span>
+									<p>Operated Total Stations, GNSS receivers and UAVs to establish ground-control points used to validate satellite- and drone-derived models.</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="bg-stretch">
+					<img src="img/bg-timeline.jpg" alt="">
+				</div>
+			</section>
+
+			<!-- ============ OPEN SOURCE + NUMBERS ============ -->
+			<section class="section-tile" id="opensource">
+				<div class="section-tile__item bg--light geo--tiles">
+					<div class="container">
+						<h4 class="headtitle">OPEN-SOURCE SOFTWARE</h4>
+						<ul class="post-list">
+							<li class="post-list__item">
+								<div class="post-card">
+									<div class="listing-meta">
+										<span class="listing-meta__item text--primary"><a href="https://doi.org/10.5281/zenodo.22087230" target="_blank" rel="noopener">DOI 10.5281/zenodo.22087230</a></span>
+										<span class="listing-meta__item">MIT · 2025 – Present</span>
+									</div>
+									<h3 class="post-card__title"><a href="https://pygeofetch.readthedocs.io/en/latest/" target="_blank" rel="noopener">pygeofetch — Unified Satellite Data &amp; Processing</a></h3>
+									<p class="post-card__text">Federated search and resumable, checksum-verified download across 22 providers; STAC / GeoParquet export; 17 spectral indices; and a full Sentinel-1 InSAR chain through to SBAS time series.</p>
+									<div class="post-card__links">
+										<a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
+										<a href="https://pygeofetch.readthedocs.io/en/latest/" target="_blank" rel="noopener" class="btn btn--link">Docs</a>
+									</div>
+								</div>
+							</li>
+							<li class="post-list__item">
+								<div class="post-card">
+									<div class="listing-meta">
+										<span class="listing-meta__item text--primary"><a href="https://doi.org/10.5281/zenodo.22258220" target="_blank" rel="noopener">DOI 10.5281/zenodo.22258220</a></span>
+										<span class="listing-meta__item">MIT · Pre-alpha</span>
+									</div>
+									<h3 class="post-card__title"><a href="https://pygeovision.readthedocs.io/en/latest/" target="_blank" rel="noopener">pygeovision — End-to-End Geospatial AI</a></h3>
+									<p class="post-card__text">From a bounding box and a date to a finished map: 51 pipelines, 119+ architectures, EO foundation models (Prithvi-EO-2.0, DINOv3, SAM) and a FastAPI inference server with ONNX, Jetson and cloud deployment.</p>
+									<div class="post-card__links">
+										<a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
+										<a href="https://pygeovision.readthedocs.io/en/latest/" target="_blank" rel="noopener" class="btn btn--link">Docs</a>
+									</div>
+								</div>
+							</li>
+							<li class="post-list__item">
+								<div class="post-card">
+									<div class="listing-meta">
+										<span class="listing-meta__item text--primary"><a href="https://doi.org/10.5281/zenodo.22209219" target="_blank" rel="noopener">DOI 10.5281/zenodo.22209219</a></span>
+										<span class="listing-meta__item">MIT · Pre-alpha</span>
+									</div>
+									<h3 class="post-card__title"><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap — Regime-Aware InSAR Phase Unwrapping</a></h3>
+									<p class="post-card__text">AmbiguityNet predicts the integer phase ambiguity with a physics-informed loss, then routes each region to SNAPHU or the learned model — whichever its own benchmarks show is stronger.</p>
+									<div class="post-card__links">
+										<a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
+									</div>
+								</div>
+							</li>
+							<li class="post-list__item">
+								<div class="post-card">
+									<div class="listing-meta">
+										<span class="listing-meta__item text--primary"><a href="https://doi.org/10.5281/zenodo.22706887" target="_blank" rel="noopener">DOI 10.5281/zenodo.22706887</a></span>
+										<span class="listing-meta__item">MIT · Pre-alpha</span>
+									</div>
+									<h3 class="post-card__title"><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn — Graph Neural Networks for PS Selection</a></h3>
+									<p class="post-card__text">Persistent-scatterer selection reframed as node classification: GCN, 8-head GAT and GraphSAGE over a 19-feature node vector, with 5-fold spatial-block cross-validation.</p>
+									<div class="post-card__links">
+										<a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
+									</div>
+								</div>
+							</li>
+							<li class="post-list__item">
+								<div class="post-card">
+									<div class="listing-meta">
+										<span class="listing-meta__item text--primary"><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener">github.com/EOCoreINT</a></span>
+										<span class="listing-meta__item">Toolkit</span>
+									</div>
+									<h3 class="post-card__title"><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener">Geospatial Data-Engineering Toolkit</a></h3>
+									<p class="post-card__text">raster2pm (GeoTIFF → PMTiles, tested on 64 GB orthomosaics), geoviz, geo-repair, pygeoproof, geoshift, geo-auto-train and pygeospace for 2D and true-3D visualisation.</p>
+								</div>
+							</li>
+						</ul>
+						<a href="https://github.com/appiahkubis14" target="_blank" rel="noopener" class="btn btn--outline-primary">
+							All Repositories
+							{{ARROW}}
+						</a>
+					</div>
+				</div>
+				<div class="section-tile__item text--white">
+					<div class="container">
+						<h4 class="headtitle">BY THE NUMBERS</h4>
+						<p>A few figures from the open-source platforms and field research above — each one traceable to code, data or a held-out evaluation.</p>
+						<ul class="row-list col--6">
+							<li class="row-list__item">
+								<div class="highlight-item align--start">
+									<span class="highlight-item__num text--secondary" data-value="22"></span>
+									<h4 class="highlight-item__title">Verified EO data providers</h4>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="highlight-item align--start">
+									<span class="highlight-item__num text--secondary" data-value="51"></span>
+									<h4 class="highlight-item__title">End-to-end GeoAI pipelines</h4>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="highlight-item align--start">
+									<span class="highlight-item__num text--secondary" data-value="119"></span>
+									<h4 class="highlight-item__title">Registered model architectures</h4>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="highlight-item align--start">
+									<span class="highlight-item__num text--secondary" data-value="333"></span>
+									<h4 class="highlight-item__title">km² under automated change detection</h4>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="highlight-item align--start">
+									<span class="highlight-item__num text--secondary" data-value="78"></span>
+									<h4 class="highlight-item__title">Valid interferograms, Mexico City</h4>
+								</div>
+							</li>
+							<li class="row-list__item">
+								<div class="highlight-item align--start">
+									<span class="highlight-item__num text--secondary" data-value="50"></span>
+									<h4 class="highlight-item__title">km of road validated (TRECK)</h4>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="bg-stretch">
+						<img src="img/image-58.jpg" alt="">
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ PROJECTS (template isotope grid) ============ -->
+			<section class="section geo--bathy" id="projects">
+				<div class="container">
+					<div class="section-headline section-headline--dark">
+						<h4>Selected projects</h4>
+						<p>Backend systems, InSAR and GeoAI research built on real data. Open any project for its aim, approach, data, results and validation.</p>
+					</div>
+					<ul class="filter-group project-filter" role="tablist" aria-label="Filter projects">
+						<li><button class="filter-group__btn is-checked" data-filter="*">All</button></li>
+						<li><button class="filter-group__btn" data-filter="systems">Systems &amp; Backend</button></li>
+						<li><button class="filter-group__btn" data-filter="insar">InSAR</button></li>
+						<li><button class="filter-group__btn" data-filter="geoai">GeoAI</button></li>
+						<li><button class="filter-group__btn" data-filter="agri">Agriculture</button></li>
+						<li><button class="filter-group__btn" data-filter="env">Environment</button></li>
+					</ul>
+					<div class="project-grid" id="project-grid" data-limit="3">
+{{PROJECTS}}
+					</div>
+					<div class="btn-holder project-toggle-holder">
+						<button type="button" class="btn btn--outline-primary project-toggle" id="project-toggle" aria-controls="project-grid" aria-expanded="false">
+							<span class="project-toggle__label">Show all projects</span>
+							<svg class="icon project-toggle__icon" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 9L0.8 3.5h10.4z"/></svg>
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ VENTURES (template "people") ============ -->
+			<section class="section bg--gradient" id="ventures">
+				<div class="container">
+					<div class="section-headline">
+						<h4>Ventures &amp; affiliations</h4>
+						<p>The organisations I've founded and the research groups I build with — from open EO education in Africa to radar research in Salzburg.</p>
+					</div>
+					<ul class="team">
+						<li class="team__item">
+							<div class="team-member">
+								<div class="team-member__img"><img src="img/v-eocoreint.jpg" alt="EOCoreINT"></div>
+								<div class="team-member__expanded">
+									<h3 class="team-title">EOCoreINT</h3>
+									<strong class="team-position">Founder &amp; Lead Engineer · 2025 – Present</strong>
+									<ul class="contact-info top--line">
+										<li class="contact-info__item"><span class="contact-info__text">Web</span><a class="contact-info__link" href="https://eocoreint.com" target="_blank" rel="noopener">eocoreint.com</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Code</span><a class="contact-info__link" href="https://github.com/EOCoreINT" target="_blank" rel="noopener">github.com/EOCoreINT</a></li>
+									</ul>
+								</div>
+								<a href="#eocoreint" class="team-member__link" aria-label="About EOCoreINT"></a>
+							</div>
+						</li>
+						<li class="team__item">
+							<div class="team-member">
+								<div class="team-member__img"><img src="img/v-codecraft.jpg" alt="CodeCraft STEM Institute"></div>
+								<div class="team-member__expanded">
+									<h3 class="team-title">CodeCraft STEM</h3>
+									<strong class="team-position">Co-Founder &amp; Lead Engineer · Kumasi</strong>
+									<ul class="contact-info top--line">
+										<li class="contact-info__item"><span class="contact-info__text">Web</span><a class="contact-info__link" href="https://codecraftstem.com" target="_blank" rel="noopener">codecraftstem.com</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Stack</span><a class="contact-info__link" href="#codecraft">Django · Channels · WebRTC</a></li>
+									</ul>
+								</div>
+								<a href="#codecraft" class="team-member__link" aria-label="About CodeCraft STEM Institute"></a>
+							</div>
+						</li>
+						<li class="team__item">
+							<div class="team-member">
+								<div class="team-member__img"><img src="img/v-zgis.jpg" alt="Z_GIS, University of Salzburg"></div>
+								<div class="team-member__expanded">
+									<h3 class="team-title">Z_GIS Salzburg</h3>
+									<strong class="team-position">Student Assistant · 2026 – Present</strong>
+									<ul class="contact-info top--line">
+										<li class="contact-info__item"><span class="contact-info__text">Focus</span><a class="contact-info__link" href="#experience">Geospatial sustainability compliance</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Mail</span><a class="contact-info__link" href="mailto:samuel.appiah-kubi@stud.plus.ac.at">samuel.appiah-kubi@stud.plus.ac.at</a></li>
+									</ul>
+								</div>
+								<a href="#experience" class="team-member__link" aria-label="Z_GIS role"></a>
+							</div>
+						</li>
+						<li class="team__item">
+							<div class="team-member">
+								<div class="team-member__img"><img src="img/v-roadessy.jpg" alt="Roadessy Lab, KNUST"></div>
+								<div class="team-member__expanded">
+									<h3 class="team-title">Roadessy Lab</h3>
+									<strong class="team-position">Member · 2024 – Present · KNUST</strong>
+									<ul class="contact-info top--line">
+										<li class="contact-info__item"><span class="contact-info__text">Focus</span><a class="contact-info__link" href="#research">Camera / IMU / GPS fusion</a></li>
+										<li class="contact-info__item"><span class="contact-info__text">Also</span><a class="contact-info__link" href="#research">Deep Metrics Research (2025 – 26)</a></li>
+									</ul>
+								</div>
+								<a href="#research" class="team-member__link" aria-label="Roadessy Lab research"></a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- ============ VENTURE DETAILS ============ -->
+			<section class="section-tile">
+				<div class="section-tile__item bg--light geo--graticule" id="eocoreint">
+					<div class="container">
+						<div class="venture-head">
+							<img src="img/eocoreint-logo.png" width="120" alt="EOCoreINT logo">
+						</div>
+						<h4 class="headtitle mb--5">FOUNDED · EOCoreINT</h4>
+						<h3>Earth Observation Core Intelligence — “From Satellite Data to Decisions.”</h3>
+						<p>An open-source EO software organisation and learning academy teaching applied remote sensing and GeoAI to African students and professionals with open tools. It is home to pygeofetch, ps-gnn, pyunwrap and the data-engineering toolkit, and its courses use genuine West African examples — White Volta vegetation, cocoa farms, Lake Volta shorelines and illegal mining in the Atewa range.</p>
+						<ul class="list list--border">
+							<li>Course academy: category → course → module → lesson, with quizzes, progress and certificates</li>
+							<li>B2B / B2G consulting engine: quote → project → delivery → branded PDF invoice</li>
+							<li>Organisation workspaces with role-scoped access for government, NGO and enterprise clients</li>
+							<li>Django 5 · PostgreSQL · HTMX · DRF · Stripe · Celery · Docker</li>
+						</ul>
+						<a href="https://eocoreint.com" target="_blank" rel="noopener" class="btn btn--outline-primary">
+							Visit eocoreint.com
+							{{ARROW}}
+						</a>
+					</div>
+				</div>
+				<div class="section-tile__item geo--topo" id="codecraft">
+					<div class="container">
+						<div class="venture-head">
+							<img src="img/codecraft-logo.png" width="56" height="56" alt="CodeCraft STEM Institute logo">
+						</div>
+						<h4 class="headtitle mb--5">CO-FOUNDED · CODECRAFT STEM INSTITUTE</h4>
+						<h3>An EdTech operating system built for the African learning ecosystem.</h3>
+						<p>As co-founder and lead engineer I architected the platform from the ground up in Ahodwo, Kumasi — serving students, instructors, parents, schools and corporate partners with live classrooms, a school management system, a careers ATS and real-time collaboration.</p>
+						<ul class="mini-stats">
+							<li><strong>25</strong><span>Django apps</span></li>
+							<li><strong>105</strong><span>DB models</span></li>
+							<li><strong>287</strong><span>URL routes</span></li>
+							<li><strong>7</strong><span>User roles</span></li>
+						</ul>
+						<ul class="list list--border">
+							<li>Live classroom on WebRTC — screen share, recording, hand-raise, parent observer mode</li>
+							<li>Full school SMS — academics, fees, exams, library, transport, hostel</li>
+							<li>Paystack payments — Mobile Money, card and USSD in Ghanaian cedis</li>
+						</ul>
+						<a href="https://codecraftstem.com" target="_blank" rel="noopener" class="btn btn--outline-primary">
+							Visit codecraftstem.com
+							{{ARROW}}
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ RESEARCH + EDUCATION ============ -->
+			<section class="section-tile" id="research">
+				<div class="section-tile__item bg--gradient">
+					<div class="container">
+						<h4 class="headtitle">RESEARCH &amp; PUBLICATIONS</h4>
+						<ul class="edu-list">
+							<li>
+								<span class="tl-meta">Aug 2025 – Present · TRECK / Roadessy Lab, KNUST</span>
+								<h3 class="edu-list__title">Principal Researcher — Multi-Modal Sensor Fusion for Road Assessment</h3>
+								<p>Led a five-component camera / IMU / GPS fusion architecture for metric-accurate road assessment, validated against 50 manually surveyed ground-truth measurements along 50 km of road. Manuscript submitted to <em>IEEE Transactions on Intelligent Transportation Systems</em>.</p>
+							</li>
+							<li>
+								<span class="tl-meta">Software citation · Zenodo</span>
+								<h3 class="edu-list__title">Appiah Kubi, S. <em>pygeofetch: a unified satellite data and geospatial processing platform.</em></h3>
+								<p><a href="https://doi.org/10.5281/zenodo.22087230" target="_blank" rel="noopener" class="text--secondary">doi:10.5281/zenodo.22087230</a></p>
+							</li>
+						</ul>
+						<h5 class="toolkit__title text--white">Research interests</h5>
+						<ul class="tag-list tag-list--dark">
+							<li><span class="tag-list__link">InSAR deformation monitoring</span></li>
+							<li><span class="tag-list__link">Learned phase unwrapping</span></li>
+							<li><span class="tag-list__link">GNNs for irregular spatial data</span></li>
+							<li><span class="tag-list__link">EO foundation models</span></li>
+							<li><span class="tag-list__link">Uncertainty quantification</span></li>
+							<li><span class="tag-list__link">Cloud-native STAC infrastructure</span></li>
+						</ul>
+						<p class="orcid-line">ORCID <a href="https://orcid.org/0009-0002-1376-108X" target="_blank" rel="noopener" class="text--secondary">0009-0002-1376-108X</a></p>
+					</div>
+				</div>
+				<div class="section-tile__item bg--light geo--tiles" id="education">
+					<div class="container">
+						<h4 class="headtitle">EDUCATION</h4>
+						<ul class="edu-list">
+							<li>
+								<span class="tl-meta text--primary">Sep 2026 – Present · Salzburg, Austria</span>
+								<h3 class="edu-list__title">MSc Copernicus Master's in Digital Earth</h3>
+								<strong class="edu-list__org">Paris Lodron University of Salzburg · Erasmus Mundus Joint Master Degree</strong>
+								<p>Earth observation, geospatial data science, machine learning for satellite data and multi-scale spatial analysis, delivered in cooperation with the Copernicus programme.</p>
+							</li>
+							<li>
+								<span class="tl-meta text--primary">Jan 2020 – Aug 2024 · Kumasi, Ghana</span>
+								<h3 class="edu-list__title">BSc Geomatic Engineering — First Class Honours</h3>
+								<strong class="edu-list__org">Kwame Nkrumah University of Science and Technology (KNUST) · CWA 71.74%</strong>
+								<p>Best Final Year Project Award (88%) for sensor-fusion and computer-vision research. Coursework in remote sensing, GIS, satellite image processing, photogrammetry, geodesy and cartography.</p>
+							</li>
+							<li>
+								<span class="tl-meta text--primary">Bibiani, Ghana</span>
+								<h3 class="edu-list__title">High School Diploma</h3>
+								<strong class="edu-list__org">Bibiani Senior High Technical School · National Science &amp; Maths Quiz contestant</strong>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ HONOURS + CERTIFICATIONS ============ -->
+			<section class="section geo--bathy" id="honours">
+				<div class="container">
+					<div class="section-headline section-headline--dark">
+						<h4>Honours &amp; certifications</h4>
+						<p>Recognition for academic work and research, and the professional credentials behind the cloud and ML engineering.</p>
+					</div>
+					<ul class="row-list gap--1">
+						<li class="row-list__item">
+							<div class="card card--bg-light card--left">
+								<span class="card__kicker text--primary">2026 · PLUS Salzburg</span>
+								<h4 class="card__title">Admitted — Copernicus Master's in Digital Earth</h4>
+								<div class="text-wrap"><p>Erasmus Mundus Joint Master Degree.</p></div>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light card--left">
+								<span class="card__kicker text--primary">2024 · KNUST</span>
+								<h4 class="card__title">Best Final Year Project</h4>
+								<div class="text-wrap"><p>Highest departmental score (88%), Dept. of Geomatic Engineering.</p></div>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light card--left">
+								<span class="card__kicker text--primary">2024 · KNUST</span>
+								<h4 class="card__title">First Class Honours</h4>
+								<div class="text-wrap"><p>BSc Geomatic Engineering, CWA 71.74%.</p></div>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light card--left">
+								<span class="card__kicker text--primary">2024 · KNUST</span>
+								<h4 class="card__title">2nd Place — TRECK Annual Research Conference</h4>
+								<div class="text-wrap"><p>Annual research conference, KNUST.</p></div>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light card--left">
+								<span class="card__kicker text--primary">GhIS-SS</span>
+								<h4 class="card__title">Ghana Institution of Surveyors Students Society Award</h4>
+								<div class="text-wrap"><p>Academic excellence and professional service.</p></div>
+							</div>
+						</li>
+						<li class="row-list__item">
+							<div class="card card--bg-light card--left">
+								<span class="card__kicker text--primary">Certifications</span>
+								<h4 class="card__title">Professional credentials</h4>
+								<ul class="cert-list">
+									<li>AWS Certified Solutions Architect – Professional</li>
+									<li>AWS Certified Cloud Practitioner</li>
+									<li>Machine Learning &amp; Advanced AI Techniques</li>
+									<li>Artificial Intelligence &amp; Machine Learning</li>
+									<li>Geospatial Analytics Essentials</li>
+									<li>Remote Sensing Basics</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- ============ CONTACT ============ -->
+			<section class="section-tile" id="contact">
+				<div class="section-tile__item geo--topo">
+					<div class="container">
+						<div class="cta-form">
+							<h2>Let's Build Together</h2>
+							<p>Open to research collaboration, contract work and full-time roles in Earth observation, geospatial engineering and GeoAI — in Europe, Africa or remote.</p>
+							<form action="mailto:appiahkubis14@gmail.com" method="post" enctype="text/plain" id="contact-form">
+								<div class="form-row">
+									<div class="form-row__field">
+										<input type="text" class="form-control" name="name" placeholder="Name*" required>
+									</div>
+									<div class="form-row__field">
+										<input type="email" class="form-control" name="email" placeholder="Email*" required>
+									</div>
+									<div class="form-row__field">
+										<input type="text" class="form-control" name="subject" placeholder="Subject">
+									</div>
+									<div class="form-row__field">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="form-row__field form-row__field--btn">
+										<button type="submit" class="btn btn--outline-primary">Send Message</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="section-tile__item bg--light geo--graticule">
+					<div class="container">
+						<div class="logo-img text--dark">{{LOGO_FULL}}</div>
+						<p>Based in Salzburg, Austria for the Copernicus Master's — working with teams in Ghana and remotely worldwide. Typically replies within 24 hours.</p>
+						<ul class="row-list col--6">
+							<li class="row-list__item">
+								<h5 class="title">Direct</h5>
+								<ul class="contact-info">
+									<li class="contact-info__item"><span class="contact-info__text">Mail</span><a class="contact-info__link" href="mailto:appiahkubis14@gmail.com">appiahkubis14@gmail.com</a></li>
+									<li class="contact-info__item"><span class="contact-info__text">Tel</span><a class="contact-info__link" href="tel:+436606182808">+43 6606 182 808</a></li>
+									<li class="contact-info__item"><span class="contact-info__text">Base</span><strong>Salzburg, Austria</strong></li>
+								</ul>
+							</li>
+							<li class="row-list__item">
+								<h5 class="title">Academic</h5>
+								<ul class="contact-info">
+									<li class="contact-info__item"><span class="contact-info__text">Mail</span><a class="contact-info__link" href="mailto:samuel.appiah-kubi@stud.plus.ac.at">samuel.appiah-kubi@stud.plus.ac.at</a></li>
+									<li class="contact-info__item"><span class="contact-info__text">ORCID</span><a class="contact-info__link" href="https://orcid.org/0009-0002-1376-108X" target="_blank" rel="noopener">0009-0002-1376-108X</a></li>
+								</ul>
+							</li>
+							<li class="row-list__item">
+								<h5 class="title">Profiles</h5>
+								<ul class="contact-info">
+									<li class="contact-info__item"><span class="contact-info__text">GitHub</span><a class="contact-info__link" href="https://github.com/appiahkubis14" target="_blank" rel="noopener">appiahkubis14</a></li>
+									<li class="contact-info__item"><span class="contact-info__text">LinkedIn</span><a class="contact-info__link" href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" rel="noopener">samuel-appiah-kubi</a></li>
+									<li class="contact-info__item"><span class="contact-info__text">Upwork</span><a class="contact-info__link" href="https://www.upwork.com/freelancers/~016f63fb8674b4c590" target="_blank" rel="noopener">Freelance profile</a></li>
+								</ul>
+							</li>
+							<li class="row-list__item">
+								<h5 class="title">Ventures</h5>
+								<ul class="contact-info">
+									<li class="contact-info__item"><span class="contact-info__text">EO</span><a class="contact-info__link" href="https://eocoreint.com" target="_blank" rel="noopener">eocoreint.com</a></li>
+									<li class="contact-info__item"><span class="contact-info__text">EdTech</span><a class="contact-info__link" href="https://codecraftstem.com" target="_blank" rel="noopener">codecraftstem.com</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-upper">
+					<div class="footer-upper__col col--4">
+						<a href="#hero" class="footer-logo text--white" aria-label="Back to top">{{LOGO_FULL}}</a>
+						<p class="footer-blurb">Geospatial software engineer and Earth observation researcher. From satellite data to decisions.</p>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Navigate</h4>
+						<ul class="footer-list">
+							<li><a href="#about" class="footer-list__link">About</a></li>
+							<li><a href="#expertise" class="footer-list__link">Expertise</a></li>
+							<li><a href="#experience" class="footer-list__link">Experience</a></li>
+							<li><a href="#projects" class="footer-list__link">Projects</a></li>
+							<li><a href="#research" class="footer-list__link">Research</a></li>
+							<li><a href="#education" class="footer-list__link">Education</a></li>
+							<li><a href="#contact" class="footer-list__link">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Open Source</h4>
+						<ul class="footer-list">
+							<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener" class="footer-list__link">pygeofetch</a></li>
+							<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener" class="footer-list__link">pygeovision</a></li>
+							<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="footer-list__link">pyunwrap</a></li>
+							<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="footer-list__link">ps-gnn</a></li>
+							<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT toolkit</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Focus Areas</h4>
+						<ul class="footer-list">
+							<li><a href="#expertise" class="footer-list__link">SAR &amp; InSAR</a></li>
+							<li><a href="#expertise" class="footer-list__link">Geospatial AI</a></li>
+							<li><a href="#expertise" class="footer-list__link">EO Data Engineering</a></li>
+							<li><a href="#expertise" class="footer-list__link">Digital Twins</a></li>
+							<li><a href="#expertise" class="footer-list__link">Field Validation</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Ventures</h4>
+						<ul class="footer-list">
+							<li><a href="https://eocoreint.com" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT</a></li>
+							<li><a href="https://codecraftstem.com" target="_blank" rel="noopener" class="footer-list__link">CodeCraft STEM</a></li>
+							<li><a href="#ventures" class="footer-list__link">Roadessy Lab</a></li>
+							<li><a href="#ventures" class="footer-list__link">Z_GIS Salzburg</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-contact">
+					<div class="footer-contact__item">
+						<ul class="info-list">
+							<li class="info-list__item"><span class="info-list__text">Based in</span><a class="info-list__link" href="#contact">Salzburg, Austria</a></li>
+							<li class="info-list__item"><span class="info-list__text">Mail</span><a class="info-list__link" href="mailto:appiahkubis14@gmail.com">appiahkubis14@gmail.com</a></li>
+							<li class="info-list__item"><span class="info-list__text">Tel</span><a class="info-list__link" href="tel:+436606182808">+43 6606 182 808</a></li>
+						</ul>
+					</div>
+					<div class="footer-contact__item">
+						<ul class="social">
+							<li>
+								<a class="social__link" href="https://github.com/appiahkubis14" target="_blank" rel="noopener" aria-label="GitHub">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" rel="noopener" aria-label="LinkedIn">
+									<svg width="15" height="15" viewBox="0 0 12 12"><path d="M2.68661 12H0.198214V3.98839H2.68661V12ZM1.44107 2.89554C0.645536 2.89554 0 2.23661 0 1.44107C0 1.05888 0.151827 0.692333 0.42208 0.42208C0.692333 0.151827 1.05888 0 1.44107 0C1.82327 0 2.18981 0.151827 2.46006 0.42208C2.73032 0.692333 2.88214 1.05888 2.88214 1.44107C2.88214 2.23661 2.23661 2.89554 1.44107 2.89554ZM11.9973 12H9.51429V8.1C9.51429 7.17054 9.49554 5.97857 8.22054 5.97857C6.92679 5.97857 6.72857 6.98839 6.72857 8.03304V12H4.24286V3.98839H6.62946V5.08125H6.66429C6.99643 4.45179 7.80804 3.7875 9.01875 3.7875C11.5366 3.7875 12 5.44554 12 7.59911V12H11.9973Z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://orcid.org/0009-0002-1376-108X" target="_blank" rel="noopener" aria-label="ORCID">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zM7.4 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM6.5 9.3h1.8v9.3H6.5V9.3zm4.1 0h4.1c3.3 0 5 2.3 5 4.65 0 2.5-1.9 4.65-5 4.65h-4.1V9.3zm1.8 1.6v6.1h2.1c2.6 0 3.3-1.8 3.3-3.05 0-1.6-1-3.05-3.3-3.05h-2.1z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="mailto:appiahkubis14@gmail.com" aria-label="Email">
+									<svg width="16" height="13" viewBox="0 0 24 19"><path d="M0 2.5A2.5 2.5 0 0 1 2.5 0h19A2.5 2.5 0 0 1 24 2.5v14a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 16.5v-14zm2.3-.3L12 9.4l9.7-7.2H2.3zM22 4.1l-10 7.4-10-7.4v12.4c0 .3.2.5.5.5h19c.3 0 .5-.2.5-.5V4.1z"/></svg>
+								</a>
+							</li>
+						</ul>
+						<a href="#contact" class="btn btn--white">
+							Get In Touch
+							{{ARROW}}
+						</a>
+					</div>
+				</div>
+				<div class="footer-under">
+					<ul class="footer-list footer-list--row">
+						<li><a href="assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener" class="footer-list__link">Download CV</a></li>
+						<li><a href="https://github.com/appiahkubis14" target="_blank" rel="noopener" class="footer-list__link">GitHub</a></li>
+						<li>&copy; 2026 Samuel Appiah Kubi. All rights reserved.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="bg-stretch">
+				<img src="img/footer-nightlights.jpg" alt="">
+			</div>
+		</footer>
+	</div>
+	<script src="js/all.js"></script>
+	<script>
+		// Close the slide-out menu after choosing an in-page section
+		document.querySelectorAll('.nav-drop a[href^="#"]').forEach(function (a) {
+			a.addEventListener('click', function () { document.body.classList.remove('nav-active'); });
+		});
+		// Project grid: filter + show first N, expandable
+		(function () {
+			var grid = document.getElementById('project-grid'), btn = document.getElementById('project-toggle');
+			if (!grid || !btn) return;
+			var limit = parseInt(grid.getAttribute('data-limit'), 10) || 3, filter = '*', expanded = false;
+			var cards = Array.prototype.slice.call(grid.querySelectorAll('.project-card'));
+			var label = btn.querySelector('.project-toggle__label');
+			function render() {
+				var shown = 0, matches = 0;
+				cards.forEach(function (c) {
+					var ok = filter === '*' || (' ' + c.getAttribute('data-cats') + ' ').indexOf(' ' + filter + ' ') > -1;
+					if (ok) matches++;
+					var vis = ok && (expanded || shown < limit);
+					if (vis) shown++;
+					c.hidden = !vis;
+				});
+				btn.parentNode.hidden = matches <= limit;
+				btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+				btn.classList.toggle('is-open', expanded);
+				label.textContent = expanded ? 'Show fewer' : 'Show all ' + matches + ' projects';
+			}
+			document.querySelectorAll('.project-filter .filter-group__btn').forEach(function (b) {
+				b.addEventListener('click', function () {
+					document.querySelectorAll('.project-filter .filter-group__btn').forEach(function (x) { x.classList.remove('is-checked'); });
+					b.classList.add('is-checked'); filter = b.getAttribute('data-filter'); expanded = false; render();
+				});
+			});
+			btn.addEventListener('click', function () {
+				expanded = !expanded; render();
+				if (!expanded) document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+			});
+			render();
+		})();
+		// Compose the contact form into an email draft
+		(function () {
+			var f = document.getElementById('contact-form');
+			if (!f) return;
+			f.addEventListener('submit', function (e) {
+				e.preventDefault();
+				var v = function (n) { return (f.elements[n].value || '').trim(); };
+				var subject = v('subject') || ('Portfolio enquiry from ' + v('name'));
+				var body = v('message') + '\n\n— ' + v('name') + ' (' + v('email') + ')';
+				window.location.href = 'mailto:appiahkubis14@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+			});
+		})();
+	</script>
+</body>
+
+</html>
