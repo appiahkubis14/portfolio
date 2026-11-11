@@ -4645,6 +4645,7 @@ section {
     height: 130px;
   }
 }
+
 .timeline__item:nth-child(4) .circle-pulse {
   width: 80px;
   height: 80px;
@@ -4667,6 +4668,19 @@ section {
   .timeline__item:nth-child(5) .circle-pulse {
     width: 190px;
     height: 190px;
+  }
+}
+
+.timeline__item:nth-child(6) .circle-pulse {
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+@media (min-width: 768px) {
+  .timeline__item:nth-child(6) .circle-pulse {
+    width: 220px;
+    height: 220px;
   }
 }
 
