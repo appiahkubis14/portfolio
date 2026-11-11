@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PhysInSAR: Ground Motion from Sentinel-1 and NISAR without Phase Unwrapping — Samuel Appiah Kubi</title>
+	<meta name="description" content="Measure ground motion in the places where unwrapping fails, decorrelated vegetation and fast or sharply localised motion such as mining, landslides and subsiding cities, by combining Sentinel-1 C-band and NISAR L-band before any cycle is counted.">
+	<meta name="author" content="Samuel Appiah Kubi">
+	<meta property="og:title" content="PhysInSAR: Ground Motion from Sentinel-1 and NISAR without Phase Unwrapping — Samuel Appiah Kubi">
+	<meta property="og:description" content="One physics-informed neural model of 3-D ground motion, fitted directly to the wrapped phase of both missions">
+	<meta property="og:image" content="../img/p-physinsar-lg.jpg">
+	<meta name="theme-color" content="#051c2c">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='12' fill='%23051c2c'/%3E%3Cg fill='none' stroke='white' stroke-width='2.6'%3E%3Ccircle cx='28' cy='28' r='17'/%3E%3Cellipse cx='28' cy='28' rx='17' ry='7'/%3E%3Cpath d='M28 11v34'/%3E%3C/g%3E%3Cellipse cx='28' cy='28' rx='24' ry='9' transform='rotate(-25 28 28)' fill='none' stroke='%2343B1E7' stroke-width='2'/%3E%3C/svg%3E">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link media="all" rel="stylesheet" href="../css/main.css">
+	<link media="all" rel="stylesheet" href="../css/portfolio.css">
+</head>
+
+<body class="page-project">
+	<div class="wrapper wrapper--offset-0">
+		<header class="header header--menu">
+			<div class="container">
+				<div class="header-under">
+					<div class="header-inner">
+						<a href="../index.html#hero" class="header-inner__logo" aria-label="Samuel Appiah Kubi — home">
+							<span class="visible--md text--white"><svg class="site-logo" viewBox="0 0 364 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text><line x1="242" y1="13" x2="242" y2="43" stroke="currentColor" stroke-opacity=".45"/><text font-family="Roboto, Arial, sans-serif" font-size="11.5" fill="currentColor" fill-opacity=".85"><tspan x="254" y="25">geospatial &amp;</tspan><tspan x="254" y="40">earth observation</tspan></text></svg></span>
+							<span class="hidden--md text--white"><svg class="site-logo" viewBox="0 0 234 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text></svg></span>
+						</a>
+					</div>
+					<span class="nav-opener" role="button" aria-label="Open menu"><span></span></span>
+					<div class="nav-drop">
+						<nav class="nav">
+							<ul class="menu">
+								<li class="menu__item active"><a class="menu__link" href="../index.html#hero">Home</a></li>
+								<li><a class="menu__link" href="../index.html#about">About</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="../index.html#expertise">What I Do</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="../expertise/index.html">How I work</a></li>
+										<li><a href="../expertise/sar-insar.html">SAR &amp; InSAR</a></li>
+										<li><a href="../expertise/geospatial-ai.html">Geospatial AI &amp; Vision</a></li>
+										<li><a href="../expertise/eo-data-engineering.html">EO Data Engineering</a></li>
+										<li><a href="../expertise/backend-cloud.html">Backend &amp; Cloud</a></li>
+										<li><a href="../expertise/applied-eo-research.html">Applied EO Research</a></li>
+										<li><a href="../expertise/field-validation.html">Field Survey &amp; Validation</a></li>
+									</ul>
+								</li>
+								<li><a class="menu__link" href="../index.html#experience">Experience</a></li>
+								<li class="menu__item has-submenu">
+									<a class="menu__link" href="../index.html#opensource">Open Source</a>
+									<span class="sub-arrow"></span>
+									<ul class="sub-menu">
+										<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener">pygeofetch</a></li>
+										<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener">pygeovision</a></li>
+										<li><a href="../projects/physinsar.html">PhysInSAR</a></li>
+										<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap</a></li>
+										<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn</a></li>
+										<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener">EOCoreINT toolkit</a></li>
+									</ul>
+								</li>
+								<li><a class="menu__link" href="../index.html#projects">Projects</a></li>
+								<li><a class="menu__link" href="../index.html#ventures">Ventures</a></li>
+								<li><a class="menu__link" href="../index.html#research">Research &amp; Education</a></li>
+								<li><a class="menu__link" href="../index.html#honours">Honours</a></li>
+								<li><a class="menu__link" href="../index.html#contact">Contact</a></li>
+								<li><a class="menu__link" href="../assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener">Download CV</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<span class="menu-overlay"></span>
+		</header>
+		<main class="main">
+			<section class="section-intro project-intro text--white">
+				<div class="container">
+					<div class="listing-meta"><span class="listing-meta__item">Flagship</span><span class="listing-meta__item">Joint C- and L-band InSAR</span></div>
+					<h1>PhysInSAR: Ground Motion from Sentinel-1 and NISAR without Phase Unwrapping</h1>
+					<h6 class="headtitle">One physics-informed neural model of 3-D ground motion, fitted directly to the wrapped phase of both missions</h6>
+				</div>
+				<div class="bg-stretch">
+					<img src="../img/p-physinsar-lg.jpg" alt="">
+				</div>
+			</section>
+			<section class="section-breadcrumbs">
+				<div class="container">
+					<ul class="breadcrumbs">
+						<li class="breadcrumbs__item"><a href="../index.html" class="breadcrumbs__link">Home</a></li>
+						<li class="breadcrumbs__item"><a href="../index.html#projects" class="breadcrumbs__link">Projects</a></li>
+						<li class="breadcrumbs__item current">PhysInSAR: Ground Motion from Sentinel-1 and NISAR without Phase Unwrapping</li>
+					</ul>
+				</div>
+			</section>
+			<section class="section geo--topo project-body">
+				<div class="container">
+					<div class="main-wrapper">
+						<div class="main-content">
+							<h4 class="headtitle">Project aim</h4>
+							<p class="project-aim">Measure ground motion in the places where unwrapping fails, decorrelated vegetation and fast or sharply localised motion such as mining, landslides and subsiding cities, by combining Sentinel-1 C-band and NISAR L-band before any cycle is counted.</p>
+							<ul class="project-metrics"><li class="project-metric"><strong class="project-metric__value">60 / 60</strong><span class="project-metric__label">Regime-map runs won against SNAPHU + fusion</span></li><li class="project-metric"><strong class="project-metric__value">13.1 → 9.0</strong><span class="project-metric__label">East error in decorrelated vegetation (mm/yr)</span></li><li class="project-metric"><strong class="project-metric__value">25 vs 170</strong><span class="project-metric__label">East error at 1.2 m/yr subsidence (mm/yr), 5 of 5 scenes</span></li><li class="project-metric"><strong class="project-metric__value">~1 m</strong><span class="project-metric__label">NISAR–Sentinel-1 offset from backscatter</span></li></ul>
+							<p class="xp-why">Sentinel-1 and NISAR are still processed apart: each is unwrapped on its own and the results are fused at the end, mistakes included. PhysInSAR never unwraps. The coherent L-band phase and the precise C-band phase resolve the cycle ambiguities together, inside one model.</p>
+							<h4 class="headtitle">What is new</h4>
+							<ul class="xp-diffs xp-diffs--wide"><li class="xp-diff"><span class="xp-diff__num">1</span><h4 class="xp-diff__title">No unwrapping step</h4><p>The observed phase enters only through a periodic von Mises likelihood whose concentration follows from bias-corrected coherence, so integer cycles are never estimated and cannot be wrong.</p></li><li class="xp-diff"><span class="xp-diff__num">2</span><h4 class="xp-diff__title">One motion model for two wavelengths</h4><p>A Fourier-feature neural field gives continuous 3-D motion (trend, seasonal and residual terms); both sensors constrain it through their own line of sight and wavelength.</p></li><li class="xp-diff"><span class="xp-diff__num">3</span><h4 class="xp-diff__title">Nuisance fields that cannot steal motion</h4><p>Per-date troposphere, ionosphere, orbit and height screens are projected out of the motion&#x27;s temporal null space; the L-band ionosphere is anchored by NISAR&#x27;s split-spectrum estimate.</p></li><li class="xp-diff"><span class="xp-diff__num">4</span><h4 class="xp-diff__title">Alignment from backscatter</h4><p>The NISAR–Sentinel-1 offset is measured by correlating radar texture to about 1 m, because phase-only refinement drifts when two geometries cannot separate offset from motion.</p></li><li class="xp-diff"><span class="xp-diff__num">5</span><h4 class="xp-diff__title">A start-up for very fast motion</h4><p>Beyond C-band&#x27;s per-revisit limit (about 420 mm/yr along the line of sight) a dedicated start-up keeps the fit on the right C-band cycle; it fixed every failing case at 1.2 m/yr.</p></li></ul>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<img class="project-figure" src="../img/p-physinsar-lg.jpg" alt="Illustrative map for PhysInSAR: Ground Motion from Sentinel-1 and NISAR without Phase Unwrapping">
+									<span class="project-figure__caption">Illustrative graphic</span>
+								</div>
+								<div class="col-6">
+									<h3>Overview</h3>
+									<p>InSAR records motion only as a phase that repeats every half wavelength. With NISAR now observing the same ground as Sentinel-1 at a wavelength 4.3 times longer, a coherent but coarse L-band measurement sits next to a precise but fragile C-band one. PhysInSAR fits a single continuous model of three-dimensional ground motion in space and time, a neural field, directly to the wrapped phase of both sensors. A physics forward model predicts every interferogram from the motion projected onto each sensor&#x27;s line of sight and wavelength, plus learned atmosphere, ionosphere and DEM-error fields, and a von Mises likelihood weighted by coherence compares prediction and observation. Because the likelihood is periodic, a prediction that is right modulo one cycle is right, and no unwrapping step exists.</p>
+								</div>
+							</div>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<h3>The challenge</h3>
+									<p>Each sensor alone is ambiguous where it matters: C-band loses coherence in vegetation within days and packs fringes too densely over fast motion, while L-band is coarse and carries strong ionospheric delay. Combining them requires a model that respects both geometries (Sentinel-1 looks right, NISAR left), keeps atmospheric fields from absorbing motion, and handles a geolocation offset between the two missions that, with only two viewing geometries, looks almost exactly like a motion pattern.</p>
+								</div>
+								<div class="col-6">
+									<h3>Data &amp; inputs</h3>
+									<ul class="tag-list project-tags"><li><span class="tag-list__link">Synthetic paired Sentinel-1 / NISAR stacks</span></li><li><span class="tag-list__link">31 C-band and 30 L-band dates per year</span></li><li><span class="tag-list__link">87 + 84 interferograms per scene</span></li><li><span class="tag-list__link">NISAR L2 GUNW (ASF DAAC)</span></li><li><span class="tag-list__link">Sentinel-1 IW SLC</span></li><li><span class="tag-list__link">Mexico City case study</span></li></ul>
+								</div>
+							</div>
+
+							<h4 class="headtitle">Approach</h4>
+							<ol class="project-steps">
+								<li class="project-step">
+									<span class="project-step__num">01</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Simulate paired stacks with ground truth</h4>
+										<p>A Sentinel-1/NISAR simulator generates interferograms at single-look-complex level: speckle, a vegetated decorrelation belt, turbulent troposphere, L-band ionosphere, orbit and DEM errors, subsidence and volcanic sources.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">02</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Fit L-band first</h4>
+										<p>Stage A fits the coherent, cycle-safe L-band phase alone; stage B adds C-band to sharpen the estimate, with spatial bandwidth and screens growing coarse to fine.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">03</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Compare against standard practice</h4>
+										<p>The baseline unwraps every interferogram of each sensor with SNAPHU, fits velocity and DEM error per pixel and fuses the two line-of-sight maps into east and up.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">04</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Stress-test the regimes</h4>
+										<p>A 60-run regime map over ionosphere and C-band coherence, hidden geolocation offsets up to 100 m, subsidence rates from 100 to 1200 mm/yr, and a volcano with stratified troposphere.</p>
+									</div>
+								</li>
+								<li class="project-step">
+									<span class="project-step__num">05</span>
+									<div class="project-step__body">
+										<h4 class="project-step__title">Move to real data</h4>
+										<p>NISAR GUNW products and Sentinel-1 SLCs are acquired with pygeofetch, put onto common map grids and inverted jointly; Mexico City is the first case study.</p>
+									</div>
+								</li>
+							</ol>
+							<h4 class="headtitle">Model &amp; training setup</h4>
+							<div class="flag-table-wrap"><table class="flag-table flag-table--spec"><tbody><tr><th scope="row">Motion model</th><td>Fourier-feature neural field (96 features, 3 × 128 MLP): velocity, 2 seasonal harmonics, 3 residual time modes</td></tr><tr><th scope="row">Likelihood</th><td>Von Mises, concentration from Touzi-debiased coherence; residual noise re-estimated by maximum likelihood</td></tr><tr><th scope="row">Nuisance</th><td>Per-date Fourier screens (troposphere, ionosphere, orbit, height) outside the motion&#x27;s temporal null space; per-pixel DEM error</td></tr><tr><th scope="row">Ionosphere prior</th><td>NISAR split-spectrum estimate</td></tr><tr><th scope="row">Alignment</th><td>Backscatter cross-correlation with bicubic resampling and sub-pixel peak fit</td></tr><tr><th scope="row">Optimisation</th><td>Adam; stage A L-band 200 steps, stage B joint 300 (600 for fast motion); 4096 pixels per sensor per step</td></tr><tr><th scope="row">Benchmark scene</th><td>C-band 160 × 160 at 120 m, L-band 127 × 127 at 150 m; one year</td></tr><tr><th scope="row">Baseline</th><td>SNAPHU per interferogram, per-pixel velocity + DEM fit, east/up fusion</td></tr><tr><th scope="row">Software</th><td>PyTorch package with 115 tests; readers for NISAR GUNW and pygeofetch Sentinel-1 interferograms</td></tr></tbody></table></div>
+
+							<h4 class="headtitle">Benchmark</h4>
+							<div class="flag-table-wrap"><table class="flag-table"><caption>East / up velocity error in mm/yr on synthetic scenes. Regime map: mean of 20 runs per row; subsidence: median of five scenes.</caption><thead><tr><th scope="col">Condition</th><th scope="col">PhysInSAR</th><th scope="col">SNAPHU + fusion</th><th scope="col">PhysInSAR better</th></tr></thead><tbody><tr><th scope="row">Vegetated belt, C-band coherence 0.05</th><td>9.8 / 10.1</td><td>16.1 / 12.2</td><td>20 / 20 runs</td></tr><tr><th scope="row">Vegetated belt, all conditions</th><td>9.0 / 7.7</td><td>13.1 / 9.7</td><td>60 / 60 runs</td></tr><tr><th scope="row">Sharp 700 m bowl, 800 mm/yr</th><td>18.2 / 9.9</td><td>77.4 / 61.0</td><td>5 / 5 scenes</td></tr><tr><th scope="row">Sharp 700 m bowl, 1200 mm/yr</th><td>25.4 / 11.9</td><td>169.6 / 130.6</td><td>5 / 5 scenes</td></tr><tr><th scope="row">Broad 2 km bowl, 1200 mm/yr</th><td>33.1 / 29.2</td><td>27.8 / 13.4</td><td>1 / 5 scenes</td></tr></tbody></table></div>
+
+							<h4 class="headtitle">Figures from the run</h4>
+							<div class="flag-figs">
+								<figure class="flag-fig">
+									<a href="../img/fx-physinsar-overview.png" target="_blank" rel="noopener"><img src="../img/fx-physinsar-overview.png" alt="How it works: the neural motion field and nuisance fields predict each interferogram through a physics forward model; the observed wrapped phase of both missions enters only through a periodic likelihood." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">Method diagram</span>How it works: the neural motion field and nuisance fields predict each interferogram through a physics forward model; the observed wrapped phase of both missions enters only through a periodic likelihood.</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-physinsar-regime.png" target="_blank" rel="noopener"><img src="../img/fx-physinsar-regime.png" alt="Regime map over L-band ionosphere and C-band belt coherence, for the whole scene (top) and the vegetated belt (bottom): joint fit, separate unwrapping, and their ratio with the number of scenes won (5 of 5 in every cell)." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">notebooks/04_regime_map</span>Regime map over L-band ionosphere and C-band belt coherence, for the whole scene (top) and the vegetated belt (bottom): joint fit, separate unwrapping, and their ratio with the number of scenes won (5 of 5 in every cell).</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-physinsar-fast.png" target="_blank" rel="noopener"><img src="../img/fx-physinsar-fast.png" alt="Error on the bowl versus subsidence rate for a broad (left) and a sharp (right) bowl. Separate unwrapping (red) breaks down on the sharp bowl; the joint fit with fast-motion settings (green) stays accurate, where the default settings (purple) fail at 1.2 m/yr. On the broad bowl above ~800 mm/yr, unwrapping keeps the better vertical component." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">notebooks/06_fast_motion</span>Error on the bowl versus subsidence rate for a broad (left) and a sharp (right) bowl. Separate unwrapping (red) breaks down on the sharp bowl; the joint fit with fast-motion settings (green) stays accurate, where the default settings (purple) fail at 1.2 m/yr. On the broad bowl above ~800 mm/yr, unwrapping keeps the better vertical component.</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-physinsar-alignment.png" target="_blank" rel="noopener"><img src="../img/fx-physinsar-alignment.png" alt="East error versus a hidden NISAR geolocation offset: with backscatter registration the joint fit is insensitive to the offset." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">notebooks/05_alignment</span>East error versus a hidden NISAR geolocation offset: with backscatter registration the joint fit is insensitive to the offset.</figcaption>
+								</figure>
+								<figure class="flag-fig">
+									<a href="../img/fx-physinsar-realdata.png" target="_blank" rel="noopener"><img src="../img/fx-physinsar-realdata.png" alt="Real-data chain for the Mexico City case study, from pygeofetch acquisition to the joint inversion." loading="lazy"></a>
+									<figcaption><span class="flag-fig__src">Pipeline diagram</span>Real-data chain for the Mexico City case study, from pygeofetch acquisition to the joint inversion.</figcaption>
+								</figure>
+							</div>
+
+							<div class="row mb--3 project-row">
+								<div class="col-6">
+									<h3>Results</h3>
+									<p>Across a regime map of four ionosphere levels, three C-band coherence levels and five random scenes, PhysInSAR had a lower error than SNAPHU-based separate unwrapping in all 60 runs, including where C-band stayed coherent; in decorrelated vegetation east and up errors fell from 13.1 and 9.7 to 9.0 and 7.7 mm/yr. On a sharp 700 m subsidence bowl it stayed accurate in every scene up to 1.2 m/yr, about 25 mm/yr east error against 170 for unwrapping. Backscatter registration recovered hidden offsets of up to 100 m to about 1 m and restored full accuracy.</p>
+								</div>
+								<div class="col-6">
+									<h3>Validation</h3>
+									<p>Every experiment uses five random scenes per condition with full ground truth, a common reference area and errors reported over the whole scene, the vegetated belt or the deforming area. Results reproduce across machines for a given seed, and all scripts, seeds and result files are part of the DOI-archived release. The first real-data test with NISAR GUNW and Sentinel-1 over Mexico City is under way.</p>
+								</div>
+							</div>
+							<div class="project-note">
+								<h4 class="project-note__title">Limitations, stated plainly</h4>
+								<ul class="flag-lim"><li>All results so far are synthetic, from a simulator that shares the model&#x27;s physics, so the margins are an upper bound until confirmed on real data.</li><li>On broad, very fast motion (about 800 mm/yr and more over a 2 km bowl) spatial unwrapping keeps up and gives the better vertical component.</li><li>Strongly stratified troposphere over high relief is not yet handled by default.</li><li>C-band-only and L-band-only ablations are still needed to separate the gain from combining wavelengths from the gain from avoiding unwrapping.</li></ul>
+							</div>
+
+							<hr class="divider">
+							<ul class="post-pagination">
+								<li class="post-pagination__item prev">
+									<a href="obuasi-ndvi-trend.html" class="post-pagination__link" data-title="Obuasi Vegetation Decline"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M15 7.5C15 3.36 11.64 0 7.5 0S0 3.36 0 7.5 3.36 15 7.5 15 15 11.64 15 7.5Z" fill="#43B1E7"/><path fill-rule="evenodd" clip-rule="evenodd" d="M8.18 4.14L5.14 7.16a.48.48 0 0 0 0 .68l3.04 3.02a.48.48 0 0 0 .68-.67L6.04 7.5l2.82-2.69a.48.48 0 0 0-.68-.67Z" fill="white"/></svg>
+										Previous project
+									</a>
+								</li>
+								<li class="post-pagination__item next">
+									<a href="pyunwrap.html" class="post-pagination__link" data-title="pyunwrap: Learned InSAR Phase Unwrapping"><svg class="icon" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M0 7.5C0 3.36 3.36 0 7.5 0S15 3.36 15 7.5 11.64 15 7.5 15 0 11.64 0 7.5Z" fill="#43B1E7"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.82 4.14l3.04 3.02a.48.48 0 0 1 0 .68l-3.04 3.02a.48.48 0 0 1-.68-.67L8.96 7.5 6.14 4.81a.48.48 0 0 1 .68-.67Z" fill="white"/></svg>
+										Next project
+									</a>
+								</li>
+							</ul>
+						</div>
+						<aside class="sidebar">
+							<div class="widget project-facts">
+								<h4 class="widget__title">Project facts</h4>
+								<ul class="project-facts__list"><li class="project-facts__item"><span class="project-facts__label">Timeline</span><strong class="project-facts__value">2026 – Present</strong></li><li class="project-facts__item"><span class="project-facts__label">Role</span><strong class="project-facts__value">Author &amp; maintainer</strong></li><li class="project-facts__item"><span class="project-facts__label">Status</span><strong class="project-facts__value">Research prototype · v0.9.0 · MIT · real-data case study in progress</strong></li><li class="project-facts__item"><span class="project-facts__label">Category</span><strong class="project-facts__value">InSAR · GeoAI</strong></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Tech stack</h4>
+								<ul class="tag-list project-tags"><li><span class="tag-list__link">PyTorch</span></li><li><span class="tag-list__link">Neural fields</span></li><li><span class="tag-list__link">Von Mises likelihood</span></li><li><span class="tag-list__link">SNAPHU (baseline)</span></li><li><span class="tag-list__link">NISAR GUNW</span></li><li><span class="tag-list__link">Sentinel-1</span></li><li><span class="tag-list__link">pygeofetch</span></li><li><span class="tag-list__link">h5py · pyproj</span></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Links</h4>
+								<ul class="list list--border project-links"><li><a href="https://github.com/EOCoreINT/PhysInSAR" target="_blank" rel="noopener">GitHub: EOCoreINT/PhysInSAR <span aria-hidden="true">↗</span></a></li><li><a href="https://doi.org/10.5281/zenodo.23930119" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23930119 <span aria-hidden="true">↗</span></a></li><li><a href="../assets/PhysInSAR-summary.pdf" target="_blank" rel="noopener">Two-page summary (PDF) <span aria-hidden="true">↗</span></a></li></ul>
+							</div>
+							<div class="widget">
+								<h4 class="widget__title">Related projects</h4>
+								<ul class="recent-list">
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-pyunwrap.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">Flagship</span></div>
+												<h4 class="recent-post__title"><a href="pyunwrap.html">pyunwrap: Learned InSAR Phase Unwrapping</a></h4>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-psgnn.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">Flagship</span></div>
+												<h4 class="recent-post__title"><a href="ps-gnn.html">PS-GNN: Graph Neural Networks for Persistent Scatterer Selection</a></h4>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recent-post">
+											<div class="recent-post__visual"><img src="../img/p-atewa.jpg" alt=""></div>
+											<div class="recent-post__content">
+												<div class="listing-meta"><span class="listing-meta__item text--primary">SAR–Optical Fusion</span></div>
+												<h4 class="recent-post__title"><a href="atewa-mining-detector.html">Atewa Illegal Mining Detector</a></h4>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="widget project-cta bg--gradient text--white">
+								<h3 class="project-cta__title">Interested in this work?</h3>
+								<p>Happy to talk about collaboration, data or code.</p>
+								<a href="../index.html#contact" class="btn btn--white">
+									Get In Touch
+									<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
+								</a>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-upper">
+					<div class="footer-upper__col col--4">
+						<a href="../index.html#hero" class="footer-logo text--white" aria-label="Back to top"><svg class="site-logo" viewBox="0 0 364 56" role="img" aria-label="Samuel Appiah Kubi"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="28" cy="28" r="19"/><ellipse cx="28" cy="28" rx="19" ry="7.5"/><path d="M28 9v38"/></g><ellipse cx="28" cy="28" rx="27" ry="10" transform="rotate(-25 28 28)" fill="none" stroke="#43B1E7" stroke-width="1.8"/><circle cx="51.5" cy="16.5" r="3.2" fill="#43B1E7"/><text x="66" y="35.5" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3.2" fill="currentColor">APPIAH KUBI</text><line x1="242" y1="13" x2="242" y2="43" stroke="currentColor" stroke-opacity=".45"/><text font-family="Roboto, Arial, sans-serif" font-size="11.5" fill="currentColor" fill-opacity=".85"><tspan x="254" y="25">geospatial &amp;</tspan><tspan x="254" y="40">earth observation</tspan></text></svg></a>
+						<p class="footer-blurb">Geospatial software engineer and Earth observation researcher. From satellite data to decisions.</p>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Navigate</h4>
+						<ul class="footer-list">
+							<li><a href="../index.html#about" class="footer-list__link">About</a></li>
+							<li><a href="../index.html#expertise" class="footer-list__link">Expertise</a></li>
+							<li><a href="../index.html#experience" class="footer-list__link">Experience</a></li>
+							<li><a href="../index.html#projects" class="footer-list__link">Projects</a></li>
+							<li><a href="../index.html#research" class="footer-list__link">Research</a></li>
+							<li><a href="../index.html#education" class="footer-list__link">Education</a></li>
+							<li><a href="../index.html#contact" class="footer-list__link">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Open Source</h4>
+						<ul class="footer-list">
+							<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener" class="footer-list__link">pygeofetch</a></li>
+							<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener" class="footer-list__link">pygeovision</a></li>
+							<li><a href="../projects/physinsar.html" class="footer-list__link">PhysInSAR</a></li>
+							<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="footer-list__link">pyunwrap</a></li>
+							<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="footer-list__link">ps-gnn</a></li>
+							<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT toolkit</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Focus Areas</h4>
+						<ul class="footer-list">
+							<li><a href="../expertise/sar-insar.html" class="footer-list__link">SAR &amp; InSAR</a></li>
+							<li><a href="../expertise/geospatial-ai.html" class="footer-list__link">Geospatial AI</a></li>
+							<li><a href="../expertise/eo-data-engineering.html" class="footer-list__link">EO Data Engineering</a></li>
+							<li><a href="../expertise/applied-eo-research.html" class="footer-list__link">Applied EO Research</a></li>
+							<li><a href="../expertise/field-validation.html" class="footer-list__link">Field Validation</a></li>
+							<li><a href="../expertise/index.html" class="footer-list__link">How I Work</a></li>
+						</ul>
+					</div>
+					<div class="footer-upper__col col--2">
+						<h4 class="footer-upper__title">Ventures</h4>
+						<ul class="footer-list">
+							<li><a href="https://eocoreint.com" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Roadessy Lab</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Deep Metrics Research</a></li>
+							<li><a href="../index.html#affiliations" class="footer-list__link">Z_GIS Salzburg</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-contact">
+					<div class="footer-contact__item">
+						<ul class="info-list">
+							<li class="info-list__item"><span class="info-list__text">Based in</span><a class="info-list__link" href="../index.html#contact">Salzburg, Austria</a></li>
+							<li class="info-list__item"><span class="info-list__text">Mail</span><a class="info-list__link" href="mailto:appiahkubis14@gmail.com">appiahkubis14@gmail.com</a></li>
+							<li class="info-list__item"><span class="info-list__text">Tel</span><a class="info-list__link" href="tel:+436606182808">+43 6606 182 808</a></li>
+						</ul>
+					</div>
+					<div class="footer-contact__item">
+						<ul class="social">
+							<li>
+								<a class="social__link" href="https://github.com/appiahkubis14" target="_blank" rel="noopener" aria-label="GitHub">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://linkedin.com/in/samuel-appiah-kubi-b52633333" target="_blank" rel="noopener" aria-label="LinkedIn">
+									<svg width="15" height="15" viewBox="0 0 12 12"><path d="M2.68661 12H0.198214V3.98839H2.68661V12ZM1.44107 2.89554C0.645536 2.89554 0 2.23661 0 1.44107C0 1.05888 0.151827 0.692333 0.42208 0.42208C0.692333 0.151827 1.05888 0 1.44107 0C1.82327 0 2.18981 0.151827 2.46006 0.42208C2.73032 0.692333 2.88214 1.05888 2.88214 1.44107C2.88214 2.23661 2.23661 2.89554 1.44107 2.89554ZM11.9973 12H9.51429V8.1C9.51429 7.17054 9.49554 5.97857 8.22054 5.97857C6.92679 5.97857 6.72857 6.98839 6.72857 8.03304V12H4.24286V3.98839H6.62946V5.08125H6.66429C6.99643 4.45179 7.80804 3.7875 9.01875 3.7875C11.5366 3.7875 12 5.44554 12 7.59911V12H11.9973Z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="https://orcid.org/0009-0002-1376-108X" target="_blank" rel="noopener" aria-label="ORCID">
+									<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zM7.4 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM6.5 9.3h1.8v9.3H6.5V9.3zm4.1 0h4.1c3.3 0 5 2.3 5 4.65 0 2.5-1.9 4.65-5 4.65h-4.1V9.3zm1.8 1.6v6.1h2.1c2.6 0 3.3-1.8 3.3-3.05 0-1.6-1-3.05-3.3-3.05h-2.1z"/></svg>
+								</a>
+							</li>
+							<li>
+								<a class="social__link" href="mailto:appiahkubis14@gmail.com" aria-label="Email">
+									<svg width="16" height="13" viewBox="0 0 24 19"><path d="M0 2.5A2.5 2.5 0 0 1 2.5 0h19A2.5 2.5 0 0 1 24 2.5v14a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 16.5v-14zm2.3-.3L12 9.4l9.7-7.2H2.3zM22 4.1l-10 7.4-10-7.4v12.4c0 .3.2.5.5.5h19c.3 0 .5-.2.5-.5V4.1z"/></svg>
+								</a>
+							</li>
+						</ul>
+						<a href="../index.html#contact" class="btn btn--white">
+							Get In Touch
+							<svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg>
+						</a>
+					</div>
+				</div>
+				<div class="footer-under">
+					<ul class="footer-list footer-list--row">
+						<li><a href="../assets/Samuel-Appiah-Kubi-CV.pdf" target="_blank" rel="noopener" class="footer-list__link">Download CV</a></li>
+						<li><a href="https://github.com/appiahkubis14" target="_blank" rel="noopener" class="footer-list__link">GitHub</a></li>
+						<li>&copy; 2026 Samuel Appiah Kubi. All rights reserved.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="bg-stretch">
+				<img src="../img/footer-nightlights.jpg" alt="">
+			</div>
+		</footer>
+	</div>
+	<script src="../js/all.js"></script>
+	<script>
+		document.querySelectorAll('.nav-drop a[href*="#"]').forEach(function (a) {
+			a.addEventListener('click', function () { document.body.classList.remove('nav-active'); });
+		});
+	</script>
+</body>
+
+</html>

@@ -57,6 +57,7 @@
 									<ul class="sub-menu">
 										<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener">pygeofetch</a></li>
 										<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener">pygeovision</a></li>
+										<li><a href="projects/physinsar.html">PhysInSAR</a></li>
 										<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener">pyunwrap</a></li>
 										<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener">ps-gnn</a></li>
 										<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener">EOCoreINT toolkit</a></li>
@@ -382,10 +383,10 @@
 						</li>
 						<li class="timeline__item">
 							<div class="timeline-tile">
-								<span class="timeline-tile__num">2024</span>
+								<span class="timeline-tile__num">2025</span>
 								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
 								<div class="timeline-tile__content">
-									<span class="tl-meta">Sep 2024 – Present · Accra, Ghana</span>
+									<span class="tl-meta">Sep 2025 – Present · Accra, Ghana</span>
 									<h3 class="timeline-tile__title">AI Research Engineer — Agricultural Remote Sensing</h3>
 									<span class="tl-org">Afarinick Company Limited</span>
 									<p>Integrated mobile imagery, satellite NDVI/EVI time series and IoT ground sensors into a production monitoring system on AWS (EC2, S3). Diagnosed a crop-disease CNN that scored 95.8% in-domain but near-zero on smallholder farms, and fixed it with geographically stratified data and field re-validation.</p>
@@ -394,10 +395,10 @@
 						</li>
 						<li class="timeline__item">
 							<div class="timeline-tile">
-								<span class="timeline-tile__num">2024</span>
+								<span class="timeline-tile__num">2025</span>
 								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
 								<div class="timeline-tile__content">
-									<span class="tl-meta">2024 · Accra, Ghana · Remote</span>
+									<span class="tl-meta">2025 · Accra, Ghana · Remote</span>
 									<h3 class="timeline-tile__title">Geospatial Researcher — Satellite &amp; Ground-Data Fusion</h3>
 									<span class="tl-org">Rainforest Alliance</span>
 									<p>Built a hybrid monitoring system fusing Sentinel-2 (10 m) with participatory plot-level ground truth, running automated change detection over 333.9 km² of land and forest.</p>
@@ -406,13 +407,25 @@
 						</li>
 						<li class="timeline__item">
 							<div class="timeline-tile">
-								<span class="timeline-tile__num">2024</span>
+								<span class="timeline-tile__num">2025</span>
 								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
 								<div class="timeline-tile__content">
-									<span class="tl-meta">2024 · Accra, Ghana</span>
+									<span class="tl-meta">2025 · Accra, Ghana</span>
 									<h3 class="timeline-tile__title">Geospatial Data Engineer</h3>
 									<span class="tl-org">Ghana Export-Import Bank / SKTLive Ltd</span>
 									<p>Engineered PostgreSQL/PostGIS spatial databases and Python/GDAL pipelines converting GeoTIFF aerial imagery into multi-scale tile pyramids for web map delivery.</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline__item">
+							<div class="timeline-tile">
+								<span class="timeline-tile__num">2024</span>
+								<span class="timeline-tile__circle"><div class="circle-pulse"></div></span>
+								<div class="timeline-tile__content">
+									<span class="tl-meta">Jan – Aug 2024 · Salzburg, Austria</span>
+									<h3 class="timeline-tile__title">Student Assistant — Roadessy Lab,KNUST</h3>
+									<span class="tl-org">Department of Geomatics Engineering, Kwame Nkrumah University of Science and Technology</span>
+									<p>Assisted in various geospatial research projects, including data collection, processing, and analysis using GIS and remote sensing techniques and develping multi-sensor(IMU,Camera,GPS) fusion for road condition assessment.</p>
 								</div>
 							</div>
 						</li>
@@ -466,6 +479,20 @@
 									<div class="post-card__links">
 										<a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener" class="btn btn--link">PyPI</a>
 										<a href="https://pygeovision.readthedocs.io/en/latest/" target="_blank" rel="noopener" class="btn btn--link">Docs</a>
+									</div>
+								</div>
+							</li>
+							<li class="post-list__item">
+								<div class="post-card">
+									<div class="listing-meta">
+										<span class="listing-meta__item text--primary"><a href="https://doi.org/10.5281/zenodo.23930119" target="_blank" rel="noopener">DOI 10.5281/zenodo.23930119</a></span>
+										<span class="listing-meta__item">MIT · Research prototype</span>
+									</div>
+									<h3 class="post-card__title"><a href="projects/physinsar.html">PhysInSAR — Joint Sentinel-1 + NISAR InSAR without Unwrapping</a></h3>
+									<p class="post-card__text">One physics-informed neural model of 3-D ground motion fitted directly to the wrapped phase of both missions. Beat SNAPHU-based processing in all 60 runs of a synthetic regime map; real-data case study over Mexico City in progress.</p>
+									<div class="post-card__links">
+<a href="projects/physinsar.html" class="btn btn--link">Case study</a>
+										<a href="https://github.com/EOCoreINT/PhysInSAR" target="_blank" rel="noopener" class="btn btn--link">GitHub</a>
 									</div>
 								</div>
 							</li>
@@ -568,9 +595,20 @@
 				<div class="container">
 					<div class="section-headline section-headline--dark">
 						<h4>Flagship research</h4>
-						<p>Two open-source GeoAI methods I designed for the hardest steps in radar interferometry, benchmarked against the classical methods they aim to improve.</p>
+						<p>Three open-source methods I designed for the hardest steps in radar interferometry, from joint Sentinel-1 and NISAR inversion without phase unwrapping to learned unwrapping and scatterer selection, each benchmarked against the classical methods it aims to improve.</p>
 					</div>
 					<div class="flagships">
+						<article class="flagship flagship--featured">
+							<a href="projects/physinsar.html" class="flagship__visual" tabindex="-1" aria-hidden="true"><img src="img/p-physinsar-lg.jpg" alt="" loading="lazy"></a>
+							<div class="flagship__body">
+								<span class="flagship__badge">Flagship research · Joint C- and L-band InSAR</span>
+								<h3 class="flagship__title"><a href="projects/physinsar.html">PhysInSAR</a></h3>
+								<p class="flagship__sub">One physics-informed neural model of 3-D ground motion, fitted directly to the wrapped phase of both missions</p>
+								<p class="flagship__pitch">Sentinel-1 and NISAR are still processed apart: each is unwrapped on its own and the results are fused at the end, mistakes included. PhysInSAR never unwraps. The coherent L-band phase and the precise C-band phase resolve the cycle ambiguities together, inside one model.</p>
+								<ul class="flagship__metrics"><li><strong>60 / 60</strong><span>Regime-map runs won against SNAPHU + fusion</span></li><li><strong>13.1 → 9.0</strong><span>East error in decorrelated vegetation (mm/yr)</span></li><li><strong>25 vs 170</strong><span>East error at 1.2 m/yr subsidence (mm/yr), 5 of 5 scenes</span></li></ul>
+								<a href="projects/physinsar.html" class="btn btn--primary">Read the case study <svg class="icon" width="21" height="12" viewBox="0 0 21 12"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 6.75L0 6.75L0 5.25L15 5.25V6.75Z"/><path d="M21 5.99986L14.25 11.196L14.25 0.803711L21 5.99986Z"/></svg></a>
+							</div>
+						</article>
 						<article class="flagship">
 							<a href="projects/pyunwrap.html" class="flagship__visual" tabindex="-1" aria-hidden="true"><img src="img/p-pyunwrap-lg.jpg" alt="" loading="lazy"></a>
 							<div class="flagship__body">
@@ -891,7 +929,7 @@
 							<li>Course academy: category → course → module → lesson, with quizzes, progress and certificates</li>
 							<li>B2B / B2G consulting engine: quote → project → delivery → branded PDF invoice</li>
 							<li>Organisation workspaces with role-scoped access for government, NGO and enterprise clients</li>
-							<!-- <li>Django 5 · PostgreSQL · HTMX · DRF · Stripe · Celery · Docker</li> -->
+							<li>Django 5 · PostgreSQL · HTMX · DRF · Stripe · Celery · Docker</li>
 						</ul>
 						<a href="https://eocoreint.com" target="_blank" rel="noopener" class="btn btn--outline-primary">
 							Visit eocoreint.com
@@ -1135,6 +1173,7 @@
 						<ul class="footer-list">
 							<li><a href="https://pypi.org/project/pygeofetch/" target="_blank" rel="noopener" class="footer-list__link">pygeofetch</a></li>
 							<li><a href="https://pypi.org/project/pygeovision/" target="_blank" rel="noopener" class="footer-list__link">pygeovision</a></li>
+							<li><a href="projects/physinsar.html" class="footer-list__link">PhysInSAR</a></li>
 							<li><a href="https://pypi.org/project/pyunwrap-insar/" target="_blank" rel="noopener" class="footer-list__link">pyunwrap</a></li>
 							<li><a href="https://pypi.org/project/ps-gnn/" target="_blank" rel="noopener" class="footer-list__link">ps-gnn</a></li>
 							<li><a href="https://github.com/EOCoreINT" target="_blank" rel="noopener" class="footer-list__link">EOCoreINT toolkit</a></li>

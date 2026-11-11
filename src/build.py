@@ -77,7 +77,8 @@ for k, v in ICONS.items():
 def flag_html(p):
     href = f'projects/{p["slug"]}.html'
     mets = ''.join(f'<li><strong>{E(v)}</strong><span>{E(l)}</span></li>' for v, l in p['metrics'][:3])
-    return f'''						<article class="flagship">
+    cls = 'flagship flagship--featured' if p.get('featured') else 'flagship'
+    return f'''						<article class="{cls}">
 							<a href="{href}" class="flagship__visual" tabindex="-1" aria-hidden="true"><img src="img/{p["img"]}-lg.jpg" alt="" loading="lazy"></a>
 							<div class="flagship__body">
 								<span class="flagship__badge">Flagship research · {E(p["tags"][1])}</span>

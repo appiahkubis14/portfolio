@@ -262,8 +262,14 @@ body { background: #fff; color-scheme: light; }
 .flagship__metrics strong { font-family: "Libre Baskerville", serif; font-size: 22px; color: #43B1E7; line-height: 1.1; }
 .flagship__metrics span { font-size: 11px; line-height: 1.4; opacity: .75; }
 .flagship .btn { align-self: flex-start; margin-top: auto; }
+/* The newest flagship is featured across the full width: image left, text right. */
+.flagship--featured { grid-column: 1 / -1; flex-direction: row; }
+.flagship--featured .flagship__visual { flex: 0 0 52%; aspect-ratio: auto; min-height: 100%; }
+.flagship--featured .flagship__visual img { object-fit: contain; background: #051c2c; }
+.flagship--featured .flagship__body { padding: 36px 40px 38px; justify-content: center; }
+.flagship--featured .flagship__title { font-size: 34px; }
 .projects-sub { margin-top: 0; }
-@media (max-width: 1023px) { .flagships { grid-template-columns: 1fr; } }
+@media (max-width: 1023px) { .flagships { grid-template-columns: 1fr; } .flagship--featured { flex-direction: column; } .flagship--featured .flagship__visual { flex: none; aspect-ratio: 3 / 2; min-height: 0; } .flagship--featured .flagship__body { padding: 28px 30px 32px; } }
 @media (max-width: 479px) { .flagship__metrics { grid-template-columns: 1fr; } .flagship__metrics li + li { padding-left: 0; } .flagship__body { padding: 22px 20px 26px; } }
 
 /* Flagship detail pages */
