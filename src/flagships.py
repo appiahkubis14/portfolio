@@ -208,4 +208,4 @@ PSGNN = dict(
     links=[('PyPI: ps-gnn', 'https://pypi.org/project/ps-gnn/'), ('Zenodo DOI 10.5281/zenodo.22706887', 'https://doi.org/10.5281/zenodo.22706887')],
 )
 
-FLAGSHIPS = [PYUNWRAP, PSGNN]  # PhysInSAR detail page hidden until publication
+FLAGSHIPS = [PHYSINSAR, PYUNWRAP, PSGNN]
