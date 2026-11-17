@@ -2046,11 +2046,11 @@ input.input-form[readonly] {
 }
 .footer-list__link {
   display: block;
-  color: #abc3e1;
+  color: #f9f9fa;
   font-weight: 300;
 }
 .footer-list__link:hover {
-  color: #43B1E7;
+  color: #82fbd7;
   text-decoration: none;
 }
 
