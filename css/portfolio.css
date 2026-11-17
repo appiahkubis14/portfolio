@@ -303,3 +303,16 @@ body { background: #fff; color-scheme: light; }
 
 /* small date labels on light surfaces use the deep accent for legibility */
 .tl-meta.text--primary, [class*="geo--"] .tl-meta, .bg--light .tl-meta { color: #146e9a; }
+
+/* ePortfolio page */
+.ep-journey p { margin-bottom: 1em; }
+.ep-course p { margin-bottom: .5em; }
+.ep-course .tl-meta { display: block; margin-bottom: .25em; }
+html { scroll-behavior: smooth; }
+[id="programme"], [id="trajectory"], [id="coursework"], [id="journey"], [id="next"] { scroll-margin-top: 110px; }
+.ep-empty { clear: both; padding-top: 2.4em; margin-bottom: 2em; }
+.ep-journey { clear: both; padding-top: .4em; }
+.ep-gap { height: 1.5em; clear: both; }
+.ep-group { clear: both; margin: 1.6em 0 .6em; font-size: 1.15rem; }
+.ep-status { display: inline-block; margin: 0 0 .35em; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: #146E9A; background: #e3f3fb; padding: .1em .55em; border-radius: 3px; }
+.ep-course p { font-size: .95rem; }

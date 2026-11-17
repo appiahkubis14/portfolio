@@ -72,7 +72,7 @@ AREAS = [
         evidence=[('67', 'Sentinel-1 SLC scenes processed for Mexico City'), ('2,211 → 78', 'Candidate pairs screened to valid interferograms'),
                   ('−35.5 cm/yr', 'Recovered, vs a published −39.1 cm/yr peak'), ('3', 'Deformation events run through the same chain')],
         evidence_note='Mexico City subsidence, the 2021 Piton de la Fournaise eruption and the 2016 Amatrice earthquake were processed with the same pygeofetch InSAR chain.',
-        projects=['physinsar', 'pyunwrap', 'ps-gnn', 'mexico-city-subsidence', 'urban-subsidence-watcher'],
+        projects=['pyunwrap', 'ps-gnn', 'mexico-city-subsidence', 'urban-subsidence-watcher'],
         tools=['Sentinel-1 SLC', 'NISAR GUNW', 'ASF Vertex API', 'Copernicus Data Space', 'SNAPHU', 'SBAS', 'ERA5', 'IONEX', 'pygeofetch', 'PhysInSAR', 'pyunwrap', 'ps-gnn', 'GDAL / Rasterio'],
         different=[
             ('I report the network, not just the map', 'Connectivity, coherence and fragmentation are part of every deliverable, so you know how far to trust each pixel.'),
